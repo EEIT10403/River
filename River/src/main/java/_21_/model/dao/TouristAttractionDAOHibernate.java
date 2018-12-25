@@ -101,6 +101,7 @@ public class TouristAttractionDAOHibernate implements TouristAttractionDAO {
 			update.setImg(bean.getImg());
 			update.setLat(bean.getLat());
 			update.setLng(bean.getLng());
+			update.setSummary(bean.getSummary());
 			return update;
 		}
 

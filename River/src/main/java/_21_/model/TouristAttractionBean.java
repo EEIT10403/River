@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="TAttr")
+@Table(name="TouristAttraction")
 public class TouristAttractionBean {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -58,14 +58,18 @@ public class TouristAttractionBean {
 	public void setImg(Blob img) {
 		this.img = img;
 	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	private String summary;
 	@Override
 	public String toString() {
 		return "TouristAttractionBean [id=" + id + ", touristarea=" + touristarea + ", address=" + address + ", lat="
-				+ lat + ", lng=" + lng + ", img=" + img + "]";
+				+ lat + ", lng=" + lng + ", img=" + img + ", summary=" + summary + "]";
 	}
-
+		      
 	
-	
-	
-		
 }
