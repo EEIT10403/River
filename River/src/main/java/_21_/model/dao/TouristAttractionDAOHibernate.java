@@ -152,6 +152,7 @@ public class TouristAttractionDAOHibernate implements TouristAttractionDAO {
 				.setParameter(1, lat).setParameter(2, lng);
 	    
 		return query.list() ;
+		
 		}
 
 	return null;
