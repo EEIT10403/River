@@ -10,4 +10,7 @@ public interface TouristAttractionDAO {
 	public List<TouristAttractionBean> findbytouristarea(String  touristarea) ;
 	public List<TouristAttractionBean> findbyaddress(String address);
 	public List<TouristAttractionBean> findbylatlng(Double lat,Double lng) ;
+	
+	
+	
 }
