@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
+	
 	<title>flight</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,10 +36,21 @@
 	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
+<!--======CSS資料夾==============================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link type="text/css" rel="stylesheet" href="css/Tstyle.css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<!--===============================================================================================-->	
+		
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+	
 <!--===============================================================================================-->
+
+
+
+
 </head>
 <body class="animsition">
 	<div class="container-fluid">  
@@ -84,7 +97,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index18.jsp">Home</a>
+								<a href="<c:url value="/_18_WebIndex/index18.jsp" />">Home</a>
 								
 							</li>
 
@@ -93,7 +106,7 @@
 							</li>
 
 							<li class="active-menu">
-								<a href="flight.jsp">航班查詢</a>
+								<a href="<c:url value="/_18_WebIndex/flight18.jsp" />">航班查詢</a>
 							</li>
 
 							<li>
@@ -132,7 +145,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index18.jsp"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="<c:url value="/_18_WebIndex/index18.jsp" />"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -191,7 +204,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index18.jsp">Home</a>
+					<a href="<c:url value="/_18_WebIndex/index18.jsp" />">Home</a>
 					
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -203,7 +216,7 @@
 				</li>
 
 				<li>
-					<a href="flight.jsp" class="label1 rs1">航班查詢</a>
+					<a href="<c:url value="/_18_WebIndex/flight18.jsp" />" class="label1 rs1">航班查詢</a>
 				</li>
 
 				<li>
@@ -322,210 +335,122 @@
 	</section>
 
 
-	<!-- Banner -->
 
-
-
-<!-- Product -->
+<!-- ===================班次查詢中間==================== -->
 	
-	
-			
-
-					<!-- <div class="container"> -->
+<div id="booking">
+		<div class="section-center">
+			<div class="container">
 				<div class="row">
-					<div class="search-wrap">
-						<div class="container">
-							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flight</a></li>
-								<li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i> Hotel</a></li>
-								<li><a data-toggle="tab" href="#car"><i class="flaticon-car"></i> Car Rent</a></li>
-								<li><a data-toggle="tab" href="#cruises"><i class="flaticon-boat"></i> Cruises</a></li>
-							</ul>
-						</div>
-						<div class="tab-content">
-							<div id="flight" class="tab-pane fade in active">
-								<form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-3">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-				         </div>
-				         <div id="hotel" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-2">
-				              	 	<div class="booknow">
-				              	 		<h2>Book Now</h2>
-					              	 	<span>Best Price Online</span>
-				              	 	</div>
-				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Check-in:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Check-out:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <div class="form-group">
-				                    <label for="guests">Guest</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="people" id="people" class="form-control">
-				                        <option value="#">1</option>
-				                        <option value="#">2</option>
-				                        <option value="#">3</option>
-				                        <option value="#">4</option>
-				                        <option value="#">5+</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
-						   <div id="car" class="tab-pane fade">
-						   	<form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-4">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Start Date:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Return Date:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
-						   <div id="cruises" class="tab-pane fade">
-						      <form method="post" class="colorlib-form">
-				              	<div class="row">
-				              	 <div class="col-md-4">
-				              	 	<div class="form-group">
-				                    <label for="date">Where:</label>
-				                    <div class="form-field">
-				                      <input type="text" id="location" class="form-control" placeholder="Search Location">
-				                    </div>
-				                  </div>
-				              	 </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="date">Start Date:</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-calendar2"></i>
-				                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-3">
-				                  <div class="form-group">
-				                    <label for="guests">Categories</label>
-				                    <div class="form-field">
-				                      <i class="icon icon-arrow-down3"></i>
-				                      <select name="category" id="category" class="form-control">
-				                        <option value="#">Suite</option>
-				                        <option value="#">Super Deluxe</option>
-				                        <option value="#">Balcony</option>
-				                        <option value="#">Economy</option>
-				                        <option value="#">Luxury</option>
-				                      </select>
-				                    </div>
-				                  </div>
-				                </div>
-				                <div class="col-md-2">
-				                  <input type="submit" name="submit" id="submit" value="Find Cruises" class="btn btn-primary btn-block">
-				                </div>
-				              </div>
-				            </form>
-						   </div>
-			         </div>
+					<div class="booking-form">
+						<form>
+							<div class="form-group">
+								<div class="form-checkbox">
+									<label for="roundtrip">
+										<input type="radio" id="roundtrip" name="flight-type">
+										<span></span>來回
+									</label>
+									<label for="one-way">
+										<input type="radio" id="one-way" name="flight-type">
+										<span></span>單程
+									</label>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">起始地</span>
+										<input class="form-control" type="text" placeholder="City or airport">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">目的地</span>
+										<input class="form-control" type="text" placeholder="City or airport">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">出發日</span>
+										<input class="form-control" type="date" required>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">回程日</span>
+										<input class="form-control" type="date" required>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">成人 (12+)</span>
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										
+									</div>
+								</div>
+							<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">兒童 (2-12)</span>
+										<select class="form-control">
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										
+									</div>
+								</div>
+							<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">幼兒 (0-2)</span>
+										<select class="form-control">
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">座艙等級</span>
+										<select class="form-control">
+											<option>經濟艙</option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button class="submit-btn">Show Flights</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-			
-			
-			
+	</div>
 
+	
+<!-- ===================班次查詢中間==================== -->
 
 
 
