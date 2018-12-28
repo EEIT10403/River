@@ -12,20 +12,19 @@ import javax.persistence.Table;
 @Table(name="ShoppingCart")
 public class ShoppingCartBean {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int SerialNum;
 	private String Member_Id;
 	private String Product_Id;
 	private String Prod_Name;
 	private String Ticekt_type;
-	private String Ticket_type_2;
 	private int Quantity;
 	private int UnitPrice;
 	private double Discount_Rate;
 	@Override
 	public String toString() {
 		return "ShoppingCartBean [SerialNum=" + SerialNum + ", Member_Id=" + Member_Id + ", Product_Id=" + Product_Id
-				+ ", Prod_Name=" + Prod_Name + ", Ticekt_type=" + Ticekt_type + ", Ticket_type_2=" + Ticket_type_2
+				+ ", Prod_Name=" + Prod_Name + ", Ticekt_type=" + Ticekt_type  
 				+ ", Quantity=" + Quantity + ", UnitPrice=" + UnitPrice + ", Discount_Rate=" + Discount_Rate
 				+ ", Total_Amount=" + Total_Amount + "]";
 	}
@@ -61,12 +60,6 @@ public class ShoppingCartBean {
 	}
 	public void setTicekt_type(String ticekt_type) {
 		Ticekt_type = ticekt_type;
-	}
-	public String getTicket_type_2() {
-		return Ticket_type_2;
-	}
-	public void setTicket_type_2(String ticket_type_2) {
-		Ticket_type_2 = ticket_type_2;
 	}
 	public int getQuantity() {
 		return Quantity;
