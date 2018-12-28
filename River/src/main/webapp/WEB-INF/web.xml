@@ -3,7 +3,7 @@
   <display-name>SpringRest</display-name>
   <welcome-file-list>
    
-    <welcome-file>/WebIndex18/index18.jsp</welcome-file>
+    <welcome-file>/index18.jsp</welcome-file>
   
   </welcome-file-list>
   
