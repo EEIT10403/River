@@ -85,7 +85,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="<c:url value="/_18_WebIndex/index18.jsp" />">Home</a>
+								<a href="<c:url value="/WebIndex18/index18.jsp" />">Home</a>
 								
 							</li>
 
@@ -94,7 +94,7 @@
 							</li>
 
 							<li class="label1">
-								<a href="<c:url value="/_18_WebIndex/flight18.jsp" />">航班查詢</a>
+								<a href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a>
 							</li>
 
 							<li>
@@ -133,7 +133,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="<c:url value="/_18_WebIndex/index18.jsp" />"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="<c:url value="/WebIndex18/index18.jsp" />"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -192,7 +192,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="<c:url value="/_18_WebIndex/index18.jsp" />">Home</a>
+					<a href="<c:url value="/WebIndex18/index18.jsp" />">Home</a>
 					
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -204,7 +204,7 @@
 				</li>
 
 				<li>
-					<a href="<c:url value="/_18_WebIndex/flight18.jsp" />" class="label1 rs1">航班查詢</a>
+					<a href="<c:url value="/WebIndex18/flight18.jsp" />" class="label1 rs1">航班查詢</a>
 				</li>
 
 				<li>
