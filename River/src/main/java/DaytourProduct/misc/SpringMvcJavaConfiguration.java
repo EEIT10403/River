@@ -25,7 +25,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.XmlViewResolver;
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.controller"})
+@ComponentScan(basePackages={"DaytourProduct.controller","ShoppingCart.controller"})
 @EnableWebMvc
 public class SpringMvcJavaConfiguration implements WebMvcConfigurer {
 	@Override

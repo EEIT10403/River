@@ -1,6 +1,8 @@
-package DaytourProduct.misc;
+package misc;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import DaytourProduct.misc.SpringMvcJavaConfiguration;
 
 //記得刪除web.xml內部關於DispatcherServlet、ContextLoaderListener的設定標籤
 public class DispatcherServletRegistry

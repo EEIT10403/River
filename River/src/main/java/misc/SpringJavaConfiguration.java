@@ -1,4 +1,4 @@
-package DaytourProduct.misc;
+package misc;
 
 import java.util.Properties;
 
@@ -16,10 +16,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import DaytourProduct.model.DayTour_ProductBean;
+import ShoppingCart.model.ShoppingCartBean;
 
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.model"})
+@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model"})
 @EnableTransactionManagement
 public class SpringJavaConfiguration {
 	@Bean
@@ -46,7 +47,7 @@ public class SpringJavaConfiguration {
 	@Bean
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
-		builder.addAnnotatedClasses( DayTour_ProductBean.class);
+		builder.addAnnotatedClasses( DayTour_ProductBean.class,ShoppingCartBean.class);
 
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2008Dialect");
