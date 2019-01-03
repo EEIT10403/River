@@ -13,9 +13,9 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="../images/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
@@ -59,31 +59,7 @@
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-					</div>
-				</div>
-			</div>
+		
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
@@ -174,37 +150,11 @@
 
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
-					</div>
-				</li>
-			</ul>
+	
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="<c:url value="/WebIndex18/index18.jsp" />">Home</a>
+					<a href="<c:url value="/index18.jsp" />">Home</a>
 					
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -248,7 +198,7 @@
 				</form>
 			</div>
 		</div>
-	</header>
+</header>
 
 	<!-- Cart -->
 	
@@ -625,7 +575,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+									<div class="item-slick3" data-thumb="../images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="../images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
@@ -635,7 +585,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+									<div class="item-slick3" data-thumb="../images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="../images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
@@ -645,7 +595,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+									<div class="item-slick3" data-thumb="../images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
 											<img src="../images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
