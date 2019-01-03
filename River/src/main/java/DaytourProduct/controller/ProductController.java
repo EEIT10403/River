@@ -2,6 +2,7 @@ package DaytourProduct.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -10,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -19,6 +23,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,28 +39,26 @@ public class ProductController {
 
 	@InitBinder
 	public void registerPropertyEditor(WebDataBinder webDataBinder) {
-		webDataBinder.registerCustomEditor(java.util.Date.class, 
+		webDataBinder.registerCustomEditor(java.util.Date.class,
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 
 		webDataBinder.registerCustomEditor(int.class, new PrimitiveNumberEditor(java.lang.Integer.class, true));
 
-		webDataBinder.registerCustomEditor(double.class, 
-				new PrimitiveNumberEditor(java.lang.Double.class, true));
+		webDataBinder.registerCustomEditor(double.class, new PrimitiveNumberEditor(java.lang.Double.class, true));
 	}
 
 	long sizeInBytes = 0;
 	InputStream is = null;
 
-
 	@RequestMapping("/pages/product.controller")
-	public String method(@RequestParam(value = "Main_Image", required = false) MultipartFile file, Model model,
+	public String BackFunction(@RequestParam(value = "Main_Image", required = false) MultipartFile file, Model model,
 			String prodaction, DayTour_ProductBean bean, BindingResult bindingResults)
 			throws IOException, ServletException {
 //接收資料
 //轉換資料
 		System.out.println(file);
 		System.out.println(bean);
-	//處理圖片檔案	
+		// 先處理圖片檔案
 		if (!file.isEmpty()) {
 			// 获取文件类型
 			String contentType = file.getContentType();
@@ -64,7 +67,7 @@ public class ProductController {
 			}
 			String name = file.getName();
 			System.out.println(name);
-			
+
 			String originFileName = file.getOriginalFilename();
 //			System.out.println(originFileName);
 //			String extension = originFileName.substring(originFileName.lastIndexOf("."));
@@ -72,31 +75,28 @@ public class ProductController {
 
 			if (originFileName != null && originFileName.trim().length() > 0) {
 				sizeInBytes = file.getSize();
-				System.out.println("sizeInBytes = "+sizeInBytes);
+				System.out.println("sizeInBytes = " + sizeInBytes);
 				try {
 					is = file.getInputStream();
-					System.out.println("is = "+is);
+					System.out.println("is = " + is);
 				} catch (IOException e) {
 					System.out.println("file變成is失敗");
 					e.printStackTrace();
 				}
 			}
-			
+
 			try {
-			//File 轉成能用的Blob
+				// File 轉成能用的Blob
 				Blob blob = SystemUtils.fileToBlob(is, sizeInBytes);
-				System.out.println("blob = "+blob);
+				System.out.println("blob = " + blob);
 				bean.setMain_Image(blob);
-				System.out.println("新的bean = "+bean);
+				System.out.println("新的bean = " + bean);
 			} catch (IOException | SQLException e) {
 				System.out.println("file變成Blob失敗");
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-
+//處理壞掉的資訊		
 		Map<String, String> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
 //沒用,先留著而已
@@ -104,15 +104,15 @@ public class ProductController {
 			if (bindingResults.hasFieldErrors("id")) {
 				errors.put("id", "id must be an integer");
 			}
-			if (bindingResults.hasFieldErrors("price")) {
-				errors.put("price", "price must be a number");
-			}
-			if (bindingResults.hasFieldErrors("make")) {
-				errors.put("make", "make must be a date of YYYY-MM-DD");
-			}
-			if (bindingResults.hasFieldErrors("expire")) {
-				errors.put("expire", "expire must be an integer");
-			}
+//			if (bindingResults.hasFieldErrors("price")) {
+//				errors.put("price", "price must be a number");
+//			}
+//			if (bindingResults.hasFieldErrors("make")) {
+//				errors.put("make", "make must be a date of YYYY-MM-DD");
+//			}
+//			if (bindingResults.hasFieldErrors("expire")) {
+//				errors.put("expire", "expire must be an integer");
+//			}
 		}
 
 //驗證資料
@@ -159,6 +159,85 @@ public class ProductController {
 		} else {
 			errors.put("action", "unknown action: " + prodaction);
 			return "product.errors";
+		}
+	}
+
+	@RequestMapping("/DaytourProduct/Display")
+	public String DisplayProduct(Model model, String Product_Id, HttpSession session)
+			throws IOException, ServletException, SQLException {
+
+		System.out.println(Product_Id); // 測試id有沒有進來
+
+		if (Product_Id != null) {
+
+			DayTour_ProductBean result = productService.findByPrimaryKey(Product_Id);
+			System.out.println("bean=" + result);
+			model.addAttribute("bean", result);
+//不知道會不會用到	session.setAttribute("bean", result);
+
+			return "product.select";
+
+		}
+		return "product.select";
+
+	}
+	
+	@RequestMapping("/DaytourProduct/DateAndTicket")
+	public String ChooseTicketType(Model model, String Product_Id, HttpSession session)
+			throws IOException, ServletException, SQLException {
+
+		System.out.println(Product_Id); // 測試id有沒有進來
+
+		if (Product_Id != null) {
+
+			DayTour_ProductBean result = productService.findByPrimaryKey(Product_Id);
+			System.out.println("bean=" + result);
+			model.addAttribute("bean", result);
+//不知道會不會用到	session.setAttribute("bean", result);
+
+			return "product.tickettype";
+
+		}
+		return "product.select";
+
+	}
+
+	@RequestMapping(value = "getProductMainImage", method = RequestMethod.GET)
+	public void getImages(@RequestParam(name = "Product_Id", required = false) String guid, HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("進的去getProductMainImage,id是=" + guid);
+		OutputStream out = null;
+
+		if (guid != null) {
+			try {
+
+				// 根据id去图片表获取数据
+				DayTour_ProductBean bean = productService.findByPrimaryKey(guid);
+				System.out.println("抓到的bean有東西" + bean);
+
+				// 获取blob字段
+				is = bean.getMain_Image().getBinaryStream();
+				System.out.println("is出來是" + is);
+				response.setContentType("image/jpeg");
+				out = response.getOutputStream();
+				int len = 0;
+				byte[] bytes = new byte[8192];
+//				System.out.println("3");
+				
+				while ((len = is.read(bytes)) != -1) {
+
+//					System.out.println("4");
+					out.write(bytes, 0, len);
+				}
+				
+//				System.out.println("-1");
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -59,7 +59,7 @@ public class ShoppingCartController {
 		
 		System.out.println(Member_Id);
 		
-		System.out.println(shoppingCartService.selectById(Member_Id));
+		System.out.println(shoppingCartService.selectById(Member_Id)); //出的來,再研究放出去的方法
 		
 		
 		ShoppingCartBean cart = new ShoppingCartBean();
