@@ -59,7 +59,7 @@
 		</tr>
 		<tr>
 <!-- 			<td>Main_Image :</td> -->
-			<td><img
+			<td><img style='width:500px'
 				src='<%=request.getContextPath()%>/getProductMainImage?Product_Id=${bean.product_Id}'>
 			</td>
 			<%-- 	 height='100' width='80'  <td><span class="error">${errors.Main_Image}</span></td> --%>
