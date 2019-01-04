@@ -19,6 +19,10 @@ public class ProductService {
     public DayTour_ProductBean findByPrimaryKey(String Product_Id) {
 		return productDao.findByPrimaryKey(Product_Id);
     }
+    
+    public List<DayTour_ProductBean> findProductByRegion(String Region) {
+		return productDao.findProductByRegion(Region);
+    }
 
 	public List<DayTour_ProductBean> select(DayTour_ProductBean bean) {
 		List<DayTour_ProductBean> result = null;

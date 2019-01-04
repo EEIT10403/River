@@ -51,7 +51,7 @@ public class SpringJavaConfiguration {
 
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2008Dialect");
-		props.setProperty("hibernate.show_sql", "true");
+//		props.setProperty("hibernate.show_sql", "true");
 //		props.setProperty("hibernate.current_session_context_class", "thread");
 		builder.addProperties(props);
 

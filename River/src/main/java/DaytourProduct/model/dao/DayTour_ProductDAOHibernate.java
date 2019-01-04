@@ -3,6 +3,8 @@ package DaytourProduct.model.dao;
 import java.sql.Blob;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import DaytourProduct.model.DayTour_ProductBean;
 import DaytourProduct.model.DayTour_ProductDAO;
+import ShoppingCart.model.ShoppingCartBean;
 
 @Repository
 public class DayTour_ProductDAOHibernate implements DayTour_ProductDAO {
@@ -28,6 +31,15 @@ public class DayTour_ProductDAOHibernate implements DayTour_ProductDAO {
 		return this.getSession().createQuery("from DayTour_ProductBean", DayTour_ProductBean.class)
 				.setMaxResults(50)
 				.list();
+	}
+	@Override
+	public List<DayTour_ProductBean> findProductByRegion(String Region){
+//		System.out.println("Region="+Region);
+		Query query = this.getSession().createQuery("from DayTour_ProductBean Where Region=:xxx", DayTour_ProductBean.class);
+		query.setParameter("xxx", Region);
+		List<DayTour_ProductBean> list = query.getResultList();
+//		System.out.println("list="+list);
+	return list;
 	}
 	@Override
 	public DayTour_ProductBean create(DayTour_ProductBean bean) {

@@ -89,6 +89,41 @@ public class ProductController {
 
 
 	}
+	@RequestMapping(value="/DisplayByRegion",
+			produces={"application/json; charset=UTF-8"})
+	public void DisplayByRegion(Model model, String region, HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws IOException, ServletException, SQLException {
+
+//		System.out.println("DisplayByRegion有進來"); // 測試 
+//		System.out.println(region); // 測試region有沒有進來
+		
+			List<DayTour_ProductBean> result = productService.findProductByRegion(region);
+			System.out.println("bean=" + result);
+			JsonArray array = new JsonArray();
+			
+			for(int n=0 ; n<result.size();n++) {
+//				System.out.println(result.get(n));
+				DayTour_ProductBean bean = result.get(n);
+				JsonObject obj = new JsonObject();
+				obj.addProperty("product_Id", bean.getProduct_Id());
+				obj.addProperty("prod_Name", bean.getProd_Name());
+//				System.out.println("媽我在這"+obj.get("prod_Name"));
+				obj.addProperty("features", bean.getFeatures());
+				obj.addProperty("ticket_type_1", bean.getTicket_type_1());
+				obj.addProperty("unitPrice_1", bean.getUnitPrice_1());
+				array.add(obj);
+			}
+			response.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(array.toString());
+//			model.addAttribute("select", result);
+//不知道會不會用到	session.setAttribute("bean", result);
+		
+
+
+	}
 
 	@RequestMapping("/pages/product.controller")
 	public String BackFunction(@RequestParam(value = "Main_Image", required = false) MultipartFile file, Model model,
@@ -206,7 +241,7 @@ public class ProductController {
 	public String DisplayProduct(Model model, String Product_Id, HttpSession session)
 			throws IOException, ServletException, SQLException {
 
-		System.out.println(Product_Id); // 測試id有沒有進來
+//		System.out.println(Product_Id); // 測試id有沒有進來
 
 		if (Product_Id != null) {
 
@@ -226,7 +261,7 @@ public class ProductController {
 	public String ChooseTicketType(Model model, String Product_Id, HttpSession session)
 			throws IOException, ServletException, SQLException {
 
-		System.out.println(Product_Id); // 測試id有沒有進來
+//		System.out.println(Product_Id); // 測試id有沒有進來
 
 		if (Product_Id != null) {
 
@@ -253,12 +288,12 @@ public class ProductController {
 
 				// 根据id去图片表获取数据
 				DayTour_ProductBean bean = productService.findByPrimaryKey(guid);
-				System.out.println("抓到的bean有東西" + bean);
+//				System.out.println("抓到的bean有東西" + bean);
 
 				// 获取blob字段
 				int length = (int)bean.getMain_Image().length();
 				is = bean.getMain_Image().getBinaryStream();
-				System.out.println("is出來是" + is);
+//				System.out.println("is出來是" + is);
 				response.setContentType("image/jpeg");
 				out = response.getOutputStream();
 				int len = 0;

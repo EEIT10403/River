@@ -52,6 +52,8 @@
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+	
 </head>
 <body class="animsition">
 	<div class="container-fluid">
@@ -358,27 +360,30 @@
 
 
 				<div class="flex-w flex-sb-m p-b-52">
-					<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<!-- 產品顯示區塊 -->
+					<div class="flex-w flex-l-m filter-tope-group m-tb-10" id='region'>
 						<button
 							class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
 							data-filter="*">All Products</button>
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+							value='Hok'>
+							<!-- data-filter=".women" -->
+							北海道
+						</button>
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-							data-filter=".women">北海道</button>
+							value='Tok'>關東</button>
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-							data-filter=".men">關東</button>
+							value='Kan'>關西</button>
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-							data-filter=".bag">關西</button>
+							value='Oki'>沖繩</button>
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-							data-filter=".shoes">沖繩</button>
-
-						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-							data-filter=".watches">九州</button>
+							value='Kyu'>九州</button>
 					</div>
-
+					<!-- Search Filter Icon -->
 					<div class="flex-w flex-c-m m-tb-10">
 						<div
 							class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
@@ -526,9 +531,10 @@
 					</div>
 				</div>
 				<!-- 產品大區塊start -->
-				<div class="row isotope-grid" id='test'>
+				<div id='frame'>
+				<div class="row isotope-grid" id='ProductFrame'>
 
-					
+<!--  style="position: relative; height: 0px;" -->
 
 
 					<!-- 一個產品範例 , 只留一支 , 其他刪了-->
@@ -570,8 +576,8 @@
 
 
 				</div>
+				</div>
 				<!-- 產品大區塊end -->
-
 
 				<!-- Load more -->
 				<div class="flex-c-m flex-w w-full p-t-45">
@@ -873,33 +879,57 @@
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-	
+
+
+	<script>
+<!--讀出產品的功能 start -->
+function loadProduct(region){
+	$.getJSON('DisplayByRegion',{region:region},function(getdata){
+		var docFrag =$(document.createDocumentFragment());
+		console.log("我回來了"+getdata);
+		$.each(getdata,function(index,product){
+			console.log("產品"+product.product_Id);
+			console.log("產品"+product.prod_Name);
+			console.log("產品"+product.unitPrice_1);
+<%-- 			  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
+			  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>');
+<%-- 原版 	    	   docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id=K1000001"><a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">靠背</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">靠杯</a><span class="stext-105 cl3">$16.64</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
+    	 		
+		});
+		$('#ProductFrame').html(docFrag); <!--塞進去 在528行附近-->
+	});
+};<!--讀出產品的功能 end -->
+
+function changesize(){
+	 $('#frame').css({'height':'300px'});
+}
+</script>
+
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		loadProduct();
+		loadProduct('Kan');
+		changesize();
 		
-		function loadProduct(){
-			$.getJSON('DisplayAll',function(getdata){
-				var docFrag =$(document.createDocumentFragment());
-				console.log("我回來了"+getdata);
-				$.each(getdata,function(index,product){
-					console.log("產品"+product.product_Id);
-					console.log("產品"+product.prod_Name);
-					console.log("產品"+product.unitPrice_1);
-					  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>');
-				    	
-<%-- 原版 	    	   docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id=K1000001"><a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">靠背</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">靠杯</a><span class="stext-105 cl3">$16.64</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
- 	    	 		
-				});
-				$('#test').html(docFrag); <!--塞進去 在528行附近-->
-			});
-		};
-		
-	});
-	<!--讀出產品的功能 end -->
-	</script>
+	}); <!-- document).ready 結尾-->
 	
+	</script>
+
+	<script>
+	
+	<!--切換產品區域功能 start -->
+	$('#region>button').click(function(){
+		var reg = $(this).val();
+// 		alert($(this).val());
+		loadProduct(reg); 
+		changesize();
+    })
+    
+    <!--切換產品區域功能 end -->
+	
+
+	</script>
+
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
