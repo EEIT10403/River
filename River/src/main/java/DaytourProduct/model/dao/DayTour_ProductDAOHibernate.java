@@ -37,8 +37,9 @@ public class DayTour_ProductDAOHibernate implements DayTour_ProductDAO {
 //		System.out.println("Region="+Region);
 		Query query = this.getSession().createQuery("from DayTour_ProductBean Where Region=:xxx", DayTour_ProductBean.class);
 		query.setParameter("xxx", Region);
+	
 		List<DayTour_ProductBean> list = query.getResultList();
-//		System.out.println("list="+list);
+		System.out.println("list="+list);
 	return list;
 	}
 	@Override

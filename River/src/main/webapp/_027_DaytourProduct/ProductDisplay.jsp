@@ -72,7 +72,7 @@
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a class="logo"> <img src="../images/icons/logo-01.png"
+						<a class="logo"> <img src="../images/icons/logo-11.png"
 							alt="IMG-LOGO">
 						</a>
 
@@ -122,7 +122,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="../images/icons/logo-01.png" alt="IMG-LOGO"></a>
+						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -277,8 +277,8 @@
 
 
 		<!-- 為了秀出header的不得已div-->
-		<!-- Product 主體-->
-		<div style='margin: 10%'>
+		<!-- 產品顯示部分 start-->
+		<div style='padding:10% 20%'>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
@@ -296,15 +296,15 @@
 						<!-- 						<h2>Heading</h2> -->
 						<p>${bean.features}
 						<p>
-							<a class="btn" href="#">View details »</a>
+							<a class="btn" href="#viewdetails">View details »</a>
 						</p>
 						<button type="button"
-							class="btn btn-block active btn-outline-primary">
+							class="btn btn-block active btn-outline-primary" id='buynow'>
 										立即訂購
 									</button>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" >
 					<div class="col-md-12">
 						<table class="table table-hover table-sm table-bordered">
 							<thead>
@@ -322,6 +322,7 @@
 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
 									</td>
 								</tr>
+								<c:if test="${not empty bean.ticket_type_2}">
 								<tr class="table-active">
 									<td>${bean.ticket_type_2}</td>
 									<td>${bean.unitPrice_2}</td>
@@ -329,6 +330,8 @@
 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
 									</td>
 								</tr>
+								</c:if>
+								<c:if test="${not empty bean.ticket_type_3}">
 								<tr class="table-active">
 									<td>${bean.ticket_type_3}</td>
 									<td>${bean.unitPrice_3}</td>
@@ -336,6 +339,8 @@
 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
 									</td>
 								</tr>
+								</c:if>
+								<c:if test="${not empty bean.ticket_type_4}">
 								<tr class="table-active">
 									<td>${bean.ticket_type_4}</td>
 									<td>${bean.unitPrice_4}</td>
@@ -343,9 +348,10 @@
 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
 									</td>
 								</tr>
+								</c:if>
 							</tbody>
 						</table>
-						<div class="row">
+						<div class="row" id="viewdetails"> <!-- 頁面內瞬移有點被header擋到 -->
 							<div class="col-md-9">
 								<div class="tabbable" id="tabs-916421">
 									<ul class="nav nav-tabs">
@@ -355,10 +361,10 @@
 											href="#tab2" data-toggle="tab">權益說明</a></li>
 									</ul>
 									<div class="tab-content">
-										<div class="tab-pane active" id="panel-573698">
+										<div class="tab-pane active" id="tab1">
 											<p>${bean.detail}</p>
 										</div>
-										<div class="tab-pane active" id="tab2">
+										<div class="tab-pane " id="tab2">
 											<p>${bean.rights}</p>
 										</div>
 									</div>
@@ -370,8 +376,8 @@
 				</div>
 			</div>
 		</div>
-		bbb
-		<!-- 產品大區塊end -->
+		
+		<!-- 產品顯示部分end -->
 
 		<!-- Load more -->
 
@@ -508,34 +514,20 @@
 
 
 	<script>
-<!--讀出產品的功能 start -->
-function loadProduct(region){
-	$.getJSON('DisplayByRegion',{region:region},function(getdata){
-		var docFrag =$(document.createDocumentFragment());
-		console.log("我回來了"+getdata);
-		$.each(getdata,function(index,product){
-			console.log("產品"+product.product_Id);
-			console.log("產品"+product.prod_Name);
-			console.log("產品"+product.unitPrice_1);
-<%-- 			  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
-			  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>');
-<%-- 原版 	    	   docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id=K1000001"><a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">靠背</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">靠杯</a><span class="stext-105 cl3">$16.64</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
-    	 		
-		});
-		$('#ProductFrame').html(docFrag); <!--塞進去 在528行附近-->
-	});
-};<!--讀出產品的功能 end -->
+ 
+<!-- 立即訂購 start-->
+$('#buynow').click(function(){
+	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
+});
+	
+		
+<!-- 立即訂購 end -->
 
-function changesize(){
-	 $('#frame').css({'height':'300px'});
-}
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		loadProduct('Kan');
-		changesize();
 		
 	}); <!-- document).ready 結尾-->
 	

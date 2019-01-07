@@ -100,7 +100,7 @@ public class ProductController {
 //		System.out.println(region); // 測試region有沒有進來
 		
 			List<DayTour_ProductBean> result = productService.findProductByRegion(region);
-			System.out.println("bean=" + result);
+			System.out.println("bean in DisplayByRegion=" + result);
 			JsonArray array = new JsonArray();
 			
 			for(int n=0 ; n<result.size();n++) {
@@ -261,12 +261,12 @@ public class ProductController {
 	public String ChooseTicketType(Model model, String Product_Id, HttpSession session)
 			throws IOException, ServletException, SQLException {
 
-//		System.out.println(Product_Id); // 測試id有沒有進來
+		System.out.println("有近DateAndTicket"+Product_Id); // 測試id有沒有進來
 
 		if (Product_Id != null) {
 
 			DayTour_ProductBean result = productService.findByPrimaryKey(Product_Id);
-			System.out.println("bean=" + result);
+			System.out.println("DateAndTicket bean=" + result);
 			model.addAttribute("bean", result);
 //不知道會不會用到	session.setAttribute("bean", result);
 
