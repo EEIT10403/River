@@ -94,11 +94,11 @@ height:650px;
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop">
+				<div class="wrap-menu-desktop" style="height:60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a class="logo"> <img src="../images/icons/logo-01.png"
+						<a class="logo"> <img src="../images/icons/logo-11.png"
 							alt="IMG-LOGO">
 						</a>
 
@@ -149,27 +149,27 @@ height:650px;
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="../images/icons/logo-01.png" alt="IMG-LOGO"></a>
+						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
-				<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-						<i class="zmdi zmdi-search"></i>
-					</div>
+<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
+<!-- 					<div -->
+<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
+<!-- 						<i class="zmdi zmdi-search"></i> -->
+<!-- 					</div> -->
 
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-						data-notify="2">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
+<!-- 					<div -->
+<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
+<!-- 						data-notify="2"> -->
+<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
+<!-- 					</div> -->
 
-					<a href="#"
-						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-					</a>
-				</div>
+<!-- 					<a href="#" -->
+<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
+<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+<!-- 					</a> -->
+<!-- 				</div> -->
 
 				<!-- Button show menu -->
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -213,7 +213,7 @@ height:650px;
 				<div class="wrap-slick1">
 					<div class="slick1">
 						<div class="item-slick1"
-							style="background-image: url(../images/slide-01.jpg);">
+							style="background-image: url(../images/slide-11.jpg);">
 							<div class="container h-full">
 								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 									<div class="layer-slick1 animated visible-false"
@@ -233,7 +233,7 @@ height:650px;
 						</div>
 
 						<div class="item-slick1"
-							style="background-image: url(../images/slide-02.jpg);">
+							style="background-image: url(../images/slide-12.jpg);">
 							<div class="container h-full">
 								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 									<div class="layer-slick1 animated visible-false"
@@ -254,7 +254,7 @@ height:650px;
 						</div>
 
 						<div class="item-slick1"
-							style="background-image: url(../images/slide-03.jpg);">
+							style="background-image: url(../images/slide-13.jpg);">
 							<div class="container h-full">
 								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 									<div class="layer-slick1 animated visible-false"
@@ -302,8 +302,8 @@ height:650px;
 									<div class="form-group">
 
 										<label for="exampleInputEmail1"> 城市/區域: </label> <input
-											id='touristarea' class="mtext-107 cl2 size-114 plh2 p-r-15"
-											style="padding-left: 20px" name='touristarea' type='text'
+											id='touristarea' class="mtext-107  size-114 "
+											 name='touristarea' type='text'
 											placeholder='國家/城市'>
 									</div>
 
@@ -311,7 +311,7 @@ height:650px;
 										<label for="exampleInputEmail1"> 景點/地址: </label> <input
 											id='pacinput' name='address'
 											class="mtext-107 cl2 size-114 plh2 p-r-15"
-											style="padding-left: 20px" type='text' placeholder='景點搜尋'>
+											 type='text' placeholder='景點搜尋'>
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail1"> 經度/緯度: </label>
@@ -738,9 +738,18 @@ height:650px;
 						})
 	</script>
 
+
+<script >
+	$('#touristarea').focus(function(){
+		
+// 		$(this).off('change');
 	
+	})
 
 
+
+
+</script>
 
 
 
