@@ -1,4 +1,4 @@
-package sabre_model;
+package sabre.model;
 
 public class BFMSearch {
 

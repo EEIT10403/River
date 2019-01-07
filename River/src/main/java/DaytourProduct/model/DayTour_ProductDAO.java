@@ -1,6 +1,5 @@
 package DaytourProduct.model;
 
-import java.sql.Blob;
 import java.util.List;
 
 public interface DayTour_ProductDAO {

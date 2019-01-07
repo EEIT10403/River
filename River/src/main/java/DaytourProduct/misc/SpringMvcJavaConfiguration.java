@@ -14,6 +14,7 @@ import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -22,10 +23,11 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.XmlViewResolver;
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.controller","ShoppingCart.controller"})
+@ComponentScan(basePackages={"DaytourProduct.controller","ShoppingCart.controller","sabre.controller"})
 @EnableWebMvc
 public class SpringMvcJavaConfiguration implements WebMvcConfigurer {
 	@Override
@@ -89,4 +91,14 @@ public class SpringMvcJavaConfiguration implements WebMvcConfigurer {
 		cmr.setDefaultEncoding("UTF-8");
 		return cmr;
 	}
+	
+	//機票查詢相關
+	@Bean
+	public ViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver("/WebIndex18/",".jsp");
+		return viewResolver;
+	}
+	
+	
+	
 }
