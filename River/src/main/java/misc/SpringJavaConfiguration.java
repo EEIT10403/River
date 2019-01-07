@@ -17,10 +17,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import DaytourProduct.model.DayTour_ProductBean;
 import ShoppingCart.model.ShoppingCartBean;
+import _11.model.MemberBean;
+import _21_traveling.model.TouristAttractionBean;
+import _21_traveling.model.TravelItineraryBean;
 
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model"})
+@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model","_21_traveling.model"})
 @EnableTransactionManagement
 public class SpringJavaConfiguration {
 	@Bean
@@ -47,7 +50,9 @@ public class SpringJavaConfiguration {
 	@Bean
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
-		builder.addAnnotatedClasses( DayTour_ProductBean.class,ShoppingCartBean.class);
+		builder.addAnnotatedClasses( DayTour_ProductBean.class,ShoppingCartBean.class,MemberBean.class
+				,TouristAttractionBean.class,TravelItineraryBean.class);
+
 
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2008Dialect");
