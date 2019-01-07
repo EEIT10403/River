@@ -68,7 +68,7 @@
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop">
+				<div class="wrap-menu-desktop" style="height:60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->

@@ -21,7 +21,7 @@ import _11.model.MemberBean;
 
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model"})
+@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model"}) 
 @EnableTransactionManagement
 public class SpringJavaConfiguration {
 	@Bean
