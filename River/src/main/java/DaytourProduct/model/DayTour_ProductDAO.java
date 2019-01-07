@@ -7,6 +7,8 @@ public interface DayTour_ProductDAO {
 	public abstract DayTour_ProductBean findByPrimaryKey(String id);
 
 	public abstract List<DayTour_ProductBean> findAll();
+	
+	public abstract List<DayTour_ProductBean> findProductByRegion(String Region);
 
 	public abstract DayTour_ProductBean create(DayTour_ProductBean bean);
 

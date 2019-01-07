@@ -47,6 +47,7 @@
 			</select></td>
 			<td><span id='subTotal1'>0</span></td>
 		</tr>
+		<c:if test="${not empty bean.ticket_type_2}">
 		<tr>
 			<td>${bean.ticket_type_2}</td>
 			<td>${bean.unitPrice_2}</td>
@@ -65,6 +66,8 @@
 			</select></td>
 			<td><span id='subTotal2'>0</span></td>
 		</tr>
+		</c:if>
+		<c:if test="${not empty bean.ticket_type_3}">
 		<tr>
 			<td>${bean.ticket_type_3}</td>
 			<td>${bean.unitPrice_3}</td>
@@ -83,6 +86,8 @@
 			</select></td>
 			<td><span id='subTotal3'>0</span></td>
 		</tr>
+		</c:if>
+		<c:if test="${not empty bean.ticket_type_4}">
 		<tr>
 			<td>${bean.ticket_type_4}</td>
 			<td>${bean.unitPrice_4}</td>
@@ -101,32 +106,8 @@
 			</select></td>
 			<td><span id='subTotal4'>0</span></td>
 		</tr>
-		<tr>
-			<!-- 			<td>Main_Image :</td> -->
-			<td><img
-				src='<%=request.getContextPath()%>/getProductMainImage?Product_Id=${bean.product_Id}'>
-			</td>
-			<%-- 	 height='100' width='80'  <td><span class="error">${errors.Main_Image}</span></td> --%>
-		</tr>
+		</c:if>
 
-		<tr>
-			<td><input type="button" value="詳細資訊" id="Details"></td>
-			<td><input type="button" value="權益說明" id="Rights"></td>
-
-		</tr>
-		<tr>
-			<td><div id="DetailShow">${bean.detail}</div></td>
-		</tr>
-
-		<!-- 		<tr> -->
-		<!-- 			<td><span id="Rights">權益說明:</span></td> -->
-		<%-- 			<td>>${bean.rights}</td> --%>
-		<!-- 		</tr> -->
-		<tr>
-			<td><a
-				href="<c:url value="/_027_DaytourProduct/TestDisplay.jsp" />">TestDisplay</a>
-			</td>
-		</tr>
 	</table>
 
 	<h3></h3>

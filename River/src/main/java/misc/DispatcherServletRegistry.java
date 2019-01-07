@@ -4,6 +4,10 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import DaytourProduct.misc.SpringMvcJavaConfiguration;
 
+import _21_traveling.misc.SpringMVCConfiguration;
+
+import _11.misc.SpringMVCHibernateConfigure;
+
 //記得刪除web.xml內部關於DispatcherServlet、ContextLoaderListener的設定標籤
 public class DispatcherServletRegistry
 				extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -13,8 +17,9 @@ public class DispatcherServletRegistry
 	}
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {SpringMvcJavaConfiguration.class};
-	}
+		return new Class[] {SpringMvcJavaConfiguration.class,SpringMVCConfiguration.class,SpringMVCHibernateConfigure.class};
+		}
+
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] {"/"};

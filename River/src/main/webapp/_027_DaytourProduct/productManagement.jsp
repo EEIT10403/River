@@ -182,23 +182,23 @@
 			<tr>
 				<td>Country :</td>
 				<td><select name="Country">
-						<option value="日本">日本</option>
-						<option value="韓國">韓國</option>
-						<option value="東南亞">東南亞</option>
-						<option value="紐澳">紐澳</option>
-						<option value="歐洲">歐洲</option>
-						<option value="美加">美加</option>
+						<option value="JA">日本</option>
+						<option value="KO">韓國</option>
+						<option value="SA">東南亞</option>
+						<option value="AU">紐澳</option>
+						<option value="EU">歐洲</option>
+						<option value="AM">美加</option>
 				</select></td>
 				<td><span class="error">${errors.Country}</span></td>
 			</tr>
 			<tr>
 				<td>Region :</td>
 				<td><select name="Region">
-						<option value="關西">關西</option>
-						<option value="關東">關東</option>
-						<option value="九州">九州</option>
-						<option value="沖繩">沖繩</option>
-						<option value="滑雪活動">滑雪活動</option>
+						<option value="Kan">關西</option>
+						<option value="Tok">關東</option>
+						<option value="Kyu">九州</option>
+						<option value="Oki">沖繩</option>
+						<option value="Hok">北海道</option>
 				</select></td>
 				<td><span class="error">${errors.Region}</span></td>
 			</tr>

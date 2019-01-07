@@ -7,6 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+<<<<<<< HEAD
+=======
+		<config>src/main/webapp/WEB-INF/_21_spring-view.xml</config>
+>>>>>>> branch 'master' of https://github.com/EEIT10403/River.git
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
