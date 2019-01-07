@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -294,7 +296,7 @@
 				<div class="row">
 					<div class="booking-form">
 					
-<form action="<c:url value="/WebIndex18/search18.jsp" />" method="post">
+<form action="<c:url value="/form.controller" />" method="post">
 
 							<div class="form-group">
 								<div class="form-checkbox">
@@ -316,7 +318,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">起始地</span>
-										<input class="form-control" type="text" placeholder="City or airport" id="zt_country" value="" readonly="readonly">
+										<input class="form-control" type="text" placeholder="City or airport" id="zt_country" name="zt_country" value="${param.zt_country}" readonly="readonly">
 							
 <!-- ============================================選項卡1========================================================== -->								
 				<div class="container-fluid col-md-6 col-xs-12 zt_li" id="zt_countryTabs" tabindex="1" style="width: 350px;display: none; border: double #C4E2F7 5px; background-color: #DDDDDD;">
@@ -490,7 +492,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">目的地</span>
-										<input class="form-control" type="text" placeholder="City or airport" id="zt_country02" value="" readonly="readonly">
+										<input class="form-control" type="text" placeholder="City or airport" id="zt_country02" name="zt_country02" value="${param.zt_country02}" readonly="readonly">
 										
 										
 <!-- ============================================選項卡2========================================================== -->								
@@ -676,38 +678,41 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<span class="form-label">出發日</span>
-										<input class="form-control" type="date" required>
+										<input class="form-control" type="date" required name="godate" value="${param.godate}">
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 										<span class="form-label">回程日</span>
-										<input class="form-control" type="date" required>
+										<input class="form-control" type="date" required name="backdate" value="${param.backdate}">
 									</div>
 								</div>
 								<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label">成人 (12+)</span>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
+										<select class="form-control" name="people">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
 										</select>
+										
+										
+										
 										
 									</div>
 								</div>
 							<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label">兒童 (2-12)</span>
-										<select class="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
+										<select class="form-control" name="people2">
+											<option value="${param.people2}">0</option>
+											<option value="${param.people2}">1</option>
+											<option value="${param.people2}">2</option>
+											<option value="${param.people2}">3</option>
+											<option value="${param.people2}">4</option>
+											<option value="${param.people2}">5</option>
 										</select>
 										
 									</div>
@@ -715,13 +720,13 @@
 							<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label">幼兒 (0-2)</span>
-										<select class="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
+										<select class="form-control" name="people3">
+											<option value="${param.people3}">0</option>
+											<option value="${param.people3}">1</option>
+											<option value="${param.people3}">2</option>
+											<option value="${param.people3}">3</option>
+											<option value="${param.people3}">4</option>
+											<option value="${param.people3}">5</option>
 										</select>
 										
 									</div>
@@ -739,7 +744,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="form-btn">
-										<button class="submit-btn">Show Flights</button>
+										<input type="submit" class="submit-btn" name="prodaction" value="Show Flights">
 									</div>
 								</div>
 							</div>
@@ -1250,9 +1255,53 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			$(".zt_li02").mousedown(function(event02) {
 				event02.preventDefault();
 			})
-		</script>
+</script>
+
+<!-- 回傳機票JSON -->
 
 
+
+
+
+
+<!-- 輸入欄變色 -->
+<script type="text/javascript">
+			$("input[name='zt_country']").focus(function(){
+				$("input[name='zt_country']").css("background-color","#FFFFBB");
+			});
+			$("input[name='zt_country']").blur(function(){
+				$("input[name='zt_country']").css("background-color","#FFFFFF");
+			});
+			 
+			$("input[name='zt_country02']").focus(function(){
+				$("input[name='zt_country02']").css("background-color","#FFFFBB");
+			});
+			$("input[name='zt_country02']").blur(function(){
+				$("input[name='zt_country02']").css("background-color","#FFFFFF");
+			});
+			
+			$("input[name='godate']").focus(function(){
+				$("input[name='godate']").css("background-color","#FFFFBB");
+			});
+			$("input[name='godate']").blur(function(){
+				$("input[name='godate']").css("background-color","#FFFFFF");
+			});
+			
+			$("input[name='backdate']").focus(function(){
+				$("input[name='backdate']").css("background-color","#FFFFBB");
+			});
+			$("input[name='backdate']").blur(function(){
+				$("input[name='backdate']").css("background-color","#FFFFFF");
+			});
+			
+			$("select[name='people']").focus(function(){
+				$("select[name='people']").css("background-color","#FFFFBB");
+			});
+			$("select[name='people']").blur(function(){
+				$("select[name='people']").css("background-color","#FFFFFF");
+			});
+
+</script>
 
 
 

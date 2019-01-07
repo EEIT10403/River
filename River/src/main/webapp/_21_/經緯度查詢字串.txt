@@ -1,0 +1,9 @@
+
+�d�ߦr��
+
+
+
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=%E5%8F%B0%E5%8C%97%20%E5%8F%B0%E5%8C%97101&inputtype=textquery&fields=geometry&key=AIzaSyA1O4vNHfOVtr86ZtznzI4ZeqOBQIM7q5Y
+
+
+layoutit

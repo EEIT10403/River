@@ -1,6 +1,5 @@
 package DaytourProduct.model.dao;
 
-import java.sql.Blob;
 import java.util.List;
 
 import javax.persistence.Query;

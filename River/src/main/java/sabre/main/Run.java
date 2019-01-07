@@ -1,4 +1,4 @@
-package sabre_main;
+package sabre.main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,15 +10,20 @@ import java.util.zip.GZIPInputStream;
 
 import com.google.gson.Gson;
 
-import sabre_model.BFMSearch;
-import sabre_model.Token;
+import sabre.model.BFMSearch;
+import sabre.model.Token;
 
 public class Run {
 
 	private static Token token;
 
 	public static void main(String[] args) throws Exception {
+		
+		getBFM();
 
+	}
+
+	public static void getBFM() throws Exception {
 		/*
 		 * Step 1
 		* 取得ClientID
@@ -63,47 +68,43 @@ public class Run {
 			tokenresponse.append(inputLine);
 		}
 		in.close();
-		
+		System.out.println("TOKEN JSON :" + tokenresponse.toString());
 
 		Gson gson = new Gson();
 		token = gson.fromJson(tokenresponse.toString(), Token.class);
-
+		
+				
 		/*
 		 * Step 4
 		 * 依照取得的Token開始查詢BFM
 		 */
-		getBFM();
-
-	}
-
-	public static void getBFM() throws Exception {
-
+		
 		// https: //api.sabre.com 正式環境
 		// https: //api.test.sabre.com 測試環境
-		URL url = new URL("https://api.sabre.com/v3.4.0/shop/flights?mode=live");
-		HttpURLConnection hreq = (HttpURLConnection) url.openConnection();
-		hreq.setRequestMethod("POST");
-		hreq.setRequestProperty("Content-Type", "application/json");
-		hreq.setRequestProperty("Accept-Encoding", "gzip");
-		hreq.setRequestProperty("Authorization", "Bearer " + token.getAccessToken());
-		hreq.setDoOutput(true); 
+		URL url2 = new URL("https://api.sabre.com/v3.4.0/shop/flights?mode=live");
+		HttpURLConnection hreq2 = (HttpURLConnection) url2.openConnection();
+		hreq2.setRequestMethod("POST");
+		hreq2.setRequestProperty("Content-Type", "application/json");
+		hreq2.setRequestProperty("Accept-Encoding", "gzip");
+		hreq2.setRequestProperty("Authorization", "Bearer " + token.getAccessToken());
+		hreq2.setDoOutput(true); 
 		
-		OutputStream os = hreq.getOutputStream();
-		os.write(BFMSearch.getRequestBody().getBytes("utf-8"));
-		os.close();
+		OutputStream os2 = hreq2.getOutputStream();
+		os2.write(BFMSearch.getRequestBody().getBytes("utf-8"));
+		os2.close();
 		
 		GZIPInputStream zipBFMinformation = null;
-		zipBFMinformation = new GZIPInputStream(hreq.getInputStream());
+		zipBFMinformation = new GZIPInputStream(hreq2.getInputStream());
 		InputStreamReader resBFM = new InputStreamReader(zipBFMinformation,"UTF-8");
-		BufferedReader in = new BufferedReader(resBFM);
+		BufferedReader in2 = new BufferedReader(resBFM);
 		
-		String inputLine;
+		String inputLine2;
 		StringBuffer response = new StringBuffer();
 
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
+		while ((inputLine2 = in2.readLine()) != null) {
+			response.append(inputLine2);
 		}
-		in.close();
+		in2.close();
 		System.out.println(response.toString());
 	
 	}

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -228,17 +230,456 @@
 
 
 <!-- ===================班次查詢中間==================== -->
-	
-	
-	<input type="button" id="btn" name="btn" value="點我" onclick="jsonAjaxPost()">
-<div id="resultJsonText"></div>
-	
-	
-	
-	
-	
-	
-	
+
+	<form action="<c:url value="/form.controller" />" method="post">
+														
+							
+<!-- ============================================讀取資料庫City========================================================== -->							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">起始地</span>
+										<input class="form-control" type="text" placeholder="City or airport" id="zt_country" name="zt_country" value="${formBean.zt_country}" readonly="readonly">
+							
+<!-- ============================================選項卡1========================================================== -->								
+				<div class="container-fluid col-md-6 col-xs-12 zt_li" id="zt_countryTabs" tabindex="1" style="width: 350px;display: none; border: double #C4E2F7 5px; background-color: #DDDDDD;">
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active zt_li">
+							<a href="#destinationCountryName-dialog-countryTabs-1" data-toggle="tab">台灣</a>
+						</li>
+						<li role="presentation" class="zt_li">
+							<a href="#destinationCountryName-dialog-countryTabs-2" data-toggle="tab">亞洲</a>
+						</li>
+						<li role="presentation" class="zt_li">
+							<a href="#destinationCountryName-dialog-countryTabs-3" data-toggle="tab">美洲</a>
+						</li>
+						<li role="presentation" class="zt_li">
+							<a href="#destinationCountryName-dialog-countryTabs-4" data-toggle="tab">歐澳</a>
+						</li>
+						<li role="presentation" class="zt_li">
+							<a href="#destinationCountryName-dialog-countryTabs-5" data-toggle="tab">其他</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane  active" id="destinationCountryName-dialog-countryTabs-1">
+							
+<!-- 		ul的style 是分隔線				 -->
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="TPE" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="台北桃園" data-code="台北桃園">台北桃園</a>
+							</li>	
+							<li>			
+							<a data-id="TSA" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="台北松山" data-code="台北松山" >台北松山</a>
+							</li>
+							<li>
+							<a data-id="RMQ" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="台中" data-code="台中" >台中</a>
+							</li>
+							<li>
+							<a data-id="TNN" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="台南" data-code="台南" >台南</a>
+							</li>
+							<li>
+							<a data-id="KHH" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="高雄" data-code="高雄" >高雄</a>
+							</li>
+						</ul>
+							
+						
+ 
+						</div>
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs-2">
+							
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both; ">
+							<li>
+							<a data-id="HND" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="東京羽田" data-code="東京羽田">東京羽田</a>
+							</li>	
+							<li>			
+							<a data-id="NRT" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="東京成田" data-code="東京成田" >東京成田</a>
+							</li>
+							<li>
+							<a data-id="OSA" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="大阪" data-code="大阪" >大阪</a>
+							</li>
+							<li>
+							<a data-id="FUK" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="福岡" data-code="福岡" >福岡</a>
+							</li>
+							<li>
+							<a data-id="SPK" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="札幌" data-code="札幌" >札幌</a>
+							</li>
+							<li>
+							<a data-id="NGO" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="名古屋" data-code="名古屋" >名古屋</a>
+							</li>
+							<li>
+							<a data-id="OKA" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="沖繩" data-code="沖繩" >沖繩</a>
+							</li>
+							<li>
+							<a data-id="SEL" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="首爾" data-code="首爾" >首爾</a>
+							</li>
+							<li>
+							<a data-id="BKK" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="曼谷" data-code="曼谷" >曼谷</a>
+							</li>
+							<li>
+							<a data-id="SIN" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="新加坡" data-code="新加坡" >新加坡</a>
+							</li>
+							<li>
+							<a data-id="KUL" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="吉隆坡" data-code="吉隆坡" >吉隆坡</a>
+							</li>
+							<li>
+							<a data-id="DPS" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="峇里島" data-code="峇里島" >峇里島</a>
+							</li>
+							<li>
+							<a data-id="HKG" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="香港" data-code="香港" >香港</a>
+							</li>
+							<li>
+							<a data-id="MFM" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="澳門" data-code="澳門" >澳門</a>
+							</li>
+							<li>
+							<a data-id="PVG" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="上海" data-code="上海" >上海</a>
+							</li>
+							<li>
+							<a data-id="PEK" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="北京" data-code="北京" >北京</a>
+							</li>
+							
+						</ul>
+ 
+						</div>
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs-3">
+							
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="LAX" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="洛杉磯" data-code="洛杉磯">洛杉磯</a>
+							</li>	
+							<li>			
+							<a data-id="SFO" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="舊金山" data-code="舊金山" >舊金山</a>
+							</li>
+							<li>
+							<a data-id="SEA" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="西雅圖" data-code="西雅圖" >西雅圖</a>
+							</li>
+							<li>
+							<a data-id="WKL" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="夏威夷" data-code="夏威夷" >夏威夷</a>
+							</li>
+						
+						</ul>
+						
+						</div>
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs-4">
+							
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="YXU" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="倫敦" data-code="倫敦">倫敦</a>
+							</li>	
+							<li>			
+							<a data-id="PAR" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="巴黎" data-code="巴黎" >巴黎</a>
+							</li>
+							<li>
+							<a data-id="AMS" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="阿姆斯特丹" data-code="阿姆斯特丹" >阿姆斯特丹</a>
+							</li>
+							<li>
+							<a data-id="SYD" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="雪梨" data-code="雪梨" >雪梨</a>
+							</li>
+
+						</ul>
+						
+						</div>
+						
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs-5">
+							
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="CAI" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="開羅" data-code="開羅">開羅</a>
+							</li>	
+							<li>			
+							<a data-id="DXB" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="杜拜" data-code="杜拜" >杜拜</a>
+							</li>
+							<li>
+							<a data-id="DEL" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="新德里" data-code="新德里" >新德里</a>
+							</li>
+							<li>
+							<a data-id="BOM" class="url-product country layui-btn layui-btn-primary " href="javascript: void(0);" title="孟買" data-code="孟買" >孟買</a>
+							</li>
+							
+						</ul>
+						
+						</div>
+ 
+					</div>
+ 
+				</div>	
+<!-- data-code是控制輸入值			 -->
+										
+										
+										
+										
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">目的地</span>
+										<input class="form-control" type="text" placeholder="City or airport" id="zt_country02" name="zt_country02" value="${formBean.zt_country02}" readonly="readonly">
+										
+										
+<!-- ============================================選項卡2========================================================== -->								
+				<div class="container-fluid col-md-6 col-xs-12 zt_li02" id="zt_countryTabs02" tabindex="1" style="width: 350px;display: none; border: double #C4E2F7 5px; background-color: #DDDDDD;">
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active zt_li02">
+							<a href="#destinationCountryName-dialog-countryTabs02-1" data-toggle="tab">台灣</a>
+						</li>
+						<li role="presentation" class="zt_li02">
+							<a href="#destinationCountryName-dialog-countryTabs02-2" data-toggle="tab">亞洲</a>
+						</li>
+						<li role="presentation" class="zt_li02">
+							<a href="#destinationCountryName-dialog-countryTabs02-3" data-toggle="tab">美洲</a>
+						</li>
+						<li role="presentation" class="zt_li02">
+							<a href="#destinationCountryName-dialog-countryTabs02-4" data-toggle="tab">歐澳</a>
+						</li>
+						<li role="presentation" class="zt_li02">
+							<a href="#destinationCountryName-dialog-countryTabs02-5" data-toggle="tab">其他</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane  active" id="destinationCountryName-dialog-countryTabs02-1">
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="TPE" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="台北桃園" data-code="台北桃園">台北桃園</a>
+							</li>	
+							<li>			
+							<a data-id="TSA" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="台北松山" data-code="台北松山" >台北松山</a>
+							</li>
+							<li>
+							<a data-id="RMQ" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="台中" data-code="台中" >台中</a>
+							</li>
+							<li>
+							<a data-id="TNN" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="台南" data-code="台南" >台南</a>
+							</li>
+							<li>
+							<a data-id="KHH" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="高雄" data-code="高雄" >高雄</a>
+							</li>
+							
+						</ul>
+ 
+						</div>
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs02-2">
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both; ">
+							<li>
+							<a data-id="HND" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="東京羽田" data-code="東京羽田">東京羽田</a>
+							</li>	
+							<li>			
+							<a data-id="NRT" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="東京成田" data-code="東京成田" >東京成田</a>
+							</li>
+							<li>
+							<a data-id="OSA" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="大阪" data-code="大阪" >大阪</a>
+							</li>
+							<li>
+							<a data-id="FUK" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="福岡" data-code="福岡" >福岡</a>
+							</li>
+							<li>
+							<a data-id="SPK" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="札幌" data-code="札幌" >札幌</a>
+							</li>
+							<li>
+							<a data-id="NGO" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="名古屋" data-code="名古屋" >名古屋</a>
+							</li>
+							<li>
+							<a data-id="OKA" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="沖繩" data-code="沖繩" >沖繩</a>
+							</li>
+							<li>
+							<a data-id="SEL" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="首爾" data-code="首爾" >首爾</a>
+							</li>
+							<li>
+							<a data-id="BKK" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="曼谷" data-code="曼谷" >曼谷</a>
+							</li>
+							<li>
+							<a data-id="SIN" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="新加坡" data-code="新加坡" >新加坡</a>
+							</li>
+							<li>
+							<a data-id="KUL" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="吉隆坡" data-code="吉隆坡" >吉隆坡</a>
+							</li>
+							<li>
+							<a data-id="DPS" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="峇里島" data-code="峇里島" >峇里島</a>
+							</li>
+							<li>
+							<a data-id="HKG" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="香港" data-code="香港" >香港</a>
+							</li>
+							<li>
+							<a data-id="MFM" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="澳門" data-code="澳門" >澳門</a>
+							</li>
+							<li>
+							<a data-id="PVG" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="上海" data-code="上海" >上海</a>
+							</li>
+							<li>
+							<a data-id="PEK" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="北京" data-code="北京" >北京</a>
+							</li>
+							
+						</ul>
+							
+							
+ 
+						</div>
+						
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs02-3">
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="LAX" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="洛杉磯" data-code="洛杉磯">洛杉磯</a>
+							</li>	
+							<li>			
+							<a data-id="SFO" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="舊金山" data-code="舊金山" >舊金山</a>
+							</li>
+							<li>
+							<a data-id="SEA" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="西雅圖" data-code="西雅圖" >西雅圖</a>
+							</li>
+							<li>
+							<a data-id="WKL" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="夏威夷" data-code="夏威夷" >夏威夷</a>
+							</li>
+						
+						</ul>
+							
+							
+						</div>
+						
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs02-4">
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="YXU" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="倫敦" data-code="倫敦">倫敦</a>
+							</li>	
+							<li>			
+							<a data-id="PAR" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="巴黎" data-code="巴黎" >巴黎</a>
+							</li>
+							<li>
+							<a data-id="AMS" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="阿姆斯特丹" data-code="阿姆斯特丹" >阿姆斯特丹</a>
+							</li>
+							<li>
+							<a data-id="SYD" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="雪梨" data-code="雪梨" >雪梨</a>
+							</li>
+
+						</ul>
+							
+							
+						</div>
+						
+						<div class="tab-pane" id="destinationCountryName-dialog-countryTabs02-5">
+						
+						<ul class="nav nav-tabs" style="width:100%; height:2px; border-top:3px solid #999; clear:both;">
+							<li>
+							<a data-id="CAI" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="開羅" data-code="開羅">開羅</a>
+							</li>	
+							<li>			
+							<a data-id="DXB" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="杜拜" data-code="杜拜" >杜拜</a>
+							</li>
+							<li>
+							<a data-id="DEL" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="新德里" data-code="新德里" >新德里</a>
+							</li>
+							<li>
+							<a data-id="BOM" class="url-product country02 layui-btn layui-btn-primary " href="javascript: void(0);" title="孟買" data-code="孟買" >孟買</a>
+							</li>
+							
+						</ul>
+							
+							
+						</div>
+						
+						
+						
+ 
+ 
+ 
+					</div> 
+				</div>			
+									
+			
+		</div>
+	</div>	
+</div>							
+							
+<!-- ============================================讀取資料庫City END========================================================== -->
+							
+<%-- 		日期格式要用yyyy-MM-dd	<fmt:formatDate value="${formBean.godate}" pattern="yyyy-MM-dd"/> --%>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">出發日</span>
+										<input class="form-control" type="date" required name="godate" value="<fmt:formatDate value="${formBean.godate}" pattern="yyyy-MM-dd"/>" >
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">回程日</span>
+										<input class="form-control" type="date" required name="backdate" value="<fmt:formatDate value="${formBean.backdate}" pattern="yyyy-MM-dd"/>">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">成人 (12+)</span>
+										<select class="form-control" name="people" >
+											<option label="${formBean.people}"></option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+										
+									</div>
+								</div>
+							<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">兒童 (2-12)</span>
+										<select class="form-control" name="people2">
+											<option value="${param.people2}">0</option>
+											<option value="${param.people2}">1</option>
+											<option value="${param.people2}">2</option>
+											<option value="${param.people2}">3</option>
+											<option value="${param.people2}">4</option>
+											<option value="${param.people2}">5</option>
+										</select>
+										
+									</div>
+								</div>
+							<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">幼兒 (0-2)</span>
+										<select class="form-control" name="people3">
+											<option value="${param.people3}">0</option>
+											<option value="${param.people3}">1</option>
+											<option value="${param.people3}">2</option>
+											<option value="${param.people3}">3</option>
+											<option value="${param.people3}">4</option>
+											<option value="${param.people3}">5</option>
+										</select>
+										
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">座艙等級</span>
+										<select class="form-control">
+											<option>經濟艙</option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">行程</span>
+										<select class="form-control">
+											<option>來回</option>
+											<option>單程</option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										<input type="submit" class="submit-btn" name="prodaction" value="Show Flights">
+									</div>
+								</div>
+							</div>
+</form>
+
+ 
 
 <!-- ===================機票相關表單結束==================== -->
 
@@ -743,32 +1184,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <!-- 回傳機票JSON -->
-<script type="text/javascript">   
 
-var contextPath = "${pageContext.request.contextPath}";
-    function jsonAjaxPost(){     
-        $.ajax({  
-            type:"post", 
-            url:contextPath+"/tw/sabre/main/Run.java",
-           
-            success:
-                function(data){  
-                    $("#resultJsonText").text("name："+response.toString());  
-                },  
-            error:
-                function(xhr, ajaxOptions, thrownError){
-                    alert(xhr.status+"\n"+thrownError);
-                }
-        });  
-    }  
-</script>  
+
+<script type="text/javascript">
 
 
 
 
-
-
-	
+</script>
 	
 <!--===============================================================================================-->
 	<script src="../js/main.js"></script>

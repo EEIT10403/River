@@ -25,4 +25,10 @@
 		<property name="url" value="/index.jsp"></property>	
 		<property name="contextRelative" value="true"></property>
 	</bean>
+	
+	<bean id="form.success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="url" value="/WebIndex18/search18.jsp"></property>	
+		<property name="contextRelative" value="true"></property>
+	</bean>
+	
 </beans>
