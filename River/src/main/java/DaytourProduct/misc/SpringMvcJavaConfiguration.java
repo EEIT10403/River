@@ -27,7 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.XmlViewResolver;
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.controller","ShoppingCart.controller","sabre.controller"})
+@ComponentScan(basePackages={"DaytourProduct.controller","ShoppingCart.controller","sabre.controller","_27_Order.controller"})
 @EnableWebMvc
 public class SpringMvcJavaConfiguration implements WebMvcConfigurer {
 	@Override
