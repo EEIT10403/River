@@ -30,7 +30,7 @@ public class IntoOrderPage {
 			throws IOException, ServletException, SQLException {
 
 		System.out.println("有進IntoOrderPage"+bean.getProd_Name()); // 測試有沒有進來
-		System.out.println("有進IntoOrderPage"+bean.getTicket_type_1()); // 測試有沒有進來
+		System.out.println("有進IntoOrderPage"+Type1_Qty); // 測試有沒有進來
 		
      
 
