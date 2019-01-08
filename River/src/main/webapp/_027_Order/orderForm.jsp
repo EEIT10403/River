@@ -278,179 +278,250 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<div style='padding: 7% 25% 8% 25% ; background-color: white' >
+		<div style='padding: 7% 25% 8% 25%; background-color: white'>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12" style="padding: 4% 2%">
-						<h3>${bean.prod_Name}</h3>
+						<h3>訂單明細表</h3>
+
 					</div>
 				</div>
 
 				<form action="<c:url value="/Order/IntoOrderPage" />">
-				
-				<input type="hidden" name="product_Id" value="${bean.product_Id}">
-				<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
-				<input type="hidden" name="ticket_type_1" value="${bean.ticket_type_1}">
-				<input type="hidden" name="ticket_type_2" value="${bean.ticket_type_2}">
-				<input type="hidden" name="ticket_type_3" value="${bean.ticket_type_3}">
-				<input type="hidden" name="ticket_type_4" value="${bean.ticket_type_4}">
-				<input type="hidden" name="unitPrice_1" value="${bean.unitPrice_1}">
-				<input type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
-				<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
-				<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
-				
-				
+
+					<input type="hidden" name="product_Id" value="${bean.product_Id}">
+					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
+					<input type="hidden" name="ticket_type_1"
+						value="${bean.ticket_type_1}"> <input type="hidden"
+						name="ticket_type_2" value="${bean.ticket_type_2}"> <input
+						type="hidden" name="ticket_type_3" value="${bean.ticket_type_3}">
+					<input type="hidden" name="ticket_type_4"
+						value="${bean.ticket_type_4}"> <input type="hidden"
+						name="unitPrice_1" value="${bean.unitPrice_1}"> <input
+						type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
+					<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
+					<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
+
+
 					<div class="row">
-						<div class="col-md-12">
-							<div class="card text-white bg-info">
 
-								<h5 class="card-header">選擇日期與票種</h5>
-								<div class="card-body">
-									<p class="card-text ">
-										使用日期 <input type="date" name="pickDate" value="">
-									</p>
-									<p class="card-text " align="right">單位: 新台幣/元</p>
+						<!-- 填表區塊1 start -->
+						<div class="col-md-9">
 
-									<table class="table table-hover table-sm table-bordered">
-										<thead>
-											<tr>
-												<th>票別</th>
-												<th>單價</th>
-												<th>數量</th>
-												<th>小計</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="table-active">
-												<td>${bean.ticket_type_1}</td>
-												<td>${bean.unitPrice_1}</td>
-												<td><select id="Type1_Qty" name="Type1_Qty">
-														<option value="0">0</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-												</select></td>
-												<td><span id='subTotal1'>0</span></td>
-											</tr>
-											<c:if test="${not empty bean.ticket_type_2}">
-												<tr class="table-active">
-													<td>${bean.ticket_type_2}</td>
-													<td>${bean.unitPrice_2}</td>
-													<td><select id="Type2_Qty" name="Type2_Qty">
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7">7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-															<option value="10">10</option>
-													</select></td>
-													<td><span id='subTotal2'>0</span></td>
-												</tr>
-											</c:if>
-											<c:if test="${not empty bean.ticket_type_3}">
-												<tr class="table-active">
-													<td>${bean.ticket_type_3}</td>
-													<td>${bean.unitPrice_3}</td>
-													<td><select id="Type3_Qty" name="Type3_Qty">
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7">7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-															<option value="10">10</option>
-													</select></td>
-													<td><span id='subTotal3'>0</span></td>
-												</tr>
-											</c:if>
-											<c:if test="${not empty bean.ticket_type_4}">
-												<tr class="table-active">
-													<td>${bean.ticket_type_4}</td>
-													<td>${bean.unitPrice_4}</td>
-													<td><select id="Type4_Qty" name="Type4_Qty">
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7">7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-															<option value="10">10</option>
-													</select></td>
-													<td><span id='subTotal4'>0</span></td>
-												</tr>
-											</c:if>
-										</tbody>
+							<div class="row">
+								<div class="col-md-12"
+									style="background-color: #D6E6E5; border: solid #387780 1px; padding: 15px">
+									<!-- 								   <i class="icon-marker">1</i> -->
+									<h4>
+										<span>1. 填寫旅客資訊</span>
+									</h4>
+									<h6 style="">
+										<span style="color: orange"> ＊為必填 </span> 如欲修改會員資料，請至「會員中心」修改
+									</h6>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12"
+									style="background-color: #EBFCFB; border: solid #387780 1px; padding: 15px">
+									<c:if test="${ticketType.Type1_Qty>0}">
+										<h5 class="text-dark-green"
+											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_1}</h5>
+										<div style="padding: 10px 25px 15px 35px;">
+											<script>
+										
+										var i=1 ;
+										
+										for(i=1; i<=${ticketType.Type1_Qty}; i++){
+											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
+											document.write("<h6>＊中文姓名: </h6>")
+											document.write("<input type='text' name='Traveler_Name1_"+i+"' style='border:solid 1px'value=''>")
+											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
+											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<br><br>")
+										}
+										</script>
+										</div>
+									</c:if>
+
+									<c:if test="${ticketType.Type2_Qty>0}">
+										<h5 class="text-dark-green"
+											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_2}</h5>
+										<div style="padding: 10px 25px 15px 35px;">
+											<script>
+										
+										var i=1 ;
+										
+										for(i=1; i<=${ticketType.Type2_Qty}; i++){
+											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
+											document.write("<h6>＊中文姓名: </h6>")
+											document.write("<input type='text' name='Traveler_Name2_"+i+"' style='border:solid 1px'value=''>")
+											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
+											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<br><br>")
+										}
+										</script>
+										</div>
+									</c:if>
+
+									<c:if test="${ticketType.Type3_Qty>0}">
+										<h5 class="text-dark-green"
+											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_3}</h5>
+										<div style="padding: 10px 25px 15px 35px;">
+											<script>
+										
+										var i=1 ;
+										
+										for(i=1; i<=${ticketType.Type3_Qty}; i++){
+											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
+											document.write("<h6>＊中文姓名: </h6>")
+											document.write("<input type='text' name='Traveler_Name3_"+i+"' style='border:solid 1px'value=''>")
+											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
+											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<br><br>")
+										}
+										</script>
+										</div>
+									</c:if>
+									<c:if test="${ticketType.Type4_Qty>0}">
+										<h5 class="text-dark-green"
+											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_4}</h5>
+										<div style="padding: 10px 25px 15px 35px;">
+											<script>
+										
+										var i=1 ;
+										
+										for(i=1; i<=${ticketType.Type4_Qty}; i++){
+											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
+											document.write("<h6>＊中文姓名: </h6>")
+											document.write("<input type='text' name='Traveler_Name4_"+i+"' style='border:solid 1px'value=''>")
+											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
+											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<br><br>")
+										}
+										</script>
+										</div>
+									</c:if>
+									<!-- input 姓名生日end  -->
+
+
+								</div>
+							</div>
+
+						</div>
+						<!-- 填表區塊1 end -->
+						<!-- 填表區塊2 start -->
+						<div class="col-md-9">
+
+							<div class="row">
+								<div class="col-md-12"
+									style="background-color: #D6E6E5; border: solid #387780 1px; padding: 15px">
+									<!-- 								   <i class="icon-marker">1</i> -->
+									<h4>
+										<span>2. 行程聯絡人</span>
+									</h4>
+									<h6 style="">
+										<span style="color: orange"> ＊為必填 </span>
+									</h6>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12"
+									style="background-color: #EBFCFB; border: solid #387780 1px; padding: 15px">
+									<table>
+										<tr>
+											<td>
+												<h6 class=''
+													style='margin-top: -10px; padding: 12px; font-weight: normal;'>主要聯絡人</h6>
+											</td>
+										</tr>
+										<tr>
+											<td style='padding: 15px 65px 15px 30px'>
+												<h6>＊中文姓名:</h6> <input type='text' name='Main_Contact_Name'
+												style='border: solid 1px' value=''>
+											</td>
+											<td>
+												<h6>＊聯絡e-mail:</h6> <input type='text' name='Contact_Email'
+												style='border: solid 1px' value=''>
+											</td>
+										</tr>
+										<tr>
+											<td style='padding: 15px 65px 15px 30px'>
+												<h6>＊ 聯絡電話：手機:</h6> <input type='text' name='Contact_Phone'
+												style='border: solid 1px' value=''>
+											</td>
+										</tr>
+										<tr>
+											<td style='padding: 15px 65px 15px 30px' colspan="2">
+												<h6>＊聯絡地址:</h6> <input type='text' name='Contact_Address'
+												style='border: solid 1px; width: 400px' value=''>
+											</td>
+										</tr>
+										<tr>
+											<td style='padding: 15px 65px 15px 30px' colspan="2">
+												<h6>公司抬頭:</h6> <input type='text' name='InvoiceTitle'
+												style='border: solid 1px; width: 400px' value=''>
+											</td>
+										</tr>
 									</table>
 								</div>
-								<div class="card-footer" align="right">
-									<span id='ticketQty'>共計 0 張</span> <span id='totalPrice'>應付總額
-										0 元</span>
-								</div>
 							</div>
+							<button type="submit" style="margin:10px 5px 0px 0px" class="btn btn-block btn-info">確認送出</button>
+						</div>
+						<!-- 填表區塊2 end -->
 
 
-							<div class="card bg-default">
-								<h5 class="card-header">訂購須知</h5>
-								<div class="card-body">
+						<!-- 購買資訊佔存區塊 start -->
+						<div class="col-md-3"
+							style="position: fixed; right: 12%; top: 27%">
 
-									<p class="card-text"></p>
-									<DIV
-										style="OVERFLOW: scroll; HEIGHT: 300px; background-color: white">
 
-										<h4 class="text-logo-green">敬請詳閱商品頁內容</h4>
-										<br>
-										<div>
-											<ul class="ul-default">
-												<li>票券和部分活動，預定成功後不接受取消與更改，敬請留意，並詳閱商品頁中相關使用和限制說明。</li>
-												<li>部分活動因性質特殊，受天候或當地特別條件影響，在出發當天或前一天有取消或變更行程內容的狀況。敬請詳閱商品頁中相關說明。謝謝。</li>
-											</ul>
+							<div class="row">
+								<div class="col-md-12">
+									<div id="card-129119">
+										<div class="card">
+											<div class="card-header">
+												<a class="card-link" data-toggle="collapse"
+													data-parent="#card-129119" href="#card-element-742160">檢視訂單明細
+												</a>
+											</div>
+											<div id="card-element-742160" class="collapse"
+												style="background-color: #F3FFBD; border: solid 1px">
+												<div style='padding: 10px'>${bean.prod_Name}</div>
+												<div style='padding: 10px'>
+													使用日期:
+													<fmt:formatDate value="${TravelDate}" pattern="yyyy/MM/dd " />
+												</div>
+												<hr>
+												<div style='padding: 10px'>${bean.ticket_type_1}
+													${bean.unitPrice_1} 元 x ${ticketType.Type1_Qty}</div>
+												<c:if test="${ticketType.Type2_Qty>0}">
+													<div style='padding: 10px'>${bean.ticket_type_2}
+														${bean.unitPrice_2} 元 x ${ticketType.Type2_Qty}</div>
+												</c:if>
+												<c:if test="${ticketType.Type3_Qty>0}">
+													<div style='padding: 10px'>${bean.ticket_type_3}
+														${bean.unitPrice_3} 元 x ${ticketType.Type3_Qty}</div>
+												</c:if>
+												<c:if test="${ticketType.Type4_Qty>0}">
+													<div style='padding: 10px'>${bean.ticket_type_4}
+														${bean.unitPrice_4} 元 x ${ticketType.Type4_Qty}</div>
+												</c:if>
+												<div class="card-body" style="color: red">總計金額 :
+													${Total_Amount} 元</div>
+											</div>
 										</div>
-										<br>
-										<div>
-											．<b>◆退改須知</b><br>．此票券一經出券開票，即不可退票或更改，敬請見諒。<br>．請於指定時間提前至集合點等候，逾時未抵達現場，巴士公司將不會主動連絡。<br>．因個人因素未準時抵達或未攜帶預約確認書，視同放棄，恕無法退費<br>．所選日期若滿團，將建議其他日期出發，若無法配合將退還全額費用。<br>．在日本當地若因個人因素自行取消參加時，視同放棄，恕無法退費。<b>◆適用對象</b><br>．成人票(12歲以上)<br>．兒童票(6-11歲)<br>．兒童票(3-5歲)註：未滿3歲孩童免費，也不含巴士座位、餐食。(如需佔位請訂購兒童票)<b>◆適用日期</b>2018/12/20~2019/4/19，可出發日期請參考日曆<b>◆回覆工作天</b>3-5個工作天
-											<b>◆訂購所需資訊</b><br>．旅客護照中英文姓名<br>．出發日期<br>．西元出生年月日<br>．前一天住宿酒店名稱<br>．在日本可連絡的手機號碼、E-MAIL
-											<br> <br> <br>
-										</div>
-										<br>
-										<div>
-											．<b>◆注意事項</b><br>．會因季節關係報名人數眾多可能出現滿團，請儘早預訂。<br>．原本設定的可預約日期，可能受設施的營業狀況或休息日等影響而臨時取消可預約日期。<br>．水果成熟期會因天氣影響而有變化，亦可能食用事先所採好的水果<br>．請自行準備玩雪用手套、禦寒衣物、輕便的服裝與鞋子<br>．因交通、天氣等不可抗力因素所引起的時間延誤、行程變更或景點取消等，不另退費敬請理解。<br>．若遇台風/暴風雪等天候不佳的情況，於出發前一天15:00(日本時間)，決定是否取消出發，之後將隨時以電子郵件形式通知。<br>
-										</div>
-
-
 									</div>
-									<!-- 							<div class="card-footer">Card footer</div> -->
 								</div>
-								<div style="padding:5%" align="center">
-								<input type="checkbox" class="css-checkbox" id="checkbox">
-								<label for="checkbox" class="css-label">我已完整閱讀本服務訂購須知，並接受所有規定</label>
-								</div>
-<!-- 								<a href="#" class="btn btn-lg btn-secondary btn-warning" -->
-<!-- 									type="submit"  >確認送出</a> -->
-								<button type="submit" class="btn btn-lg btn-secondary btn-warning">確認送出</button>
 							</div>
 						</div>
+						<!-- 購買資訊佔存區塊 end -->
 					</div>
+
+
+
 				</form>
+
+
 			</div>
 		</div>
 

@@ -10,6 +10,7 @@
 	<bean id="product.errors" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_027_DaytourProduct/productManagement.jsp"></property>
 	</bean>
+	
 	<bean id="product.select" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_027_DaytourProduct/ProductDisplay.jsp"></property>
 	</bean>
@@ -19,6 +20,10 @@
 
 	<bean id="login.error" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/secure/login.jsp"></property>
+	</bean>
+	
+	<bean id="order.form" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/_027_Order/orderForm.jsp"></property>
 	</bean>
 
 	<bean id="login.success" class="org.springframework.web.servlet.view.RedirectView">

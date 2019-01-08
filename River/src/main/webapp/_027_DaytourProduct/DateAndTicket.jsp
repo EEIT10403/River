@@ -278,7 +278,7 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<div style='padding: 7% 25% 8% 25% ; background-color: white' >
+		<div style='padding: 7% 25% 8% 25%; background-color: white'>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12" style="padding: 4% 2%">
@@ -287,19 +287,22 @@
 				</div>
 
 				<form action="<c:url value="/Order/IntoOrderPage" />">
-				
-				<input type="hidden" name="product_Id" value="${bean.product_Id}">
-				<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
-				<input type="hidden" name="ticket_type_1" value="${bean.ticket_type_1}">
-				<input type="hidden" name="ticket_type_2" value="${bean.ticket_type_2}">
-				<input type="hidden" name="ticket_type_3" value="${bean.ticket_type_3}">
-				<input type="hidden" name="ticket_type_4" value="${bean.ticket_type_4}">
-				<input type="hidden" name="unitPrice_1" value="${bean.unitPrice_1}">
-				<input type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
-				<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
-				<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
-				
-				
+
+					<input type="hidden" name="product_Id" value="${bean.product_Id}">
+					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
+					<input type="hidden" name="ticket_type_1"
+						value="${bean.ticket_type_1}"> <input type="hidden"
+						name="ticket_type_2" value="${bean.ticket_type_2}"> <input
+						type="hidden" name="ticket_type_3" value="${bean.ticket_type_3}">
+					<input type="hidden" name="ticket_type_4"
+						value="${bean.ticket_type_4}"> <input type="hidden"
+						name="unitPrice_1" value="${bean.unitPrice_1}"> <input
+						type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
+					<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
+					<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
+					<input type="hidden" name="Total_Amount" id="Total_Amount" value="">
+
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card text-white bg-info">
@@ -307,7 +310,7 @@
 								<h5 class="card-header">選擇日期與票種</h5>
 								<div class="card-body">
 									<p class="card-text ">
-										使用日期 <input type="date" name="pickDate" value="">
+										使用日期 <input type="date" name="TravelDate" value="">
 									</p>
 									<p class="card-text " align="right">單位: 新台幣/元</p>
 
@@ -440,13 +443,14 @@
 									</div>
 									<!-- 							<div class="card-footer">Card footer</div> -->
 								</div>
-								<div style="padding:5%" align="center">
-								<input type="checkbox" class="css-checkbox" id="checkbox">
-								<label for="checkbox" class="css-label">我已完整閱讀本服務訂購須知，並接受所有規定</label>
+								<div style="padding: 5%" align="center">
+									<input type="checkbox" class="css-checkbox" id="checkbox">
+									<label for="checkbox" class="css-label">我已完整閱讀本服務訂購須知，並接受所有規定</label>
 								</div>
-<!-- 								<a href="#" class="btn btn-lg btn-secondary btn-warning" -->
-<!-- 									type="submit"  >確認送出</a> -->
-								<button type="submit" class="btn btn-lg btn-secondary btn-warning">確認送出</button>
+								<!-- 								<a href="#" class="btn btn-lg btn-secondary btn-warning" -->
+								<!-- 									type="submit"  >確認送出</a> -->
+								<button type="submit"
+									class="btn btn-lg btn-secondary btn-warning">確認送出</button>
 							</div>
 						</div>
 					</div>
@@ -605,9 +609,11 @@ function ticketQty() {
 	var t3 = Number(Type3_Qty);
 	if (!t3)
 	t3 =Number('0');
+	$('#Type3_Qty').val(t3);
 	var t4 = Number(Type4_Qty);
 	if (!t4)
 	t4 =Number('0');
+	$('#Type4_Qty').val(t4);
 	
 	var ticketQty =t1+t2+t3+t4;
 	$('#ticketQty').html('共計 '+ ticketQty +' 張');
@@ -635,6 +641,7 @@ function totalPrice() {
 	var totalPrice =s1+s2+s3+s4;
 	$('#totalPrice').html('應付總額 '+ totalPrice +' 元');
 	$('#totalPrice').val(ticketQty);
+	$('#Total_Amount').val(totalPrice);
 
 }
 
