@@ -344,7 +344,7 @@ height:650px;
 
 										<label for="exampleInputFile"> 圖片上傳: </label> <input
 											type='file' id='imageinput' name="img"
-											class="form-control-file"
+											class="form-control-file" 
 											accept='image/gif, image/jpeg, image/png' />
 									</div>
 									
@@ -372,7 +372,7 @@ height:650px;
 					<div class="col-md-6">
 					<div id='map'></div>
 					
-					<img id='preview_progressbarTW_img' src='#' alt='預覽圖片'
+					<img id='preview_progressbarTW_img' src='../images/preview.jpg' alt='預覽圖片'
 											width='100%' height='100%' style="border:double 5px #009FCC"/>
 					
 					</div>
