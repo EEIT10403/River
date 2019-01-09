@@ -53,7 +53,9 @@ public class ProductController {
 
 	long sizeInBytes = 0;
 	InputStream is = null;
-		
+
+	
+	
 	@RequestMapping(value="/DisplayAll",
 			produces={"application/json; charset=UTF-8"})
 	public void DisplayAll(Model model, String region, HttpSession session,
@@ -257,6 +259,7 @@ public class ProductController {
 
 	}
 	
+	
 	@RequestMapping("/DaytourProduct/DateAndTicket")
 	public String ChooseTicketType(Model model, String Product_Id, HttpSession session)
 			throws IOException, ServletException, SQLException {
@@ -276,6 +279,7 @@ public class ProductController {
 		return "product.select";
 
 	}
+	
 
 	@RequestMapping(value = "getProductMainImage", method = RequestMethod.GET)
 	public void getImages(@RequestParam(name = "Product_Id", required = false) String guid, HttpServletRequest request,

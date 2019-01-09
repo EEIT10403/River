@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
+
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.midi.Soundbank;
+
 
 import org.json.JSONArray;
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +41,7 @@ public class SearchTAController {
 		System.out.println("address=" + address);
 		response.setCharacterEncoding("UTF-8");
 		try (PrintWriter out = response.getWriter();) {
-			Map<String, String> result = new HashMap<String, String>();
+//			Map<String, String> result = new HashMap<String, String>();
 
 //			System.out.println(touristAttractionDAOHibernate.select(1));
 //			System.out.println(touristAttractionDAOHibernate.findbyaddress("addresstest1"));
@@ -53,7 +53,7 @@ public class SearchTAController {
 			List<TouristAttractionBean> talist = touristAttractionDAOHibernate.findbyAddrTA("%" + address + "%",
 					"%" + touristarea + "%");
 
-			int len = talist.size();
+//			int len = talist.size();
 
 //	    	for(int x=0;x<len;x++) {
 //	    		

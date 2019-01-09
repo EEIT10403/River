@@ -41,8 +41,7 @@ public class LoginController {
 		if(errors != null && !errors.isEmpty()) {
 			return "login.errors";
 		}
-//呼叫model
-		
+
 		return null;
 		
 	}
