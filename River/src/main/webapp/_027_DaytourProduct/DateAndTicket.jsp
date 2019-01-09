@@ -290,6 +290,7 @@
 
 					<input type="hidden" name="product_Id" value="${bean.product_Id}">
 					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
+					<input type="hidden" name="country" value="${bean.country}">
 					<input type="hidden" name="ticket_type_1"
 						value="${bean.ticket_type_1}"> <input type="hidden"
 						name="ticket_type_2" value="${bean.ticket_type_2}"> <input

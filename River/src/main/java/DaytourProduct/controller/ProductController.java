@@ -225,6 +225,7 @@ public class ProductController {
 				errors.put("action", "update failed");
 			} else {
 				model.addAttribute("insert", result);
+			
 			}
 			return "product.errors";
 

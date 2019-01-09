@@ -291,6 +291,7 @@
 
 					<input type="hidden" name="product_Id" value="${bean.product_Id}">
 					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
+					<input type="hidden" name="country" value="${bean.country}">
 					<input type="hidden" name="ticket_type_1"
 						value="${bean.ticket_type_1}"> <input type="hidden"
 						name="ticket_type_2" value="${bean.ticket_type_2}"> <input
@@ -345,7 +346,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name1_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday1_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -365,7 +366,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name2_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday2_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -385,7 +386,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name3_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday3_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -404,7 +405,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name4_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday4_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>

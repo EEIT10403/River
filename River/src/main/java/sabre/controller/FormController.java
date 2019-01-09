@@ -105,8 +105,10 @@ public class FormController {
 		System.out.println(BFMjson.toString());
 		
 		String result = BFMjson.toString();
+		System.out.println(result);
 		
-		model.addAttribute(formBean);
+		model.addAttribute("bean",formBean);
+		model.addAttribute("result", result);
 		
 		return "form.success";
 		
