@@ -287,7 +287,7 @@
 					</div>
 				</div>
 
-				<form action="<c:url value="/Order/IntoOrderPage" />">
+				<form action="<c:url value="/Order/InsertOrder" />">
 
 					<input type="hidden" name="product_Id" value="${bean.product_Id}">
 					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
@@ -301,7 +301,16 @@
 						type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
 					<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
 					<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
-
+					<input type="hidden" name="TicketQty1"
+						value="${ticketType.Type1_Qty}"> <input type="hidden"
+						name="TicketQty2" value="${ticketType.Type2_Qty}"> <input
+						type="hidden" name="TicketQty3" value="${ticketType.Type3_Qty}">
+					<input type="hidden" name="TicketQty4"
+						value="${ticketType.Type4_Qty}"> <input type="hidden"
+						name="Total_Amount" value="${Total_Amount}"> <input
+						type="hidden" name="TravelDate"
+						value="<fmt:formatDate value="${TravelDate}" pattern="yyyy-MM-dd" />">
+					<input type="hidden" name="OrderDate" id="OrderDate" value="">
 
 					<div class="row">
 
@@ -315,7 +324,7 @@
 									<h4>
 										<span>1. 填寫旅客資訊</span>
 									</h4>
-									<h6 style="">
+									<h6>
 										<span style="color: orange"> ＊為必填 </span> 如欲修改會員資料，請至「會員中心」修改
 									</h6>
 								</div>
@@ -419,7 +428,7 @@
 									<h4>
 										<span>2. 行程聯絡人</span>
 									</h4>
-									<h6 style="">
+									<h6>
 										<span style="color: orange"> ＊為必填 </span>
 									</h6>
 								</div>
@@ -465,7 +474,8 @@
 									</table>
 								</div>
 							</div>
-							<button type="submit" style="margin:10px 5px 0px 0px" class="btn btn-block btn-info">確認送出</button>
+							<button type="submit" style="margin: 10px 5px 0px 0px"
+								id='confirmBtn' class="btn btn-block btn-info">確認送出</button>
 						</div>
 						<!-- 填表區塊2 end -->
 
@@ -709,59 +719,17 @@ function totalPrice() {
 
 }
 
-$('#Type1_Qty').change(function() {
-	$('#subTotal1').empty();
-	var unitPrice_1 = ${bean.unitPrice_1};
-	var Type1_Qty = $('#Type1_Qty').val();
-	var subTotal1 = unitPrice_1*Type1_Qty;
-	$('#subTotal1').html(subTotal1);
-	$('#subTotal1').val(subTotal1);
-	ticketQty();
-	totalPrice();
-	
-
-});
-$('#Type2_Qty').change(function() {
-	$('#subTotal2').empty();
-	var unitPrice_2 = ${bean.unitPrice_2};
-	var Type2_Qty = $('#Type2_Qty').val();
-	var subTotal2 = unitPrice_2*Type2_Qty;
-	$('#subTotal2').html(subTotal2);
-	$('#subTotal2').val(subTotal2);
-	ticketQty();
-	totalPrice();
-
-});
-$('#Type3_Qty').change(function() {
-	$('#subTotal3').empty();
-	var unitPrice_3 = ${bean.unitPrice_3};
-	var Type3_Qty = $('#Type3_Qty').val();
-	var subTotal3 = unitPrice_3*Type3_Qty;
-	$('#subTotal3').html(subTotal3);
-	$('#subTotal3').val(subTotal3);
-	ticketQty();
-	totalPrice();
-
-});
-$('#Type4_Qty').change(function() {
-	$('#subTotal4').empty();
-	var unitPrice_4 = ${bean.unitPrice_4};
-	var Type4_Qty = $('#Type4_Qty').val();
-	var subTotal4 = unitPrice_4*Type4_Qty;
-	$('#subTotal4').html(subTotal4);
-	$('#subTotal4').val(subTotal4);
-	ticketQty();
-	totalPrice();
-
-});
-		
+function getDate(){
+// alert("hi");
+	$('#OrderDate').val(new Date());
+};
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		
+		getDate();
 	}); 
 	<!-- document).ready 結尾 -->
 	

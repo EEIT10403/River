@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>新增景點♥</title>
+<title>行程規劃♥</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -53,7 +53,7 @@
 <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
 <!--===============================================================================================-->
 
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 <!--===============================================================================================-->
 
@@ -67,24 +67,25 @@ input, textarea {
 }
 
 #map {
-
-   
 	height: 250px;
 	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	border:double 5px #009FCC;
-}
-.item-slick1{
-height:650px;
+	border: double 5px #009FCC;
 }
 
+.item-slick1 {
+	height: 650px;
+}
+.btn  {
+margin-right:15px;
+width:100px;
+height:40px
+}
 </style>
-
 
 </head>
 <body class="animsition">
-
 
 	<div class="container-fluid">
 		<!-- Header -->
@@ -94,7 +95,7 @@ height:650px;
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop" style="height:60px">
+				<div class="wrap-menu-desktop" style="height: 60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
@@ -121,24 +122,24 @@ height:650px;
 							</ul>
 						</div>
 
-		<!-- Icon header -->
+						<!-- Icon header -->
 						<div class="wrap-icon-header flex-w flex-r-m">
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" -->
-<!-- 								data-notify="2"> -->
-<!-- 								<i class="zmdi zmdi-shopping-cart"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" -->
+							<!-- 								data-notify="2"> -->
+							<!-- 								<i class="zmdi zmdi-shopping-cart"></i> -->
+							<!-- 							</div> -->
 
-<!-- 							<a href="#" -->
-<!-- 								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" -->
-<!-- 								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
-<!-- 							</a> -->
-							
+							<!-- 							<a href="#" -->
+							<!-- 								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" -->
+							<!-- 								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+							<!-- 							</a> -->
+
 						</div>
 					</nav>
 				</div>
@@ -153,23 +154,23 @@ height:650px;
 				</div>
 
 				<!-- Icon header -->
-<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
-<!-- 					<div -->
-<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
-<!-- 						<i class="zmdi zmdi-search"></i> -->
-<!-- 					</div> -->
+				<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
+				<!-- 						<i class="zmdi zmdi-search"></i> -->
+				<!-- 					</div> -->
 
-<!-- 					<div -->
-<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
-<!-- 						data-notify="2"> -->
-<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
-<!-- 					</div> -->
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
+				<!-- 						data-notify="2"> -->
+				<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
+				<!-- 					</div> -->
 
-<!-- 					<a href="#" -->
-<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
-<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
-<!-- 					</a> -->
-<!-- 				</div> -->
+				<!-- 					<a href="#" -->
+				<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
+				<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+				<!-- 					</a> -->
+				<!-- 				</div> -->
 
 				<!-- Button show menu -->
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -193,9 +194,7 @@ height:650px;
 
 					<li><a href="<c:url value="/WebIndex18/flight18.jsp" />"
 						class="label1 rs1">航班查詢</a></li>
-                   	<li>
-					<a href="blog.html">Blog</a>
-					</li>
+					<li><a href="blog.html">Blog</a></li>
 
 					<li><a href="about.html">About</a></li>
 
@@ -205,185 +204,196 @@ height:650px;
 
 			<!-- Modal Search -->
 
-</header>
-			<!-- Cart -->
+		</header>
+		<!-- Cart -->
 
-			<!-- Slider -->
-			<section class="section-slide">
-				<div class="wrap-slick1">
-					<div class="slick1">
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-11.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="fadeInDown" data-delay="0">
-										<span class="ltext-101 cl2 respon2"> 景點搜尋 </span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="fadeInUp" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">River
-											Tourist</h2>
-									</div>
-
-
+		<!-- Slider -->
+		<section class="section-slide">
+			<div class="wrap-slick1">
+				<div class="slick1">
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-11.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="fadeInDown" data-delay="0">
+									<span class="ltext-101 cl2 respon2"> 景點搜尋 </span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="fadeInUp" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">River
+										Tourist</h2>
+								</div>
+
+
 							</div>
 						</div>
+					</div>
 
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-12.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rollIn" data-delay="0">
-										<span class="ltext-101 cl2 respon2">Wish You Have A
-											Pleasant Journey </span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="lightSpeedIn" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">Fantastic
-											Tourist</h2>
-									</div>
-
-
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-12.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rollIn" data-delay="0">
+									<span class="ltext-101 cl2 respon2">Wish You Have A
+										Pleasant Journey </span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="lightSpeedIn" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">Fantastic
+										Tourist</h2>
+								</div>
+
+
 							</div>
 						</div>
+					</div>
 
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-13.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rotateInDownLeft" data-delay="0">
-										<span class="ltext-101 cl2 respon2"> River Tourist 2019
-										</span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rotateInUpRight" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">New
-											arrivals</h2>
-									</div>
-								
-
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-13.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rotateInDownLeft" data-delay="0">
+									<span class="ltext-101 cl2 respon2"> River Tourist 2019
+									</span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rotateInUpRight" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">New
+										arrivals</h2>
+								</div>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
 
-			<!-- Banner -->
+		<!-- Banner -->
 
 
 
-			<!-- Product -->
+		<!-- Product -->
 	</div>
 
 
-		<div class="container">
-	
-				<div class="row">		
-				
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+			<div class="d-flex p-2 bd-highlight">
+					<button type="button" class="btn btn-primary">Primary</button>
+					<div class="btn-group">
+							  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Action
+							  </button>
+							  <div class="dropdown-menu">
+							    <a class="dropdown-item" href="#">Action</a>
+							    <a class="dropdown-item" href="#">Another action</a>
+							    <a class="dropdown-item" href="#">Something else here</a>
+							  </div>
+					</div>
+					<button type="button" class="btn btn-warning">Warning</button>
+			</div>
+			
+			</div>
+			<div class="col-sm-8">
+
+				<div class="row">
+
 					<div class="col-md-6">
 						<section class="bg0 p-t-23 p-b-140">
-						<div class="row">
-							<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12">
 
-					<!-- Form -->
-								
-						<form action='<c:url value='/insertta'/>' method='post'  role="form" enctype='multipart/form-data'>
-									<!--欄位  -->
-									<div class="form-group">
+									<!-- Form -->
 
-										<label for="exampleInputEmail1"> 城市/區域: </label> <input
-											id='touristarea' class="mtext-107  size-114 "
-											 name='touristarea' type='text'
-											placeholder='國家/城市'>
-									</div>
+									<form action='<c:url value='/insertta'/>' method='post'
+										role="form" enctype='multipart/form-data'>
+										<!--欄位  -->
+										<div class="form-group">
 
-									<div class="form-group">
-										<label for="exampleInputEmail1"> 景點/地址: </label> <input
-											id='pacinput' name='address'
-											class="mtext-107 cl2 size-114 plh2 p-r-15"
-											 type='text' placeholder='景點搜尋'>
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1"> 經度/緯度: </label>
-
-										<div class="container-fluid">
-											<div class="row">
-												<div class="col-md-6">
-													<input id='lat' name='lat' type='text'
-														class="mtext-107 cl2 size-114 plh2 p-r-15"
-														readonly="readonly" placeholder='經度'>
-												</div>
-												<div class="col-md-6">
-													<input id='lng' name='lng' type='text'
-														class="mtext-107 cl2 size-114 plh2 p-r-15"
-														readonly="readonly" placeholder='緯度'>
-												</div>
-											</div>
+											<label for="exampleInputEmail1"> 城市/區域: </label> <input
+												id='touristarea' class="mtext-107 cl2 size-114 plh2 p-r-15"
+												name='touristarea' type='text' placeholder='國家/城市'>
 										</div>
 
-									</div>
-									<div class="form-group">
-										<label for="exampleInputEmail1"> 景點概述 : </label>
-										<textarea id='summary' placeholder='經度'
-											class="mtext-107 cl2 size-114 plh2 p-r-15"
-											style="resize: none; height: 100px" name='summary'>
+										<div class="form-group">
+											<label for="exampleInputEmail1"> 景點/地址: </label> <input
+												id='pacinput' name='address'
+												class="mtext-107 cl2 size-114 plh2 p-r-15" type='text'
+												placeholder='景點搜尋'>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"> 經度/緯度: </label>
+
+											
+												<div class="row">
+													<div class="col-md-6">
+														<input id='lat' name='lat' type='text'
+															class="mtext-107 cl2 size-114 plh2 p-r-15"
+															readonly="readonly" placeholder='經度'>
+													</div>
+													<div class="col-md-6">
+														<input id='lng' name='lng' type='text'
+															class="mtext-107 cl2 size-114 plh2 p-r-15"
+															readonly="readonly" placeholder='緯度'>
+													</div>
+												</div>
+											
+
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail1"> 景點概述 : </label>
+											<textarea id='summary' placeholder='經度'
+												class="mtext-107 cl2 size-114 plh2 p-r-15"
+												style="resize: none; height: 100px" name='summary'>
 						         </textarea>
-									</div>
+										</div>
 
-									<div class="form-group">
+										<div class="form-group">
 
-										<label for="exampleInputFile"> 圖片上傳: </label> <input
-											type='file' id='imageinput' name="img"
-											class="form-control-file" 
-											accept='image/gif, image/jpeg, image/png' />
-									</div>
-									
+											<label for="exampleInputFile"> 圖片上傳: </label> <input
+												type='file' id='imageinput' name="img"
+												class="form-control-file"
+												accept='image/gif, image/jpeg, image/png' />
+										</div>
+
 
 
 										<button type="submit" class="btn btn-primary">新增景點</button>
-								</form>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-6">
-										
-
-									</div>
-									<div   class="col-md-6"></div>
+									</form>
 								</div>
 							</div>
-						</div>
+						
 						</section>
 					</div>
-					
-					
+
+
 					<div class="col-md-6">
-					<div id='map'></div>
-					
-					<img id='preview_progressbarTW_img' src='../images/preview.jpg' alt='預覽圖片'
-											width='100%' height='100%' style="border:double 5px #009FCC"/>
-					
+						<div id='map'></div>
+
+						<img id='preview_progressbarTW_img' src='../images/preview.jpg' alt='預覽圖片'
+							width='100%' height='40%' style="border: double 5px #009FCC" />
+
 					</div>
-					
-					
-				
+
+				</div>
 			</div>
+
 
 		</div>
 
- 
+	</div>
+
+
 
 
 
@@ -739,17 +749,8 @@ height:650px;
 	</script>
 
 
-<script >
-	$('#touristarea').focus(function(){
-		
-// 		$(this).off('change');
-	
-	})
 
 
-
-
-</script>
 
 
 
@@ -773,9 +774,9 @@ height:650px;
 	<script src="../vendor/slick/slick.min.js"></script>
 	<script src="../js/slick-custom.js"></script>
 	<!--===============================================================================================-->
-	
-	
-	
+
+
+
 	<!--===============================================================================================-->
 	<script src="../vendor/parallax100/parallax100.js"></script>
 	<script>
@@ -844,19 +845,19 @@ height:650px;
 	<script src="../vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
 	<script>
-		// 		$('.js-pscroll').each(function(){
-		// 			$(this).css('position','relative');
-		// 			$(this).css('overflow','hidden');
-		// 			var ps = new PerfectScrollbar(this, {
-		// 				wheelSpeed: 1,
-		// 				scrollingThreshold: 1000,
-		// 				wheelPropagation: false,
-		// 			});
+				$('.js-pscroll').each(function(){
+					$(this).css('position','relative');
+					$(this).css('overflow','hidden');
+					var ps = new PerfectScrollbar(this, {
+						wheelSpeed: 1,
+						scrollingThreshold: 1000,
+						wheelPropagation: false,
+					});
 
-		// 			$(window).on('resize', function(){
-		// 				ps.update();
-		// 			})
-		// 		});
+					$(window).on('resize', function(){
+						ps.update();
+					})
+				});
 	</script>
 	<script>
 		//預覽圖片
@@ -876,6 +877,15 @@ height:650px;
 			}
 
 		}
+		
+	
+		
+		
+		
+		
+		
+		
+		
 
 		function initAutocomplete() {
 			var map = new google.maps.Map(document.getElementById('map'), {
@@ -909,6 +919,10 @@ height:650px;
 
 			searchBox.addListener('places_changed', function() {
 
+				
+				
+				
+				
 				//位置變換時取得經緯度
 
 				var pacinputv = $("#pacinput").val()
@@ -952,7 +966,7 @@ height:650px;
 					// Create a marker for each place.
 					markers.push(new google.maps.Marker({
 						map : map,
-						icon : icon,
+// 						icon : icon,
 						title : place.name,
 						position : place.geometry.location
 					}));
