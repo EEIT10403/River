@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -13,12 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import _11.model.MemberBean;
 import _11.model.MemberService;
 
 @Controller
-public class MenberController {
+public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
@@ -29,7 +32,7 @@ public class MenberController {
 	}
 	@RequestMapping("/_11_memberpages/member.controller")
 	public String method(Model model,String members, 
-			MemberBean bean,BindingResult bindingResults) {
+			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
 		System.out.println("bean="+bean);
 		System.out.println("bindingResult"+bindingResults);
 		
@@ -82,7 +85,10 @@ public class MenberController {
 			model.addAttribute("Delete", result);
 			return "member.errors";
 			
-		} else {
+		}else if("Logout".equals(members)) {
+			sessionStatus.setComplete();
+			return "logout.success";
+		}else {
 			errors.put("action", "unknow action:" + members);
 			return "member.errors";
 		}

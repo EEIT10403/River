@@ -119,7 +119,9 @@ function clearForm() {
 			<input type="submit" name="members" value="Delete">
 			<input type="submit" name="members" value="Select">
 			<input type="button" value="Clear" onclick="clearForm()">
-		</td>	 
+		</td>
+		<td><input type="submit" name="members" value="Logout"></td>	 
+<!-- 		<td align="right"><input type="submit" name = "members" value="Logout"></td>	  -->
 	</tr>
 </table>
 </form>

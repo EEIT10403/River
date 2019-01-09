@@ -9,6 +9,7 @@ import javax.persistence.Table;
 public class MemberBean {
 	@Id
 	private String member_Id;
+	private byte[] password;
 	private String email;
 	private String chinese_Name;
 	private String english_Name;
@@ -30,6 +31,12 @@ public class MemberBean {
 	}
 	public void setMember_Id(String member_Id) {
 		this.member_Id = member_Id;
+	}
+	public byte[] getPassword() {
+		return password;
+	}
+	public void setPassword(byte[] password) {
+		this.password = password;
 	}
 	public String getemail() {
 		return email;

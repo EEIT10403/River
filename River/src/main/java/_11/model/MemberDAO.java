@@ -6,6 +6,8 @@ import java.util.List;
 public interface MemberDAO  {
 	public abstract MemberBean findByPrimaryKey(String Member_Id);
 	
+	public abstract boolean updatePW(byte[] password, String Member_Id);
+	
 	public abstract List<MemberBean> findAll();
 	
 	public abstract MemberBean create(MemberBean bean);

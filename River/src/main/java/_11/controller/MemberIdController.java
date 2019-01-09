@@ -16,7 +16,7 @@ import _11.model.MemberService;
 
 @Controller
 @ResponseBody
-public class MenberIdController {
+public class MemberIdController {
 	@Autowired
 	private MemberService memberService;
 	@RequestMapping(
