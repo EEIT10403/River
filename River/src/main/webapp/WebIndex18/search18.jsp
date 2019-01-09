@@ -100,20 +100,7 @@
 						</ul>
 					</div>	
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-					</div>
+					
 				</nav>
 			</div>	
 		</div>
@@ -211,7 +198,7 @@
 		<div class="wrap-slick1">
 			<div class="slick1">
 				
-				<div class="item-slick1" style=" background: #DDDDDD;">
+				<div class="it2" style=" background: #DDDDDD;">
 				
 				<div>
 				
@@ -230,7 +217,11 @@
 
 
 <!-- ===================班次查詢中間==================== -->
-
+<div id="booking2">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking2-form">
 	<form action="<c:url value="/form.controller" />" method="post">
 														
 							
@@ -612,7 +603,7 @@
 									<div class="form-group">
 										<span class="form-label">成人 (12+)</span>
 										<select class="form-control" name="people" >
-											<option label="${formBean.people}"></option>
+											<option label="${formBean.people}">${formBean.people}</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -678,10 +669,37 @@
 								</div>
 							</div>
 </form>
-
- 
-
+		</div>
+		</div>
+	</div>
+	</div>
+</div>
+						
 <!-- ===================機票相關表單結束==================== -->
+
+<!-- ===================機票查詢資料==================== -->
+
+
+
+<div id="content">
+
+result
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===================機票查詢資料結束==================== -->
+
 
 
 

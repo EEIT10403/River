@@ -2,7 +2,10 @@ package sabre.model;
 
 import javax.persistence.Entity;
 
+import org.springframework.stereotype.Repository;
+
 @Entity
+@Repository
 public class FormBean {
 	private String zt_country;
 	private String zt_country02;

@@ -42,7 +42,7 @@ public class LoginController {
 			return "login.errors";
 		}
 //呼叫model
-		MemberBean bean = memberService.l
+		
 		return null;
 		
 	}

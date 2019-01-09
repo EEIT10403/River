@@ -23,7 +23,7 @@ import _21_traveling.model.TravelItineraryBean;
 
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model","_21_traveling.model"})
+@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model","_21_traveling.model","sabre.model"})
 @EnableTransactionManagement
 public class SpringJavaConfiguration {
 	@Bean
