@@ -20,6 +20,8 @@ import ShoppingCart.model.ShoppingCartBean;
 import _11.model.MemberBean;
 import _21_traveling.model.TouristAttractionBean;
 import _21_traveling.model.TravelItineraryBean;
+import _27_Order.model.OrderItemBean;
+import _27_Order.model.OrderSellBean;
 import _27_Order.model.TravelerBean;
 
 
@@ -52,7 +54,7 @@ public class SpringJavaConfiguration {
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
 		builder.addAnnotatedClasses( DayTour_ProductBean.class,ShoppingCartBean.class,MemberBean.class
-				,TouristAttractionBean.class,TravelItineraryBean.class,TravelerBean.class);
+				,TouristAttractionBean.class,TravelItineraryBean.class,TravelerBean.class,OrderItemBean.class,OrderSellBean.class);
 
 
 		Properties props = new Properties();
