@@ -56,6 +56,11 @@
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <!--===============================================================================================-->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css"
+	rel="stylesheet">
+
+
 
 
 </head>
@@ -278,291 +283,228 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<div style='padding: 7% 25% 8% 25%; background-color: white'>
+		<form name="insert" ENCTYPE="multipart/form-data"
+		action="<c:url value="/pages/product.controller" />" method="post">
+		<div style='padding: 10% 20%'>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12" style="padding: 4% 2%">
-						<h3>訂單明細表</h3>
-
+					<div class="col-md-12">
+						<div class="jumbotron">
+							<h2>產品管理平台</h2>
+							<p>好好賣阿。</p>
+							<hr>
+							<a class="btn btn-primary btn-large" href="#checkId"
+								data-toggle="modal" style="padding:20px">輸入產品代號</a>
+						</div>
+						<div class="page-header">
+						<h2>
+							<span id="ShowProduct_Id">產品編號: ${param.Product_Id}</span>	
+							</h2>
+							<h2>
+								產品名稱: <input type="text" name="Prod_Name"
+									value="${param.Prod_Name}"
+									style="border: solid 1px; width: 900px">
+							</h2>
+						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-7" style='padding: 30px'>
+						<img alt="Bootstrap Image Preview" style='width: 500px'
+							id='productImage'
+							src='<%=request.getContextPath()%>/images/_027_Pimage/white.jpg' />
+						<span>上傳新圖檔</span><input type="file" name="Main_Image"
+							value="${param.Main_Image}">
+					</div>
 
-				<form action="<c:url value="/Order/InsertOrder" />">
+					<div class="col-md-5">
 
-					<input type="hidden" name="product_Id" value="${bean.product_Id}">
-					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
-					<input type="hidden" name="country" value="${bean.country}">
-					<input type="hidden" name="ticket_type_1"
-						value="${bean.ticket_type_1}"> <input type="hidden"
-						name="ticket_type_2" value="${bean.ticket_type_2}"> <input
-						type="hidden" name="ticket_type_3" value="${bean.ticket_type_3}">
-					<input type="hidden" name="ticket_type_4"
-						value="${bean.ticket_type_4}"> <input type="hidden"
-						name="unitPrice_1" value="${bean.unitPrice_1}"> <input
-						type="hidden" name="unitPrice_2" value="${bean.unitPrice_2}">
-					<input type="hidden" name="unitPrice_3" value="${bean.unitPrice_3}">
-					<input type="hidden" name="unitPrice_4" value="${bean.unitPrice_4}">
-					<input type="hidden" name="TicketQty1"
-						value="${ticketType.Type1_Qty}"> <input type="hidden"
-						name="TicketQty2" value="${ticketType.Type2_Qty}"> <input
-						type="hidden" name="TicketQty3" value="${ticketType.Type3_Qty}">
-					<input type="hidden" name="TicketQty4"
-						value="${ticketType.Type4_Qty}"> <input type="hidden"
-						name="Total_Amount" value="${Total_Amount}"> <input
-						type="hidden" name="TravelDate"
-						value="<fmt:formatDate value="${TravelDate}" pattern="yyyy-MM-dd" />">
-					<input type="hidden" name="OrderDate" id="OrderDate" value="">
+						<hr>
+						<span>國家: <select name="Country">
+								<option value="JA">日本</option>
+								<option value="KO">韓國</option>
+								<option value="SA">東南亞</option>
+								<option value="AU">紐澳</option>
+								<option value="EU">歐洲</option>
+								<option value="AM">美加</option>
+						</select></span> <span>地區: <select name="Region">
+								<option value="Kan">關西</option>
+								<option value="Tok">關東</option>
+								<option value="Kyu">九州</option>
+								<option value="Oki">沖繩</option>
+								<option value="Hok">北海道</option>
+						</select></span>
+						<hr>
+						<textarea id="summernote3" name="Features"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table table-hover table-sm table-bordered">
+							<thead>
+								<tr>
+									<th>票種名稱</th>
+									<th>特價</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="table-active">
+									<td><input type="text" name="Ticket_type_1" value=""
+										placeholder="01. 票種名稱" style="border: solid 1px; width: 500px"></td>
+									<td><input type="text" name="UnitPrice_1" value=""
+										placeholder="01. 票價"></td>
+									<td><a
+										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">刪除此票種</a>
+									</td>
+								</tr>
 
-					<div class="row">
+								<tr class="table-active">
+									<td><input type="text" name="Ticket_type_2" value=""
+										placeholder="02. 票種名稱" style="border: solid 1px; width: 500px"></td>
+									<td><input type="text" name="UnitPrice_2" value=""
+										placeholder="02. 票價"></td>
+									<td><a
+										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">刪除此票種</a>
+									</td>
+								</tr>
 
-						<!-- 填表區塊1 start -->
-						<div class="col-md-9">
-
-							<div class="row">
-								<div class="col-md-12"
-									style="background-color: #D6E6E5; border: solid #387780 1px; padding: 15px">
-									<!-- 								   <i class="icon-marker">1</i> -->
-									<h4>
-										<span>1. 填寫旅客資訊</span>
-									</h4>
-									<h6>
-										<span style="color: orange"> ＊為必填 </span> 如欲修改會員資料，請至「會員中心」修改
-									</h6>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12"
-									style="background-color: #EBFCFB; border: solid #387780 1px; padding: 15px">
-									<c:if test="${ticketType.Type1_Qty>0}">
-										<h5 class="text-dark-green"
-											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_1}</h5>
-										<div style="padding: 10px 25px 15px 35px;">
-											<script>
-										
-										var i=1 ;
-										
-										for(i=1; i<=${ticketType.Type1_Qty}; i++){
-											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
-											document.write("<h6>＊中文姓名: </h6>")
-											document.write("<input type='text' name='Traveler_Name1_"+i+"' style='border:solid 1px'value=''>")
-											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday1_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
-											document.write("<br><br>")
-										}
-										</script>
+								<tr class="table-active">
+									<td><input type="text" name="Ticket_type_3" value=""
+										placeholder="03. 票種名稱" style="border: solid 1px; width: 500px"></td>
+									<td><input type="text" name="UnitPrice_3" value=""
+										placeholder="03. 票價"></td>
+									<td><a
+										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">刪除此票種</a>
+									</td>
+								</tr>
+								<tr class="table-active">
+									<td><input type="text" name="Ticket_type_4" value=""
+										placeholder="04. 票種名稱" style="border: solid 1px; width: 500px"></td>
+									<td><input type="text" name="UnitPrice_4" value=""
+										placeholder="04. 票價"></td>
+									<td><a
+										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">刪除此票種</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="row" id="viewdetails">
+							<!-- 頁面內瞬移有點被header擋到 -->
+							<div class="col-md-9">
+								<div class="tabbable" id="tabs-916421">
+									<ul class="nav nav-tabs">
+										<li class="nav-item"><a class="nav-link active show"
+											href="#tab1" data-toggle="tab">詳細介紹</a></li>
+										<li class="nav-item"><a class="nav-link " href="#tab2"
+											data-toggle="tab">權益說明</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab1">
+											<textarea id="summernote" name="Detail"></textarea>
 										</div>
-									</c:if>
-
-									<c:if test="${ticketType.Type2_Qty>0}">
-										<h5 class="text-dark-green"
-											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_2}</h5>
-										<div style="padding: 10px 25px 15px 35px;">
-											<script>
-										
-										var i=1 ;
-										
-										for(i=1; i<=${ticketType.Type2_Qty}; i++){
-											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
-											document.write("<h6>＊中文姓名: </h6>")
-											document.write("<input type='text' name='Traveler_Name2_"+i+"' style='border:solid 1px'value=''>")
-											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday2_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
-											document.write("<br><br>")
-										}
-										</script>
-										</div>
-									</c:if>
-
-									<c:if test="${ticketType.Type3_Qty>0}">
-										<h5 class="text-dark-green"
-											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_3}</h5>
-										<div style="padding: 10px 25px 15px 35px;">
-											<script>
-										
-										var i=1 ;
-										
-										for(i=1; i<=${ticketType.Type3_Qty}; i++){
-											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
-											document.write("<h6>＊中文姓名: </h6>")
-											document.write("<input type='text' name='Traveler_Name3_"+i+"' style='border:solid 1px'value=''>")
-											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday3_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
-											document.write("<br><br>")
-										}
-										</script>
-										</div>
-									</c:if>
-									<c:if test="${ticketType.Type4_Qty>0}">
-										<h5 class="text-dark-green"
-											style="font-weight: bold; padding: 15px 59px 0 40px;">${bean.ticket_type_4}</h5>
-										<div style="padding: 10px 25px 15px 35px;">
-											<script>
-										
-										var i=1 ;
-										
-										for(i=1; i<=${ticketType.Type4_Qty}; i++){
-											document.write("<h6 class='' style='margin-top: -10px; padding: 12px; font-weight: normal;'>旅客"+i+"</h6>");
-											document.write("<h6>＊中文姓名: </h6>")
-											document.write("<input type='text' name='Traveler_Name4_"+i+"' style='border:solid 1px'value=''>")
-											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday4_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
-											document.write("<br><br>")
-										}
-										</script>
-										</div>
-									</c:if>
-									<!-- input 姓名生日end  -->
-
-
-								</div>
-							</div>
-
-						</div>
-						<!-- 填表區塊1 end -->
-						<!-- 填表區塊2 start -->
-						<div class="col-md-9">
-
-							<div class="row">
-								<div class="col-md-12"
-									style="background-color: #D6E6E5; border: solid #387780 1px; padding: 15px">
-									<!-- 								   <i class="icon-marker">1</i> -->
-									<h4>
-										<span>2. 行程聯絡人</span>
-									</h4>
-									<h6>
-										<span style="color: orange"> ＊為必填 </span>
-									</h6>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12"
-									style="background-color: #EBFCFB; border: solid #387780 1px; padding: 15px">
-									<table>
-										<tr>
-											<td>
-												<h6 class=''
-													style='margin-top: -10px; padding: 12px; font-weight: normal;'>主要聯絡人</h6>
-											</td>
-										</tr>
-										<tr>
-											<td style='padding: 15px 65px 15px 30px'>
-												<h6>＊中文姓名:</h6> <input type='text' name='Contact_Name'
-												style='border: solid 1px' value=''>
-											</td>
-											<td>
-												<h6>＊聯絡e-mail:</h6> <input type='text' name='Contact_Email'
-												style='border: solid 1px' value=''>
-											</td>
-										</tr>
-										<tr>
-											<td style='padding: 15px 65px 15px 30px'>
-												<h6>＊ 聯絡電話：手機:</h6> <input type='text' name='Contact_Phone'
-												style='border: solid 1px' value=''>
-											</td>
-										</tr>
-										<tr>
-											<td style='padding: 15px 65px 15px 30px' colspan="2">
-												<h6>＊聯絡地址:</h6> <input type='text' name='Contact_Address'
-												style='border: solid 1px; width: 400px' value=''>
-											</td>
-										</tr>
-										<tr>
-											<td style='padding: 15px 65px 15px 30px' colspan="2">
-												<h6>公司抬頭:</h6> <input type='text' name='InvoiceTitle'
-												style='border: solid 1px; width: 400px' value=''>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-<!-- 							<button type="submit" style="margin: 10px 5px 0px 0px" -->
-<!-- 								id='confirmBtn' class="btn btn-block btn-info">確認送出</button> -->
-							<a id="modal-786743" href="#doubleConfirm" role="button"  style="margin: 10px 5px 0px 0px"
-								class="btn btn-block btn-info" data-toggle="modal">確認送出</a>
-						</div>
-						<!-- 填表區塊2 end -->
-
-
-						<!-- 購買資訊佔存區塊 start -->
-						<div class="col-md-3"
-							style="position: fixed; right: 12%; top: 27%">
-
-
-							<div class="row">
-								<div class="col-md-12">
-									<div id="card-129119">
-										<div class="card">
-											<div class="card-header">
-												<a class="card-link" data-toggle="collapse"
-													data-parent="#card-129119" href="#card-element-742160">檢視訂單明細
-												</a>
-											</div>
-											<div id="card-element-742160" class="collapse"
-												style="background-color: #F3FFBD; border: solid 1px">
-												<div style='padding: 10px'>${bean.prod_Name}</div>
-												<div style='padding: 10px'>
-													使用日期:
-													<fmt:formatDate value="${TravelDate}" pattern="yyyy/MM/dd " />
-												</div>
-												<hr>
-												<div style='padding: 10px'>${bean.ticket_type_1}
-													${bean.unitPrice_1} 元 x ${ticketType.Type1_Qty}</div>
-												<c:if test="${ticketType.Type2_Qty>0}">
-													<div style='padding: 10px'>${bean.ticket_type_2}
-														${bean.unitPrice_2} 元 x ${ticketType.Type2_Qty}</div>
-												</c:if>
-												<c:if test="${ticketType.Type3_Qty>0}">
-													<div style='padding: 10px'>${bean.ticket_type_3}
-														${bean.unitPrice_3} 元 x ${ticketType.Type3_Qty}</div>
-												</c:if>
-												<c:if test="${ticketType.Type4_Qty>0}">
-													<div style='padding: 10px'>${bean.ticket_type_4}
-														${bean.unitPrice_4} 元 x ${ticketType.Type4_Qty}</div>
-												</c:if>
-												<div class="card-body" style="color: red">總計金額 :
-													${Total_Amount} 元</div>
-											</div>
+										<div class="tab-pane " id="tab2">
+											<textarea id="summernote2" name="Rights"></textarea>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<!-- 購買資訊佔存區塊 end -->
-					</div>
-					<!-- Modal 區塊start-->
-					<div class="modal fade" id="doubleConfirm" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">即將完成</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
+								<div class="btn-group btn-group-lg" role="group" style="margin:30px">
+
+<!-- 									<button class="btn btn-secondary" type="submit" name="prodaction" value="Update">儲存修改</button> -->
+<%-- 									<a class="btn btn-secondary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" > --%>
+<!-- 										重新填寫</a> -->
+								<a id="modal-786743" href="#doubleConfirm1" role="button"   
+								class="btn btn-secondary" data-toggle="modal">儲存修改</a>
+								<a id="modal-786743" href="#doubleConfirm2" role="button"   
+								class="btn btn-secondary" data-toggle="modal">重新填寫</a>
+										
 								</div>
-								<div class="modal-body">還差最後一步，付款後交易即完成，準備出發!</div>
-								<div class="modal-footer">
-									<button type="submit" id='confirmBtn' type="button" class="btn btn-primary">我了解，送出</button>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">再修改一下資料</button>
-								</div>
+								
 							</div>
-
+							<div class="col-md-3"></div>
 						</div>
-
 					</div>
-					<!-- Modal 區塊end-->
-
-
-				</form>
-
-
+				</div>
 			</div>
 		</div>
 
 		<!-- 產品顯示部分end -->
 
+		<!-- Modal 產品代號輸入區塊start-->
+		<div class="modal fade" id="checkId" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content" style="margin-top: 100px">
+					<div class="modal-header">
+						<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<input type="text" name="Product_Id" value="${param.Product_Id}"
+							style="border: solid 1px; width: 450px">
+					</div>
+					<span class="error">${errors.Product_Id}</span>
+					<div class="modal-footer">
 
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" id="getInfo">取得明細</button>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+		<div class="modal fade" id="doubleConfirm1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="margin-top:100px">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">確認要儲存嗎?</div>
+								<div class="modal-footer">
+									<button type="submit" id='confirmBtn' type="button" name="prodaction" value="Update" class="btn btn-primary">送出</button>
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">退回修改</button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+		<div class="modal fade" id="doubleConfirm2" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="margin-top:100px">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel">清除重來</h5>
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">確認要清除重來嗎?</div>
+								<div class="modal-footer">
+									<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
+										重新填寫</a>
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">取消</button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+									
+		</form>
+		<!-- Modal 區塊end-->
+
+		<!-- Load more -->
 
 
 		<!-- Footer -->
@@ -692,72 +634,110 @@
 	<!--===============================================================================================-->
 	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
 
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#summernote').summernote('code', '請輸入詳細介紹');
+		$('#summernote2').summernote('code', '請輸入權益說明:');
+		$('#summernote3').summernote('code', '請輸入商品特色:');
+		
+	});
+	
+	var contextPath = "${pageContext.request.contextPath}";
+	$(document).ready(function() {
+		$('#getInfo').click(function() {
+			$.ajax({
+				method : "GET",
+				url : contextPath + "/pages/products.view",
+				data : "Product_Id=" + $('input[name="Product_Id"]').val(),
+				dataType : "json",
+				cache : false,
+				async : true,
+				success : function(json) {
+					$(".error").first().append(json[0].text);
+					if (json[0].hasMoreData) {
+						$("#ShowProduct_Id").html("產品編號: <br>"+json[1].Product_Id);
+						$("input[name='Prod_Name']").val(json[1].Prod_Name);
+						$("#productImage").attr("src","<%=request.getContextPath()%>/images/_027_Pimage/"+json[1].Product_Id+".jpg");
+						$('#summernote3').summernote('code', json[1].Features);
+//想要秀出內容大概是這樣 		$('#Features1').html(json[1].Features);
+						$("input[name='Ticket_type_1']").val(json[1].Ticket_type_1);
+						$("input[name='UnitPrice_1']").val(json[1].UnitPrice_1);
+						$("input[name='Ticket_type_2']").val(json[1].Ticket_type_2);
+						$("input[name='UnitPrice_2']").val(json[1].UnitPrice_2);
+						$("input[name='Ticket_type_3']").val(json[1].Ticket_type_3);
+						$("input[name='UnitPrice_3']").val(json[1].UnitPrice_3);
+						$("input[name='Ticket_type_4']").val(json[1].Ticket_type_4);
+						$("input[name='UnitPrice_4']").val(json[1].UnitPrice_4);
+						$("input[name='Discount_Rate']").val(json[1].Discount_Rate);
+						$("input[name='Acceptable_Discount_Rate']").val(json[1].Acceptable_Discount_Rate);
+						$("input[name='Region']").val(json[1].Region);
+						$("input[name='Country']").val(json[1].Country);
+						$('#summernote').summernote('code', json[1].Detail);
+						$('#summernote2').summernote('code', json[1].Rights);
+						
+					}
+				}
+			});
+		});
+		$("input[name='id']").focus(function() {
+			clearForm();
+			$(".error").first().html("");
+		});
+	});
+	
+		
+	function clearForm() {
+		var inputs = document.getElementsByTagName("input");
+		for (var i = 0; i < inputs.length; i++) {
+			if (inputs[i].type == "text") {
+				inputs[i].value = "";
+			}
+		}
+	}
+</script>
 
 	<script>
  
-<!-- 修改張數start-->
-function ticketQty() {
-	$('#ticketQty').empty();
-	var Type1_Qty = $('#Type1_Qty').val();
-	var Type2_Qty = $('#Type2_Qty').val();
-	var Type3_Qty = $('#Type3_Qty').val();
-	var Type4_Qty = $('#Type4_Qty').val();
-	var t1 = Number(Type1_Qty);
-	var t2 = Number(Type2_Qty);
+<!-- 立即訂購 start-->
+$('#buynow').click(function(){
+	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
+});
 	
-	var t3 = Number(Type3_Qty);
-	if (!t3)
-	t3 =Number('0');
-	var t4 = Number(Type4_Qty);
-	if (!t4)
-	t4 =Number('0');
-	
-	var ticketQty =t1+t2+t3+t4;
-	$('#ticketQty').html('共計 '+ ticketQty +' 張');
-	$('#ticketQty').val(ticketQty);
-
-}
-
-
-function totalPrice() {
-	$('#totalPrice').empty();
-	var subTotal1 = $('#subTotal1').val();
-	var subTotal2 = $('#subTotal2').val();
-	var subTotal3 = $('#subTotal3').val();
-	var subTotal4 = $('#subTotal4').val();
-	var s1 = Number(subTotal1);
-	var s2 = Number(subTotal2);
-	
-	var s3 = Number(subTotal3);
-	if (!s3)
-	s3 =Number('0');
-	var s4 = Number(subTotal4);
-	if (!s4)
-	s4 =Number('0');
-	
-	var totalPrice =s1+s2+s3+s4;
-	$('#totalPrice').html('應付總額 '+ totalPrice +' 元');
-	$('#totalPrice').val(ticketQty);
-
-}
-
-function getDate(){
-// alert("hi");
-	$('#OrderDate').val(new Date());
-};
+		
+<!-- 立即訂購 end -->
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		getDate();
-	}); 
-	<!-- document).ready 結尾 -->
+		
+	}); <!-- document).ready 結尾-->
 	
+	</script>
+
+	<script>
+	
+	<!--切換產品區域功能 start -->
+	$('#region>button').click(function(){
+		var reg = $(this).val();
+// 		alert($(this).val());
+		loadProduct(reg); 
+		changesize();
+    })
+    
+    <!--切換產品區域功能 end -->
+	
+
 	</script>
 
 	<script>
