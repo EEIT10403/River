@@ -95,6 +95,8 @@ public class IntoOrderPage {
 			String Contact_Name,String Contact_Address,String Contact_Phone,String Contact_Email,String InvoiceTitle,
 			HttpServletRequest request) throws IOException, ServletException, SQLException {
 
+		System.out.println("Contact_Name="+Contact_Name);
+		
 		int ticketQty3 = 0;
 		if (TicketQty3 != "") {
 			ticketQty3 = Integer.parseInt(TicketQty3);

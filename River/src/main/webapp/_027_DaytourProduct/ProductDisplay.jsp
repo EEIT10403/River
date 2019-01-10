@@ -290,7 +290,7 @@
 				<div class="row">
 					<div class="col-md-7" style='padding:30px'>
 						<img alt="Bootstrap Image Preview" style='width: 500px'
-							src='<%=request.getContextPath()%>/getProductMainImage?Product_Id=${bean.product_Id}' />
+							src='<%=request.getContextPath()%>/images/_027_Pimage/${bean.product_Id}.jpg' />
 					</div>
 					<div class="col-md-5">
 						<!-- 						<h2>Heading</h2> -->

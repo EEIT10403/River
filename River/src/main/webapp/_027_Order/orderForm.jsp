@@ -446,7 +446,7 @@
 										</tr>
 										<tr>
 											<td style='padding: 15px 65px 15px 30px'>
-												<h6>＊中文姓名:</h6> <input type='text' name='Main_Contact_Name'
+												<h6>＊中文姓名:</h6> <input type='text' name='Contact_Name'
 												style='border: solid 1px' value=''>
 											</td>
 											<td>
