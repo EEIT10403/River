@@ -22,10 +22,10 @@ public class OrderSellDAOHibernate implements OrderSellDAO {
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
-//	@Override
-//	public OrderSellBean findByPrimaryKey(String id) {
-//		return this.getSession().get(OrderItemBean.class, id);
-//	}
+	@Override
+	public OrderSellBean findByPrimaryKey(String id) {
+		return this.getSession().get(OrderSellBean.class, id);
+	}
 	@Override
 	public List<OrderSellBean> findAll() {
 		return this.getSession().createQuery("from OrderSellBean", OrderSellBean.class)
@@ -43,16 +43,16 @@ public class OrderSellDAOHibernate implements OrderSellDAO {
 //		System.out.println("有近findOrdersByMemberId ==>list="+list);
 	return list;
 	}
-	@Override
-	public List<OrderSellBean> findOrdersByOrder_No(String Order_No){
+//	@Override
+//	public OrderSellBean findOrderByOrder_No(String Order_No){
 //		System.out.println("Order_No="+Order_No);
-		Query query = this.getSession().createQuery("from OrderSellBean Where Order_No=:xxx", OrderSellBean.class);
-		query.setParameter("xxx", Order_No);
-	
-		List<OrderSellBean> list = query.getResultList();
-		System.out.println("list="+list);
-	return list;
-	}
+//		Query query = this.getSession().createQuery("from OrderSellBean Where Order_No=:xxx", OrderSellBean.class);
+//		query.setParameter("xxx", Order_No);
+//	
+//		OrderSellBean list = (OrderSellBean) query.getResultList();
+//		System.out.println("list="+list);
+//	return list;
+//	}
 	@Override
 	public OrderSellBean create(OrderSellBean bean) {
 		if(bean!=null) {
@@ -85,9 +85,9 @@ public class OrderSellDAOHibernate implements OrderSellDAO {
 //	}
 	
 	@Override
-	public boolean removeByOrder_No(OrderSellBean bean) {
+	public boolean removeByOrder_No(String Order_No) {
 		Query query = this.getSession().createQuery("delete OrderSellBean where Order_No=:xxx");
-		query.setParameter("xxx", bean.getOrder_No());
+		query.setParameter("xxx", Order_No);
 		
 		int delete = query.executeUpdate();
 		System.out.println("delete="+delete);

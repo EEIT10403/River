@@ -37,7 +37,7 @@ public class OrderItemDAOHibernate implements OrderItemDAO {
 	}
 	
 	@Override
-	public List<OrderItemBean> findTravelerByOrder_No(String Order_No){
+	public List<OrderItemBean> findItemsByOrder_No(String Order_No){
 //		System.out.println("Order_No="+Order_No);
 		Query query = this.getSession().createQuery("from OrderItemBean Where Order_No=:xxx", OrderItemBean.class);
 		query.setParameter("xxx", Order_No);

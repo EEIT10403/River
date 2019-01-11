@@ -8,7 +8,7 @@ public interface OrderItemDAO {
 
 	public abstract List<OrderItemBean> findAll();
 	
-	public abstract List<OrderItemBean> findTravelerByOrder_No(String Order_No);
+	public abstract List<OrderItemBean> findItemsByOrder_No(String Order_No);
 
 	public abstract OrderItemBean create(OrderItemBean bean);
 

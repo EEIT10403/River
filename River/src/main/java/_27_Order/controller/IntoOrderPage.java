@@ -242,7 +242,7 @@ public class IntoOrderPage {
 			OrderItemBean orderItemBean = new OrderItemBean();
 			orderItemBean.setOrder_No(OrderNo);
 			orderItemBean.setProduct_Id(bean.getProduct_Id());
-			orderItemBean.setTicekt_type(Ticket_type_1);
+			orderItemBean.setTicket_type(Ticket_type_1);
 			orderItemBean.setProd_Name(bean.getProd_Name());
 			orderItemBean.setQuantity(ticketQty1);
 			orderItemBean.setUnitPrice(bean.getUnitPrice_1());
@@ -257,7 +257,7 @@ public class IntoOrderPage {
 			OrderItemBean orderItemBean = new OrderItemBean();
 			orderItemBean.setOrder_No(OrderNo);
 			orderItemBean.setProduct_Id(bean.getProduct_Id());
-			orderItemBean.setTicekt_type(Ticket_type_2);
+			orderItemBean.setTicket_type(Ticket_type_2);
 			orderItemBean.setProd_Name(bean.getProd_Name());
 			orderItemBean.setQuantity(ticketQty2);
 			orderItemBean.setUnitPrice(bean.getUnitPrice_2());
@@ -272,7 +272,7 @@ public class IntoOrderPage {
 			OrderItemBean orderItemBean = new OrderItemBean();
 			orderItemBean.setOrder_No(OrderNo);
 			orderItemBean.setProduct_Id(bean.getProduct_Id());
-			orderItemBean.setTicekt_type(Ticket_type_3);
+			orderItemBean.setTicket_type(Ticket_type_3);
 			orderItemBean.setProd_Name(bean.getProd_Name());
 			orderItemBean.setQuantity(ticketQty3);
 			orderItemBean.setUnitPrice(bean.getUnitPrice_3());
@@ -287,7 +287,7 @@ public class IntoOrderPage {
 			OrderItemBean orderItemBean = new OrderItemBean();
 			orderItemBean.setOrder_No(OrderNo);
 			orderItemBean.setProduct_Id(bean.getProduct_Id());
-			orderItemBean.setTicekt_type(Ticket_type_4);
+			orderItemBean.setTicket_type(Ticket_type_4);
 			orderItemBean.setProd_Name(bean.getProd_Name());
 			orderItemBean.setQuantity(ticketQty4);
 			orderItemBean.setUnitPrice(bean.getUnitPrice_4());

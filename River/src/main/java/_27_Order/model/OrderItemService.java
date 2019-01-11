@@ -22,8 +22,8 @@ public class OrderItemService {
 		return orderItemDAO.findAll();
     }
 
-	public List<OrderItemBean> findTravelerByOrder_NO(String Order_No) {
-		return orderItemDAO.findTravelerByOrder_No(Order_No);
+	public List<OrderItemBean> findItemsByOrder_No(String Order_No) {
+		return orderItemDAO.findItemsByOrder_No(Order_No);
 
 	}
 

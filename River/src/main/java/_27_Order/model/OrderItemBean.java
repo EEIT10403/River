@@ -15,7 +15,7 @@ public class OrderItemBean {
 	private int SerialNum;
 	private String Order_No;
 	private String Product_Id;
-	private String Ticekt_type;
+	private String Ticket_type;
 	private String Prod_Name;
 	private int Quantity;
 	private int UnitPrice;
@@ -27,7 +27,7 @@ public class OrderItemBean {
 	@Override
 	public String toString() {
 		return "OrderItemBean [SerialNum=" + SerialNum + ", Order_No=" + Order_No + ", Product_Id=" + Product_Id
-				+ ", Ticekt_type=" + Ticekt_type + ", Prod_Name=" + Prod_Name + ", Quantity=" + Quantity
+				+ ", Ticket_type=" + Ticket_type + ", Prod_Name=" + Prod_Name + ", Quantity=" + Quantity
 				+ ", UnitPrice=" + UnitPrice + ", Discount_Rate=" + Discount_Rate + ", Total_Amount=" + Total_Amount
 				+ ", Unpaid_Amount=" + Unpaid_Amount + ", Paid_Amount=" + Paid_Amount + "]";
 	}
@@ -56,12 +56,12 @@ public class OrderItemBean {
 		Product_Id = product_Id;
 	}
 
-	public String getTicekt_type() {
-		return Ticekt_type;
+	public String getTicket_type() {
+		return Ticket_type;
 	}
 
-	public void setTicekt_type(String ticekt_type) {
-		Ticekt_type = ticekt_type;
+	public void setTicket_type(String ticekt_type) {
+		Ticket_type = ticekt_type;
 	}
 
 	public String getProd_Name() {

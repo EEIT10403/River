@@ -26,8 +26,8 @@ public class OrderSellService {
 		return orderSellDAO.findOrdersByMemberId(Member_Id);
 
 	}
-	public List<OrderSellBean> findOrdersByOrder_No(String Order_No) {
-		return orderSellDAO.findOrdersByOrder_No(Order_No);
+	public OrderSellBean findOrdersByOrder_No(String Order_No) {
+		return orderSellDAO.findByPrimaryKey(Order_No);
 
 	}
 
@@ -51,10 +51,10 @@ public class OrderSellService {
 //	public abstract boolean removeByOrder_No(TravelerBean bean);
 //	public abstract boolean removeOneData(String Id);
 
-	public boolean removeByOrder_No(OrderSellBean bean) {
+	public boolean removeByOrder_No(String Order_No) {
 		boolean result = false;
-		if (bean != null) {
-			result = orderSellDAO.removeByOrder_No(bean);
+		if (Order_No != null) {
+			result = orderSellDAO.removeByOrder_No(Order_No);
 		}
 		return result;
 	}

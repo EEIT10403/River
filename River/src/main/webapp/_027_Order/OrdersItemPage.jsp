@@ -280,59 +280,16 @@
 		<!-- 產品顯示部分 start-->
 
 
-		<div style='padding: 8% 10%'>
+		<div style='padding: 8% 18%'>
 
 			<c:set value="${member_Id}" var="m_Id" scope="session" />
 			<%-- 			<h1>${member_Id}</h1> --%>
 
-
-
-			<h1></h1>
-
-
 			<div class="container-fluid">
+
+
 				<div class="row">
 					<div class="col-md-12">
-						<div class="carousel slide" id="carousel-151068">
-							<ol class="carousel-indicators">
-								<li data-slide-to="0" data-target="#carousel-151068"></li>
-								<li data-slide-to="1" data-target="#carousel-151068"
-									class="active"></li>
-								<li data-slide-to="2" data-target="#carousel-151068"></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="carousel-item">
-									<img class="d-block w-100" alt="Carousel Bootstrap First"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
-									<div class="carousel-caption">
-										<h4>會員管理專區</h4>
-										<p></p>
-									</div>
-								</div>
-								<div class="carousel-item active">
-									<img class="d-block w-100" alt="Carousel Bootstrap Second"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
-									<div class="carousel-caption">
-										<h4>會員管理專區</h4>
-										<p></p>
-									</div>
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" alt="Carousel Bootstrap Third"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
-									<div class="carousel-caption">
-										<h4>會員管理專區</h4>
-										<p></p>
-									</div>
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carousel-151068"
-								data-slide="prev"><span class="carousel-control-prev-icon"></span>
-								<span class="sr-only">Previous</span></a> <a
-								class="carousel-control-next" href="#carousel-151068"
-								data-slide="next"><span class="carousel-control-next-icon"></span>
-								<span class="sr-only">Next</span></a>
-						</div>
 						<div style="text-align: center; margin: 30px">
 							<div class="btn-group btn-group-lg " role="group">
 
@@ -350,71 +307,103 @@
 						<div class="row">
 							<div class="col-md-12">
 								<hr>
-								<table class="table table-hover table-bordered">
-									<thead>
-										<tr style="background-color: #3be8b0">
-											<td>#訂單編號</td>
-											<td>訂單日期</td>
-											<td>商品名稱</td>
-											<td>出發日期</td>
-											<td>訂單明細</td>
-											<td>商品金額</td>
-											<td>其他選項</td>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach varStatus="stVar" var="anOrder"
-											items="${orderList}">
-											<tr class="table-Default">
-												<td>${anOrder.order_No}</td>
-												<td>${anOrder.orderDate}</td>
-												<td>${anOrder.prod_Name}</td>
-												<td>${anOrder.travelDate}</td>
+								<div style="padding: 20px">
 
-												<td><a class="btn btn-primary"
-													href="<c:url value="/Order/OrdersItemPage?Order_No=${anOrder.order_No}" />"
-													type="button">查看明細</a></td>
-												<td>${anOrder.total_Amount}</td>
-												<td><a class="btn btn-warning"
-													href="#delete${anOrder.order_No}" type="button"
-													data-toggle="modal">刪除訂單</a>
-													<div class="modal fade" id="delete${anOrder.order_No}"
-														role="dialog" aria-labelledby="myModalLabel"
-														aria-hidden="true">
-														<div class="modal-dialog" role="document">
-															<div class="modal-content" style="margin-top: 100px">
-																<div class="modal-header">
-																	<h5 class="modal-title" id="myModalLabel">刪除</h5>
-																	<button type="button" class="close"
-																		data-dismiss="modal">
-																		<span aria-hidden="true">×</span>
-																	</button>
-																</div>
-																<div class="modal-body">確認要刪除訂單${anOrder.order_No}嗎?</div>
-																<div class="modal-footer">
-																	<a class="btn btn-warning"
-																		href="<c:url value="/Order/DeleteOrderSell?Order_No=${anOrder.order_No}" />"
-																		type="button">確定刪除</a>
-																	<button type="button" class="btn btn-secondary"
-																		data-dismiss="modal">取消</button>
-																</div>
-															</div>
-
-														</div>
-
-													</div> <!-- Modal end --></td>
-
-												<!-- Modal start -->
-
-
-											</tr>
-
-
-										</c:forEach>
-									</tbody>
-
-								</table>
+									<h3>${order.prod_Name}</h3>
+								</div>
+								<div class="row">
+									<div class="col-md-5">
+										<img alt="Bootstrap Image Preview" style='width: 400px'
+											src='<%=request.getContextPath()%>/images/_027_Pimage/${pBean.product_Id}.jpg' />
+									</div>
+									<div class="col-md-7">
+										<ul>
+											<li class="list-item">訂單編號：${order.order_No}</li>
+											<li class="list-item" style="color: gray">(為能更快速服務，與客服人員洽詢時，請提示您的訂單編號)</li>
+											<li class="list-item">訂購日期：${order.orderDate}</li>
+											<li class="list-item">出發日期：${order.travelDate}</li>
+											<li class="list-item">客服人員：白三 聯絡電話：02-26335862 分機 585</li>
+											<li class="list-item">傳真電話：02-66183587</li>
+											<!-- 											<li class="list-item">Faucibus porta lacus fringilla vel</li> -->
+											<!-- 											<li class="list-item">Aenean sit amet erat nunc</li> -->
+											<!-- 											<li class="list-item">Eget porttitor lorem</li> -->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
 								<hr>
+								<div class="tabbable" id="tabs-75706">
+									<ul class="nav nav-tabs">
+										<li class="nav-item"><a class="nav-link active"
+											href="#tab1" data-toggle="tab">交易管理</a></li>
+										<li class="nav-item"><a class="nav-link" href="#tab2"
+											data-toggle="tab">訂單內容</a></li>
+										<li class="nav-item"><a class="nav-link" href="#tab3"
+											data-toggle="tab">客服訊息</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab1">
+											<table class="table table-hover table-bordered">
+												<thead>
+													<tr style="background-color: #3be8b0">
+														<td>票券種類</td>
+														<td>商品單價</td>
+														<td>總金額</td>
+														<td>已付金額</td>
+														<td>未付金額</td>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach varStatus="stVar" var="anItem"
+														items="${orderItems}">
+														<tr class="table-Default">
+															<td>${anItem.ticket_type}x${anItem.quantity}</td>
+															<td>${anItem.unitPrice}</td>
+															<td>${anItem.total_Amount}</td>
+															<td>${anItem.paid_Amount}</td>
+															<td>${anItem.unpaid_Amount}</td>
+														</tr>
+
+
+													</c:forEach>
+												</tbody>
+
+											</table>
+											<hr>
+										</div>
+										<div class="tab-pane" id="tab2">
+											<table class="table table-hover table-bordered">
+												<thead>
+													<tr style="background-color: #3be8b0">
+														<td>旅客名稱</td>
+														<td>生日</td>
+														<td>使用票種</td>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach varStatus="stVar" var="aTraveler"
+														items="${travelers}">
+														<tr class="table-Default">
+															<td>${aTraveler.traveler_Name}</td>
+															<td>${fn:substring(aTraveler.birthday, 0, 10)}</td>
+															<td>${aTraveler.ticket_Type}</td>
+															
+														</tr>
+
+
+													</c:forEach>
+												</tbody>
+
+											</table>
+										</div>
+									</div>
+								</div>
+
+
+
 
 							</div>
 						</div>
