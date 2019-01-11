@@ -21,9 +21,13 @@ public class OrderSellService {
     public List<OrderSellBean> findAll() {
 		return orderSellDAO.findAll();
     }
+    
+    public List<OrderSellBean> findOrdersByMemberId(String Member_Id) {
+		return orderSellDAO.findOrdersByMemberId(Member_Id);
 
-	public List<OrderSellBean> findTravelerByOrder_NO(String Order_No) {
-		return orderSellDAO.findTravelerByOrder_No(Order_No);
+	}
+	public List<OrderSellBean> findOrdersByOrder_No(String Order_No) {
+		return orderSellDAO.findOrdersByOrder_No(Order_No);
 
 	}
 

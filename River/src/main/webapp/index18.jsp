@@ -87,7 +87,8 @@
 
 								<li><a href="about.html">About</a></li>
 
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">合作廠商登入</a></li>
+								
 							</ul>
 						</div>
 
@@ -167,7 +168,7 @@
 
 					<li><a href="about.html">About</a></li>
 
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">合作廠商登入</a></li>
 				</ul>
 			</div>
 

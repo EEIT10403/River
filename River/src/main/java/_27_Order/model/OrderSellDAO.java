@@ -8,7 +8,8 @@ public interface OrderSellDAO {
 
 	public abstract List<OrderSellBean> findAll();
 	
-	public abstract List<OrderSellBean> findTravelerByOrder_No(String Order_No);
+	public abstract List<OrderSellBean> findOrdersByOrder_No(String Order_No);
+	public abstract List<OrderSellBean> findOrdersByMemberId(String Order_No);
 
 	public abstract OrderSellBean create(OrderSellBean bean);
 

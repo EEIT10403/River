@@ -13,6 +13,9 @@ public class OrderSellBean {
 	@Id
 	private String Order_No;
 	private String Member_Id;
+	private String Prod_Name;
+	
+	
 	private int Total_Amount;
 	private String TravelDate;
 	private String Contact_Name;
@@ -23,12 +26,22 @@ public class OrderSellBean {
 	private java.util.Date OrderDate;
 	private String canceltag;
 	
+
 	@Override
 	public String toString() {
-		return "OrderSellBean [Order_No=" + Order_No + ", Member_Id=" + Member_Id + ", Total_Amount=" + Total_Amount
-				+ ", TravelDate=" + TravelDate + ", Contact_Name=" + Contact_Name + ", Contact_Address="
-				+ Contact_Address + ", Contact_Phone=" + Contact_Phone + ", Contact_Email=" + Contact_Email
-				+ ", InvoiceTitle=" + InvoiceTitle + ", OrderDate=" + OrderDate + ", canceltag=" + canceltag + "]";
+		return "OrderSellBean [Order_No=" + Order_No + ", Member_Id=" + Member_Id + ", Prod_Name=" + Prod_Name
+				+ ", Total_Amount=" + Total_Amount + ", TravelDate=" + TravelDate + ", Contact_Name=" + Contact_Name
+				+ ", Contact_Address=" + Contact_Address + ", Contact_Phone=" + Contact_Phone + ", Contact_Email="
+				+ Contact_Email + ", InvoiceTitle=" + InvoiceTitle + ", OrderDate=" + OrderDate + ", canceltag="
+				+ canceltag + "]";
+	}
+
+	public String getProd_Name() {
+		return Prod_Name;
+	}
+
+	public void setProd_Name(String prod_Name) {
+		Prod_Name = prod_Name;
 	}
 
 	public String getOrder_No() {

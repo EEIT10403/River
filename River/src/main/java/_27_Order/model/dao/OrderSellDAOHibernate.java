@@ -34,7 +34,17 @@ public class OrderSellDAOHibernate implements OrderSellDAO {
 	}
 	
 	@Override
-	public List<OrderSellBean> findTravelerByOrder_No(String Order_No){
+	public List<OrderSellBean> findOrdersByMemberId(String MemberId){
+//		System.out.println("Order_No="+Order_No);
+		Query query = this.getSession().createQuery("from OrderSellBean Where Member_Id=:xxx", OrderSellBean.class);
+		query.setParameter("xxx", MemberId);
+	
+		List<OrderSellBean> list = query.getResultList();
+//		System.out.println("有近findOrdersByMemberId ==>list="+list);
+	return list;
+	}
+	@Override
+	public List<OrderSellBean> findOrdersByOrder_No(String Order_No){
 //		System.out.println("Order_No="+Order_No);
 		Query query = this.getSession().createQuery("from OrderSellBean Where Order_No=:xxx", OrderSellBean.class);
 		query.setParameter("xxx", Order_No);

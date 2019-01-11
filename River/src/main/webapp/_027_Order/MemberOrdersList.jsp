@@ -56,11 +56,6 @@
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <!--===============================================================================================-->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css"
-	rel="stylesheet">
-
-
 
 
 </head>
@@ -283,145 +278,108 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<form name="insert" ENCTYPE="multipart/form-data"
-		action="<c:url value="/pages/product.controller" />" method="post">
-		<div style='padding: 10% 20%'>
+
+
+		<div style='padding: 5% 20%'>
+
+			<c:set value="${member_Id}" var="member_Id" scope="session" />
+<%-- 			<h1>${member_Id}</h1> --%>
+
+			
+
+				<h1></h1>
+			
+
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="jumbotron">
-							<h2>產品管理平台</h2>
-							<p>好好賣阿。</p>
-							<hr>
-							<a class="btn btn-primary btn-large" href="#checkId"
-								data-toggle="modal" style="padding:20px">輸入產品代號</a>
-						</div>
-						<div class="page-header">
-						<h2>
-							<span id="ShowProduct_Id">產品編號: </span>	
-							</h2>
-							<h2>
-								產品名稱: <input type="text" name="Prod_Name"
-									value=""
-									style="border: solid 1px; width: 900px">
-							</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7" style='padding: 30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							id='productImage'
-							src='<%=request.getContextPath()%>/images/_027_Pimage/white.jpg' />
-						<span>上傳新圖檔</span><input type="file" name="Main_Image"
-							value="${param.Main_Image}">
-					</div>
-
-					<div class="col-md-5">
-
-						<hr>
-						<span>國家: <select name="Country">
-								<option value="JA">日本</option>
-								<option value="KO">韓國</option>
-								<option value="SA">東南亞</option>
-								<option value="AU">紐澳</option>
-								<option value="EU">歐洲</option>
-								<option value="AM">美加</option>
-						</select></span> <span>地區: <select name="Region">
-								<option value="Kan">關西</option>
-								<option value="Tok">關東</option>
-								<option value="Kyu">九州</option>
-								<option value="Oki">沖繩</option>
-								<option value="Hok">北海道</option>
-						</select></span>
-						<hr>
-						<textarea id="summernote3" name="Features"></textarea>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<table class="table table-hover table-sm table-bordered">
-							<thead>
-								<tr>
-									<th>票種名稱</th>
-									<th>特價</th>
-<!-- 									<th></th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_1" value=""
-										placeholder="01. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_1" value=""
-										placeholder="01. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_2" value=""
-										placeholder="02. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_2" value=""
-										placeholder="02. 票價"></td>
-<!-- 										<td><a -->
-<%-- 											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 										</td> -->
-									</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_3" value=""
-										placeholder="03. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_3" value=""
-										placeholder="03. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_4" value=""
-										placeholder="04. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_4" value=""
-										placeholder="04. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-							</tbody>
-						</table>
-						<div class="row" id="viewdetails">
-							<!-- 頁面內瞬移有點被header擋到 -->
-							<div class="col-md-9">
-								<div class="tabbable" id="tabs-916421">
-									<ul class="nav nav-tabs">
-										<li class="nav-item"><a class="nav-link active show"
-											href="#tab1" data-toggle="tab">詳細介紹</a></li>
-										<li class="nav-item"><a class="nav-link " href="#tab2"
-											data-toggle="tab">權益說明</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<textarea id="summernote" name="Detail"></textarea>
-										</div>
-										<div class="tab-pane " id="tab2">
-											<textarea id="summernote2" name="Rights"></textarea>
-										</div>
+						<div class="carousel slide" id="carousel-151068">
+							<ol class="carousel-indicators">
+								<li data-slide-to="0" data-target="#carousel-151068"></li>
+								<li data-slide-to="1" data-target="#carousel-151068"
+									class="active"></li>
+								<li data-slide-to="2" data-target="#carousel-151068"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap First"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
+									<div class="carousel-caption">
+										<h4>First Thumbnail label</h4>
+										<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+											quam. Donec id elit non mi porta gravida at eget metus.
+											Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									</div>
 								</div>
-<!-- 								<div class="btn-group btn-group-lg" role="group" style="margin:30px; padding:20px"> -->
+								<div class="carousel-item active">
+									<img class="d-block w-100" alt="Carousel Bootstrap Second"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
+									<div class="carousel-caption">
+										<h4>Second Thumbnail label</h4>
+										<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+											quam. Donec id elit non mi porta gravida at eget metus.
+											Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap Third"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
+									<div class="carousel-caption">
+										<h4>Third Thumbnail label</h4>
+										<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+											quam. Donec id elit non mi porta gravida at eget metus.
+											Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+									</div>
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carousel-151068"
+								data-slide="prev"><span class="carousel-control-prev-icon"></span>
+								<span class="sr-only">Previous</span></a> <a
+								class="carousel-control-next" href="#carousel-151068"
+								data-slide="next"><span class="carousel-control-next-icon"></span>
+								<span class="sr-only">Next</span></a>
+						</div>
+						<div class="btn-group btn-group-lg" role="group">
 
-<!-- 									<button class="btn btn-secondary" type="submit" name="prodaction" value="Update">儲存修改</button> -->
-<%-- 									<a class="btn btn-secondary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" > --%>
-<!-- 										重新填寫</a> -->
-								<a id="modal-786743" href="#doubleConfirm1" role="button"   
-								class="btn-lg btn-primary" data-toggle="modal" style="margin:30px; padding:20px">儲存修改</a>
-								<a id="modal-786743" href="#doubleConfirm2" role="button"   
-								class="btn btn-secondary" data-toggle="modal" style="margin:30px; padding:20px">重新填寫</a>
-										
-<!-- 								</div> -->
+							<button class="btn btn-secondary" type="button">Left</button>
+							<button class="btn btn-secondary" type="button">Center</button>
+							<button class="btn btn-secondary" type="button">Right</button>
+							<button class="btn btn-secondary" type="button">Justify
+							</button>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+							
+								<table class="table">
+									<thead>
+										<tr>
+											<td>#訂單編號</td>
+											<td>訂單日期</td>
+											<td>商品名稱</td>
+											<td>出發日期</td>
+											<td>訂單明細</td>
+											<td>商品金額</td>
+											<td>其他選項</td>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach varStatus="stVar" var="anOrder" items="${orderList}">
+										<tr class="table-warning">
+											<td>${anOrder.order_No}</td>
+											<td>${anOrder.orderDate}</td>
+											<td>${anOrder.prod_Name}</td>
+											<td>${anOrder.travelDate}</td>
+											
+											<td>查看明細</td>
+											<td>${anOrder.total_Amount}</td>
+											<td>刪除</td>
+										</tr>
+									</c:forEach>
+									</tbody>
+									
+								</table>
 								
 							</div>
-							<div class="col-md-3"></div>
 						</div>
 					</div>
 				</div>
@@ -429,80 +387,6 @@
 		</div>
 
 		<!-- 產品顯示部分end -->
-
-		<!-- Modal 產品代號輸入區塊start-->
-		<div class="modal fade" id="checkId" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content" style="margin-top: 100px">
-					<div class="modal-header">
-						<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<input type="text" name="Product_Id" value="${param.Product_Id}"
-							style="border: solid 1px; width: 450px">
-					</div>
-					<span class="error">${errors.Product_Id}</span>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" id="getInfo">取得明細</button>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-		
-		<div class="modal fade" id="doubleConfirm1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要儲存嗎?</div>
-								<div class="modal-footer">
-									<button type="submit" id='confirmBtn' type="button" name="prodaction" value="Update" class="btn btn-primary">送出</button>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">退回修改</button>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-		<div class="modal fade" id="doubleConfirm2" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">清除重來</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要清除重來嗎?</div>
-								<div class="modal-footer">
-									<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										重新填寫</a>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">取消</button>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-									
-		</form>
-		<!-- Modal 區塊end-->
 
 		<!-- Load more -->
 
@@ -634,76 +518,9 @@
 	<!--===============================================================================================-->
 	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
 
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#summernote').summernote('code', '請輸入詳細介紹');
-		$('#summernote2').summernote('code', '請輸入權益說明:');
-		$('#summernote3').summernote('code', '請輸入商品特色:');
-		
-	});
-	
-	var contextPath = "${pageContext.request.contextPath}";
-	$(document).ready(function() {
-		$('#getInfo').click(function() {
-			$.ajax({
-				method : "GET",
-				url : contextPath + "/pages/products.view",
-				data : "Product_Id=" + $('input[name="Product_Id"]').val(),
-				dataType : "json",
-				cache : false,
-				async : true,
-				success : function(json) {
-					$(".error").first().append(json[0].text);
-					if (json[0].hasMoreData) {
-						$("#ShowProduct_Id").html("產品編號: <br>"+json[1].Product_Id);
-						$("input[name='Prod_Name']").val(json[1].Prod_Name);
-						$("#productImage").attr("src","<%=request.getContextPath()%>/images/_027_Pimage/"+json[1].Product_Id+".jpg");
-						$('#summernote3').summernote('code', json[1].Features);
-//想要秀出內容大概是這樣 		$('#Features1').html(json[1].Features);
-						$("input[name='Ticket_type_1']").val(json[1].Ticket_type_1);
-						$("input[name='UnitPrice_1']").val(json[1].UnitPrice_1);
-						$("input[name='Ticket_type_2']").val(json[1].Ticket_type_2);
-						$("input[name='UnitPrice_2']").val(json[1].UnitPrice_2);
-						$("input[name='Ticket_type_3']").val(json[1].Ticket_type_3);
-						$("input[name='UnitPrice_3']").val(json[1].UnitPrice_3);
-						$("input[name='Ticket_type_4']").val(json[1].Ticket_type_4);
-						$("input[name='UnitPrice_4']").val(json[1].UnitPrice_4);
-						$("input[name='Discount_Rate']").val(json[1].Discount_Rate);
-						$("input[name='Acceptable_Discount_Rate']").val(json[1].Acceptable_Discount_Rate);
-						$("input[name='Region']").val(json[1].Region);
-						$("input[name='Country']").val(json[1].Country);
-						$('#summernote').summernote('code', json[1].Detail);
-						$('#summernote2').summernote('code', json[1].Rights);
-						
-					}
-				}
-			});
-		});
-		$("input[name='id']").focus(function() {
-			clearForm();
-			$(".error").first().html("");
-		});
-	});
-	
-		
-	function clearForm() {
-		var inputs = document.getElementsByTagName("input");
-		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].type == "text") {
-				inputs[i].value = "";
-			}
-		}
-	}
-</script>
 
 	<script>
  

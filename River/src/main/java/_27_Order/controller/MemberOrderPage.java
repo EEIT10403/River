@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -31,7 +32,7 @@ import _27_Order.model.TravelerBean;
 import _27_Order.model.TravelerService;
 
 @Controller
-public class IntoOrderPage {
+public class MemberOrderPage {
 
 	@Autowired
 	private TravelerService travelerService;
@@ -52,43 +53,25 @@ public class IntoOrderPage {
 		webDataBinder.registerCustomEditor(double.class, new PrimitiveNumberEditor(java.lang.Double.class, true));
 	}
 
-	@RequestMapping("/Order/IntoOrderPage")
-	public String GoToOrderPage(Model model, DayTour_ProductBean bean, @RequestParam("Type1_Qty") int type1_Qty,
-			@RequestParam("Type2_Qty") int type2_Qty, String Type1_Qty, String Type2_Qty, String Type3_Qty,
-			String Type4_Qty, int Total_Amount, @RequestParam("TravelDate") java.util.Date TravelDate,
+	@RequestMapping("/Order/IntoMemberOrderPage")
+	public String GoToOrderPage(Model model, String Member_Id,
 			HttpSession session) throws IOException, ServletException, SQLException {
-		int type3_Qty = 0;
-		if (Type3_Qty != null) {
-			type3_Qty = Integer.parseInt(Type3_Qty);
-		}
-		int type4_Qty = 0;
-		if (Type4_Qty != null) {
-			type4_Qty = Integer.parseInt(Type4_Qty);
-		}
 
-		System.out.println("有進IntoOrderPage" + bean.getProd_Name()); // 測試有沒有進來
-//		System.out.println("有進type1_Qty"+type1_Qty); // 測試有沒有進來
-//		System.out.println("有進Type1_Qty"+Type1_Qty); // 測試有沒有進來
-//		System.out.println("有進Type3_Qty"+type3_Qty); // 測試有沒有進來
-		System.out.println("有進TravelDate" + TravelDate); // 測試有沒有進來
-		System.out.println("有進Total_Amount" + Total_Amount); // 測試有沒有進來
+		System.out.println("有進IntoMemberOrderPage" + Member_Id); // 測試有沒有進來
+
 
 		Map<String, String> ticketType = new HashMap<>();
-		ticketType.put("Type1_Qty", Type1_Qty);
-		ticketType.put("Type2_Qty", Type2_Qty);
-		ticketType.put("Type3_Qty", Type3_Qty);
-		ticketType.put("Type4_Qty", Type4_Qty);
+		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId(Member_Id);
+//		System.out.println("後端"+Orderlist);
+		
+		model.addAttribute("orderList", Orderlist);
+		session.setAttribute("member_Id", Member_Id);
 
-		model.addAttribute("ticketType", ticketType);
-		model.addAttribute("bean", bean);
-		model.addAttribute("TravelDate", TravelDate);
-		model.addAttribute("Total_Amount", Total_Amount);
-
-		return "order.form";
+		return "MemberOrders.list";
 
 	}
 
-	@RequestMapping("/Order/InsertOrder")
+//	@RequestMapping("/Order/InsertOrder")
 	public String InsertOrder(Model model, DayTour_ProductBean bean, @RequestParam("TicketQty1") int ticketQty1,
 			@RequestParam("TicketQty2") int ticketQty2, String TicketQty1, String TicketQty2, String TicketQty3,
 			String TicketQty4, int Total_Amount, @RequestParam("TravelDate") String TravelDate, HttpSession session,
@@ -307,7 +290,6 @@ public class IntoOrderPage {
 		
 		orderSellBean.setOrder_No(OrderNo);
 		orderSellBean.setMember_Id("kitty"); //等到member功能完整一點, 應該能從session拿到吧
-		orderSellBean.setProd_Name(bean.getProd_Name());
 		orderSellBean.setTotal_Amount(Total_Amount);
 		orderSellBean.setTravelDate(TravelDate);
 		orderSellBean.setContact_Name(Contact_Name);
