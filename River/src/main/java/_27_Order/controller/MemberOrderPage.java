@@ -3,6 +3,7 @@ package _27_Order.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ import _27_Order.model.OrderItemBean;
 import _27_Order.model.OrderItemService;
 import _27_Order.model.OrderSellBean;
 import _27_Order.model.OrderSellService;
+import _27_Order.model.OrderSumBean;
 import _27_Order.model.TravelerBean;
 import _27_Order.model.TravelerService;
 
@@ -55,6 +57,8 @@ public class MemberOrderPage {
 			HttpSession session) throws IOException, ServletException, SQLException {
 
 		System.out.println("有進IntoMemberOrderPage" + member_Id); // 測試有沒有進來
+		
+		
 
 
 		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId(member_Id);
@@ -85,7 +89,10 @@ public class MemberOrderPage {
 		System.out.println("dayTour_Productbean"+dayTour_Productbean);
 //		System.out.println("後端"+Orderlist);
 		System.out.println("orderSellBean"+orderSellBean);
-			
+		
+		
+		
+		
 		
 		model.addAttribute("order", orderSellBean);
 		model.addAttribute("travelers", travelerList);
@@ -94,6 +101,44 @@ public class MemberOrderPage {
 		
 		
 		return "OrdersItemPage.list";
+
+	}
+	
+	@RequestMapping("/Order/GetSalesSum")
+	public String GetSalesSum(Model model,
+			HttpSession session) throws IOException, ServletException, SQLException {
+		
+		String member_Id = (String) session.getAttribute("member_Id");
+
+		System.out.println("有進/Order/GetSalesSum"+ member_Id); // 測試有沒有進來
+ 
+		
+		
+		List list = orderItemService.getSalesSum();
+		
+		System.out.println("有回來"+list);
+		
+		List<OrderSumBean> listB = new ArrayList() ;
+		for(Object row :list) {
+			Object[] cells = (Object[]) row;  
+			System.out.println(cells[0]);
+			System.out.println(cells[1]);
+			System.out.println(cells[2]);
+			OrderSumBean sumBean = new OrderSumBean();
+			sumBean.setProduct_Id((String)cells[0]);
+			sumBean.setProd_Name((String)cells[1]);
+			sumBean.setTotalSales((int)cells[2]);
+			
+			
+			listB.add(sumBean);
+		}
+		System.out.println(listB);
+		
+		
+		model.addAttribute("SalesSum", listB);
+		
+		
+		return "product.report";
 
 	}
 	

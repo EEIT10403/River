@@ -22,6 +22,7 @@ import _21_traveling.model.TouristAttractionBean;
 import _21_traveling.model.TravelItineraryBean;
 import _27_Order.model.OrderItemBean;
 import _27_Order.model.OrderSellBean;
+import _27_Order.model.OrderSumBean;
 import _27_Order.model.TravelerBean;
 import _27_Partner.model.StaffBean;
 

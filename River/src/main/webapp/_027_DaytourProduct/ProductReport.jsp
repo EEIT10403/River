@@ -13,6 +13,8 @@
 
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"> </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -283,6 +285,10 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
+		
+		
+		
+		
 		<form name="insert" ENCTYPE="multipart/form-data"
 		action="<c:url value="/pages/product.controller" />" method="post">
 		<div style='padding: 10% 20%'>
@@ -291,139 +297,18 @@
 					<div class="col-md-12">
 						<div class="jumbotron">
 							<h2>產品管理平台</h2>
-							<p>${staff.chinese_Name}，早安， 好好賣阿。</p>
+							<p>本月業績系統</p>
 							<hr>
-							<a class="btn btn-primary btn-large" href="#checkId"
-								data-toggle="modal" style="padding:20px">輸入產品代號</a>
-							<a class="btn btn-primary" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" >
-										觀看銷售報表</a>
+<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
+<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
+<%-- 							<a class="btn btn-primary" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" > --%>
+<!-- 										觀看銷售報表</a> -->
 						</div>
 						<div class="page-header">
-						<h2>
-							<span id="ShowProduct_Id">產品編號: </span>	
-							</h2>
-							<h2>
-								產品名稱: <input type="text" name="Prod_Name"
-									value=""
-									style="border: solid 1px; width: 900px">
-							</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7" style='padding: 30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							id='productImage'
-							src='<%=request.getContextPath()%>/images/_027_Pimage/white.jpg' />
-						<span>上傳新圖檔</span><input type="file" name="Main_Image"
-							value="${param.Main_Image}">
-					</div>
-
-					<div class="col-md-5">
-
-						<hr>
-						<span>國家: <select name="Country">
-								<option value="JA">日本</option>
-								<option value="KO">韓國</option>
-								<option value="SA">東南亞</option>
-								<option value="AU">紐澳</option>
-								<option value="EU">歐洲</option>
-								<option value="AM">美加</option>
-						</select></span> <span>地區: <select name="Region">
-								<option value="Kan">關西</option>
-								<option value="Tok">關東</option>
-								<option value="Kyu">九州</option>
-								<option value="Oki">沖繩</option>
-								<option value="Hok">北海道</option>
-						</select></span>
-						<hr>
-						<textarea id="summernote3" name="Features"></textarea>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<table class="table table-hover table-sm table-bordered">
-							<thead>
-								<tr>
-									<th>票種名稱</th>
-									<th>特價</th>
-<!-- 									<th></th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_1" value=""
-										placeholder="01. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_1" value=""
-										placeholder="01. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_2" value=""
-										placeholder="02. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_2" value=""
-										placeholder="02. 票價"></td>
-<!-- 										<td><a -->
-<%-- 											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 										</td> -->
-									</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_3" value=""
-										placeholder="03. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_3" value=""
-										placeholder="03. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_4" value=""
-										placeholder="04. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_4" value=""
-										placeholder="04. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-							</tbody>
-						</table>
-						<div class="row" id="viewdetails">
-							<!-- 頁面內瞬移有點被header擋到 -->
-							<div class="col-md-9">
-								<div class="tabbable" id="tabs-916421">
-									<ul class="nav nav-tabs">
-										<li class="nav-item"><a class="nav-link active show"
-											href="#tab1" data-toggle="tab">詳細介紹</a></li>
-										<li class="nav-item"><a class="nav-link " href="#tab2"
-											data-toggle="tab">權益說明</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<textarea id="summernote" name="Detail"></textarea>
-										</div>
-										<div class="tab-pane " id="tab2">
-											<textarea id="summernote2" name="Rights"></textarea>
-										</div>
-									</div>
-								</div>
-<!-- 								<div class="btn-group btn-group-lg" role="group" style="margin:30px; padding:20px"> -->
-
-<!-- 									<button class="btn btn-secondary" type="submit" name="prodaction" value="Update">儲存修改</button> -->
-<%-- 									<a class="btn btn-secondary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" > --%>
-<!-- 										重新填寫</a> -->
-								<a id="modal-786743" href="#doubleConfirm1" role="button"   
-								class="btn-lg btn-primary" data-toggle="modal" style="margin:30px; padding:20px">儲存修改</a>
-								<a id="modal-786743" href="#doubleConfirm2" role="button"   
-								class="btn btn-secondary" data-toggle="modal" style="margin:30px; padding:20px">重新填寫</a>
-										
-<!-- 								</div> -->
-								
-							</div>
-							<div class="col-md-3"></div>
+						
+						<!-- 就這一句而已 -->
+						<canvas id="myChart" width="300" height="150"></canvas>
+						
 						</div>
 					</div>
 				</div>
@@ -652,64 +537,48 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$('#summernote').summernote('code', '請輸入詳細介紹');
-		$('#summernote2').summernote('code', '請輸入權益說明:');
-		$('#summernote3').summernote('code', '請輸入商品特色:');
-		
 	});
 	
-	var contextPath = "${pageContext.request.contextPath}";
-	$(document).ready(function() {
-		$('#getInfo').click(function() {
-			$.ajax({
-				method : "GET",
-				url : contextPath + "/pages/products.view",
-				data : "Product_Id=" + $('input[name="Product_Id"]').val(),
-				dataType : "json",
-				cache : false,
-				async : true,
-				success : function(json) {
-					$(".error").first().append(json[0].text);
-					if (json[0].hasMoreData) {
-						$("#ShowProduct_Id").html("產品編號: <br>"+json[1].Product_Id);
-						$("input[name='Prod_Name']").val(json[1].Prod_Name);
-						$("#productImage").attr("src","<%=request.getContextPath()%>/images/_027_Pimage/"+json[1].Product_Id+".jpg");
-						$('#summernote3').summernote('code', json[1].Features);
-//想要秀出內容大概是這樣 		$('#Features1').html(json[1].Features);
-						$("input[name='Ticket_type_1']").val(json[1].Ticket_type_1);
-						$("input[name='UnitPrice_1']").val(json[1].UnitPrice_1);
-						$("input[name='Ticket_type_2']").val(json[1].Ticket_type_2);
-						$("input[name='UnitPrice_2']").val(json[1].UnitPrice_2);
-						$("input[name='Ticket_type_3']").val(json[1].Ticket_type_3);
-						$("input[name='UnitPrice_3']").val(json[1].UnitPrice_3);
-						$("input[name='Ticket_type_4']").val(json[1].Ticket_type_4);
-						$("input[name='UnitPrice_4']").val(json[1].UnitPrice_4);
-						$("input[name='Discount_Rate']").val(json[1].Discount_Rate);
-						$("input[name='Acceptable_Discount_Rate']").val(json[1].Acceptable_Discount_Rate);
-						$("input[name='Region']").val(json[1].Region);
-						$("input[name='Country']").val(json[1].Country);
-						$('#summernote').summernote('code', json[1].Detail);
-						$('#summernote2').summernote('code', json[1].Rights);
-						
-					}
-				}
-			});
-		});
-		$("input[name='id']").focus(function() {
-			clearForm();
-			$(".error").first().html("");
-		});
+	
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+	    type: 'polarArea',
+	    data: {
+	        labels: ["${SalesSum[0].product_Id}/${SalesSum[0].prod_Name}", "${SalesSum[1].product_Id}/${SalesSum[1].prod_Name}", "${SalesSum[2].product_Id}/${SalesSum[2].prod_Name}", "${SalesSum[3].product_Id}/${SalesSum[3].prod_Name}"],
+	        datasets: [{
+	            label: '# of Sales',
+	            data: [${SalesSum[0].totalSales}, ${SalesSum[1].totalSales},${SalesSum[2].totalSales}, ${SalesSum[3].totalSales}],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255,99,132,1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 2
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
 	});
 	
 		
-	function clearForm() {
-		var inputs = document.getElementsByTagName("input");
-		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].type == "text") {
-				inputs[i].value = "";
-			}
-		}
-	}
 </script>
 
 	<script>

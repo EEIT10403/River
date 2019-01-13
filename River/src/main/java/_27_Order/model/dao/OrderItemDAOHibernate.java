@@ -1,21 +1,19 @@
 package _27_Order.model.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import DaytourProduct.model.DayTour_ProductBean;
-import DaytourProduct.model.DayTour_ProductDAO;
-import ShoppingCart.model.ShoppingCartBean;
 import _27_Order.model.OrderItemBean;
 import _27_Order.model.OrderItemDAO;
-import _27_Order.model.TravelerBean;
-import _27_Order.model.TravelerDAO;
+import _27_Order.model.OrderSumBean;
 
 @Repository
 public class OrderItemDAOHibernate implements OrderItemDAO {
@@ -24,6 +22,22 @@ public class OrderItemDAOHibernate implements OrderItemDAO {
 
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
+		
+	}
+
+	public List getSalesSum() {
+		NativeQuery query =  this.getSession().createNativeQuery("  select Product_Id,[Prod_Name], sum(Unpaid_Amount) as Total_Amount\r\n" + 
+				"  From [OrderItem]\r\n" + 
+				"  Group By Product_Id,[Prod_Name]\r\n" + 
+				"");
+				
+		System.out.println("SQLQuery有出來"+query);
+		
+		List list = query.getResultList();
+		
+		System.out.println("list有出來"+list);
+		 
+		 return list;
 	}
 	@Override
 	public OrderItemBean findByPrimaryKey(String id) {

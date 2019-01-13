@@ -18,6 +18,10 @@ public class OrderItemService {
 		return orderItemDAO.findByPrimaryKey(Id);
     }
     
+    public List getSalesSum() {
+		return orderItemDAO.getSalesSum();
+    }
+    
     public List<OrderItemBean> findAll() {
 		return orderItemDAO.findAll();
     }

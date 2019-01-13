@@ -7,7 +7,7 @@ public interface OrderItemDAO {
 	public abstract OrderItemBean findByPrimaryKey(String id);
 
 	public abstract List<OrderItemBean> findAll();
-	
+	public abstract List getSalesSum();
 	public abstract List<OrderItemBean> findItemsByOrder_No(String Order_No);
 
 	public abstract OrderItemBean create(OrderItemBean bean);
