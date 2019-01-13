@@ -51,17 +51,17 @@ public class MemberOrderPage {
 	}
 
 	@RequestMapping("/Order/IntoMemberOrderPage")
-	public String GoToOrderPage(Model model, String Member_Id,
+	public String GoToOrderPage(Model model, String member_Id,
 			HttpSession session) throws IOException, ServletException, SQLException {
 
-		System.out.println("有進IntoMemberOrderPage" + Member_Id); // 測試有沒有進來
+		System.out.println("有進IntoMemberOrderPage" + member_Id); // 測試有沒有進來
 
 
-		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId(Member_Id);
+		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId(member_Id);
 //		System.out.println("後端"+Orderlist);
 		
 		model.addAttribute("orderList", Orderlist);
-		session.setAttribute("member_Id", Member_Id);
+		session.setAttribute("member_Id", member_Id);
 
 		return "MemberOrders.list";
 

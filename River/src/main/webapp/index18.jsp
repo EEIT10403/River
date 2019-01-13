@@ -85,9 +85,10 @@
 
 								<li><a href="blog.html">Blog</a></li>
 
-								<li><a href="about.html">About</a></li>
+<%-- 								<li><a href="<c:url value="/Order/IntoMemberOrderPage?member_Id=kitty" />">會員專區</a></li> --%>
+							<li><a href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員專區</a></li>
 
-								<li><a href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">合作廠商登入</a></li>
+								<li><a href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
 								
 							</ul>
 						</div>

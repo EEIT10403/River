@@ -281,14 +281,19 @@
 
 
 		<div style='padding: 8% 10%'>
-
-			<c:set value="${member_Id}" var="m_Id" scope="session" />
+		
+<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>  
+		
+		
+<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
+		
+<%--        </c:if> --%>
+			<c:set value="${member_Id}" var="member_Id" scope="session" />
 			<%-- 			<h1>${member_Id}</h1> --%>
 
-
+         
 
 			<h1></h1>
-
 
 			<div class="container-fluid">
 				<div class="row">
@@ -337,13 +342,13 @@
 							<div class="btn-group btn-group-lg " role="group">
 
 								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?Member_Id=${m_Id}" />"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
 									type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?Member_Id=${m_Id}" />">管理帳戶</a>
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">管理帳戶</a>
 								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?Member_Id=${m_Id}" />">商品追蹤</a>
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
 								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?Member_Id=${m_Id}" />">會員評鑑
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
 								</a>
 							</div>
 						</div>
@@ -564,9 +569,9 @@
 	<script>
  
 <!-- 立即訂購 start-->
-$('#buynow').click(function(){
-	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
-});
+// $('#buynow').click(function(){
+// 	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
+// });
 	
 		
 <!-- 立即訂購 end -->
@@ -576,7 +581,7 @@ $('#buynow').click(function(){
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		
+// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
 	}); <!-- document).ready 結尾-->
 	
 	</script>

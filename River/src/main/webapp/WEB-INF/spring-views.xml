@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	
+	
 	<bean id="MemberOrders.list" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_027_Order/MemberOrdersList.jsp"></property>
 	</bean>
@@ -14,8 +15,12 @@
 		<property name="url" value="/_027_DaytourProduct/TestDisplayAll.jsp"></property>
 	</bean>
 	
-	<bean id="product.errors" class="org.springframework.web.servlet.view.InternalResourceView">
+	<bean id="product.management" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_027_DaytourProduct/ManageProduct.jsp"></property>
+	</bean>
+	
+	<bean id="partner.login" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/_027_Partner/PartnerLogin.jsp"></property>
 	</bean>
 	
 	<bean id="product.select" class="org.springframework.web.servlet.view.InternalResourceView">

@@ -14,6 +14,8 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
@@ -68,7 +70,7 @@
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop" style="height:60px">
+				<div class="wrap-menu-desktop" style="height: 60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
@@ -278,106 +280,114 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<div style='padding:10% 20%'>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="page-header">
-							<h1>${bean.prod_Name}</h1>
+
+
+
+
+
+		<div style='padding: 10% 20%'>
+			
+
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="page-header">
+								<h1>${bean.prod_Name}</h1>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7" style='padding:30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							src='<%=request.getContextPath()%>/images/_027_Pimage/${bean.product_Id}.jpg' />
+					<div class="row">
+						<div class="col-md-7" style='padding: 30px'>
+							<img alt="Bootstrap Image Preview" style='width: 500px'
+								src='<%=request.getContextPath()%>/images/_027_Pimage/${bean.product_Id}.jpg' />
+						</div>
+						<div class="col-md-5">
+							<!-- 						<h2>Heading</h2> -->
+							<p>${bean.features}
+							<p>
+								<a class="btn" href="#viewdetails">View details »</a>
+							</p>
+							<button type="button"
+								class="btn btn-block active btn-outline-primary" id='buynow'>
+								立即訂購</button>
+						</div>
 					</div>
-					<div class="col-md-5">
-						<!-- 						<h2>Heading</h2> -->
-						<p>${bean.features}
-						<p>
-							<a class="btn" href="#viewdetails">View details »</a>
-						</p>
-						<button type="button"
-							class="btn btn-block active btn-outline-primary" id='buynow'>
-										立即訂購
-									</button>
-					</div>
-				</div>
-				<div class="row" >
-					<div class="col-md-12">
-						<table class="table table-hover table-sm table-bordered">
-							<thead>
-								<tr>
-									<th>票種名稱</th>
-									<th>特價</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-active">
-									<td>${bean.ticket_type_1}</td>
-									<td>${bean.unitPrice_1}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								<c:if test="${not empty bean.ticket_type_2}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_2}</td>
-									<td>${bean.unitPrice_2}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-								<c:if test="${not empty bean.ticket_type_3}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_3}</td>
-									<td>${bean.unitPrice_3}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-								<c:if test="${not empty bean.ticket_type_4}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_4}</td>
-									<td>${bean.unitPrice_4}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-							</tbody>
-						</table>
-						<div class="row" id="viewdetails"> <!-- 頁面內瞬移有點被header擋到 -->
-							<div class="col-md-9">
-								<div class="tabbable" id="tabs-916421">
-									<ul class="nav nav-tabs">
-										<li class="nav-item"><a class="nav-link active show" href="#tab1"
-											data-toggle="tab">詳細介紹</a></li>
-										<li class="nav-item"><a class="nav-link "
-											href="#tab2" data-toggle="tab">權益說明</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<p>${bean.detail}</p>
-										</div>
-										<div class="tab-pane " id="tab2">
-											<p>${bean.rights}</p>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-hover table-sm table-bordered">
+								<thead>
+									<tr>
+										<th>票種名稱</th>
+										<th>特價</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="table-active">
+										<td>${bean.ticket_type_1}</td>
+										<td>${bean.unitPrice_1}</td>
+										<td><a
+											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+										</td>
+									</tr>
+									<c:if test="${not empty bean.ticket_type_2}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_2}</td>
+											<td>${bean.unitPrice_2}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+									<c:if test="${not empty bean.ticket_type_3}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_3}</td>
+											<td>${bean.unitPrice_3}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+									<c:if test="${not empty bean.ticket_type_4}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_4}</td>
+											<td>${bean.unitPrice_4}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+								</tbody>
+							</table>
+							<div class="row" id="viewdetails">
+								<!-- 頁面內瞬移有點被header擋到 -->
+								<div class="col-md-9">
+									<div class="tabbable" id="tabs-916421">
+										<ul class="nav nav-tabs">
+											<li class="nav-item"><a class="nav-link active show"
+												href="#tab1" data-toggle="tab">詳細介紹</a></li>
+											<li class="nav-item"><a class="nav-link " href="#tab2"
+												data-toggle="tab">權益說明</a></li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<p>${bean.detail}</p>
+											</div>
+											<div class="tab-pane " id="tab2">
+												<p>${bean.rights}</p>
+											</div>
 										</div>
 									</div>
 								</div>
+								<div class="col-md-3"></div>
 							</div>
-							<div class="col-md-3"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		<!-- 產品顯示部分end -->
+
+			<!-- 產品顯示部分end -->
 
 		<!-- Load more -->
 
@@ -521,13 +531,13 @@ $('#buynow').click(function(){
 });
 	
 		
-<!-- 立即訂購 end -->
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
+		
 		
 	}); <!-- document).ready 結尾-->
 	

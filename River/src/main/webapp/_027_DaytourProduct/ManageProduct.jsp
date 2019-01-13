@@ -291,7 +291,7 @@
 					<div class="col-md-12">
 						<div class="jumbotron">
 							<h2>產品管理平台</h2>
-							<p>好好賣阿。</p>
+							<p>${staff.chinese_Name}，早安， 好好賣阿。</p>
 							<hr>
 							<a class="btn btn-primary btn-large" href="#checkId"
 								data-toggle="modal" style="padding:20px">輸入產品代號</a>

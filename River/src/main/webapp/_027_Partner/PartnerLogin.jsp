@@ -14,12 +14,6 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/html2pdf@0.0.11/html2pdf.node.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
@@ -286,142 +280,92 @@
 		<!-- 產品顯示部分 start-->
 
 
-		<div style='padding: 8% 18%'>
+		<div style='padding: 8% 10%'>
 
-			<div class="container" id="container">
-
-
-				<c:set value="${member_Id}" var="member_Id" scope="session" />
-				<%-- 			<h1>${member_Id}</h1> --%>
-
-				<div class="container-fluid">
+			<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>
 
 
-					<div class="row">
-						<div class="col-md-12">
-							<div style="text-align: center; margin: 30px">
-								<div class="btn-group btn-group-lg " role="group">
+			<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
 
-									<a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
-										type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">管理帳戶</a>
-									<a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
-									<a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
-									</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<hr>
-									<div style="padding: 20px">
-									<h3>${order.prod_Name}
+			<%--        </c:if> --%>
+			<%-- 			<c:set value="${member_Id}" var="member_Id" scope="session" /> --%>
+			<%-- 			<h1>${member_Id}</h1> --%>
 
-									</h3>
+
+
+			<h1></h1>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="carousel slide" id="carousel-151068">
+							<ol class="carousel-indicators">
+								<li data-slide-to="0" data-target="#carousel-151068"></li>
+								<li data-slide-to="1" data-target="#carousel-151068"
+									class="active"></li>
+								<li data-slide-to="2" data-target="#carousel-151068"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap First"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
+									<div class="carousel-caption">
+										<h4>合作夥伴管理專區</h4>
+										<p></p>
 									</div>
-									<div class="row">
-										<div class="col-md-5">
-											<img alt="Bootstrap Image Preview" style='width: 400px'
-												src='<%=request.getContextPath()%>/images/_027_Pimage/${pBean.product_Id}.jpg' />
-										</div>
-										<div class="col-md-7">
-											<ul>
-												<li class="list-item">　訂單編號：${order.order_No}</li>
-												<li class="list-item" style="color: gray">　(為能更快速服務，與客服人員洽詢時，請提示您的訂單編號)</li>
-												<li class="list-item">　訂購日期：${fn:substring(order.orderDate, 0, 19)}</li>
-												<li class="list-item">　出發日期：${order.travelDate}</li>
-												<li class="list-item">　客服人員：白三 聯絡電話：02-26335862 分機 585</li>
-												<li class="list-item">　傳真電話：02-66183587</li>
-												<li class="list-item"><a href="<c:url value="/DaytourProduct/Display?Product_Id=${pBean.product_Id}" />" rel="external nofollow" class="btn" >產品詳細</a></li>
-												
-												<li class="list-item"><a href="javascript:;" rel="external nofollow" class="btn"
-						id="download">訂單快照下載</a></li>
-						                        
-												<!-- 											<li class="list-item">Faucibus porta lacus fringilla vel</li> -->
-												<!-- 											<li class="list-item">Aenean sit amet erat nunc</li> -->
-												<!-- 											<li class="list-item">Eget porttitor lorem</li> -->
-											</ul>
-										</div>
+								</div>
+								<div class="carousel-item active">
+									<img class="d-block w-100" alt="Carousel Bootstrap Second"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
+									<div class="carousel-caption">
+										<h4>合作夥伴管理專區</h4>
+										<p></p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap Third"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
+									<div class="carousel-caption">
+										<h4>合作夥伴管理專區</h4>
+										<p></p>
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<hr>
-									<div class="tabbable" id="tabs-75706">
-										<ul class="nav nav-tabs">
-											<li class="nav-item"><a class="nav-link active"
-												href="#tab1" data-toggle="tab">交易管理</a></li>
-											<li class="nav-item"><a class="nav-link" href="#tab2"
-												data-toggle="tab">訂單內容</a></li>
-											<li class="nav-item"><a class="nav-link" href="#tab3"
-												data-toggle="tab">客服訊息</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tab1">
-												<table class="table table-hover table-bordered">
-													<thead>
-														<tr style="background-color: #3be8b0">
-															<td>票券種類</td>
-															<td>商品單價</td>
-															<td>總金額</td>
-															<td>已付金額</td>
-															<td>未付金額</td>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach varStatus="stVar" var="anItem"
-															items="${orderItems}">
-															<tr class="table-Default">
-																<td>${anItem.ticket_type}x${anItem.quantity}</td>
-																<td>${anItem.unitPrice}</td>
-																<td>${anItem.total_Amount}</td>
-																<td>${anItem.paid_Amount}</td>
-																<td>${anItem.unpaid_Amount}</td>
-															</tr>
-
-
-														</c:forEach>
-													</tbody>
-
-												</table>
-												<hr>
-											</div>
-											<div class="tab-pane" id="tab2">
-												<table class="table table-hover table-bordered">
-													<thead>
-														<tr style="background-color: #3be8b0">
-															<td>旅客名稱</td>
-															<td>生日</td>
-															<td>使用票種</td>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach varStatus="stVar" var="aTraveler"
-															items="${travelers}">
-															<tr class="table-Default">
-																<td>${aTraveler.traveler_Name}</td>
-																<td>${fn:substring(aTraveler.birthday, 0, 10)}</td>
-																<td>${aTraveler.ticket_Type}</td>
-
-															</tr>
-
-
-														</c:forEach>
-													</tbody>
-
-												</table>
-											</div>
-										</div>
-									</div>
-
-
-
-
-								</div>
-							</div>
+							<a class="carousel-control-prev" href="#carousel-151068"
+								data-slide="prev"><span class="carousel-control-prev-icon"></span>
+								<span class="sr-only">Previous</span></a> <a
+								class="carousel-control-next" href="#carousel-151068"
+								data-slide="next"><span class="carousel-control-next-icon"></span>
+								<span class="sr-only">Next</span></a>
+						</div>
+							
+						<div align="center" style="margin:30px 300px;background-color:#3be8b0;border-radius:10px"  >
+						
+						<form action="<c:url value="/partner/login" />" style="padding-top:20px"
+							method="get">
+							<table  >
+								<tr>
+									<td>登入帳號 :</td>
+									<td><input type="text" name="staff_Id"
+										value="${param.staff_Id}" style="border:solid 1px; margin:5px"></td>
+									<td><span class="error">${errors.xxx1}</span></td>
+								</tr>
+								<tr>
+									<td>登入密碼 :</td>
+									<td><input type="text" name="password" 
+										value="${param['password']}" style="border:solid 1px; margin:5px"></td>
+									<td><span class="error">${errors.xxx2}</span></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td align="right" style="padding:20px"><button type="submit" id='confirmBtn' type="button" class="btn btn-primary">登入</button></td>
+								</tr>
+							</table>
+<!-- 							<select name="myLocale"> -->
+<!-- 								<option value="zh_TW">中文</option> -->
+<!-- 								<option value="en_US">英文</option> -->
+<!-- 							</select> -->
+						</form>
 						</div>
 					</div>
 				</div>
@@ -569,9 +513,9 @@
 	<script>
  
 <!-- 立即訂購 start-->
-$('#buynow').click(function(){
-	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
-});
+// $('#buynow').click(function(){
+// 	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
+// });
 	
 		
 <!-- 立即訂購 end -->
@@ -581,36 +525,10 @@ $('#buynow').click(function(){
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
+// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
 	}); <!-- document).ready 結尾-->
 	
-	
-	
-	$("#download").click(function() {	
-		
-		 html2canvas($("#container"), { 
-		      onrendered: function(canvas) { 
-		    	  var doc = new jsPDF();
-		    	  var image = canvas.toDataURL("image/png");
-//		          doc.addImage(image, 'JPEG', 0, 0, canvas.width, canvas.height);
-		          doc.addImage(image, 'JPEG', 0, 0, 200, 150);
-		          doc.save('YourOrder.pdf');
-		    	  
-		        //把截取到的图片替换到a标签的路径下载 
-//		        $("#download").attr('href',canvas.toDataURL()); 
-//		        //下载下来的图片名字 
-//		        $("#download").attr('download','share.png') ;  
-//		        document.body.appendChild(canvas); 
-		      } 
-		//可以带上宽高截取你所需要的部分内容 
-//		     , 
-//		     width: 300, 
-//		     height: 300 
-		    }); 
-	})
-	
 	</script>
-
-
 
 	<script>
 	

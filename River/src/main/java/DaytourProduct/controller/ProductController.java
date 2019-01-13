@@ -225,7 +225,7 @@ public class ProductController {
 		}
 
 		if (errors != null && !errors.isEmpty()) {
-			return "product.errors";
+			return "product.management";
 		}
 
 //呼叫model
@@ -242,7 +242,7 @@ public class ProductController {
 			} else {
 				model.addAttribute("insert", result);
 			}
-			return "product.errors";
+			return "product.management";
 
 		} else if ("Update".equals(prodaction)) {
 			DayTour_ProductBean result = productService.update(bean);
@@ -252,16 +252,16 @@ public class ProductController {
 				model.addAttribute("insert", result);
 			
 			}
-			return "product.errors";
+			return "product.management";
 
 		} else if ("Delete".equals(prodaction)) {
 			boolean result = productService.delete(bean);
 			model.addAttribute("delete", result);
-			return "product.errors";
+			return "product.management";
 
 		} else {
 			errors.put("action", "unknown action: " + prodaction);
-			return "product.errors";
+			return "product.management";
 		}
 	}
 

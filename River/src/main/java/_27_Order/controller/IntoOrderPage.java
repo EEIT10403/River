@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -95,6 +96,8 @@ public class IntoOrderPage {
 			String Contact_Name,String Contact_Address,String Contact_Phone,String Contact_Email,String InvoiceTitle,
 			HttpServletRequest request) throws IOException, ServletException, SQLException {
 
+//		String member_Id = (String) session.getAttribute("member_Id");  等串完整了要打開
+		
 		System.out.println("Contact_Name="+Contact_Name);
 		
 		int ticketQty3 = 0;
@@ -327,14 +330,15 @@ public class IntoOrderPage {
 //insert OrderSell  區塊 end
 		
 		
-//		Map<String, String> ticketType = new HashMap<>();
-//		model.addAttribute("ticketType", ticketType);
-//        model.addAttribute("bean", bean);
-//        model.addAttribute("TravelDate", TravelDate);
-//        model.addAttribute("Total_Amount", Total_Amount);
+		
+//		model.addAttribute("member_Id", "kitty"); 等串完正要打開
+		
+		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId("kitty"); //寫死母湯
+//		System.out.println("後端"+Orderlist);
+		
+		model.addAttribute("orderList", Orderlist);
 
-		return "order.form";
-
+		return "MemberOrders.list";
 	}
 
 }
