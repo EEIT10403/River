@@ -104,7 +104,7 @@
 
 							<div
 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-								data-notify="2">
+								data-notify="0">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 
@@ -196,76 +196,6 @@
 		</header>
 
 		<!-- Cart -->
-		<div class="wrap-header-cart js-panel-cart">
-			<div class="s-full js-hide-cart"></div>
-
-			<div class="header-cart flex-col-l p-l-65 p-r-25">
-				<div class="header-cart-title flex-w flex-sb-m p-b-8">
-					<span class="mtext-103 cl2"> Your Cart </span>
-
-					<div
-						class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-						<i class="zmdi zmdi-close"></i>
-					</div>
-				</div>
-
-				<div class="header-cart-content flex-w js-pscroll">
-					<ul class="header-cart-wrapitem w-full">
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-01.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									White Shirt Pleat </a> <span class="header-cart-item-info">
-									1 x $19.00 </span>
-							</div>
-						</li>
-
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-02.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Converse All Star </a> <span class="header-cart-item-info">
-									1 x $39.00 </span>
-							</div>
-						</li>
-
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-03.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Nixon Porter Leather </a> <span class="header-cart-item-info">
-									1 x $17.00 </span>
-							</div>
-						</li>
-					</ul>
-
-					<div class="w-full">
-						<div class="header-cart-total w-full p-tb-40">Total: $75.00
-						</div>
-
-						<div class="header-cart-buttons flex-w w-full">
-							<a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-								View Cart </a> <a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out </a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 
 
@@ -343,7 +273,7 @@
 							style="margin: 30px 400px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
 
 							<form action="<c:url value="/_11_secure/login.controller" />"
-								method="get" style="padding-top: 20px">
+								method="post" style="padding-top: 20px">
 								<table>
 									<tr>
 										<td>會員帳號：</td>
@@ -359,42 +289,140 @@
 											style="border: solid 1px; margin: 15px"></td>
 										<td><span class="errors">${errors.PWerror}</span></td>
 									</tr>
-									<tr>
-										<td><select name="myLocale">
-												<option value="zh_TW">中文</option>
-												<option value="en_US">英文</option>
-												<option value="ja">日文</option>
-										</select></td>
-										<td align="right"><button type="submit" id='confirmBtn'
-												name="Login" value="Login" class="btn btn-primary btn-large">送出</button></td>
-									</tr>
 								</table>
-								<!-- 							<select name="myLocale"> -->
-								<!-- 								<option value="zh_TW">中文</option> -->
-								<!-- 								<option value="en_US">英文</option> -->
-								<!-- 							</select> -->
+								<button class="btn btn-block btn-primary" name="Login"
+									value="Login" type="submit">登入</button>
 							</form>
-							<div style="margin:20px">
+							<div style="margin: 20px">
 								<span> <!-- 								<input type="button" value="Registered" onclick="Register();" /> -->
 									<!-- 								<input type="button" value="Registered" --> <!-- 									onclick="Register();" style="background-image:url(../images/icons/Register.png);width:80px;height:80px;"> -->
-									立即註冊
-									<button value="Registered" onclick="Register();">
-										<img src="../images/icons/Register.png" width="80" height="80">
-									</button>
+
+									<!-- 									<button value="Registered" onclick="Register();" title="現在註冊"> -->
+									<!-- 										<img src="../images/icons/Register.png" width="80" height="80"> -->
+									<!-- 									</button> --> <!-- 									<button value="Registered" onclick="Register();" title="現在註冊"> -->
+									<!-- 										<img src="../images/icons/Register.png" width="80" height="80"> -->
+									<!-- 									</button> --> <a class="card-link"
+									data-toggle="collapse" data-parent="#card-454342"
+									href="#card-element-120895"><img
+										src="../images/icons/Register.png" width="80" height="80">
+										立刻註冊</a>
 
 								</span> <span> <!-- 								Facebook登入：<input type="button" value="Facebook登入" -->
 									<!-- 									onclick="FBLogin();" /> --> <!-- 								<input type="button" value="Facebook登入" -->
 									<!-- 									onclick="FBLogin();" style="background-image:url(../images/icons/fb.png);width:80px;height:80px;"> -->
-									<button value="Facebook登入" onclick="FBLogin();">
+									<button value="Facebook登入" onclick="FBLogin();"
+										title="Facebook帳號登入">
 										<img src="../images/icons/fb.png" width="80" height="80">
 									</button>
 								</span> <span> <!-- 								Google登入：<input type="button" value="Google登入" -->
 									<!-- 									onclick="GoogleLogin();" /> -->
-									<button value="Facebook登入" onclick="GoogleLogin();">
+									<button value="Facebook登入" onclick="GoogleLogin();"
+										title="Google帳號登入">
 										<img src="../images/icons/google.png" width="80" height="80">
 									</button> <!-- 								 <input type="button" value="Google登入" onclick="GoogleLogin();" -->
 									<!-- 								style="background-image: url(../images/icons/google.png); width: 80px; height: 80px;"> -->
 								</span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div id="card-454342">
+									<div class="card">
+										<div class="card-header">
+											<a class="card-link" data-toggle="collapse"
+												data-parent="#card-454342" href="#card-element-120895">請輸注簡易註冊資訊</a>
+										</div>
+										<div id="card-element-120895" class="collapse">
+											<div class="card-body">
+
+												<form
+													action="<c:url value="/_11_memberpages/memberRegiste.controller" />"
+													method="post">
+													<table class="table table-hover table-bordered">
+														<thead>
+															<tr style="background-color: #3be8b0">
+																<td>帳號</td>
+																<td>密碼</td>
+																<td>E-mail</td>
+																<td>中文姓名</td>
+																<td>英文姓名</td>
+																
+															</tr>
+														</thead>
+														<tbody>
+															<tr class="table-Default">
+																<td>${param.member_Id}<input type="text"
+																	name="member_Id" value="${param.member_Id}"></td>
+																	<td><input type="text" name ="password" value="${param.password}"></td>
+																<td><input type="text" name="email"
+																	value="${param.email}"><span class="errors">${param.email}</span></td>
+																<td><input type="text" name="chinese_Name"
+																	value="${param.chinese_Name}"></td>
+																<td><input type="text" name="english_Name"
+																	value="${param.english_Name}"></td>
+																</tr>
+														</tbody>
+
+
+
+													</table>
+													<hr>
+													<table class="table table-hover table-bordered">
+														<thead>
+															<tr style="background-color: #3be8b0">
+															    <td>身分證字號</td>
+																<td>聯絡電話</td>
+																<td>國籍</td>
+																<td>生日</td>
+																<td>性別</td>
+															</tr>
+														</thead>
+														<tbody>
+															<tr class="table-Default">
+															<td><input type="text" name="ID_number"
+																	value="${param.ID_number}" ><span
+																	class="errors">${errors.ID_number}</span></td>
+																<td><input type="text" name="telephone"
+																	value="${param.telephone}"><span class="errors">${errors.telephone}</span></td>
+															
+																<td><input type="text" name="country"
+																	value="${param.country}"></td>
+																<td><input type="text" name="birthday"
+																	value="${param.birthday}"><span class="errors">${errors.birthday}</span></td>
+																<td><input type="text" name="sex"
+																	value="${param.sex}"></td>
+
+
+															</tr>
+														</tbody>
+													</table>
+														<table class="table table-hover table-bordered">
+														<thead>
+															<tr style="background-color: #3be8b0">
+																<td>地址</td>
+																<td></td>
+															</tr>
+														</thead>
+														<tbody>
+															<tr class="table-Default">
+																<td><input type="text" name="Address"
+																	value="${param.address}"></td>
+																<!-- 											<td><input type="submit" name="members" value="Update"></td> -->
+																<td><button class="btn btn-warning" value="Insert"
+																		name="members" type="submit">註冊</button></td>
+
+
+															</tr>
+														</tbody>
+													</table>
+												</form>
+
+
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -541,6 +569,13 @@
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
 
+	<script>
+		function Register() {
+			window.location = '<c:url value="/_11_memberpages/AccountRegister.jsp" />'
+		}
+	</script>
+
+
 	<script type="text/javascript">
 		//應用程式編號，進入 https://developers.facebook.com/apps/ 即可看到
 		let FB_appID = "228035798120942";
@@ -572,25 +607,23 @@
 		//使用自己客製化的按鈕來登入
 		function FBLogin() {
 
-			FB
-					.login(
-							function(response) {
-								//debug用
-								console.log(response);
-								if (response.status === 'connected') {
-									//user已登入FB
-									//抓userID
-									let FB_ID = response["authResponse"]["userID"];
-									console.log("userID:" + FB_ID);
-									window.location = "http://localhost:8080/River/_11_memberpages/member.jsp";
+			FB.login(function(response) {
+				//debug用
+				console.log(response);
+				if (response.status === 'connected') {
+					//user已登入FB
+					//抓userID
+					let FB_ID = response["authResponse"]["userID"];
+					console.log("userID:" + FB_ID);
+					window.location = "http://localhost:8080//River";
 
-								} else {
-									// user FB取消授權
-									alert("Facebook帳號無法登入");
-								}
-							}, {
-								scope : 'public_profile,email'
-							});
+				} else {
+					// user FB取消授權
+					alert("Facebook帳號無法登入");
+				}
+			}, {
+				scope : 'public_profile,email'
+			});
 
 		}
 	</script>
@@ -640,23 +673,20 @@
 
 		function GoogleLogin() {
 			// API call for Google login  
-			gapi.auth2
-					.getAuthInstance()
-					.signIn()
-					.then(
-							function(success) {
-								// Login API call is successful 
-								console.log(success);
-								let Google_ID = success["El"];
+			gapi.auth2.getAuthInstance().signIn().then(function(success) {
+				// Login API call is successful 
+				console.log(success);
+				let Google_ID = success["El"];
 
-								window.location = "http://localhost:8080/River/_11_memberpages/member.jsp";
-							}, function(error) {
-								// Error occurred
-								// console.log(error) to find the reason
-								console.log(error);
-							}
+				window.location = "http://localhost:8080/River";
 
-					);
+			}, function(error) {
+				// Error occurred
+				// console.log(error) to find the reason
+				console.log(error);
+			}
+
+			);
 
 		}
 	</script>

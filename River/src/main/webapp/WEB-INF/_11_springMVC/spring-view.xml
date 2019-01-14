@@ -9,6 +9,16 @@
 		<property name="url" value="/_11_memberpages/member.jsp"></property>
 	</bean>
 	
+	<bean id="MemberAccount.page" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/_11_memberpages/MemberAccount.jsp"></property>
+	</bean>
+	<bean id="MemberAccount.modify" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/_11_memberpages/AccountModify.jsp"></property>
+	</bean>
+ 
+<!-- 	<bean id="member.logined" class="org.springframework.web.servlet.view.InternalResourceView"> -->
+<!-- 		<property name="url" value="/_11_memberpages/MemberAccount.jsp"></property> -->
+<!-- 	</bean> -->
 	<bean id="memberRegister.errors" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_11_memberpages/memberRegister.jsp"></property>
 	</bean>
@@ -22,7 +32,11 @@
 	</bean> 
 	
 	<bean id="logout.success" class="org.springframework.web.servlet.view.RedirectView">
-		<property name="url" value="/index.jsp"></property>
+		<property name="url" value="/index18.jsp"></property>
+		<property name="contextRelative" value="true"></property>
+	</bean>
+	<bean id="member.logined" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="url" value="/index18.jsp"></property>
 		<property name="contextRelative" value="true"></property>
 	</bean>
 

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,7 @@ public class MemberRegisterController {
 	}
 	@RequestMapping("/_11_memberpages/memberRegiste.controller")
 	public String method(Model model,String members, 
-			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
+			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus,HttpSession session) {
 		System.out.println("bean="+bean);
 		System.out.println("bindingResult"+bindingResults);
 		
@@ -65,9 +67,11 @@ public class MemberRegisterController {
 			if(result == null) {
 				errors.put("action", "Insert failed");
 			}else {
+				
+				session.setAttribute("member_Id", result.getMember_Id());
 				model.addAttribute("insert", result);
 			}
-			return "memberRegister.errors";
+			return "member.logined";
 			
 		}else if("Update".equals(members)){
 			MemberBean result = memberService.update(bean);

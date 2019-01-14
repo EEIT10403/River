@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -29,7 +30,7 @@ public class LoginController {
 	private ApplicationContext context;
 	
 	@RequestMapping("/_11_secure/login.controller")
-	public String method(String username, String password, Model model) {
+	public String method(String username, String password, Model model,HttpSession session) {
 		Locale locale = LocaleContextHolder.getLocale();
 		
 //接收資料
@@ -54,9 +55,28 @@ public class LoginController {
 			errors.put("IDerror", "Login failed");
 			return "login.errors";
 		}else {
+			
+			session.setAttribute("member_Id", bean.getMember_Id());
 			model.addAttribute("user", bean);
-			return "member.errors";
+			return "member.logined";
 		}
+	}
+	
+	@RequestMapping("/Member/Logout")
+	public String Logout(Model model,
+			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus,HttpSession session) {
+		
+		
+		System.out.println("/Member/Logout有進來");
+		
+//		sessionStatus.setComplete(); 不能用
+		session.invalidate();
+	
+		
+//		System.out.println(session.getAttribute("member_Id")); 沒辦法這樣側了
+		
+		return "logout.success";
+		
 	}
 	@ResponseBody  
 	public String getUserInfo(String userInfo) {  

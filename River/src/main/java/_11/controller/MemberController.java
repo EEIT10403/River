@@ -29,6 +29,35 @@ public class MemberController {
 		webDataBinder.registerCustomEditor(java.util.Date.class, "Birthday", 
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
+	
+	@RequestMapping("/Member/IntoMemberAcount")
+	public String IntoMemberAcount(Model model,String member_Id, 
+			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
+		
+		
+		System.out.println("/Member/IntoMemberAcount有進來="+member_Id);
+		
+		MemberBean mBean= memberService.findById(member_Id);
+		model.addAttribute("mBean", mBean);
+		
+		return "MemberAccount.page";
+		
+	}
+	@RequestMapping("/Member/ModifyAccount")
+	public String ModifyAccount(Model model,String member_Id, 
+			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
+		
+		
+		System.out.println("/Member/ModifyAccount有進來="+member_Id);
+		
+		MemberBean mBean= memberService.findById(member_Id);
+		model.addAttribute("mBean", mBean);
+		
+		return "MemberAccount.modify";
+		
+	}
+	
+	
 	@RequestMapping("/_11_memberpages/member.controller")
 	public String method(Model model,String members, 
 			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
@@ -53,9 +82,9 @@ public class MemberController {
 		if("Update".equals(members)){
 			MemberBean result = memberService.update(bean);
 			
-				model.addAttribute("update", result);
+				model.addAttribute("mBean", result); 
 			
-			return "member.errors";
+			return "MemberAccount.page";
 			
 		}else if("Logout".equals(members)) {
 			sessionStatus.setComplete();

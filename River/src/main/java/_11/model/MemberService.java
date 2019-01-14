@@ -39,6 +39,18 @@ public class MemberService {
 		return false;
 		
 	}
+	
+	public MemberBean findById(String member_Id){
+		MemberBean result = null;
+		MemberBean memberBean=null ;
+		
+		if(member_Id != null ){
+			System.out.println("memberService-select");
+		    memberBean = memberDAO.findByPrimaryKey(member_Id);
+		}
+			
+			return memberBean;
+	}
 	public List<MemberBean> select(MemberBean bean){
 		System.out.println("memberService");
 		List<MemberBean> result = null;

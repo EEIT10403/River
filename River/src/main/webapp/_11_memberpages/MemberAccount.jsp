@@ -14,8 +14,6 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
@@ -106,7 +104,7 @@
 
 							<div
 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-								data-notify="0">
+								data-notify="2">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 
@@ -136,7 +134,7 @@
 
 					<div
 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-						data-notify="2">
+						data-notify="0">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 
@@ -282,112 +280,142 @@
 		<!-- 產品顯示部分 start-->
 
 
+		<div style='padding: 8% 10%'>
+
+			<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>
+
+
+			<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
+
+			<%--        </c:if> --%>
+			<c:set value="${member_Id}" var="member_Id" scope="session" />
+			<%-- 			<h1>${member_Id}</h1> --%>
 
 
 
-		<div style='padding: 10% 20%'>
-			
+			<h1></h1>
 
-
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header">
-								<h1>${bean.prod_Name}</h1>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-7" style='padding: 30px'>
-							<img alt="Bootstrap Image Preview" style='width: 500px'
-								src='<%=request.getContextPath()%>/images/_027_Pimage/${bean.product_Id}.jpg' />
-						</div>
-						<div class="col-md-5">
-							<!-- 						<h2>Heading</h2> -->
-							<p>${bean.features}
-							<p>
-								<a class="btn" href="#viewdetails">View details »</a>
-							</p>
-							<button type="button"
-								class="btn btn-block active btn-outline-primary" id='buynow'>
-								立即訂購</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<table class="table table-hover table-sm table-bordered">
-								<thead>
-									<tr>
-										<th>票種名稱</th>
-										<th>特價</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="table-active">
-										<td>${bean.ticket_type_1}</td>
-										<td>${bean.unitPrice_1}</td>
-										<td><a
-											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-										</td>
-									</tr>
-									<c:if test="${not empty bean.ticket_type_2}">
-										<tr class="table-active">
-											<td>${bean.ticket_type_2}</td>
-											<td>${bean.unitPrice_2}</td>
-											<td><a
-												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-											</td>
-										</tr>
-									</c:if>
-									<c:if test="${not empty bean.ticket_type_3}">
-										<tr class="table-active">
-											<td>${bean.ticket_type_3}</td>
-											<td>${bean.unitPrice_3}</td>
-											<td><a
-												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-											</td>
-										</tr>
-									</c:if>
-									<c:if test="${not empty bean.ticket_type_4}">
-										<tr class="table-active">
-											<td>${bean.ticket_type_4}</td>
-											<td>${bean.unitPrice_4}</td>
-											<td><a
-												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-											</td>
-										</tr>
-									</c:if>
-								</tbody>
-							</table>
-							<div class="row" id="viewdetails">
-								<!-- 頁面內瞬移有點被header擋到 -->
-								<div class="col-md-9">
-									<div class="tabbable" id="tabs-916421">
-										<ul class="nav nav-tabs">
-											<li class="nav-item"><a class="nav-link active show"
-												href="#tab1" data-toggle="tab">詳細介紹</a></li>
-											<li class="nav-item"><a class="nav-link " href="#tab2"
-												data-toggle="tab">權益說明</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tab1">
-												<p>${bean.detail}</p>
-											</div>
-											<div class="tab-pane " id="tab2">
-												<p>${bean.rights}</p>
-											</div>
-										</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="carousel slide" id="carousel-151068">
+							<ol class="carousel-indicators">
+								<li data-slide-to="0" data-target="#carousel-151068"></li>
+								<li data-slide-to="1" data-target="#carousel-151068"
+									class="active"></li>
+								<li data-slide-to="2" data-target="#carousel-151068"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap First"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
 									</div>
 								</div>
-								<div class="col-md-3"></div>
+								<div class="carousel-item active">
+									<img class="d-block w-100" alt="Carousel Bootstrap Second"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap Third"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
+									</div>
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carousel-151068"
+								data-slide="prev"><span class="carousel-control-prev-icon"></span>
+								<span class="sr-only">Previous</span></a> <a
+								class="carousel-control-next" href="#carousel-151068"
+								data-slide="next"><span class="carousel-control-next-icon"></span>
+								<span class="sr-only">Next</span></a>
+						</div>
+						<div style="text-align: center; margin: 30px">
+							<div class="btn-group btn-group-lg " role="group">
+
+								<a class="btn btn-secondary"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
+									type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+								<a class="btn btn-secondary"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
+								<a class="btn btn-secondary"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
+								</a>
+								<a class="btn btn-secondary"
+									href="<c:url value="/Member/Logout" />">登出 </a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<hr>
+								<table class="table table-hover table-bordered">
+									<thead>
+										<tr style="background-color: #3be8b0">
+											<td>帳號</td>
+											<td>E-mail</td>
+											<td>中文姓名</td>
+											<td>英文姓名</td>
+											<td>身分證字號</td>
+											<td>聯絡電話</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="table-Default">
+											<td>${mBean.member_Id}</td>
+											<td>${mBean.email}</td>
+											<td>${mBean.chinese_Name}</td>
+											<td>${mBean.english_Name}</td>
+											<td>${mBean.ID_number}</td>
+											<td>${mBean.telephone}</td>
+										</tr>
+									</tbody>
+
+
+
+								</table>
+								<hr>
+								<table class="table table-hover table-bordered">
+									<thead>
+										<tr style="background-color: #3be8b0">
+											<td>國籍</td>
+											<td>生日</td>
+											<td>性別</td>
+											<td>地址</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="table-Default">
+											<td>${mBean.country}</td>
+											<td>${mBean.birthday}</td>
+											<td>${mBean.sex}</td>
+											<td>${mBean.address}</td>
+
+
+										</tr>
+									</tbody>
+								</table>
+								<a class="btn btn-primary"
+												href="<c:url value="/Member/ModifyAccount?member_Id=${member_Id}"/>"
+												type="button">修改帳號資料</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<!-- 產品顯示部分end -->
+		<!-- 產品顯示部分end -->
+
+
 
 		<!-- Load more -->
 
@@ -526,19 +554,19 @@
 	<script>
  
 <!-- 立即訂購 start-->
-$('#buynow').click(function(){
-	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
-});
+// $('#buynow').click(function(){
+// 	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
+// });
 	
 		
+<!-- 立即訂購 end -->
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		
-		
+// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
 	}); <!-- document).ready 結尾-->
 	
 	</script>
