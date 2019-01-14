@@ -13,8 +13,9 @@
 
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"> </script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"> </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -285,114 +286,133 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		
-		
-		
-		
+
+
+
+
 		<form name="insert" ENCTYPE="multipart/form-data"
-		action="<c:url value="/pages/product.controller" />" method="post">
-		<div style='padding: 10% 20%'>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="jumbotron">
-							<h2>產品管理平台</h2>
-							<p>本月業績系統</p>
-							<hr>
-<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
-<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
-<%-- 							<a class="btn btn-primary" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" > --%>
-<!-- 										觀看銷售報表</a> -->
-						</div>
-						<div class="page-header">
-						
-						<!-- 就這一句而已 -->
-						<canvas id="myChart" width="300" height="150"></canvas>
-						
+			action="<c:url value="/pages/product.controller" />" method="post">
+			<div style='padding: 10% 20%'>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="jumbotron">
+								<h2>產品管理平台</h2>
+								<p>本月業績系統</p>
+								<hr>
+								<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
+								<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
+								<%-- 							<a class="btn btn-primary" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" > --%>
+								<!-- 										觀看銷售報表</a> -->
+							</div>
+							<div class="page-header">
+
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="tabbable" id="tabs-210647">
+										<ul class="nav nav-tabs">
+											<li class="nav-item"><a class="nav-link active"
+												href="#tab1" data-toggle="tab">關西</a></li>
+											<li class="nav-item"><a class="nav-link" href="#tab2"
+												data-toggle="tab">關東</a></li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<p><canvas id="myChartK" width="300" height="150"></canvas></p>
+											</div>
+											<div class="tab-pane" id="tab2">
+												<p><canvas id="myChartT" width="300" height="150"></canvas></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- 產品顯示部分end -->
+			<!-- 產品顯示部分end -->
 
-		<!-- Modal 產品代號輸入區塊start-->
-		<div class="modal fade" id="checkId" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content" style="margin-top: 100px">
-					<div class="modal-header">
-						<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<input type="text" name="Product_Id" value="${param.Product_Id}"
-							style="border: solid 1px; width: 450px">
-					</div>
-					<span class="error">${errors.Product_Id}</span>
-					<div class="modal-footer">
+			<!-- Modal 產品代號輸入區塊start-->
+			<div class="modal fade" id="checkId" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content" style="margin-top: 100px">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<input type="text" name="Product_Id" value="${param.Product_Id}"
+								style="border: solid 1px; width: 450px">
+						</div>
+						<span class="error">${errors.Product_Id}</span>
+						<div class="modal-footer">
 
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" id="getInfo">取得明細</button>
-						
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal" id="getInfo">取得明細</button>
+
+						</div>
 					</div>
+
 				</div>
 
 			</div>
 
-		</div>
-		
-		<div class="modal fade" id="doubleConfirm1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要儲存嗎?</div>
-								<div class="modal-footer">
-									<button type="submit" id='confirmBtn' type="button" name="prodaction" value="Update" class="btn btn-primary">送出</button>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">退回修改</button>
-								</div>
-							</div>
-
+			<div class="modal fade" id="doubleConfirm1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content" style="margin-top: 100px">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
 						</div>
-
-					</div>
-		<div class="modal fade" id="doubleConfirm2" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">清除重來</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要清除重來嗎?</div>
-								<div class="modal-footer">
-									<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										重新填寫</a>
-										<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										重新填寫</a>
-										
-										
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">取消</button>
-								</div>
-							</div>
-
+						<div class="modal-body">確認要儲存嗎?</div>
+						<div class="modal-footer">
+							<button type="submit" id='confirmBtn' type="button"
+								name="prodaction" value="Update" class="btn btn-primary">送出</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">退回修改</button>
 						</div>
-
 					</div>
-									
+
+				</div>
+
+			</div>
+			<div class="modal fade" id="doubleConfirm2" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content" style="margin-top: 100px">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">清除重來</h5>
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">確認要清除重來嗎?</div>
+						<div class="modal-footer">
+							<a class="btn btn-primary" type="button" id="refresh"
+								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
+								重新填寫</a> <a class="btn btn-primary" type="button" id="refresh"
+								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
+								重新填寫</a>
+
+
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">取消</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
 		</form>
 		<!-- Modal 區塊end-->
 
@@ -540,31 +560,73 @@
 	});
 	
 	
-	var ctx = document.getElementById("myChart").getContext('2d');
+	var ctx = document.getElementById("myChartK").getContext('2d');
 	var myChart = new Chart(ctx, {
 	    type: 'polarArea',
 	    data: {
-	        labels: ["${SalesSum[0].product_Id}/${SalesSum[0].prod_Name}", "${SalesSum[1].product_Id}/${SalesSum[1].prod_Name}", "${SalesSum[2].product_Id}/${SalesSum[2].prod_Name}", "${SalesSum[3].product_Id}/${SalesSum[3].prod_Name}"],
+	        labels: ["${SalesSumK[0].product_Id}${SalesSumK[0].prod_Name}", "${SalesSumK[1].product_Id}${SalesSumK[1].prod_Name}", "${SalesSumK[2].product_Id}${SalesSumK[2].prod_Name}", "${SalesSumK[3].product_Id}${SalesSumK[3].prod_Name}"],
+// 	        labels: ["a", "b", "c", "d"],
 	        datasets: [{
 	            label: '# of Sales',
-	            data: [${SalesSum[0].totalSales}, ${SalesSum[1].totalSales},${SalesSum[2].totalSales}, ${SalesSum[3].totalSales}],
+	            data: [${SalesSumK[0].totalSales},${SalesSumK[1].totalSales},${SalesSumK[2].totalSales},${SalesSumK[3].totalSales}],
+// 	            data: [11,22,33,44],
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)',
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 206, 86, 0.2)',
 	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
+// 	                'rgba(153, 102, 255, 0.2)',
+// 	                'rgba(255, 159, 64, 0.2)'
 	            ],
 	            borderColor: [
 	                'rgba(255,99,132,1)',
 	                'rgba(54, 162, 235, 1)',
 	                'rgba(255, 206, 86, 1)',
 	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
+// 	                'rgba(153, 102, 255, 1)',
+// 	                'rgba(255, 159, 64, 1)'
 	            ],
 	            borderWidth: 2
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
+	});
+	
+	var ctxT = document.getElementById("myChartT").getContext('2d');
+	var myChartT = new Chart(ctxT, {
+	    type: 'polarArea',
+	    data: {
+	        labels: ["${SalesSumT[0].product_Id}${SalesSumT[0].prod_Name}", "${SalesSumT[1].product_Id}${SalesSumT[1].prod_Name}", "${SalesSumT[2].product_Id}${SalesSumT[2].prod_Name}"],
+// 	        labels: ["a", "b", "c", "d"],
+	        datasets: [{
+	            label: '# of Sales',
+	            data: [${SalesSumT[0].totalSales},${SalesSumT[1].totalSales},${SalesSumT[2].totalSales}],
+// 	            data: [11,22,33,44],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+// 	                'rgba(153, 102, 255, 0.2)',
+// 	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255,99,132,1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+// 	                'rgba(153, 102, 255, 1)',
+// 	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
 	        }]
 	    },
 	    options: {

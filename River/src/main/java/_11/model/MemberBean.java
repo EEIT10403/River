@@ -62,12 +62,6 @@ public class MemberBean {
 	public void setID_number(String ID_Number) {
 		this.ID_number = ID_Number;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getTelephone() {
 		return telephone;
 	}
