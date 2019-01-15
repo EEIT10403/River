@@ -211,17 +211,17 @@
 
 
 		<div style='padding: 8% 10%'>
-		
-<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>  
-		
-		
-<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
-		
-<%--        </c:if> --%>
+
+			<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>
+
+
+			<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
+
+			<%--        </c:if> --%>
 			<c:set value="${member_Id}" var="member_Id" scope="session" />
 			<%-- 			<h1>${member_Id}</h1> --%>
 
-         
+
 
 			<h1></h1>
 
@@ -279,8 +279,7 @@
 									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
 								<a class="btn btn-secondary"
 									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
-								</a>
-								<a class="btn btn-secondary"
+								</a> <a class="btn btn-secondary"
 									href="<c:url value="/Member/Logout" />">登出 </a>
 							</div>
 						</div>
@@ -312,37 +311,39 @@
 													href="<c:url value="/Order/OrdersItemPage?Order_No=${anOrder.order_No}" />"
 													type="button">查看明細</a></td>
 												<td>${anOrder.total_Amount}</td>
-												<td><a class="btn btn-warning"
-													href="<c:url value="/Order/Payment?Order_No=${anOrder.order_No}" />" type="button"
-													 style="margin-bottom:3px">立即付款</a>
-												<a class="btn btn-danger"
-													href="#delete${anOrder.order_No}" type="button"
-													data-toggle="modal">刪除訂單</a>
-													<div class="modal fade" id="delete${anOrder.order_No}"
-														role="dialog" aria-labelledby="myModalLabel"
-														aria-hidden="true">
-														<div class="modal-dialog" role="document">
-															<div class="modal-content" style="margin-top: 100px">
-																<div class="modal-header">
-																	<h5 class="modal-title" id="myModalLabel">刪除</h5>
-																	<button type="button" class="close"
-																		data-dismiss="modal">
-																		<span aria-hidden="true">×</span>
-																	</button>
+												<td><c:if test="${anOrder.canceltag}">
+													完成付款
+												</c:if> <c:if test="${empty anOrder.canceltag}">
+														<a class="btn btn-danger"
+															href="#delete${anOrder.order_No}" type="button"
+															data-toggle="modal">刪除訂單</a>
+														<div class="modal fade" id="delete${anOrder.order_No}"
+															role="dialog" aria-labelledby="myModalLabel"
+															aria-hidden="true">
+															<div class="modal-dialog" role="document">
+																<div class="modal-content" style="margin-top: 100px">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="myModalLabel">刪除</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">×</span>
+																		</button>
+																	</div>
+																	<div class="modal-body">確認要刪除訂單${anOrder.order_No}嗎?</div>
+																	<div class="modal-footer">
+																		<a class="btn btn-warning"
+																			href="<c:url value="/Order/DeleteOrderSell?Order_No=${anOrder.order_No}" />"
+																			type="button">確定刪除</a>
+																		<button type="button" class="btn btn-secondary"
+																			data-dismiss="modal">取消</button>
+																	</div>
 																</div>
-																<div class="modal-body">確認要刪除訂單${anOrder.order_No}嗎?</div>
-																<div class="modal-footer">
-																	<a class="btn btn-warning"
-																		href="<c:url value="/Order/DeleteOrderSell?Order_No=${anOrder.order_No}" />"
-																		type="button">確定刪除</a>
-																	<button type="button" class="btn btn-secondary"
-																		data-dismiss="modal">取消</button>
-																</div>
+
 															</div>
 
 														</div>
-
-													</div> <!-- Modal end --></td>
+														<!-- Modal end -->
+													</c:if></td>
 
 												<!-- Modal start -->
 

@@ -286,12 +286,16 @@
 									</table>
 								</div>
 							</div>
-							<form action="/allpayAioSpringDemo/frontEnd/aioCheckOut/aioCheckOutOneTime" method="POST" id="aio">
-								<input type="submit" value="Submit" />
-								<br>
-							</form>
-							<form action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />" method="POST" id="aio">
-								<input type="submit" value="Submit" />
+							<form
+								action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />"
+								method="POST" id="aio">
+
+								<input type="hidden" name="itemName" value="${order.prod_Name}">
+								<input type="hidden" name="totalAmount"
+									value="${order.total_Amount}"> 
+								<input type="hidden" name="Order_No" value="${order.order_No}">
+								<button type="submit" value="Submit" > 
+								<img src="../images/icons/allpay.png" width="80" height="80"></button>
 								<br>
 							</form>
 						</div>

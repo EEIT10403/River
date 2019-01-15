@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -230,7 +230,9 @@ public class AioCheckOutController {
 	
 	
 	@RequestMapping(value = "frontEnd/aioCheckOut/aioCheckOutOneTime", method = RequestMethod.POST, produces="text/html;charset=UTF-8")
-	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio,HttpServletRequest request){
+	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio,String itemName,String totalAmount, String Order_No,HttpSession session){
+		
+		session.setAttribute("Order_No", Order_No);
 		all = new AllInOne("");
 		System.out.println(aio.getRemark());
 		InvoiceObj invoice = new InvoiceObj();
@@ -243,14 +245,15 @@ public class AioCheckOutController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		aio.setMerchantTradeDate(sdf.format(date));
 		//�q�t��DB���X���ӫ~��T
-		aio.setItemName("item1");
-		aio.setTotalAmount("50");
+		aio.setItemName("百川旅遊商品："+itemName);
+		aio.setTotalAmount(totalAmount);
 		aio.setTradeDesc("item desc");
 		//�t�ӥi�ۦ�M�w�O�_���𼷴�
 		aio.setHoldTradeAMT("0");
 		//��ݳ]�w�I�ڧ����q���^�Ǻ��}
+//		String returnURL = request.getContextPath()+"/Order/PayResult"; 不行這樣, 會留在歐付寶
 		aio.setReturnURL("http://localhost:8080/River/Order/PayResult");
-//		String returnURL = request.getContextPath()+"/Order/PayResult";
+		
 //		System.out.println(returnURL);
 		aio.setOrderResultURL("http://localhost:8080/River/Order/PayResult");
 		try{

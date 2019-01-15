@@ -143,7 +143,7 @@ public class MemberOrderPage {
 	
 	@RequestMapping("/Order/GetSalesSum")
 	public String GetSalesSum(Model model,
-			HttpSession session) throws IOException, ServletException, SQLException {
+			HttpSession session, String startWord) throws IOException, ServletException, SQLException {
 		
 		String member_Id = (String) session.getAttribute("member_Id");
 
@@ -227,27 +227,60 @@ public class MemberOrderPage {
 	}
 	
 	@RequestMapping("/Order/PayResult")
-	public String PayResult(Model model, String Order_No,int RtnCode, 
+	public String PayResult(Model model,int RtnCode, 
 			HttpSession session) throws IOException, ServletException, SQLException {
 		
+		
 		String member_Id = (String) session.getAttribute("member_Id");
-
-//		System.out.println("有進/Order/PayResult" + Order_No); // 測試有沒有進來
+        String Order_No = (String) session.getAttribute("Order_No");
+		System.out.println("有進/Order/PayResult" + Order_No); // 測試有沒有進來
 		System.out.println("有進/Order/PayResult" + member_Id); // 測試有沒有進來
+		System.out.println("交易成功代碼-"+RtnCode);
 		
-		System.out.println(RtnCode);
-
-
-		Boolean deleteSuccess = orderSellService.removeByOrder_No(Order_No);
 		
-//		System.out.println("後端"+Orderlist);
-		if(deleteSuccess) {
 			
-			List<OrderSellBean> Orderlist =	orderSellService.findOrdersByMemberId(member_Id);
-		model.addAttribute("orderList", Orderlist);
-
+			List<OrderItemBean> oBeans = orderItemService.findItemsByOrder_No(Order_No);
+			
+			
+		if(RtnCode==1) {  //改item狀態
+			for(OrderItemBean bean:oBeans) {
+				bean.setUnpaid_Amount(0);
+				bean.setPaid_Amount(bean.getTotal_Amount());
+				orderItemService.update(bean);
+			}
+			
+			OrderSellBean orderSellBean = orderSellService.findOrdersByOrder_No(Order_No);
+			orderSellBean.setCanceltag("NO"); //改訂單狀態
+			orderSellService.update(orderSellBean);
+			
+			
+			List<OrderItemBean> orderItemBean = orderItemService.findItemsByOrder_No(Order_No);
+			DayTour_ProductBean dayTour_Productbean = productService.findByPrimaryKey(orderItemBean.get(0).getProduct_Id());
+			
+			List<TravelerBean> travelerList = travelerService.findTravelerByOrder_NO(Order_No);
+			System.out.println("dayTour_Productbean"+dayTour_Productbean);
+//			System.out.println("後端"+Orderlist);
+			System.out.println("orderSellBean"+orderSellBean);
+			
+			
+			
+			
+			
+			model.addAttribute("order", orderSellBean);
+			model.addAttribute("travelers", travelerList);
+			model.addAttribute("orderItems", orderItemBean);
+			model.addAttribute("pBean", dayTour_Productbean);
+			model.addAttribute("Order_No", Order_No);
+	        session.removeAttribute("Order_No");
+			
+			return "OrdersItemPage.list";
 		}
-		return "MemberOrders.list";
+		
+		
+		
+
+		
+		return "PayFail"; //其實沒寫
 
 	}
 	
