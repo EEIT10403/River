@@ -17,7 +17,7 @@ public class PaymentVerifyBase{
 	protected Document doc;
 	public PaymentVerifyBase(){
 		URL fileURL = this.getClass().getResource("/AllpayPayment.xml");
-		System.out.println(fileURL);
+//		System.out.println(fileURL);
 		doc = AllPayFunction.xmlParser(fileURL.toString());
 		doc.getDocumentElement().normalize();
 	}

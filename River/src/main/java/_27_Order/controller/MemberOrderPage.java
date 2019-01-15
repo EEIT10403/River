@@ -226,6 +226,31 @@ public class MemberOrderPage {
 
 	}
 	
+	@RequestMapping("/Order/PayResult")
+	public String PayResult(Model model, String Order_No,int RtnCode, 
+			HttpSession session) throws IOException, ServletException, SQLException {
+		
+		String member_Id = (String) session.getAttribute("member_Id");
+
+//		System.out.println("有進/Order/PayResult" + Order_No); // 測試有沒有進來
+		System.out.println("有進/Order/PayResult" + member_Id); // 測試有沒有進來
+		
+		System.out.println(RtnCode);
+
+
+		Boolean deleteSuccess = orderSellService.removeByOrder_No(Order_No);
+		
+//		System.out.println("後端"+Orderlist);
+		if(deleteSuccess) {
+			
+			List<OrderSellBean> Orderlist =	orderSellService.findOrdersByMemberId(member_Id);
+		model.addAttribute("orderList", Orderlist);
+
+		}
+		return "MemberOrders.list";
+
+	}
+	
 //	AllInOne all;
 //	@RequestMapping(value = "frontEnd/aioCheckOut/aioCheckOutOneTime", method = RequestMethod.POST, produces="text/html;charset=UTF-8")
 //	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio){

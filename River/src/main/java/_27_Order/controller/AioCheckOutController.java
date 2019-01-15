@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import allPay.payment.integration.AllInOne;
-import allPay.payment.integration.domain.*;
+import allPay.payment.integration.domain.AioCheckOutALL;
+import allPay.payment.integration.domain.AioCheckOutATM;
+import allPay.payment.integration.domain.AioCheckOutCVS;
+import allPay.payment.integration.domain.AioCheckOutDevide;
+import allPay.payment.integration.domain.AioCheckOutOneTime;
+import allPay.payment.integration.domain.AioCheckOutPeriod;
+import allPay.payment.integration.domain.AioCheckOutTenpay;
+import allPay.payment.integration.domain.AioCheckOutWebATM;
+import allPay.payment.integration.domain.InvoiceObj;
 import allPay.payment.integration.exception.AllPayException;
 
 @Controller
@@ -219,7 +230,7 @@ public class AioCheckOutController {
 	
 	
 	@RequestMapping(value = "frontEnd/aioCheckOut/aioCheckOutOneTime", method = RequestMethod.POST, produces="text/html;charset=UTF-8")
-	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio){
+	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio,HttpServletRequest request){
 		all = new AllInOne("");
 		System.out.println(aio.getRemark());
 		InvoiceObj invoice = new InvoiceObj();
@@ -238,10 +249,13 @@ public class AioCheckOutController {
 		//�t�ӥi�ۦ�M�w�O�_���𼷴�
 		aio.setHoldTradeAMT("0");
 		//��ݳ]�w�I�ڧ����q���^�Ǻ��}
-		aio.setReturnURL("http://211.23.128.214:5000");
+		aio.setReturnURL("http://localhost:8080/River/Order/PayResult");
+//		String returnURL = request.getContextPath()+"/Order/PayResult";
+//		System.out.println(returnURL);
+		aio.setOrderResultURL("http://localhost:8080/River/Order/PayResult");
 		try{
 			String html = all.aioCheckOut(aio, invoice);
-			System.out.println(html);
+			System.out.println("媽我在這"+html);
 			return html;
 		} catch(AllPayException e){
 			throw new Error(e.getNewExceptionMessage());
