@@ -96,7 +96,7 @@ public class IntoOrderPage {
 			String Contact_Name,String Contact_Address,String Contact_Phone,String Contact_Email,String InvoiceTitle,
 			HttpServletRequest request) throws IOException, ServletException, SQLException {
 
-//		String member_Id = (String) session.getAttribute("member_Id");  等串完整了要打開
+		String member_Id = (String) session.getAttribute("member_Id");  
 		
 		System.out.println("Contact_Name="+Contact_Name);
 		
@@ -309,7 +309,7 @@ public class IntoOrderPage {
 		OrderSellBean orderSellBean = new OrderSellBean();
 		
 		orderSellBean.setOrder_No(OrderNo);
-		orderSellBean.setMember_Id("kitty"); //等到member功能完整一點, 應該能從session拿到吧
+		orderSellBean.setMember_Id(member_Id); //等到member功能完整一點, 應該能從session拿到吧
 		orderSellBean.setProd_Name(bean.getProd_Name());
 		orderSellBean.setTotal_Amount(Total_Amount);
 		orderSellBean.setTravelDate(TravelDate);
@@ -331,9 +331,9 @@ public class IntoOrderPage {
 		
 		
 		
-//		model.addAttribute("member_Id", "kitty"); 等串完正要打開
+		model.addAttribute("member_Id", member_Id); 
 		
-		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId("kitty"); //寫死母湯
+		List<OrderSellBean> Orderlist = orderSellService.findOrdersByMemberId(member_Id); //寫死母湯
 //		System.out.println("後端"+Orderlist);
 		
 		model.addAttribute("orderList", Orderlist);

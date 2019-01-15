@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -202,76 +201,6 @@
 		</header>
 
 		<!-- Cart -->
-		<div class="wrap-header-cart js-panel-cart">
-			<div class="s-full js-hide-cart"></div>
-
-			<div class="header-cart flex-col-l p-l-65 p-r-25">
-				<div class="header-cart-title flex-w flex-sb-m p-b-8">
-					<span class="mtext-103 cl2"> Your Cart </span>
-
-					<div
-						class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-						<i class="zmdi zmdi-close"></i>
-					</div>
-				</div>
-
-				<div class="header-cart-content flex-w js-pscroll">
-					<ul class="header-cart-wrapitem w-full">
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-01.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									White Shirt Pleat </a> <span class="header-cart-item-info">
-									1 x $19.00 </span>
-							</div>
-						</li>
-
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-02.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Converse All Star </a> <span class="header-cart-item-info">
-									1 x $39.00 </span>
-							</div>
-						</li>
-
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-03.jpg" alt="IMG">
-							</div>
-
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Nixon Porter Leather </a> <span class="header-cart-item-info">
-									1 x $17.00 </span>
-							</div>
-						</li>
-					</ul>
-
-					<div class="w-full">
-						<div class="header-cart-total w-full p-tb-40">Total: $75.00
-						</div>
-
-						<div class="header-cart-buttons flex-w w-full">
-							<a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-								View Cart </a> <a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out </a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 
 
@@ -303,131 +232,70 @@
 								<div class="btn-group btn-group-lg " role="group">
 
 									<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
-									type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
-									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
-								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
-								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
-								</a>
-								<a class="btn btn-secondary"
-									href="<c:url value="/Member/Logout" />">登出 </a>
+										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
+										type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
+										href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+									<a class="btn btn-secondary"
+										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
+									<a class="btn btn-secondary"
+										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
+									</a> <a class="btn btn-secondary"
+										href="<c:url value="/Member/Logout" />">登出 </a>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<hr>
 									<div style="padding: 20px">
-									<h3>${order.prod_Name}
-
-									</h3>
-									</div>
-									<div class="row">
-										<div class="col-md-5">
-											<img alt="Bootstrap Image Preview" style='width: 400px'
-												src='<%=request.getContextPath()%>/images/_027_Pimage/${pBean.product_Id}.jpg' />
-										</div>
-										<div class="col-md-7">
-											<ul>
-												<li class="list-item">　訂單編號：${order.order_No}</li>
-												<li class="list-item" style="color: gray">　(為能更快速服務，與客服人員洽詢時，請提示您的訂單編號)</li>
-												<li class="list-item">　訂購日期：${fn:substring(order.orderDate, 0, 19)}</li>
-												<li class="list-item">　出發日期：${order.travelDate}</li>
-												<li class="list-item">　客服人員：白三 聯絡電話：02-26335862 分機 585</li>
-												<li class="list-item">　傳真電話：02-66183587</li>
-												<li class="list-item"><a href="<c:url value="/DaytourProduct/Display?Product_Id=${pBean.product_Id}" />" rel="external nofollow" class="btn" >產品詳細</a></li>
-												
-												<li class="list-item"><a href="javascript:;" rel="external nofollow" class="btn"
-						id="download">訂單快照下載</a></li>
-						 
-						                        
-												<!-- 											<li class="list-item">Faucibus porta lacus fringilla vel</li> -->
-												<!-- 											<li class="list-item">Aenean sit amet erat nunc</li> -->
-												<!-- 											<li class="list-item">Eget porttitor lorem</li> -->
-											</ul>
-											<a class="btn btn-warning" style="margin:0% 60%"
-													href="<c:url value="/Order/Payment?Order_No=${order.order_No}" />" type="button"
-													 style="margin-bottom:3px">立即付款</a>
-										</div>
+										<h3>${order.prod_Name}</h3>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<hr>
-									<div class="tabbable" id="tabs-75706">
-										<ul class="nav nav-tabs">
-											<li class="nav-item"><a class="nav-link active"
-												href="#tab1" data-toggle="tab">交易管理</a></li>
-											<li class="nav-item"><a class="nav-link" href="#tab2"
-												data-toggle="tab">訂單內容</a></li>
-											<li class="nav-item"><a class="nav-link" href="#tab3"
-												data-toggle="tab">客服訊息</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tab1">
-												<table class="table table-hover table-bordered">
-													<thead>
-														<tr style="background-color: #3be8b0">
-															<td>票券種類</td>
-															<td>商品單價</td>
-															<td>總金額</td>
-															<td>已付金額</td>
-															<td>未付金額</td>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach varStatus="stVar" var="anItem"
-															items="${orderItems}">
-															<tr class="table-Default">
-																<td>${anItem.ticket_type}x${anItem.quantity}</td>
-																<td>${anItem.unitPrice}</td>
-																<td>${anItem.total_Amount}</td>
-																<td>${anItem.paid_Amount}</td>
-																<td>${anItem.unpaid_Amount}</td>
-															</tr>
+									<table class="table table-hover table-bordered">
+										<thead>
+											<tr style="background-color: #3be8b0">
+												<td>票券種類</td>
+												<td>商品單價</td>
+												<td>總金額</td>
+												<td>已付金額</td>
+												<td>未付金額</td>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach varStatus="stVar" var="anItem"
+												items="${orderItems}">
+												<tr class="table-Default">
+													<td>${anItem.ticket_type}x${anItem.quantity}</td>
+													<td>${anItem.unitPrice}</td>
+													<td>${anItem.total_Amount}</td>
+													<td>${anItem.paid_Amount}</td>
+													<td>${anItem.unpaid_Amount}</td>
+												</tr>
 
 
-														</c:forEach>
-													</tbody>
+											</c:forEach>
 
-												</table>
-												<hr>
-											</div>
-											<div class="tab-pane" id="tab2">
-												<table class="table table-hover table-bordered">
-													<thead>
-														<tr style="background-color: #3be8b0">
-															<td>旅客名稱</td>
-															<td>生日</td>
-															<td>使用票種</td>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach varStatus="stVar" var="aTraveler"
-															items="${travelers}">
-															<tr class="table-Default">
-																<td>${aTraveler.traveler_Name}</td>
-																<td>${fn:substring(aTraveler.birthday, 0, 10)}</td>
-																<td>${aTraveler.ticket_Type}</td>
+											<tr>
+												<td colspan="5" style="margin-right: 30px" align="right">應付金額：${order.total_Amount}</td>
+											</tr>
+										</tbody>
 
-															</tr>
-
-
-														</c:forEach>
-													</tbody>
-
-												</table>
-											</div>
-										</div>
-									</div>
-
-
-
-
+									</table>
 								</div>
 							</div>
+							<form action="/allpayAioSpringDemo/frontEnd/aioCheckOut/aioCheckOutOneTime" method="POST" id="aio">
+<!-- 			是否使用購物金/紅包折抵(Y/N) -->
+<%-- 			<form:input type="text" path="UseRedeem" name="是否使用購物金/紅包折抵" /> --%>
+<!-- 								<br> -->
+<!-- 			備註 -->
+<%-- 			<form:input type="text" path="Remark" name="備註" /> --%>
+<!-- 								<br> -->
+								<input type="submit" value="Submit" />
+								<br>
+							</form>
 						</div>
 					</div>
 				</div>

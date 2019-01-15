@@ -338,7 +338,7 @@
 												<td><input type="text" name="country"
 													value="${mBean.country}"></td>
 												<td><input type="text" name="birthday"
-													value="${mBean.birthday}"><span class="errors">${errors.birthday}</span></td>
+													value="<fmt:formatDate value="${mBean.birthday}" pattern="yyyy-MM-dd"/>"><span class="errors">${errors.birthday}</span></td>
 												<td><input type="text" name="sex" value="${mBean.sex}"></td>
 												<td><input type="text" name="Address"
 													value="${mBean.address}"></td>

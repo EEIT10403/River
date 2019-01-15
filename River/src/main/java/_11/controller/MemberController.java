@@ -1,5 +1,6 @@
 package _11.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,20 +60,26 @@ public class MemberController {
 	
 	
 	@RequestMapping("/_11_memberpages/member.controller")
-	public String method(Model model,String members, 
+	public String method(Model model,String members, String birthday,
 			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus) {
 		System.out.println("bean="+bean);
 		System.out.println("bindingResult"+bindingResults);
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			bean.setBirthday(formatter.parse(birthday));
+		} catch (ParseException e) {
+			bean.setBirthday(null);
+		}
 //接收資料
 //資料轉換
 		Map<String, String> errors = new HashMap<>();
 		model.addAttribute("errors", errors);
-		if(bindingResults!=null && bindingResults.hasFieldErrors()) {
-			if(bindingResults.hasFieldErrors("Birthday")) {
-				errors.put("Birthday", "Birthday must be a date of YYYY-MM-DD");
-			}
-		}
+//		if(bindingResults!=null && bindingResults.hasFieldErrors()) {
+//			if(bindingResults.hasFieldErrors("Birthday")) {
+//				errors.put("Birthday", "Birthday must be a date of YYYY-MM-DD");
+//			}
+//		}
 //驗證資料
 		
 		if(errors!=null && !errors.isEmpty()) {

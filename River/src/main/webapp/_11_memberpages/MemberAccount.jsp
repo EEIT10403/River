@@ -395,7 +395,8 @@
 									<tbody>
 										<tr class="table-Default">
 											<td>${mBean.country}</td>
-											<td>${mBean.birthday}</td>
+<%-- 											<td>${mBean.birthday}</td> --%>
+											<td><fmt:formatDate value="${mBean.birthday}" pattern="yyyy-MM-dd"/></td>
 											<td>${mBean.sex}</td>
 											<td>${mBean.address}</td>
 

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import DaytourProduct.misc.PrimitiveNumberEditor;
 import DaytourProduct.model.DayTour_ProductBean;
@@ -104,6 +108,39 @@ public class MemberOrderPage {
 
 	}
 	
+	@RequestMapping("/Order/Payment")
+	public String Payment(Model model, String Order_No,
+			HttpSession session) throws IOException, ServletException, SQLException {
+		
+		String member_Id = (String) session.getAttribute("member_Id");
+
+		System.out.println("有進/Payment" + Order_No); // 測試有沒有進來
+		System.out.println("有進/Payment"+ member_Id); // 測試有沒有進來
+ 
+		OrderSellBean orderSellBean = orderSellService.findOrdersByOrder_No(Order_No);
+		List<OrderItemBean> orderItemBean = orderItemService.findItemsByOrder_No(Order_No);
+		
+		DayTour_ProductBean dayTour_Productbean = productService.findByPrimaryKey(orderItemBean.get(0).getProduct_Id());
+		
+		List<TravelerBean> travelerList = travelerService.findTravelerByOrder_NO(Order_No);
+		System.out.println("dayTour_Productbean"+dayTour_Productbean);
+//		System.out.println("後端"+Orderlist);
+		System.out.println("orderSellBean"+orderSellBean);
+		
+		
+		
+		
+		
+		model.addAttribute("order", orderSellBean);
+		model.addAttribute("travelers", travelerList);
+		model.addAttribute("orderItems", orderItemBean);
+		model.addAttribute("pBean", dayTour_Productbean);
+		
+		
+		return "Order.payment";
+
+	}
+	
 	@RequestMapping("/Order/GetSalesSum")
 	public String GetSalesSum(Model model,
 			HttpSession session) throws IOException, ServletException, SQLException {
@@ -188,6 +225,36 @@ public class MemberOrderPage {
 		return "MemberOrders.list";
 
 	}
-
+	
+//	AllInOne all;
+//	@RequestMapping(value = "frontEnd/aioCheckOut/aioCheckOutOneTime", method = RequestMethod.POST, produces="text/html;charset=UTF-8")
+//	public @ResponseBody String aioCheckOutDevide(AioCheckOutOneTime aio){
+//		all = new AllInOne("");
+//		System.out.println(aio.getRemark());
+//		InvoiceObj invoice = new InvoiceObj();
+//		//�������}�o��
+//		invoice = null;
+//		//�t�Өt�Φۦ沣��
+//		aio.setMerchantTradeNo(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 20));
+//		Date date = new Date();
+//		//�t�ӥi�ۦ�M�w����ɶ�
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+//		aio.setMerchantTradeDate(sdf.format(date));
+//		//�q�t��DB���X���ӫ~��T
+//		aio.setItemName("item1");
+//		aio.setTotalAmount("50");
+//		aio.setTradeDesc("item desc");
+//		//�t�ӥi�ۦ�M�w�O�_���𼷴�
+//		aio.setHoldTradeAMT("0");
+//		//��ݳ]�w�I�ڧ����q���^�Ǻ��}
+//		aio.setReturnURL("http://www.yahoo.com.jp");
+//		try{
+//			String html = all.aioCheckOut(aio, invoice);
+//			System.out.println(html);
+//			return html;
+//		} catch(AllPayException e){
+//			throw new Error(e.getNewExceptionMessage());
+//		}
+//	}
 
 }

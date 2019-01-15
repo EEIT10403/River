@@ -1,5 +1,6 @@
 package _11.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -31,10 +32,20 @@ public class MemberRegisterController {
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
 	@RequestMapping("/_11_memberpages/memberRegiste.controller")
-	public String method(Model model,String members, 
+	public String method(Model model,String members, String birthday,
 			MemberBean bean,BindingResult bindingResults, SessionStatus sessionStatus,HttpSession session) {
 		System.out.println("bean="+bean);
 		System.out.println("bindingResult"+bindingResults);
+		
+		System.out.println(bean.getPassword());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			bean.setBirthday(formatter.parse(birthday));
+		} catch (ParseException e) {
+			bean.setBirthday(null);
+		}
+		
+		
 		
 //接收資料
 //資料轉換
