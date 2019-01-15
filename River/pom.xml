@@ -133,11 +133,11 @@
 
 		<!-- 羅平+, 為了歐付寶 -->
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>log4j</groupId> -->
-<!-- 			<artifactId>log4j</artifactId> -->
-<!-- 			<version>1.2.17</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.springframework</groupId> -->
 <!-- 			<artifactId>spring-beans</artifactId> -->

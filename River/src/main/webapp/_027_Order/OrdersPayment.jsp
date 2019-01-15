@@ -287,12 +287,10 @@
 								</div>
 							</div>
 							<form action="/allpayAioSpringDemo/frontEnd/aioCheckOut/aioCheckOutOneTime" method="POST" id="aio">
-<!-- 			是否使用購物金/紅包折抵(Y/N) -->
-<%-- 			<form:input type="text" path="UseRedeem" name="是否使用購物金/紅包折抵" /> --%>
-<!-- 								<br> -->
-<!-- 			備註 -->
-<%-- 			<form:input type="text" path="Remark" name="備註" /> --%>
-<!-- 								<br> -->
+								<input type="submit" value="Submit" />
+								<br>
+							</form>
+							<form action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />" method="POST" id="aio">
 								<input type="submit" value="Submit" />
 								<br>
 							</form>
