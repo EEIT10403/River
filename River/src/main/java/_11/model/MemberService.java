@@ -15,6 +15,16 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO = null;
 	
+	
+	public MemberBean Googlelogin(String username) {
+		MemberBean bean = memberDAO.findByPrimaryKey(username);
+		
+		if(bean != null) {
+			return bean;
+		}
+		return null;
+	}
+	
 	public MemberBean longin(String username, String password) {
 		MemberBean bean = memberDAO.findByPrimaryKey(username);
 		if(bean != null) {
