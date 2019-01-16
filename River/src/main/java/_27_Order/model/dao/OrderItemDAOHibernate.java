@@ -28,7 +28,7 @@ public class OrderItemDAOHibernate implements OrderItemDAO {
 	public List getSalesSum() {
 		NativeQuery query =  this.getSession().createNativeQuery("  select Product_Id,[Prod_Name], sum(Unpaid_Amount) as Total_Amount\r\n" + 
 				"  From [OrderItem]\r\n" + 
-				"  Group By Product_Id,[Prod_Name]\r\n" + 
+				"  Group By Product_Id,[Prod_Name] ORDER BY Total_Amount DESC\r\n" + 
 				"");
 				
 		System.out.println("SQLQuery有出來"+query);

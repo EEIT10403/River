@@ -151,9 +151,27 @@ public class MemberOrderPage {
  
 		
 		
-		List list = orderItemService.getSalesSum();
+		List listReturn = orderItemService.getSalesSum();
 		
-		System.out.println("有回來"+list);
+		System.out.println("有回來"+listReturn);
+		
+		
+		List<OrderSumBean> listRank = new ArrayList() ;
+		
+		for(Object row :listReturn) {
+			Object[] cells = (Object[]) row;  
+//			System.out.println(cells[0]);
+//			System.out.println(cells[1]);
+//			System.out.println(cells[2]);
+			
+			OrderSumBean sumBean = new OrderSumBean();
+			sumBean.setProduct_Id((String)cells[0]);
+			sumBean.setProd_Name((String)cells[1]);
+			sumBean.setTotalSales((int)cells[2]);
+			
+			listRank.add(sumBean);
+		}
+		
 		
 		List<OrderSumBean> listK = new ArrayList() ;
 		List<OrderSumBean> listT = new ArrayList() ;
@@ -161,7 +179,7 @@ public class MemberOrderPage {
 		List<OrderSumBean> listH = new ArrayList() ;
 		List<OrderSumBean> listO = new ArrayList() ;
 		
-		for(Object row :list) {
+		for(Object row :listReturn) {
 			Object[] cells = (Object[]) row;  
 //			System.out.println(cells[0]);
 //			System.out.println(cells[1]);
@@ -178,20 +196,20 @@ public class MemberOrderPage {
 			if(sumBean.getProduct_Id().startsWith("T")) {
 				listT.add(sumBean);
 			}
-			if(sumBean.getProduct_Id().startsWith("U")) {
-				listU.add(sumBean);
+			if(sumBean.getProduct_Id().startsWith("O")) {
+				listO.add(sumBean);
 			}
 			if(sumBean.getProduct_Id().startsWith("H")) {
 				listH.add(sumBean);
 			}
-			if(sumBean.getProduct_Id().startsWith("O")) {
-				listO.add(sumBean);
+			if(sumBean.getProduct_Id().startsWith("U")) {
+				listU.add(sumBean);
 			}
-			
 		}
-		System.out.println(listK);
+//		System.out.println(listK);
 		
 		
+		model.addAttribute("SalesSumRank", listRank);
 		model.addAttribute("SalesSumK", listK);
 		model.addAttribute("SalesSumT", listT);
 		model.addAttribute("SalesSumU", listU);
