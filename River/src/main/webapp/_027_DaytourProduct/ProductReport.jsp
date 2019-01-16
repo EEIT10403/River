@@ -220,132 +220,73 @@
 
 
 
-		<form name="insert" ENCTYPE="multipart/form-data"
-			action="<c:url value="/pages/product.controller" />" method="post">
-			<div style='padding: 10% 20%'>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="jumbotron">
-								<h2>產品管理平台</h2>
-								<p>本月業績系統</p>
-								<hr>
-<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
-<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
-							<a style="margin-left:75%" class="btn btn-info btn-large" type="button" id="" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										修改產品系統</a>
-							<a class="btn btn-info btn-large" type="button" id="" href="<c:url value="/Partner/Logout" />" >
-										登出</a>
-							</div>
-							<div class="page-header">
-
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="tabbable" id="tabs-210647">
-										<ul class="nav nav-tabs">
-											<li class="nav-item"><a class="nav-link active"
-												href="#tab1" data-toggle="tab">關西</a></li>
-											<li class="nav-item"><a class="nav-link" href="#tab2"
-												data-toggle="tab">關東</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="tab1">
-												<p><canvas id="myChartK" width="300" height="150"></canvas></p>
-											</div>
-											<div class="tab-pane" id="tab2">
-												<p><canvas id="myChartT" width="300" height="150"></canvas></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 產品顯示部分end -->
-
-			<!-- Modal 產品代號輸入區塊start-->
-			<div class="modal fade" id="checkId" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content" style="margin-top: 100px">
-						<div class="modal-header">
-							<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<input type="text" name="Product_Id" value="${param.Product_Id}"
-								style="border: solid 1px; width: 450px">
-						</div>
-						<span class="error">${errors.Product_Id}</span>
-						<div class="modal-footer">
-
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal" id="getInfo">取得明細</button>
-
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="modal fade" id="doubleConfirm1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content" style="margin-top: 100px">
-						<div class="modal-header">
-							<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">確認要儲存嗎?</div>
-						<div class="modal-footer">
-							<button type="submit" id='confirmBtn' type="button"
-								name="prodaction" value="Update" class="btn btn-primary">送出</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">退回修改</button>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-			<div class="modal fade" id="doubleConfirm2" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content" style="margin-top: 100px">
-						<div class="modal-header">
-							<h5 class="modal-title" id="myModalLabel">清除重來</h5>
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">確認要清除重來嗎?</div>
-						<div class="modal-footer">
-							<a class="btn btn-primary" type="button" id="refresh"
+		<div style='padding: 10% 20%'>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="jumbotron">
+							<h2>產品管理平台</h2>
+							<p>本月業績系統</p>
+							<hr>
+							<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
+							<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
+							<a style="margin-left: 75%" class="btn btn-info btn-large"
+								type="button" id=""
 								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
-								重新填寫</a> <a class="btn btn-primary" type="button" id="refresh"
-								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
-								重新填寫</a>
-
-
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">取消</button>
+								修改產品系統</a> <a class="btn btn-info btn-large" type="button" id=""
+								href="<c:url value="/Partner/Logout" />"> 登出</a>
 						</div>
+						<div class="page-header"></div>
+						<div style="margin:auto;padding:0px 50px 30px 30px" >
+	   					<button class="btn btn-info btn-large" type="button"
+								onclick="areaRank()">各地區銷售實績</button>
+						    <button class="btn btn-info btn-large" type="button"
+								onclick="first5()">產品銷售前五名</button>
+							<button class="btn btn-info btn-large" type="button"
+								onclick="Tokyo()">關東</button>
+							<button class="btn btn-info btn-large" type="button"
+								onclick="Kansai()">關西</button>
+							<button class="btn btn-info btn-large" type="button"
+								onclick="Kyushu()">九州</button>
+							<button class="btn btn-info btn-large" type="button"
+								onclick="Hokkaido()">北海道</button>
+							<button class="btn btn-info btn-large" type="button"
+								onclick="Okinawa()">沖繩</button>
+							
+						</div>
+
+						<p id="canvas">
+							<canvas id="myChartK" width="300" height="150"></canvas>
+						</p>
+						<!-- 							<div class="row"> -->
+						<!-- 								<div class="col-md-12"> -->
+						<!-- 									<div class="tabbable" id="tabs-210647"> -->
+						<!-- 										<ul class="nav nav-tabs"> -->
+						<!-- 											<li class="nav-item"><a class="nav-link active" -->
+						<!-- 												href="#tab1" data-toggle="tab">關西</a></li> -->
+						<!-- 											<li class="nav-item"><a class="nav-link" href="#tab2" -->
+						<!-- 												data-toggle="tab">關東</a></li> -->
+						<!-- 										</ul> -->
+						<!-- 										<div class="tab-content"> -->
+						<!-- 											<div class="tab-pane active" id="tab1"> -->
+						<%-- 												<p><canvas id="myChartK" width="300" height="150"></canvas></p> --%>
+						<!-- 											</div> -->
+						<!-- 											<div class="tab-pane" id="tab2"> -->
+						<%-- 												<p><canvas id="myChartT" width="300" height="150"></canvas></p> --%>
+						<!-- 											</div> -->
+						<!-- 										</div> -->
+						<!-- 									</div> -->
+						<!-- 								</div> -->
+						<!-- 							</div> -->
 					</div>
-
 				</div>
-
 			</div>
+		</div>
 
-		</form>
+		<!-- 產品顯示部分end -->
+
+		<!-- Modal 產品代號輸入區塊start-->
+
 		<!-- Modal 區塊end-->
 
 		<!-- Load more -->
@@ -489,11 +430,106 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
+		areaRank();
 	});
 	
+	function areaRank(){
+		$('#canvas').empty();
+		$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+		var ctx = document.getElementById("myChartK").getContext('2d');
+		var myChartT = new Chart(ctx, {
+		    type: 'pie',
+		    data: {
+		        labels: ["北海道", "關西", "關東", "沖繩", "九州"],
+//	 	        labels: ["a", "b", "c", "d"],
+		        datasets: [{
+		            label: '# of Sales',
+		            data: [${SalesSumH[0].totalSales+SalesSumH[1].totalSales+SalesSumH[2].totalSales},
+		            	${SalesSumK[0].totalSales+SalesSumK[1].totalSales+SalesSumK[2].totalSales+SalesSumK[3].totalSales},
+		            	${SalesSumT[0].totalSales+SalesSumT[1].totalSales+SalesSumK[2].totalSales},
+		            	${SalesSumO[0].totalSales+SalesSumO[1].totalSales},
+		            	${SalesSumU[0].totalSales+SalesSumU[1].totalSales},],
+//	 	            data: [11,22,33,44],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+	 	                'rgba(153, 102, 255, 0.2)',
+//	 	                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+	 	                'rgba(153, 102, 255, 1)',
+//	 	                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 2
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+		}
 	
+	function first5(){
+		$('#canvas').empty();
+		$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+		var ctx = document.getElementById("myChartK").getContext('2d');
+		var myChartT = new Chart(ctx, {
+		    type: 'polarArea',
+		    data: {
+		        labels: ["${SalesSumRank[0].product_Id}${SalesSumRank[0].prod_Name}", "${SalesSumRank[1].product_Id}${SalesSumRank[1].prod_Name}", "${SalesSumRank[2].product_Id}${SalesSumRank[2].prod_Name}", "${SalesSumRank[3].product_Id}${SalesSumRank[3].prod_Name}", "${SalesSumRank[4].product_Id}${SalesSumRank[4].prod_Name}"],
+//	 	        labels: ["a", "b", "c", "d"],
+		        datasets: [{
+		            label: '# of Sales',
+		            data: [${SalesSumRank[0].totalSales},${SalesSumRank[1].totalSales},${SalesSumRank[2].totalSales},${SalesSumRank[3].totalSales},${SalesSumRank[4].totalSales}],
+//	 	            data: [11,22,33,44],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+	 	                'rgba(153, 102, 255, 0.2)',
+//	 	                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+	 	                'rgba(153, 102, 255, 1)',
+//	 	                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 2
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+		}
+	
+	function Kansai(){
+	$('#canvas').empty();
+	$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
 	var ctx = document.getElementById("myChartK").getContext('2d');
-	var myChart = new Chart(ctx, {
+	var myChartT = new Chart(ctx, {
 	    type: 'polarArea',
 	    data: {
 	        labels: ["${SalesSumK[0].product_Id}${SalesSumK[0].prod_Name}", "${SalesSumK[1].product_Id}${SalesSumK[1].prod_Name}", "${SalesSumK[2].product_Id}${SalesSumK[2].prod_Name}", "${SalesSumK[3].product_Id}${SalesSumK[3].prod_Name}"],
@@ -531,8 +567,12 @@
 	        }
 	    }
 	});
+	}
 	
-	var ctxT = document.getElementById("myChartT").getContext('2d');
+	function Tokyo(){
+	$('#canvas').empty();
+	$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+	var ctxT = document.getElementById("myChartK").getContext('2d');
 	var myChartT = new Chart(ctxT, {
 	    type: 'polarArea',
 	    data: {
@@ -571,7 +611,138 @@
 	        }
 	    }
 	});
+	}
 	
+	function Kyushu(){
+		$('#canvas').empty();
+		$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+		var ctxT = document.getElementById("myChartK").getContext('2d');
+		var myChartT = new Chart(ctxT, {
+		    type: 'polarArea',
+		    data: {
+		        labels: ["${SalesSumU[0].product_Id}${SalesSumU[0].prod_Name}", "${SalesSumU[1].product_Id}${SalesSumU[1].prod_Name}"],
+//	 	        labels: ["a", "b", "c", "d"],
+		        datasets: [{
+		            label: '# of Sales',
+		            data: [${SalesSumU[0].totalSales},${SalesSumU[1].totalSales}],
+//	 	            data: [11,22,33,44],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+//	 	                'rgba(153, 102, 255, 0.2)',
+//	 	                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+//	 	                'rgba(153, 102, 255, 1)',
+//	 	                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+		}
+	function Hokkaido(){
+		$('#canvas').empty();
+		$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+		var ctxT = document.getElementById("myChartK").getContext('2d');
+		var myChartT = new Chart(ctxT, {
+		    type: 'polarArea',
+		    data: {
+		        labels: ["${SalesSumH[0].product_Id}${SalesSumH[0].prod_Name}", "${SalesSumH[1].product_Id}${SalesSumH[1].prod_Name}", "${SalesSumH[2].product_Id}${SalesSumH[2].prod_Name}"],
+//	 	        labels: ["a", "b", "c", "d"],
+		        datasets: [{
+		            label: '# of Sales',
+		            data: [${SalesSumH[0].totalSales},${SalesSumH[1].totalSales},${SalesSumH[2].totalSales}],
+//	 	            data: [11,22,33,44],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+//	 	                'rgba(153, 102, 255, 0.2)',
+//	 	                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+//	 	                'rgba(153, 102, 255, 1)',
+//	 	                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+		}
+	
+	function Okinawa(){
+		$('#canvas').empty();
+		$('#canvas').append('<canvas id="myChartK" width="300" height="150"></canvas>');
+		var ctxT = document.getElementById("myChartK").getContext('2d');
+		var myChartT = new Chart(ctxT, {
+		    type: 'polarArea',
+		    data: {
+		        labels: ["${SalesSumO[0].product_Id}${SalesSumO[0].prod_Name}", "${SalesSumO[1].product_Id}${SalesSumO[1].prod_Name}"],
+//	 	        labels: ["a", "b", "c", "d"],
+		        datasets: [{
+		            label: '# of Sales',
+		            data: [${SalesSumO[0].totalSales},${SalesSumO[1].totalSales}],
+//	 	            data: [11,22,33,44],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+//	 	                'rgba(153, 102, 255, 0.2)',
+//	 	                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+//	 	                'rgba(153, 102, 255, 1)',
+//	 	                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+		}
 		
 </script>
 
