@@ -290,7 +290,7 @@
 								<table class="table table-hover table-bordered">
 									<thead>
 										<tr style="background-color: #3be8b0">
-											<td>帳號</td>
+<!-- 											<td>帳號</td> -->
 											<td>E-mail</td>
 											<td>中文姓名</td>
 											<td>英文姓名</td>
@@ -300,7 +300,7 @@
 									</thead>
 									<tbody>
 										<tr class="table-Default">
-											<td>${mBean.member_Id}</td>
+<%-- 											<td>${mBean.member_Id}</td> --%>
 											<td>${mBean.email}</td>
 											<td>${mBean.chinese_Name}</td>
 											<td>${mBean.english_Name}</td>

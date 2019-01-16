@@ -331,7 +331,7 @@
 									<div class="card">
 										<div class="card-header">
 											<a class="card-link" data-toggle="collapse"
-												data-parent="#card-454342" href="#card-element-120895">請輸注簡易註冊資訊</a>
+												data-parent="#card-454342" href="#card-element-120895">快速註冊</a>
 										</div>
 										<div id="card-element-120895" class="collapse">
 											<div class="card-body">

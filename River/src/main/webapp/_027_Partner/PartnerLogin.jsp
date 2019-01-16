@@ -269,8 +269,9 @@
 								<span class="sr-only">Next</span></a>
 						</div>
 							
-						<div align="center" style="margin:30px 300px;background-color:#3be8b0;border-radius:10px"  >
-						
+	<div align="center"
+							style="margin: 30px 400px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
+					
 						<form action="<c:url value="/partner/login" />" style="padding-top:20px"
 							method="get">
 							<table  >
@@ -448,14 +449,12 @@
 // });
 	
 		
-<!-- 立即訂購 end -->
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
 	}); <!-- document).ready 結尾-->
 	
 	</script>

@@ -292,7 +292,7 @@
 									<table class="table table-hover table-bordered">
 										<thead>
 											<tr style="background-color: #3be8b0">
-												<td>帳號</td>
+<!-- 												<td>帳號</td> -->
 												<td>E-mail</td>
 												<td>中文姓名</td>
 												<td>英文姓名</td>
@@ -302,8 +302,8 @@
 										</thead>
 										<tbody>
 											<tr class="table-Default">
-												<td>${mBean.member_Id}<input type="hidden"
-													name="member_Id" value="${mBean.member_Id}"></td>
+<%-- 												<td>${mBean.member_Id}<input type="hidden" --%>
+<%-- 													name="member_Id" value="${mBean.member_Id}"></td> --%>
 												<td><input type="text" name="email"
 													value="${mBean.email}"><span class="errors">${errors.email}</span></td>
 												<td><input type="text" name="chinese_Name"

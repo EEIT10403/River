@@ -100,9 +100,14 @@
 									<li><a
 										href="<c:url value="/_11_secure/login.jsp" />">會員專區</a></li>
 								</c:if>
+								<c:if test="${empty staff_id}">
 								<li><a
 									href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
-
+                                </c:if>
+                                <c:if test="${not empty staff_id}">
+								<li><a
+									href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+                                </c:if>
 							</ul>
 						</div>
 

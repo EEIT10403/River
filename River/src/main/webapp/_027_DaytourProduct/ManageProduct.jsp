@@ -291,12 +291,14 @@
 					<div class="col-md-12">
 						<div class="jumbotron">
 							<h2>產品管理平台</h2>
-							<p>${staff.chinese_Name}，早安， 好好賣阿。</p>
+							<p>${staff_Name}，早安， 好好賣阿。</p>
 							<hr>
 							<a class="btn btn-primary btn-large" href="#checkId"
 								data-toggle="modal" style="padding:20px">輸入產品代號</a>
-							<a class="btn btn-primary" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" >
+							<a style="margin-left:75%" class="btn btn-info btn-large" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" >
 										觀看銷售報表</a>
+							<a class="btn btn-info btn-large" type="button" id="" href="<c:url value="/Partner/Logout" />" >
+										登出</a>
 						</div>
 						<div class="page-header">
 						<h2>
