@@ -1,10 +1,13 @@
 package DaytourProduct.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -32,7 +35,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import DaytourProduct.misc.PrimitiveNumberEditor;
-import DaytourProduct.misc.SystemUtils;
 import DaytourProduct.model.DayTour_ProductBean;
 import DaytourProduct.model.ProductService;
 
@@ -129,7 +131,7 @@ public class ProductController {
 
 	@RequestMapping("/pages/product.controller")
 	public String BackFunction(@RequestParam(value = "Main_Image", required = false) MultipartFile file, Model model,
-			String prodaction, DayTour_ProductBean bean, BindingResult bindingResults)
+			String prodaction, DayTour_ProductBean bean, BindingResult bindingResults , HttpServletRequest request)
 			throws IOException, ServletException {
 //接收資料
 //轉換資料
@@ -164,12 +166,35 @@ public class ProductController {
 
 			try {
 				// File 轉成能用的Blob
-				Blob blob = SystemUtils.fileToBlob(is, sizeInBytes);
-				System.out.println("blob = " + blob);
-				bean.setMain_Image(blob);
-				System.out.println("新的bean = " + bean);
-			} catch (IOException | SQLException e) {
-				System.out.println("file變成Blob失敗");
+//				Blob blob = SystemUtils.fileToBlob(is, sizeInBytes);
+//				System.out.println("blob = " + blob);
+				
+						
+				InputStreamReader fir = new InputStreamReader(is);
+    			BufferedReader br = new BufferedReader(fir);
+    			
+    			String path = request.getSession().getServletContext().getRealPath(
+    					"/images/_027_Pimage");
+    			String path2 = request.getSession().getServletContext().getContextPath();
+    			System.out.println("getContextPath"+path2);
+    			
+    			String savePath=path+"/"+bean.getProduct_Id()+".jpg";
+    			System.out.println(savePath);
+    					
+    			FileOutputStream fo = new FileOutputStream(savePath);
+    			BufferedOutputStream bo = new BufferedOutputStream (fo);
+				
+    			byte[] buffer = new byte[(int) sizeInBytes];
+    			int len = 0;
+    			while ((len = is.read(buffer)) != -1) {  
+                    bo.write(buffer, 0, len);
+                } ;
+				
+//				bean.setMain_Image(blob);
+//				System.out.println("新的bean = " + bean);
+			} catch (IOException  e) {
+//				System.out.println("file變成Blob失敗");
+				System.out.println("file 存到 Server失敗");
 				e.printStackTrace();
 			}
 		}
@@ -200,7 +225,7 @@ public class ProductController {
 		}
 
 		if (errors != null && !errors.isEmpty()) {
-			return "product.errors";
+			return "product.management";
 		}
 
 //呼叫model
@@ -217,7 +242,7 @@ public class ProductController {
 			} else {
 				model.addAttribute("insert", result);
 			}
-			return "product.errors";
+			return "product.management";
 
 		} else if ("Update".equals(prodaction)) {
 			DayTour_ProductBean result = productService.update(bean);
@@ -225,17 +250,18 @@ public class ProductController {
 				errors.put("action", "update failed");
 			} else {
 				model.addAttribute("insert", result);
+			
 			}
-			return "product.errors";
+			return "product.management";
 
 		} else if ("Delete".equals(prodaction)) {
 			boolean result = productService.delete(bean);
 			model.addAttribute("delete", result);
-			return "product.errors";
+			return "product.management";
 
 		} else {
 			errors.put("action", "unknown action: " + prodaction);
-			return "product.errors";
+			return "product.management";
 		}
 	}
 

@@ -10,6 +10,7 @@
 <title>行程規劃♥</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/bootstrap.css" >
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
 <!--===============================================================================================-->
@@ -53,7 +54,6 @@
 <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
 <!--===============================================================================================-->
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 <!--===============================================================================================-->
 
@@ -67,7 +67,7 @@ input, textarea {
 }
 
 #map {
-	height: 250px;
+	height: 300px;
 	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -82,12 +82,65 @@ margin-right:15px;
 width:100px;
 height:40px
 }
+.badge-pill{
+width:100%;
+height:50px;
+font-size:25px;
+text-align:center;
+line-height:43px;
+background-color:#E8CCFF;
+}
+.rounded-circle{
+width:40px;
+height:40px;
+font-size:30px;
+font-weight:500;
+background-color:#33CCFF;
+border:5px double #66FF66;
+text-align:center;
+line-height:25px;
+padding-bottom: 15px;
+
+}
+.icon-maker{
+background-image:url('../images/icons/placeholder/placeholder1.png');
+background-repeat:no-repeat;
+background-size:contain;
+height:50px;
+width:50px;
+text-align:center;
+padding-top: 5px;
+font-size: 20px;
+margin: 5px 0px;
+}
+
+#TAtext .btn{
+text-align:center;
+    margin: 5px ;
+    width: 90%;
+    height:50px;
+background-color:	#5599FF;
+
+}
+.col-sm-10 h3{
+
+margin-top:5px;
+margin-bottom:5px;
+
+}
+.TLarea{
+text-align:right;
+padding-right: 50px;
+}
+.oneTA{
+white-space:nowrap;
+}
 </style>
 
 </head>
 <body class="animsition">
 
-	<div class="container-fluid">
+	<div class="container-fluid"  style='width:100%' >
 		<!-- Header -->
 		<header>
 			<!-- Header desktop -->
@@ -118,7 +171,7 @@ height:40px
 
 								<li><a href="about.html">About</a></li>
 
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.html"></a></li>
 							</ul>
 						</div>
 
@@ -284,24 +337,85 @@ height:40px
 		<!-- Product -->
 	</div>
 
+<div class="d-flex justify-content-center">你們好啊~</div>
+
 
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-			<div class="d-flex p-2 bd-highlight">
-					<button type="button" class="btn btn-primary">Primary</button>
-					<div class="btn-group">
-							  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Action
-							  </button>
-							  <div class="dropdown-menu">
-							    <a class="dropdown-item" href="#">Action</a>
-							    <a class="dropdown-item" href="#">Another action</a>
-							    <a class="dropdown-item" href="#">Something else here</a>
-							  </div>
-					</div>
-					<button type="button" class="btn btn-warning">Warning</button>
-			</div>
+
+		
+		
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab"  href="#allTA">行程總覽</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">每日行程</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item font-weight-bold" data-toggle="tab" href="#day1">第一天</a>
+    
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#allTAmap">地圖總覽</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#TAmap">單日地圖</a>
+  </li>
+</ul>
+	    
+  <!-- 導覽列的位置唷唷唷 -->      
+    <div class="tab-content" id="TAtext">
+        <div id="allTA" class="tab-pane fade in active">
+            <h3>行程總覽</h3>
+            <span    class="badge badge-pill badge-secondary  ">第一天</span>
+  
+    <!-- 單個景點元素 -->
+    <div>
+	    <div class="row oneTA">
+				<div class="col-sm-2">
+					  	 <div class="icon-maker">1</div>  
+		    	</div>
+				<div class="col-sm-10">
+				
+					      <h3>台灣海峽中間的小島</h3>
+                          <div class="TLarea">台灣</div>					
+		    	</div>
+	    </div>
+
+
+	</div>
+
+    <!-- 單個景點結尾 --> 
+     
+    
+    
+
+    
+    
+    </div>
+    
+  
+
+           
+     
+        <div id="allTAmap" class="tab-pane fade">
+            <h3>地圖行程總覽</h3>
+            <p>Some content in menu 1.</p>
+        </div>
+        <div id="TAmap" class="tab-pane fade">
+            <h3>單日地圖行程</h3>
+            <p>Some content in menu 2.</p>
+        </div>
+        <div id="day1" class="tab-pane fade">
+            <h3>第一天</h3>
+            <p>Some content in menu 2.</p>
+        </div>
+    </div>
+			
+			
+			
 			
 			</div>
 			<div class="col-sm-8">
@@ -315,7 +429,7 @@ height:40px
 
 									<!-- Form -->
 
-									<form action='<c:url value='/insertta'/>' method='post'
+									<form  id="insertTAform"  action='<c:url value='/insertta'/>' method='post'
 										role="form" enctype='multipart/form-data'>
 										<!--欄位  -->
 										<div class="form-group">
@@ -339,36 +453,39 @@ height:40px
 													<div class="col-md-6">
 														<input id='lat' name='lat' type='text'
 															class="mtext-107 cl2 size-114 plh2 p-r-15"
+															style="height:32px"
 															readonly="readonly" placeholder='經度'>
 													</div>
 													<div class="col-md-6">
 														<input id='lng' name='lng' type='text'
 															class="mtext-107 cl2 size-114 plh2 p-r-15"
+															style="height:32px"
 															readonly="readonly" placeholder='緯度'>
 													</div>
 												</div>
 											
 
 										</div>
-										<div class="form-group">
+										<div class="form-group ">
 											<label for="exampleInputEmail1"> 景點概述 : </label>
-											<textarea id='summary' placeholder='經度'
+											<textarea  id='summary' placeholder='景點簡介/營業時間' 
 												class="mtext-107 cl2 size-114 plh2 p-r-15"
-												style="resize: none; height: 100px" name='summary'>
-						         </textarea>
+												style="resize: none; height: 100px;padding-top:15px" name='summary'></textarea>
 										</div>
 
-										<div class="form-group">
-
-											<label for="exampleInputFile"> 圖片上傳: </label> <input
-												type='file' id='imageinput' name="img"
-												class="form-control-file"
+										<div class="form-group" >
+											<label for="exampleInputFile"> 圖片上傳: </label>
+											
+											 <input
+												type='file' id='imageinput'  style="text-align:center;height:32px" name="img"
+												class="mtext-107 cl2 size-114 plh2 p-r-15 "
 												accept='image/gif, image/jpeg, image/png' />
+											
 										</div>
 
 
 
-										<button type="submit" class="btn btn-primary">新增景點</button>
+										<button id="addnewTA" type="button" class="btn btn-primary">新增景點</button>
 									</form>
 								</div>
 							</div>
@@ -774,9 +891,35 @@ height:40px
 	<script src="../vendor/slick/slick.min.js"></script>
 	<script src="../js/slick-custom.js"></script>
 	<!--===============================================================================================-->
+       <script type="text/javascript">
+//新增景點
+$("#addnewTA").click(function(){
+
+	$.ajax({
+	    url: 'insertta',
+	    type: 'POST',
+	    cache: false,
+	    data: new FormData($('#insertTAform')[0]),
+	    processData: false,
+	    contentType: false
+	}).done(function(res) {
+		alert(res)
+		$('#insertTAform')[0].reset();
+		
+		
+	}).fail(function(res) {});
+
+	
+	
+	
+	
+	
+})
+       
+       
 
 
-
+       </script>
 	<!--===============================================================================================-->
 	<script src="../vendor/parallax100/parallax100.js"></script>
 	<script>

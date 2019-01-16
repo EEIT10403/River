@@ -115,7 +115,7 @@ height:650px;
 
 								<li><a href="blog.html">Blog</a></li>
 
-								<li><a href="about.html">About</a></li>
+								<li><a href="about.html">行程規劃</a></li>
 
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
@@ -318,13 +318,14 @@ height:650px;
 
 										<div class="container-fluid">
 											<div class="row">
+												
 												<div class="col-md-6">
-													<input id='lat' name='lat' type='text'
+													<input id='lng' name='lng' type='text'
 														class="mtext-107 cl2 size-114 plh2 p-r-15"
 														readonly="readonly" placeholder='經度'>
 												</div>
 												<div class="col-md-6">
-													<input id='lng' name='lng' type='text'
+													<input id='lat' name='lat' type='text'
 														class="mtext-107 cl2 size-114 plh2 p-r-15"
 														readonly="readonly" placeholder='緯度'>
 												</div>
@@ -334,10 +335,9 @@ height:650px;
 									</div>
 									<div class="form-group">
 										<label for="exampleInputEmail1"> 景點概述 : </label>
-										<textarea id='summary' placeholder='經度'
+										<textarea id='summary' placeholder='景點介紹/營業時間/其他..'
 											class="mtext-107 cl2 size-114 plh2 p-r-15"
-											style="resize: none; height: 100px" name='summary'>
-						         </textarea>
+											style="resize: none; height: 100px" name='summary'></textarea>
 									</div>
 
 									<div class="form-group">
@@ -373,7 +373,7 @@ height:650px;
 					<div id='map'></div>
 					
 					<img id='preview_progressbarTW_img' src='../images/preview.jpg' alt='預覽圖片'
-											width='100%' height='100%' style="border:double 5px #009FCC"/>
+											width='100%' height='400px' style="border:double 5px #009FCC"/>
 					
 					</div>
 					
@@ -739,25 +739,6 @@ height:650px;
 	</script>
 
 
-<script >
-	$('#touristarea').focus(function(){
-		
-// 		$(this).off('change');
-	
-	})
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
 
 
 	<!-- 	googleMap  -->
@@ -878,6 +859,7 @@ height:650px;
 		}
 
 		function initAutocomplete() {
+			
 			var map = new google.maps.Map(document.getElementById('map'), {
 				center : {
 					lat : 25.0329694,
@@ -935,7 +917,9 @@ height:650px;
 
 				// For each place, get the icon, name and location.
 				var bounds = new google.maps.LatLngBounds();
-
+                var latlng =new google.maps.LatLng();
+         
+                
 				places.forEach(function(place) {
 					if (!place.geometry) {
 						console.log('Returned place contains no geometry');

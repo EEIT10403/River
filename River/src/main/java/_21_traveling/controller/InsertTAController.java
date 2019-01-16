@@ -1,21 +1,21 @@
 package _21_traveling.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
 
-import javax.imageio.stream.FileImageInputStream;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import _21_traveling.misc.EDMUtils;
@@ -27,19 +27,28 @@ public class InsertTAController {
 	@Autowired
 	TouristAttractionDAOHibernate touristAttractionDAOHibernate;
 
-	@RequestMapping(value = "/insertta")
-	public String method(TouristAttractionBean bean, BindingResult bindingResult, @RequestParam MultipartFile img) {
-
+	@ResponseBody
+	@RequestMapping(value = {"/insertta","/_21_/insertta"})
+	public void method(TouristAttractionBean bean, BindingResult bindingResult, @RequestParam MultipartFile img,HttpServletResponse response) {
+         response.setCharacterEncoding("UTF-8");
 		
 		//讀取圖片
 		if (!img.isEmpty()) {
 			// 將MultipartFile轉成InputStream
-			try (InputStream is = img.getInputStream();) {
+			try (InputStream is = img.getInputStream();
+				 PrintWriter out =response.getWriter();
+					) {
 				Blob imgBlob = EDMUtils.fileToBlob(is, 10240000);
 				bean.setImg(imgBlob);
 				// 新增資料
 				touristAttractionDAOHibernate.insert(bean);
 				System.out.println(bean);
+			JSONObject result=new JSONObject();
+				result.append("id", bean.getId());
+				result.append("address", bean.getAddress());
+				result.append("touristarea", bean.getTouristarea());
+				System.out.println(result);
+				out.write(result.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -48,7 +57,7 @@ public class InsertTAController {
 		}
 		
 		
-		return "insertta.success";
+		
 
 	}
 

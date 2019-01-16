@@ -24,6 +24,17 @@ public class MemberDAOHibernate implements MemberDAO {
 	public MemberBean findByPrimaryKey(String member_Id) {
 		return this.getSession().get(MemberBean.class, member_Id);
 	}
+	
+	@Override
+	public boolean updatePW(byte[] password, String Member_Id) {
+		MemberBean result = this.getSession().get(MemberBean.class, Member_Id);
+		if( result != null) {
+			result.setPassword(password);
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public List<MemberBean> findAll() {
 		List<MemberBean> find = this.getSession().createQuery("from MemberBean", MemberBean.class)

@@ -14,6 +14,8 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
@@ -68,7 +70,7 @@
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop" style="height:60px">
+				<div class="wrap-menu-desktop" style="height: 60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
@@ -104,7 +106,7 @@
 
 							<div
 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-								data-notify="2">
+								data-notify="0">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 
@@ -196,76 +198,76 @@
 		</header>
 
 		<!-- Cart -->
-		<div class="wrap-header-cart js-panel-cart">
-			<div class="s-full js-hide-cart"></div>
+<!-- 		<div class="wrap-header-cart js-panel-cart"> -->
+<!-- 			<div class="s-full js-hide-cart"></div> -->
 
-			<div class="header-cart flex-col-l p-l-65 p-r-25">
-				<div class="header-cart-title flex-w flex-sb-m p-b-8">
-					<span class="mtext-103 cl2"> Your Cart </span>
+<!-- 			<div class="header-cart flex-col-l p-l-65 p-r-25"> -->
+<!-- 				<div class="header-cart-title flex-w flex-sb-m p-b-8"> -->
+<!-- 					<span class="mtext-103 cl2"> Your Cart </span> -->
 
-					<div
-						class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-						<i class="zmdi zmdi-close"></i>
-					</div>
-				</div>
+<!-- 					<div -->
+<!-- 						class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart"> -->
+<!-- 						<i class="zmdi zmdi-close"></i> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 
-				<div class="header-cart-content flex-w js-pscroll">
-					<ul class="header-cart-wrapitem w-full">
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-01.jpg" alt="IMG">
-							</div>
+<!-- 				<div class="header-cart-content flex-w js-pscroll"> -->
+<!-- 					<ul class="header-cart-wrapitem w-full"> -->
+<!-- 						<li class="header-cart-item flex-w flex-t m-b-12"> -->
+<!-- 							<div class="header-cart-item-img"> -->
+<!-- 								<img src="../images/item-cart-01.jpg" alt="IMG"> -->
+<!-- 							</div> -->
 
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									White Shirt Pleat </a> <span class="header-cart-item-info">
-									1 x $19.00 </span>
-							</div>
-						</li>
+<!-- 							<div class="header-cart-item-txt p-t-8"> -->
+<!-- 								<a href="#" -->
+<!-- 									class="header-cart-item-name m-b-18 hov-cl1 trans-04"> -->
+<!-- 									White Shirt Pleat </a> <span class="header-cart-item-info"> -->
+<!-- 									1 x $19.00 </span> -->
+<!-- 							</div> -->
+<!-- 						</li> -->
 
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-02.jpg" alt="IMG">
-							</div>
+<!-- 						<li class="header-cart-item flex-w flex-t m-b-12"> -->
+<!-- 							<div class="header-cart-item-img"> -->
+<!-- 								<img src="../images/item-cart-02.jpg" alt="IMG"> -->
+<!-- 							</div> -->
 
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Converse All Star </a> <span class="header-cart-item-info">
-									1 x $39.00 </span>
-							</div>
-						</li>
+<!-- 							<div class="header-cart-item-txt p-t-8"> -->
+<!-- 								<a href="#" -->
+<!-- 									class="header-cart-item-name m-b-18 hov-cl1 trans-04"> -->
+<!-- 									Converse All Star </a> <span class="header-cart-item-info"> -->
+<!-- 									1 x $39.00 </span> -->
+<!-- 							</div> -->
+<!-- 						</li> -->
 
-						<li class="header-cart-item flex-w flex-t m-b-12">
-							<div class="header-cart-item-img">
-								<img src="../images/item-cart-03.jpg" alt="IMG">
-							</div>
+<!-- 						<li class="header-cart-item flex-w flex-t m-b-12"> -->
+<!-- 							<div class="header-cart-item-img"> -->
+<!-- 								<img src="../images/item-cart-03.jpg" alt="IMG"> -->
+<!-- 							</div> -->
 
-							<div class="header-cart-item-txt p-t-8">
-								<a href="#"
-									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-									Nixon Porter Leather </a> <span class="header-cart-item-info">
-									1 x $17.00 </span>
-							</div>
-						</li>
-					</ul>
+<!-- 							<div class="header-cart-item-txt p-t-8"> -->
+<!-- 								<a href="#" -->
+<!-- 									class="header-cart-item-name m-b-18 hov-cl1 trans-04"> -->
+<!-- 									Nixon Porter Leather </a> <span class="header-cart-item-info"> -->
+<!-- 									1 x $17.00 </span> -->
+<!-- 							</div> -->
+<!-- 						</li> -->
+<!-- 					</ul> -->
 
-					<div class="w-full">
-						<div class="header-cart-total w-full p-tb-40">Total: $75.00
-						</div>
+<!-- 					<div class="w-full"> -->
+<!-- 						<div class="header-cart-total w-full p-tb-40">Total: $75.00 -->
+<!-- 						</div> -->
 
-						<div class="header-cart-buttons flex-w w-full">
-							<a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-								View Cart </a> <a href="shoping-cart.html"
-								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out </a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- 						<div class="header-cart-buttons flex-w w-full"> -->
+<!-- 							<a href="shoping-cart.html" -->
+<!-- 								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"> -->
+<!-- 								View Cart </a> <a href="shoping-cart.html" -->
+<!-- 								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"> -->
+<!-- 								Check Out </a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 
 
@@ -278,106 +280,114 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<div style='padding:10% 20%'>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="page-header">
-							<h1>${bean.prod_Name}</h1>
+
+
+
+
+
+		<div style='padding: 10% 20%'>
+			
+
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="page-header">
+								<h1>${bean.prod_Name}</h1>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7" style='padding:30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							src='<%=request.getContextPath()%>/getProductMainImage?Product_Id=${bean.product_Id}' />
+					<div class="row">
+						<div class="col-md-7" style='padding: 30px'>
+							<img alt="Bootstrap Image Preview" style='width: 500px'
+								src='<%=request.getContextPath()%>/images/_027_Pimage/${bean.product_Id}.jpg' />
+						</div>
+						<div class="col-md-5">
+							<!-- 						<h2>Heading</h2> -->
+							<p>${bean.features}
+							<p>
+								<a class="btn" href="#viewdetails">View details »</a>
+							</p>
+							<button type="button"
+								class="btn btn-block active btn-outline-primary" id='buynow'>
+								立即訂購</button>
+						</div>
 					</div>
-					<div class="col-md-5">
-						<!-- 						<h2>Heading</h2> -->
-						<p>${bean.features}
-						<p>
-							<a class="btn" href="#viewdetails">View details »</a>
-						</p>
-						<button type="button"
-							class="btn btn-block active btn-outline-primary" id='buynow'>
-										立即訂購
-									</button>
-					</div>
-				</div>
-				<div class="row" >
-					<div class="col-md-12">
-						<table class="table table-hover table-sm table-bordered">
-							<thead>
-								<tr>
-									<th>票種名稱</th>
-									<th>特價</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-active">
-									<td>${bean.ticket_type_1}</td>
-									<td>${bean.unitPrice_1}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								<c:if test="${not empty bean.ticket_type_2}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_2}</td>
-									<td>${bean.unitPrice_2}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-								<c:if test="${not empty bean.ticket_type_3}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_3}</td>
-									<td>${bean.unitPrice_3}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-								<c:if test="${not empty bean.ticket_type_4}">
-								<tr class="table-active">
-									<td>${bean.ticket_type_4}</td>
-									<td>${bean.unitPrice_4}</td>
-									<td><a
-										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
-									</td>
-								</tr>
-								</c:if>
-							</tbody>
-						</table>
-						<div class="row" id="viewdetails"> <!-- 頁面內瞬移有點被header擋到 -->
-							<div class="col-md-9">
-								<div class="tabbable" id="tabs-916421">
-									<ul class="nav nav-tabs">
-										<li class="nav-item"><a class="nav-link active show" href="#tab1"
-											data-toggle="tab">詳細介紹</a></li>
-										<li class="nav-item"><a class="nav-link "
-											href="#tab2" data-toggle="tab">權益說明</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<p>${bean.detail}</p>
-										</div>
-										<div class="tab-pane " id="tab2">
-											<p>${bean.rights}</p>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-hover table-sm table-bordered">
+								<thead>
+									<tr>
+										<th>票種名稱</th>
+										<th>特價</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="table-active">
+										<td>${bean.ticket_type_1}</td>
+										<td>${bean.unitPrice_1}</td>
+										<td><a
+											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+										</td>
+									</tr>
+									<c:if test="${not empty bean.ticket_type_2}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_2}</td>
+											<td>${bean.unitPrice_2}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+									<c:if test="${not empty bean.ticket_type_3}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_3}</td>
+											<td>${bean.unitPrice_3}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+									<c:if test="${not empty bean.ticket_type_4}">
+										<tr class="table-active">
+											<td>${bean.ticket_type_4}</td>
+											<td>${bean.unitPrice_4}</td>
+											<td><a
+												href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />">買起來</a>
+											</td>
+										</tr>
+									</c:if>
+								</tbody>
+							</table>
+							<div class="row" id="viewdetails">
+								<!-- 頁面內瞬移有點被header擋到 -->
+								<div class="col-md-9">
+									<div class="tabbable" id="tabs-916421">
+										<ul class="nav nav-tabs">
+											<li class="nav-item"><a class="nav-link active show"
+												href="#tab1" data-toggle="tab">詳細介紹</a></li>
+											<li class="nav-item"><a class="nav-link " href="#tab2"
+												data-toggle="tab">權益說明</a></li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<p>${bean.detail}</p>
+											</div>
+											<div class="tab-pane " id="tab2">
+												<p>${bean.rights}</p>
+											</div>
 										</div>
 									</div>
 								</div>
+								<div class="col-md-3"></div>
 							</div>
-							<div class="col-md-3"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		<!-- 產品顯示部分end -->
+
+			<!-- 產品顯示部分end -->
 
 		<!-- Load more -->
 
@@ -521,13 +531,13 @@ $('#buynow').click(function(){
 });
 	
 		
-<!-- 立即訂購 end -->
 
 </script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
+		
 		
 	}); <!-- document).ready 結尾-->
 	

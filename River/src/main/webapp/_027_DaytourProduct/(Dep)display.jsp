@@ -21,7 +21,8 @@
 <body>
 
 	<h3>產品頁</h3>
-
+<%=request.getContextPath()%>\images\_027_Pimage/K1000001.jpg
+<img src="<%=request.getContextPath()%>\images\_027_Pimage/K1000001.jpg">
 	<table>
 		<tr>
 			<td>${param.Product_Id}</td>

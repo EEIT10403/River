@@ -291,6 +291,7 @@
 
 					<input type="hidden" name="product_Id" value="${bean.product_Id}">
 					<input type="hidden" name="prod_Name" value="${bean.prod_Name}">
+					<input type="hidden" name="country" value="${bean.country}">
 					<input type="hidden" name="ticket_type_1"
 						value="${bean.ticket_type_1}"> <input type="hidden"
 						name="ticket_type_2" value="${bean.ticket_type_2}"> <input
@@ -345,7 +346,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name1_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday1_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -365,7 +366,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name2_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday2_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -385,7 +386,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name3_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday3_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -404,7 +405,7 @@
 											document.write("<h6>＊中文姓名: </h6>")
 											document.write("<input type='text' name='Traveler_Name4_"+i+"' style='border:solid 1px'value=''>")
 											document.write("<br><h6>＊出生年月日 (格式例: 2000-01-01): </h6>")
-											document.write("<input type='text' name='birthday"+i+"' style='border:solid 1px'value='' pattern='/^\d{4}-\d{2}-\d{2}$/'>")
+											document.write("<input type='text' name='birthday4_"+i+"' style='border:solid 1px'value='' pattern='\\d{4}-\\d{2}-\\d{2}'>")
 											document.write("<br><br>")
 										}
 										</script>
@@ -445,7 +446,7 @@
 										</tr>
 										<tr>
 											<td style='padding: 15px 65px 15px 30px'>
-												<h6>＊中文姓名:</h6> <input type='text' name='Main_Contact_Name'
+												<h6>＊中文姓名:</h6> <input type='text' name='Contact_Name'
 												style='border: solid 1px' value=''>
 											</td>
 											<td>
@@ -474,8 +475,10 @@
 									</table>
 								</div>
 							</div>
-							<button type="submit" style="margin: 10px 5px 0px 0px"
-								id='confirmBtn' class="btn btn-block btn-info">確認送出</button>
+<!-- 							<button type="submit" style="margin: 10px 5px 0px 0px" -->
+<!-- 								id='confirmBtn' class="btn btn-block btn-info">確認送出</button> -->
+							<a id="modal-786743" href="#doubleConfirm" role="button"  style="margin: 10px 5px 0px 0px"
+								class="btn btn-block btn-info" data-toggle="modal">確認送出</a>
 						</div>
 						<!-- 填表區塊2 end -->
 
@@ -526,7 +529,29 @@
 						</div>
 						<!-- 購買資訊佔存區塊 end -->
 					</div>
+					<!-- Modal 區塊start-->
+					<div class="modal fade" id="doubleConfirm" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="margin-top:100px">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel">即將完成</h5>
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">還差最後一步，付款後交易即完成，準備出發!</div>
+								<div class="modal-footer">
+									<button type="submit" id='confirmBtn' type="button" class="btn btn-primary">我了解，送出</button>
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">再修改一下資料</button>
+								</div>
+							</div>
 
+						</div>
+
+					</div>
+					<!-- Modal 區塊end-->
 
 
 				</form>
@@ -537,7 +562,7 @@
 
 		<!-- 產品顯示部分end -->
 
-		<!-- Load more -->
+
 
 
 		<!-- Footer -->

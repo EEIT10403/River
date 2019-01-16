@@ -1,6 +1,7 @@
 package _11.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,52 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO = null;
 	
+	
+	public MemberBean Googlelogin(String username) {
+		MemberBean bean = memberDAO.findByPrimaryKey(username);
+		
+		if(bean != null) {
+			return bean;
+		}
+		return null;
+	}
+	
+	public MemberBean longin(String username, String password) {
+		MemberBean bean = memberDAO.findByPrimaryKey(username);
+		if(bean != null) {
+			if(password != null && password.length() !=0 ) {
+				byte[] temp = password.getBytes();//使用者輸入
+				byte[] pass = bean.getPassword();//資料庫抓出
+				if(Arrays.equals(temp, pass));{
+					return bean;
+				}
+			}
+		}
+		return null;
+	}
+	public boolean changePassword(String username, String oldPassword, String newPassword) {
+		MemberBean bean = this.longin(username, oldPassword);
+		if(bean != null) {
+			if(newPassword != null && newPassword.length() != 0) {
+				byte[] temp = newPassword.getBytes();
+				return memberDAO.updatePW(temp, username);
+			}
+		}
+		return false;
+		
+	}
+	
+	public MemberBean findById(String member_Id){
+		MemberBean result = null;
+		MemberBean memberBean=null ;
+		
+		if(member_Id != null ){
+			System.out.println("memberService-select");
+		    memberBean = memberDAO.findByPrimaryKey(member_Id);
+		}
+			
+			return memberBean;
+	}
 	public List<MemberBean> select(MemberBean bean){
 		System.out.println("memberService");
 		List<MemberBean> result = null;

@@ -138,7 +138,8 @@ public class FormController {
 		}
 		in2.close();
 		
-		
+
+
 //解析機票JSON	
 		String jsonData = BFMjson.toString();
 //		System.out.println(bfmsearch.toString());
@@ -157,7 +158,7 @@ public class FormController {
 		List<pricedItinerary> PricedItinerary= jsonBean.getOTA_AirLowFareSearchRS().getPricedItineraries().getPricedItinerary();
 		session.setAttribute("PricedItinerary", PricedItinerary);
 		
-		
+
 		
 		return "form.success";
 		
