@@ -13,6 +13,9 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css?sv=1"/>
+
 	<link rel="icon" type="image/png" href="../images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -617,12 +620,13 @@
 									<div class="form-group">
 										<span class="form-label">兒童 (2-12)</span>
 										<select class="form-control" name="people2">
-											<option value="${param.people2}">0</option>
-											<option value="${param.people2}">1</option>
-											<option value="${param.people2}">2</option>
-											<option value="${param.people2}">3</option>
-											<option value="${param.people2}">4</option>
-											<option value="${param.people2}">5</option>
+											<option label="${formBean.people2}">${formBean.people2}</option>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
 										</select>
 										
 									</div>
@@ -631,12 +635,13 @@
 									<div class="form-group">
 										<span class="form-label">幼兒 (0-2)</span>
 										<select class="form-control" name="people3">
-											<option value="${param.people3}">0</option>
-											<option value="${param.people3}">1</option>
-											<option value="${param.people3}">2</option>
-											<option value="${param.people3}">3</option>
-											<option value="${param.people3}">4</option>
-											<option value="${param.people3}">5</option>
+											<option label="${formBean.people3}">${formBean.people3}</option>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
 										</select>
 										
 									</div>
@@ -678,21 +683,639 @@
 <!-- ===================機票相關表單結束==================== -->
 
 <!-- ===================機票查詢資料==================== -->
+<!--內容-->
 
+<div>
 
+<div class="container"> 
+  
+<%-- <form action="<c:url value="/order.controller" />" method="post"> --%>
+  
+  <div class="list_flight">
+    <div class="flirow"> 
+      
+      <!--左側欄-->
+      <div class="panel-group  flyst" id="accordion">
+        <div class="panel panel-info">
+          <div id="mo_accordion" class="panel-collapse contbg  main_left martb" role="tabpanel" aria-labelledby="headingOne">
+            <div class="modal-header visible-xs visible-sm">
+              <button type="button" class="close" data-toggle="collapse" data-parent="#accordion" href="#mo_accordion" ><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="pop_protickLabel">航班篩選</h4>
+            </div>
+            <ul class="filters">
+              
+              <!--航空公司-->
+              
+              <li>
+                <h4>航空公司 </h4>
+                <ul class="are_nav airpn">
+                 
+                  <li data-filter="all">
+                    <div class="cdst">
+                      <input type="checkbox" id="cd-checkbox-s1">
+                      <label for="cd-checkbox-s1"></label>
+                    </div>
+                    <p><span>所有航空</span></p>
+                  </li>
+                
+                <c:forEach var="bean" items="${PricedItinerary}">
+               	<c:set var="Airline" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].operatingAirline.code}"/>
+               
+               <c:choose>
+               		<c:when test="${Airline == 'CI'}">
+		      		<c:set var="Airline" value="中華航空"/></c:when>
+               </c:choose>
+                  
+				 
+                <li data-filter="${Airline}">
+                	<div class="cdst">
+                      <input type="checkbox" id="cd-checkbox-s1">
+                      <label for="cd-checkbox-s1"></label>
+                    </div>
+                     <p><span>${Airline}</span><span class="price">$<b>31,256</b></span></p>
+                </li>
+				
+                
+                </c:forEach>
+                
+                </ul>
+              </li>
+      
+              <!--航空公司_結束-->
+              
+            </ul>
+            <div class="fix-button text-center">關閉</div>
+          </div>
+        </div>
+      </div>
+      
+      <!--左側欄_結束--> 
+      
+      <!--右側欄-->
+      
+      <div class="main_right">
+      <h3 class="title">可選航班共<span>${PricedItinCount}</span>組 </h3>
+   
+	<!--控制資料排序-->   
+	<div class="jq22">
+		
 
-<div id="content">
+   	<!--航班編號 varStatus="status"--> 
+      <c:forEach var="bean" items="${PricedItinerary}" varStatus="status">
+	<!--航程價格-->    
+		<c:set var="totalFareamount" value="${bean.airItineraryPricingInfo[0].itinTotalFare.totalFare.amount}"/>
+		<c:set var="baseFare" value="${bean.airItineraryPricingInfo[0].itinTotalFare.baseFare.amount}"/>
+		<c:set var="tax" value="${bean.airItineraryPricingInfo[0].itinTotalFare.taxes.tax[0].amount}"/>
+	<!--去程航班資訊 --> 		
+		<c:set var="elapsedTimeGo" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].elapsedTime}"/>
+	<!--整除分鐘 -->
+		<c:if test="${elapsedTimeGo >= 60}">
+   			<c:set var="elapsedTimeGo" value="${fn:substring((elapsedTimeGo/60),0,1)} 時 ${elapsedTimeGo%60} "/>
+		</c:if>						 		
+		
+	   	<c:set var="departureDateTime" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].departureDateTime}"/>
+	   	<c:set var="arrivalDateTime" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].arrivalDateTime}"/>
+	   	<c:set var="departureAirportlocationCode" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].departureAirport.locationCode}"/>
+	   	<c:set var="arrivalAirportlocationCode" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].arrivalAirport.locationCode}"/>
+	   	<c:set var="airEquipType" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].equipment[0].airEquipType}"/>
+		<c:set var="operatingAirline" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].operatingAirline.code}"/>
+		<c:set var="flightNumber" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].operatingAirline.flightNumber}"/>
+	   	
+	<!--航空公司轉中文 -->
+	   	<c:set var="Airline" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].flightSegment[0].operatingAirline.code}"/>
+		
+		<c:choose>
+		 	<c:when test="${Airline == 'AE'}">
+		      <c:set var="Airline" value="華信航空"/></c:when>
+		    <c:when test="${Airline == 'BR'}">
+		      <c:set var="Airline" value="長榮航空"/></c:when>
+		    <c:when test="${Airline == 'B7'}">
+		      <c:set var="Airline" value="立榮航空"/></c:when>
+		    <c:when test="${Airline == 'CI'}">
+		      <c:set var="Airline" value="中華航空"/></c:when>
+		    <c:when test="${Airline == 'FE'}">
+		      <c:set var="Airline" value="遠東航空"/></c:when>
+		    <c:when test="${Airline == 'GE'}">
+		      <c:set var="Airline" value="復興航空"/></c:when>
+		    <c:when test="${Airline == 'IT'}">
+		      <c:set var="Airline" value="台灣虎航"/></c:when>
+		    <c:when test="${Airline == 'KE'}">
+		      <c:set var="Airline" value="韓國航空"/></c:when>
+		    <c:when test="${Airline == 'LJ'}">
+		      <c:set var="Airline" value="真航空"/></c:when>
+		    <c:when test="${Airline == 'OZ'}">
+		      <c:set var="Airline" value="韓亞航空"/></c:when>
+		    <c:when test="${Airline == 'JL'}">
+		      <c:set var="Airline" value="日本航空"/></c:when>
+		    <c:when test="${Airline == 'NH'}">
+		      <c:set var="Airline" value="全日空航空"/></c:when>
+		    <c:when test="${Airline == 'NQ'}">
+		      <c:set var="Airline" value="全日空日本"/></c:when>
+		    <c:when test="${Airline == 'GK'}">
+		      <c:set var="Airline" value="捷星日本"/></c:when>
+		    <c:when test="${Airline == 'TW'}">
+		      <c:set var="Airline" value="德威航空"/></c:when>
+		    <c:when test="${Airline == 'CA'}">
+		      <c:set var="Airline" value="中國國際"/></c:when>
+		    <c:when test="${Airline == 'CX'}">
+		      <c:set var="Airline" value="國泰航空"/></c:when>
+		    <c:when test="${Airline == 'CZ'}">
+		      <c:set var="Airline" value="中國南方"/></c:when>
+		    <c:when test="${Airline == 'FM'}">
+		      <c:set var="Airline" value="上海航空"/></c:when>
+		    <c:when test="${Airline == 'HO'}">
+		      <c:set var="Airline" value="吉祥航空"/></c:when>
+		    <c:when test="${Airline == 'HU'}">
+		      <c:set var="Airline" value="海南航空"/></c:when>
+		    <c:when test="${Airline == 'HX'}">
+		      <c:set var="Airline" value="香港航空"/></c:when>
+		    <c:when test="${Airline == 'KA'}">
+		      <c:set var="Airline" value="港龍航空"/></c:when>
+		    <c:when test="${Airline == 'MF'}">
+		      <c:set var="Airline" value="廈門航空"/></c:when>
+		    <c:when test="${Airline == 'MU'}">
+		      <c:set var="Airline" value="中國東方"/></c:when>
+		    <c:when test="${Airline == 'NX'}">
+		      <c:set var="Airline" value="澳門航空"/></c:when>
+		    <c:when test="${Airline == 'OM'}">
+		      <c:set var="Airline" value="蒙古航空"/></c:when>
+		    <c:when test="${Airline == 'SC'}">
+		      <c:set var="Airline" value="山東航空"/></c:when>
+		    <c:when test="${Airline == 'UO'}">
+		      <c:set var="Airline" value="香港快運"/></c:when>
+		    <c:when test="${Airline == 'ZH'}">
+		      <c:set var="Airline" value="深圳航空"/></c:when>
+		    <c:when test="${Airline == '3U'}">
+		      <c:set var="Airline" value="四川航空"/></c:when>
+		    <c:when test="${Airline == 'AI'}">
+		      <c:set var="Airline" value="印度航空"/></c:when>
+		    <c:when test="${Airline == 'AK'}">
+		      <c:set var="Airline" value="亞洲航空"/></c:when>
+		    <c:when test="${Airline == 'BG'}">
+		      <c:set var="Airline" value="孟加拉航空"/></c:when>
+		    <c:when test="${Airline == 'BI'}">
+		      <c:set var="Airline" value="汶萊皇家"/></c:when>
+		    <c:when test="${Airline == 'D7'}">
+		      <c:set var="Airline" value="亞航X"/></c:when>
+		    <c:when test="${Airline == 'FD'}">
+		      <c:set var="Airline" value="泰國亞洲"/></c:when>
+		    <c:when test="${Airline == 'FJ'}">
+		      <c:set var="Airline" value="斐濟航空"/></c:when>
+		    <c:when test="${Airline == 'GA'}">
+		      <c:set var="Airline" value="印尼航空"/></c:when>
+		    <c:when test="${Airline == 'JQ'}">
+		      <c:set var="Airline" value="捷星航空"/></c:when>
+		    <c:when test="${Airline == 'MH'}">
+		      <c:set var="Airline" value="馬來西亞"/></c:when>
+		    <c:when test="${Airline == 'MI'}">
+		      <c:set var="Airline" value="勝安航空"/></c:when>
+		    <c:when test="${Airline == 'NZ'}">
+		      <c:set var="Airline" value="紐西蘭航空"/></c:when>
+		    <c:when test="${Airline == 'PG'}">
+		      <c:set var="Airline" value="曼谷航空"/></c:when>
+		    <c:when test="${Airline == 'PR'}">
+		      <c:set var="Airline" value="菲律賓航空"/></c:when>
+		    <c:when test="${Airline == 'QF'}">
+		      <c:set var="Airline" value="澳洲航空"/></c:when>
+		    <c:when test="${Airline == 'QV'}">
+		      <c:set var="Airline" value="寮國航空"/></c:when>
+		    <c:when test="${Airline == 'QZ'}">
+		      <c:set var="Airline" value="印尼亞洲"/></c:when>
+		    <c:when test="${Airline == 'RA'}">
+		      <c:set var="Airline" value="尼泊爾航空"/></c:when>
+		    <c:when test="${Airline == 'SQ'}">
+		      <c:set var="Airline" value="新加坡航空"/></c:when>
+		    <c:when test="${Airline == 'TG'}">
+		      <c:set var="Airline" value="泰國航空"/></c:when>
+		    <c:when test="${Airline == 'TN'}">
+		      <c:set var="Airline" value="大溪地航空"/></c:when>
+		    <c:when test="${Airline == 'TR'}">
+		      <c:set var="Airline" value="新加坡虎航"/></c:when>
+		    <c:when test="${Airline == 'TZ'}">
+		      <c:set var="Airline" value="酷航航空"/></c:when>
+		    <c:when test="${Airline == 'VN'}">
+		      <c:set var="Airline" value="越南航空"/></c:when>
+		    <c:when test="${Airline == 'WE'}">
+		      <c:set var="Airline" value="微笑泰航"/></c:when>
+		    <c:when test="${Airline == '3K'}">
+		      <c:set var="Airline" value="捷星亞洲"/></c:when>
+		    <c:when test="${Airline == '5J'}">
+		      <c:set var="Airline" value="宿霧太平洋"/></c:when>
+		    <c:when test="${Airline == '8M'}">
+		      <c:set var="Airline" value="緬甸國際"/></c:when>
+		    <c:when test="${Airline == '9W'}">
+		      <c:set var="Airline" value="印度捷特"/></c:when>
+		    
+		</c:choose>
+		
+    <!--航空公司轉中文 -->
+    		
+	<!--回程航班資訊 --> 
+		<c:set var="elapsedTimeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].elapsedTime}"/>
+    <!--整除分鐘 -->
+		<c:if test="${elapsedTimeEnd >= 60}">
+   			<c:set var="elapsedTimeEnd" value="${fn:substring((elapsedTimeEnd/60),0,1)} 時 ${elapsedTimeEnd%60} "/>
+		</c:if>	
+    	
+    	<c:set var="departureDateTimeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].departureDateTime}"/>
+	   	<c:set var="arrivalDateTimeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].arrivalDateTime}"/>
+	   	<c:set var="departureAirportlocationCodeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].departureAirport.locationCode}"/>
+	   	<c:set var="arrivalAirportlocationCodeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].arrivalAirport.locationCode}"/>
+	   	<c:set var="airEquipTypeEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].equipment[0].airEquipType}"/>
+		<c:set var="operatingAirlineEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].operatingAirline.code}"/>
+		<c:set var="flightNumberEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].operatingAirline.flightNumber}"/>
+    	
+    <!--航空公司轉中文 -->
+	   	<c:set var="AirlineEnd" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[1].flightSegment[0].operatingAirline.code}"/>
+		
+		<c:choose>
+		 	<c:when test="${AirlineEnd == 'AE'}">
+		      <c:set var="AirlineEnd" value="華信航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'BR'}">
+		      <c:set var="AirlineEnd" value="長榮航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'B7'}">
+		      <c:set var="AirlineEnd" value="立榮航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'CI'}">
+		      <c:set var="AirlineEnd" value="中華航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'FE'}">
+		      <c:set var="AirlineEnd" value="遠東航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'GE'}">
+		      <c:set var="AirlineEnd" value="復興航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'IT'}">
+		      <c:set var="AirlineEnd" value="台灣虎航"/></c:when>
+		    <c:when test="${AirlineEnd == 'KE'}">
+		      <c:set var="AirlineEnd" value="韓國航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'LJ'}">
+		      <c:set var="AirlineEnd" value="真航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'OZ'}">
+		      <c:set var="AirlineEnd" value="韓亞航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'JL'}">
+		      <c:set var="AirlineEnd" value="日本航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'NH'}">
+		      <c:set var="AirlineEnd" value="全日空航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'NQ'}">
+		      <c:set var="AirlineEnd" value="全日空日本"/></c:when>  
+		    <c:when test="${AirlineEnd == 'GK'}">
+		      <c:set var="AirlineEnd" value="捷星日本"/></c:when>  
+		    <c:when test="${AirlineEnd == 'TW'}">
+		      <c:set var="AirlineEnd" value="德威航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'CA'}">
+		      <c:set var="AirlineEnd" value="中國國際"/></c:when>
+		    <c:when test="${AirlineEnd == 'CX'}">
+		      <c:set var="AirlineEnd" value="國泰航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'CZ'}">
+		      <c:set var="AirlineEnd" value="中國南方"/></c:when>
+		    <c:when test="${AirlineEnd == 'FM'}">
+		      <c:set var="AirlineEnd" value="上海航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'HO'}">
+		      <c:set var="AirlineEnd" value="吉祥航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'HU'}">
+		      <c:set var="AirlineEnd" value="海南航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'HX'}">
+		      <c:set var="AirlineEnd" value="香港航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'KA'}">
+		      <c:set var="AirlineEnd" value="港龍航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'MF'}">
+		      <c:set var="AirlineEnd" value="廈門航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'MU'}">
+		      <c:set var="AirlineEnd" value="中國東方"/></c:when>
+		    <c:when test="${AirlineEnd == 'NX'}">
+		      <c:set var="AirlineEnd" value="澳門航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'OM'}">
+		      <c:set var="AirlineEnd" value="蒙古航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'SC'}">
+		      <c:set var="AirlineEnd" value="山東航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'UO'}">
+		      <c:set var="AirlineEnd" value="香港快運"/></c:when>
+		    <c:when test="${AirlineEnd == 'ZH'}">
+		      <c:set var="AirlineEnd" value="深圳航空"/></c:when>
+		    <c:when test="${AirlineEnd == '3U'}">
+		      <c:set var="AirlineEnd" value="四川航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'AI'}">
+		      <c:set var="AirlineEnd" value="印度航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'AK'}">
+		      <c:set var="AirlineEnd" value="亞洲航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'BG'}">
+		      <c:set var="AirlineEnd" value="孟加拉航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'BI'}">
+		      <c:set var="AirlineEnd" value="汶萊皇家"/></c:when>
+		    <c:when test="${AirlineEnd == 'D7'}">
+		      <c:set var="AirlineEnd" value="亞航X"/></c:when>
+		    <c:when test="${AirlineEnd == 'FD'}">
+		      <c:set var="AirlineEnd" value="泰國亞洲"/></c:when>
+		    <c:when test="${AirlineEnd == 'FJ'}">
+		      <c:set var="AirlineEnd" value="斐濟航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'GA'}">
+		      <c:set var="AirlineEnd" value="印尼航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'JQ'}">
+		      <c:set var="AirlineEnd" value="捷星航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'MH'}">
+		      <c:set var="AirlineEnd" value="馬來西亞"/></c:when>
+		    <c:when test="${AirlineEnd == 'MI'}">
+		      <c:set var="AirlineEnd" value="勝安航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'NZ'}">
+		      <c:set var="AirlineEnd" value="紐西蘭航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'PG'}">
+		      <c:set var="AirlineEnd" value="曼谷航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'PR'}">
+		      <c:set var="AirlineEnd" value="菲律賓航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'QF'}">
+		      <c:set var="AirlineEnd" value="澳洲航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'QV'}">
+		      <c:set var="AirlineEnd" value="寮國航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'QZ'}">
+		      <c:set var="AirlineEnd" value="印尼亞洲"/></c:when>
+		    <c:when test="${AirlineEnd == 'RA'}">
+		      <c:set var="AirlineEnd" value="尼泊爾航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'SQ'}">
+		      <c:set var="AirlineEnd" value="新加坡航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'TG'}">
+		      <c:set var="AirlineEnd" value="泰國航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'TN'}">
+		      <c:set var="AirlineEnd" value="大溪地航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'TR'}">
+		      <c:set var="AirlineEnd" value="新加坡虎航"/></c:when>
+		    <c:when test="${AirlineEnd == 'TZ'}">
+		      <c:set var="AirlineEnd" value="酷航航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'VN'}">
+		      <c:set var="AirlineEnd" value="越南航空"/></c:when>
+		    <c:when test="${AirlineEnd == 'WE'}">
+		      <c:set var="AirlineEnd" value="微笑泰航"/></c:when>
+		    <c:when test="${AirlineEnd == '3K'}">
+		      <c:set var="AirlineEnd" value="捷星亞洲"/></c:when>
+		    <c:when test="${AirlineEnd == '5J'}">
+		      <c:set var="AirlineEnd" value="宿霧太平洋"/></c:when>
+		    <c:when test="${AirlineEnd == '8M'}">
+		      <c:set var="AirlineEnd" value="緬甸國際"/></c:when>
+		    <c:when test="${AirlineEnd == '9W'}">
+		      <c:set var="AirlineEnd" value="印度捷特"/></c:when>
+		    
+		</c:choose>	
+			
+    <!--航空公司轉中文 -->
 
-result
+		<div class="filtr-item" data-category="${Airline}">
+        <div class="flylist"> 
+          
+          <!--航班n,第一個最便宜多一個div class="romde_box act" 標籤名稱，其它的沒有-->
+             
+          <!--航班n_結束--> 
+          
+          <!--航班n-->
+          <div class="romde_box">
+            <div class="border"> 
+              <!--第1段-->
+              <div class="num-tag">${status.index + 1}</div>
+              <div class="flybox row">
+                <div class="col-xs-10 text-center fly-leftbox">
+                  <div class="col-xs-3 fl-namebox text-center">
+                            
+		  <!--插入航空公司圖片區 -->
+                 <c:choose>	
+                 
+	                 <c:when test="${Airline == '中華航空'}">
+	   					<span><img src="../uploadFiles/CI.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '長榮航空'}">
+	   					<span><img src="../uploadFiles/BR.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '日本航空'}">
+	   					<span><img src="../uploadFiles/JL.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '全日空航空'}">
+	   					<span><img src="../uploadFiles/NH.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '全日空日本'}">
+	   					<span><img src="../uploadFiles/NQ.png" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '新加坡虎航'}">
+	   					<span><img src="../uploadFiles/TR.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '捷星日本'}">
+	   					<span><img src="../uploadFiles/GK.png" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '國泰航空'}">
+	   					<span><img src="../uploadFiles/CX.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '捷星亞洲'}">
+	   					<span><img src="../uploadFiles/3k.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${Airline == '菲律賓航空'}">
+	   					<span><img src="../uploadFiles/PR.gif" style="float:left"></span>
+					 </c:when>
+	                					 
+                 </c:choose>	
+          <!--插入航空公司圖片區 --> 
+                 
+                    <div class="fl-name">${Airline}</div>
+                    <div class="fl-num">${operatingAirline}${flightNumber}</div>
+                  </div>     
+                  <div class="col-xs-3 fl-timebox text-right">
+                    <div class="fl-time">${fn:substring(departureDateTime,0,10)}</div>
+                    <div class="fl-place">${fn:substring(departureDateTime,11,16)}<span>${departureAirportlocationCode}</span></div>
+                  </div>
+                  <div class=" col-xs-3 fl-durationbox text-center">
+                    <div class="fl-dutime"> <span>${elapsedTimeGo}</span>分 </div>
+                    <div class="t-line" ></div>
+                    <div class="fl-flyname"></div>
+                  </div>
+                  <div class=" col-xs-3 fl-timebox text-left">
+                    <div class="fl-time">${fn:substring(arrivalDateTime,0,10)}</div>
+                    <div class="fl-place">${fn:substring(arrivalDateTime,11,16)}<span>${arrivalAirportlocationCode}</span></div>
+                  </div>
+                </div>
+                <div class="col-xs-2 fly-info">
+                  <div class="fltool">
+                    <li class="icon_fl1">${airEquipType}</li>
+                    <li class="icon_fl2">經濟艙</li>
+                    <li class="icon_fl3">30kg/人</li>
+                  </div>
+                </div>
+              </div>
+              
+              <!--第1段_結束--> 
+              
+              <!--第2段-->
+              
+              <div class="flybox row border-top">
+                <div class="col-xs-10 text-center fly-leftbox">
+                  <div class="col-xs-3 fl-namebox text-center">
+                    
+                     <!--插入航空公司圖片區 -->
+                 <c:choose>	
+                 
+	                 <c:when test="${AirlineEnd == '中華航空'}">
+	   					<span><img src="../uploadFiles/CI.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '長榮航空'}">
+	   					<span><img src="../uploadFiles/BR.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '日本航空'}">
+	   					<span><img src="../uploadFiles/JL.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '全日空航空'}">
+	   					<span><img src="../uploadFiles/NH.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '全日空日本'}">
+	   					<span><img src="../uploadFiles/NQ.png" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '新加坡虎航'}">
+	   					<span><img src="../uploadFiles/TR.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '捷星日本'}">
+	   					<span><img src="../uploadFiles/GK.png" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '國泰航空'}">
+	   					<span><img src="../uploadFiles/CX.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '捷星亞洲'}">
+	   					<span><img src="../uploadFiles/3k.gif" style="float:left"></span>
+					 </c:when>
+	                 <c:when test="${AirlineEnd == '菲律賓航空'}">
+	   					<span><img src="../uploadFiles/PR.gif" style="float:left"></span>
+					 </c:when>
+	                					 
+                 </c:choose>	
+          <!--插入航空公司圖片區 --> 
+                      
+                    <div class="fl-name">${AirlineEnd}</div>
+                    <div class="fl-num">${operatingAirlineEnd}${flightNumberEnd}</div>
+                  </div>
+                  <div class="col-xs-3 fl-timebox text-right">
+                    <div class="fl-time">${fn:substring(departureDateTimeEnd,0,10)}</div>
+                    <div class="fl-place">${fn:substring(departureDateTimeEnd,11,16)}<span>${departureAirportlocationCodeEnd}</span></div>
+                  </div>
+                  <div class=" col-xs-3 fl-durationbox text-center">
+                    <div class="fl-dutime"> <span>${elapsedTimeEnd}</span>分 </div>
+                    <div class="t-line" ></div>
+                    <div class="fl-flyname"></div>
+                  </div>
+                  <div class=" col-xs-3 fl-timebox text-left">
+                    <div class="fl-time">${fn:substring(arrivalDateTimeEnd,0,10)}</div>
+                    <div class="fl-place">${fn:substring(arrivalDateTimeEnd,11,16)}<span>${arrivalAirportlocationCodeEnd}</span></div>
+                  </div>
+                </div>
+                <div class="col-xs-2 fly-info">
+                  <div class="fltool">
+                    <li class="icon_fl1">${airEquipTypeEnd}</li>
+                    <li class="icon_fl2">經濟艙</li>
+                    <li class="icon_fl3">30kg/人</li>
+                  </div>
+                </div>
+              </div>
+              
+              <!--第2段_結束--> 
+              
+              <!--票價-->
+              <div class="row">
+                <div class="tickbox ">
+                  <div class="col-xs-6  btn-tickbox"></div>
+                  <div class="col-xs-6 fpric text-right"> 
+                  <div class="list_pricet">
+			  <!--fmt:formatNumber可以格式化   -->
+			  		<span class="price_de">含稅總價格</span>
+                    <span class="price">NT$<span class="fontb"><fmt:formatNumber value='${totalFareamount}' type="number"/>&nbsp;&nbsp;</span></span>
+                  
+                   
+<!--傳遞是下一頁資料 -->       
+<form action="<c:url value="/order.controller" />" method="post" style="float:right">       
+ 
+<input type="hidden" name="F_start" value="${departureAirportlocationCode}">
+<input type="hidden" name="F_startend" value="${arrivalAirportlocationCode}">
+<input type="hidden" name="F_endback" value="${departureAirportlocationCodeEnd}">
+<input type="hidden" name="F_end" value="${arrivalAirportlocationCodeEnd}">
+<input type="hidden" name="F_goDateStart" value="${departureDateTime}">
+<input type="hidden" name="F_goDateEnd" value="${arrivalDateTime}">
+<input type="hidden" name="F_backDateStart" value="${departureDateTimeEnd}">
+<input type="hidden" name="F_backDateEnd" value="${arrivalDateTimeEnd}">
+<input type="hidden" name="F_toatalTimeGo" value="${elapsedTimeGo}">
+<input type="hidden" name="F_toatalTimeEnd" value="${elapsedTimeEnd}">
+<input type="hidden" name="AirLine_go" value="${Airline}">
+<input type="hidden" name="AirLine_back" value="${AirlineEnd}">
+<input type="hidden" name="Flight_numbergo" value="${operatingAirline}${flightNumber}">
+<input type="hidden" name="Flight_numberback" value="${operatingAirlineEnd}${flightNumberEnd}">
+<input type="hidden" name="F_cabin" value="經濟艙">
+<input type="hidden" name="F_adult" value="${formBean.people}">
 
+<input type="hidden" name="F_tax" value="<fmt:parseNumber integerOnly="true" value="${tax}"/>">
+<input type="hidden" name="F_price" value="<fmt:parseNumber integerOnly="true" value="${baseFare}"/>">
+<input type="hidden" name="F_total" value="<fmt:formatNumber value='${totalFareamount}' type="number"/>">
+
+<!-- <br> -->
+<%-- 印出來：${departureAirportlocationCode}<br> --%>
+<%-- 印出來：${arrivalAirportlocationCode}<br> --%>
+<%-- 印出來：${departureAirportlocationCodeEnd}<br> --%>
+<%-- 印出來：${arrivalAirportlocationCodeEnd}<br> --%>
+<%-- 印出來：${departureDateTime}<br> --%>
+<%-- 印出來：${arrivalDateTime}<br> --%>
+<%-- 印出來：${departureDateTimeEnd}<br> --%>
+<%-- 印出來：${arrivalDateTimeEnd}<br> --%>
+<%-- 去程時間：${elapsedTimeGo}<br> --%>
+<%-- 回程時間：${elapsedTimeEnd}<br> --%>
+<%-- 印出來：${Airline}<br> --%>
+<%-- 印出來：${AirlineEnd}<br> --%>
+<%-- 印出來：${operatingAirline}${flightNumber}<br> --%>
+<%-- 印出來：${operatingAirlineEnd}${flightNumberEnd}<br> --%>
+<!-- 印出來：F_cabin = 經濟艙<br> -->
+<%-- 成人數：${formBean.people}<br> --%>
+<!-- fmt:formatNumber type="number" 出來會是123456.0 --> 
+<%-- 印出來：NT$<fmt:formatNumber value='${totalFareamount}' type="number"/><br> --%>
+<%-- 印出來：NT$<fmt:formatNumber value='${baseFare}' type='number'/><br> --%>
+<%-- 印出來：NT$<fmt:formatNumber value='${tax}' type='number'/><br> --%>
+<!-- fmt:parseNumber integerOnly="true" 出來會是123456 --> 
+<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${totalFareamount}"/><br> --%>
+<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFare}"/><br> --%>
+<%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${tax}"/><br> --%>
+       
+       
+<span class="check">
+  	 	<input type="submit" class="btn btn_check" name="prodaction" value="訂位">
+</span>
+</form> </div>
 </div>
 
+  </div>
+</div>
+
+<!--票價_結束--> 
+   
+  </div>
+</div>
+<!--航班n_結束-->        
+       
+       
+       
+       
+       
+       
+       
+       
+
+
+        </div>
+     </div>
+   </c:forEach>
+  
+</div>
+   
+      </div>
+    </div>
+    
+    <!--右側欄_結束--> 
+    
+  </div>
+
+  
+</div>
+
+<!--內容_結束--> 
 
 
 
 
 
 
+</div>
 
 
 
@@ -1201,18 +1824,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-<!-- 回傳機票JSON -->
+<!-- 回傳機票表單JSON -->
 
+<script>
+$(".closepop").on("click",function(){$("#pop_protick").modal("hide")});$(".pop_res .dropdown-menu  .close").on("click",function(){$(".pop_res .dropdown-menu").modal("hide")});
+</script> 
 
-<script type="text/javascript">
+<!-- 資料排序 -->
 
-
-
-
+<script src="../js/jquery.filterizr.min.js"></script>
+<script>
+$(".jq22").filterizr();
 </script>
+
+
 	
 <!--===============================================================================================-->
 	<script src="../js/main.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js?sv=1" ></script> 
+	<script type="text/javascript" src="../js/bootstrap-tooltip.js?sv=1"></script> 
+	<script type="text/javascript" src="../js/bootstrap-popover.js?sv=1"></script> 
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
 </body>
 </html>

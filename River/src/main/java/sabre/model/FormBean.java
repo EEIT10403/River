@@ -12,10 +12,14 @@ public class FormBean {
 	private java.util.Date godate;
 	private java.util.Date backdate;
 	private Integer people;
+	private Integer people2;
+	private Integer people3;
+	
 	@Override
 	public String toString() {
-		return "FromBean [zt_country=" + zt_country + ", zt_country02=" + zt_country02 + ", godate=" + godate
-				+ ", backdate=" + backdate + ", people=" + people + "]";
+		return "FormBean [zt_country=" + zt_country + ", zt_country02=" + zt_country02 + ", godate=" + godate
+				+ ", backdate=" + backdate + ", people=" + people + ", people2=" + people2 + ", people3=" + people3
+				+ "]";
 	}
 	public String getZt_country() {
 		return zt_country;
@@ -46,6 +50,18 @@ public class FormBean {
 	}
 	public void setPeople(Integer people) {
 		this.people = people;
+	}
+	public Integer getPeople2() {
+		return people2;
+	}
+	public void setPeople2(Integer people2) {
+		this.people2 = people2;
+	}
+	public Integer getPeople3() {
+		return people3;
+	}
+	public void setPeople3(Integer people3) {
+		this.people3 = people3;
 	}
 
 }

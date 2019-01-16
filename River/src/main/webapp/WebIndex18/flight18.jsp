@@ -273,8 +273,6 @@
 		</div>
 	</section>
 
-
-
 <!-- ===================班次查詢中間==================== -->
 	
 <div id="booking">
@@ -305,7 +303,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">起始地</span>
-										<input class="form-control" type="text" placeholder="City or airport" id="zt_country" name="zt_country" value="${param.zt_country}" readonly="readonly">
+										<input class="form-control" type="text" required placeholder="City or airport" id="zt_country" name="zt_country" value="${param.zt_country}" readonly="readonly">
 							
 <!-- ============================================選項卡1========================================================== -->								
 				<div class="container-fluid col-md-6 col-xs-12 zt_li" id="zt_countryTabs" tabindex="1" style="width: 350px;display: none; border: double #C4E2F7 5px; background-color: #DDDDDD;">
@@ -685,21 +683,18 @@
 											<option value="5">5</option>
 										</select>
 										
-										
-										
-										
 									</div>
 								</div>
 							<div class="col-md-2">
 									<div class="form-group">
 										<span class="form-label">兒童 (2-12)</span>
 										<select class="form-control" name="people2">
-											<option value="${param.people2}">0</option>
-											<option value="${param.people2}">1</option>
-											<option value="${param.people2}">2</option>
-											<option value="${param.people2}">3</option>
-											<option value="${param.people2}">4</option>
-											<option value="${param.people2}">5</option>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
 										</select>
 										
 									</div>
@@ -708,12 +703,12 @@
 									<div class="form-group">
 										<span class="form-label">幼兒 (0-2)</span>
 										<select class="form-control" name="people3">
-											<option value="${param.people3}">0</option>
-											<option value="${param.people3}">1</option>
-											<option value="${param.people3}">2</option>
-											<option value="${param.people3}">3</option>
-											<option value="${param.people3}">4</option>
-											<option value="${param.people3}">5</option>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
 										</select>
 										
 									</div>
