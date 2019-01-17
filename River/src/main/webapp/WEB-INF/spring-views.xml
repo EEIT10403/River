@@ -52,5 +52,10 @@
 		<property name="url" value="/WebIndex18/search18.jsp"></property>	
 		<property name="contextRelative" value="true"></property>
 	</bean>
+	<bean id="forder.success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="url" value="/WebIndex18/confirm18.jsp"></property>	
+		<property name="contextRelative" value="true"></property>
+	</bean>
+	
 	
 </beans>
