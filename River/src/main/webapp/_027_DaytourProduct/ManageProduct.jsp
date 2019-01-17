@@ -591,7 +591,7 @@
 	});
 	
 	var contextPath = "${pageContext.request.contextPath}";
-	alert(contextPath)
+// 	alert(contextPath)
 	$(document).ready(function() {
 		$('#getInfo').click(function() {
 			$.ajax({
