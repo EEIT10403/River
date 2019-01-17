@@ -56,11 +56,6 @@
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <!--===============================================================================================-->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css"
-	rel="stylesheet">
-
-
 
 
 </head>
@@ -139,7 +134,7 @@
 
 					<div
 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-						data-notify="0">
+						data-notify="2">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 
@@ -213,149 +208,169 @@
 
 		<!-- 為了秀出header的不得已div-->
 		<!-- 產品顯示部分 start-->
-		<form name="insert" ENCTYPE="multipart/form-data"
-		action="<c:url value="/pages/product.controller" />" method="post">
-		<div style='padding: 10% 20%'>
+
+
+		<div style='padding: 8% 10%'>
+
+			<%-- 		<c:if test="${empty member_Id}">  這一段這樣寫，那我只要沒過Controller就會要login, 滿煩 --%>
+
+
+			<%-- 		<c:redirect url="/_11_secure/login.jsp" /> --%>
+
+			<%--        </c:if> --%>
+			<c:set value="${member_Id}" var="member_Id" scope="session" />
+			<%-- 			<h1>${member_Id}</h1> --%>
+
+
+
+			<h1></h1>
+
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="jumbotron">
-							<h2>產品管理平台</h2>
-							<p>${staff_Name}，早安， 好好賣阿。</p>
-							<hr>
-							<a class="btn btn-primary btn-large" href="#checkId"
-								data-toggle="modal" style="padding:20px">輸入產品代號</a>
-							<a style="margin-left:75%" class="btn btn-info btn-large" type="button" id="" href="<c:url value="/Order/GetSalesSum" />" >
-										觀看銷售報表</a>
-							<a class="btn btn-info btn-large" type="button" id="" href="<c:url value="/Partner/Logout" />" >
-										登出</a>
-						</div>
-						<div class="page-header">
-						<h2>
-							<span id="ShowProduct_Id">產品編號: </span>	
-							</h2>
-							<h2>
-								產品名稱: <input type="text" name="Prod_Name"
-									value=""
-									style="border: solid 1px; width: 900px">
-							</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7" style='padding: 30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							id='productImage'
-							src='<%=request.getContextPath()%>/images/_027_Pimage/white.jpg' />
-						<span>上傳新圖檔</span><input type="file" name="Main_Image"
-							value="${param.Main_Image}">
-					</div>
-
-					<div class="col-md-5">
-
-						<hr>
-						<span>國家: <select name="Country">
-								<option value="JA">日本</option>
-								<option value="KO">韓國</option>
-								<option value="SA">東南亞</option>
-								<option value="AU">紐澳</option>
-								<option value="EU">歐洲</option>
-								<option value="AM">美加</option>
-						</select></span> <span>地區: <select name="Region">
-								<option value="Kan">關西</option>
-								<option value="Tok">關東</option>
-								<option value="Kyu">九州</option>
-								<option value="Oki">沖繩</option>
-								<option value="Hok">北海道</option>
-						</select></span>
-						<hr>
-						<textarea id="summernote3" name="Features"></textarea>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<table class="table table-hover table-sm table-bordered">
-							<thead>
-								<tr>
-									<th>票種名稱</th>
-									<th>特價</th>
-<!-- 									<th></th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_1" value=""
-										placeholder="01. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_1" value=""
-										placeholder="01. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_2" value=""
-										placeholder="02. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_2" value=""
-										placeholder="02. 票價"></td>
-<!-- 										<td><a -->
-<%-- 											href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 										</td> -->
-									</tr>
-
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_3" value=""
-										placeholder="03. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_3" value=""
-										placeholder="03. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-								<tr class="table-active">
-									<td><input type="text" name="Ticket_type_4" value=""
-										placeholder="04. 票種名稱" style="border: solid 1px; width: 500px"></td>
-									<td><input type="text" name="UnitPrice_4" value=""
-										placeholder="04. 票價"></td>
-<!-- 									<td><a -->
-<%-- 										href="<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />"></a> --%>
-<!-- 									</td> -->
-								</tr>
-							</tbody>
-						</table>
-						<div class="row" id="viewdetails">
-							<!-- 頁面內瞬移有點被header擋到 -->
-							<div class="col-md-9">
-								<div class="tabbable" id="tabs-916421">
-									<ul class="nav nav-tabs">
-										<li class="nav-item"><a class="nav-link active show"
-											href="#tab1" data-toggle="tab">詳細介紹</a></li>
-										<li class="nav-item"><a class="nav-link " href="#tab2"
-											data-toggle="tab">權益說明</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<textarea id="summernote" name="Detail"></textarea>
-										</div>
-										<div class="tab-pane " id="tab2">
-											<textarea id="summernote2" name="Rights"></textarea>
-										</div>
+						<div class="carousel slide" id="carousel-151068">
+							<ol class="carousel-indicators">
+								<li data-slide-to="0" data-target="#carousel-151068"></li>
+								<li data-slide-to="1" data-target="#carousel-151068"
+									class="active"></li>
+								<li data-slide-to="2" data-target="#carousel-151068"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap First"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
 									</div>
 								</div>
-<!-- 								<div class="btn-group btn-group-lg" role="group" style="margin:30px; padding:20px"> -->
-
-<!-- 									<button class="btn btn-secondary" type="submit" name="prodaction" value="Update">儲存修改</button> -->
-<%-- 									<a class="btn btn-secondary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" > --%>
-<!-- 										重新填寫</a> -->
-								<a id="modal-786743" href="#doubleConfirm1" role="button"   
-								class="btn-lg btn-primary" data-toggle="modal" style="margin:30px; padding:20px">儲存修改</a>
-								<a id="modal-786743" href="#doubleConfirm2" role="button"   
-								class="btn btn-secondary" data-toggle="modal" style="margin:30px; padding:20px">重新填寫</a>
-										
-<!-- 								</div> -->
-								
+								<div class="carousel-item active">
+									<img class="d-block w-100" alt="Carousel Bootstrap Second"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" alt="Carousel Bootstrap Third"
+										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
+									<div class="carousel-caption">
+										<h4>會員管理專區</h4>
+										<p></p>
+									</div>
+								</div>
 							</div>
-							<div class="col-md-3"></div>
+							<a class="carousel-control-prev" href="#carousel-151068"
+								data-slide="prev"><span class="carousel-control-prev-icon"></span>
+								<span class="sr-only">Previous</span></a> <a
+								class="carousel-control-next" href="#carousel-151068"
+								data-slide="next"><span class="carousel-control-next-icon"></span>
+								<span class="sr-only">Next</span></a>
+						</div>
+						<div style="text-align: center; margin: 30px">
+							<div class="btn-group btn-group-lg " role="group">
+
+								<a class="btn btn-secondary"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
+									type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+								<a class="btn btn-secondary"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">我的機票</a>
+								<a class="btn btn-secondary"
+									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑
+								</a> <a class="btn btn-secondary"
+									href="<c:url value="/Member/Logout" />">登出 </a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<hr>
+								<table class="table table-hover table-bordered">
+									<thead>
+										<tr style="background-color: #3be8b0">
+											<td>#訂單編號</td>
+											<td>訂單日期</td>
+											<td>商品名稱</td>
+											<td>出發日期</td>
+											<td>查看明細</td>
+											<td>商品金額</td>
+											<td>其他選項</td>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach varStatus="stVar" var="anOrder"
+											items="${CanCommentList}">
+											<tr class="table-Default">
+												<td>${anOrder.order_No}</td>
+												<td>${fn:substring(anOrder.orderDate, 0,11)}</td>
+												<td>${anOrder.prod_Name}</td>
+												<td>${anOrder.travelDate}</td>
+
+												<td>
+												<a class="btn btn-primary"
+													href="<c:url value="/Order/OrdersItemPage?Order_No=${anOrder.order_No}" />"
+													type="button">查看明細</a>
+												</td>
+												<td>${anOrder.total_Amount}</td>
+												<td><a class="btn btn-warning"
+													href="#comment${anOrder.order_No}" type="button"
+													data-toggle="modal">評價此產品</a>
+													<form
+														action="<c:url value="/_Comment/insert?Order_No=${anOrder.order_No}" />">
+														<input type="hidden" name="Order_No"
+															value="${anOrder.order_No}"> 
+														<input type="hidden"
+															name="Prod_Name" value="${anOrder.prod_Name}"> <input
+															type="hidden" name="Member_Id"
+															value="${anOrder.member_Id}" >
+
+														<div class="modal fade" id="comment${anOrder.order_No}"
+															role="dialog" aria-labelledby="myModalLabel"
+															aria-hidden="true">
+															<div class="modal-dialog" role="document">
+																<div class="modal-content" style="margin-top: 100px">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="myModalLabel">
+																			${anOrder.prod_Name} 使用日期：${anOrder.travelDate}</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal">
+																			<span aria-hidden="true">×</span>
+																		</button>
+																	</div>
+																	<div class="modal-body">
+																		<input type="text" name="Chinese_Name"
+																			placeholder="請輸入留言人名稱" style="border: solid 1px"  >
+																		<hr>
+																		<textarea placeholder="請輸入對這個產品的一些感想"  rows="10" cols="63"
+																			style="border: solid 1px gray" wrap="hard"
+																			name="Content"  style="margin:5px"></textarea>
+																	</div>
+																	<div class="modal-footer">
+																		<button id="sending" class="btn btn-warning" type="submit">確定送出</button>
+																		<button type="button" class="btn btn-secondary"
+																			data-dismiss="modal">取消</button>
+																	</div>
+																</div>
+
+															</div>
+
+														</div>
+													</form> <!-- Modal end --></td>
+
+												<!-- Modal start -->
+
+
+											</tr>
+
+
+										</c:forEach>
+									</tbody>
+
+								</table>
+								<hr>
+
+							</div>
 						</div>
 					</div>
 				</div>
@@ -363,85 +378,8 @@
 		</div>
 
 		<!-- 產品顯示部分end -->
+<div id="forModal"></div>
 
-		<!-- Modal 產品代號輸入區塊start-->
-		<div class="modal fade" id="checkId" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content" style="margin-top: 100px">
-					<div class="modal-header">
-						<h5 class="modal-title" id="myModalLabel">輸入產品代號</h5>
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<input type="text" name="Product_Id" value="${param.Product_Id}"
-							style="border: solid 1px; width: 450px">
-					</div>
-					<span class="error">${errors.Product_Id}</span>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" id="getInfo">取得明細</button>
-						
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-		
-		<div class="modal fade" id="doubleConfirm1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">確認儲存</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要儲存嗎?</div>
-								<div class="modal-footer">
-									<button type="submit" id='confirmBtn' type="button" name="prodaction" value="Update" class="btn btn-primary">送出</button>
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">退回修改</button>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-		<div class="modal fade" id="doubleConfirm2" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
-								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel">清除重來</h5>
-									<button type="button" class="close" data-dismiss="modal">
-										<span aria-hidden="true">×</span>
-									</button>
-								</div>
-								<div class="modal-body">確認要清除重來嗎?</div>
-								<div class="modal-footer">
-									<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										重新填寫</a>
-										<a class="btn btn-primary" type="button" id="refresh" href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />" >
-										重新填寫</a>
-										
-										
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">取消</button>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-									
-		</form>
-		<!-- Modal 區塊end-->
 
 		<!-- Load more -->
 
@@ -573,9 +511,6 @@
 	<!--===============================================================================================-->
 	<script src="../vendor/bootstrap/js/popper.js"></script>
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
 
@@ -583,101 +518,59 @@
 		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#summernote').summernote('code', '請輸入詳細介紹');
-		$('#summernote2').summernote('code', '請輸入權益說明:');
-		$('#summernote3').summernote('code', '請輸入商品特色:');
-		
-	});
-	
-	var contextPath = "${pageContext.request.contextPath}";
-	alert(contextPath)
-	$(document).ready(function() {
-		$('#getInfo').click(function() {
-			$.ajax({
-				method : "GET",
-				url : contextPath + "/pages/products.view",
-				data : "Product_Id=" + $('input[name="Product_Id"]').val(),
-				dataType : "json",
-				cache : false,
-				async : true,
-				success : function(json) {
-					$(".error").first().append(json[0].text);
-					if (json[0].hasMoreData) {
-						$("#ShowProduct_Id").html("產品編號: <br>"+json[1].Product_Id);
-						$("input[name='Prod_Name']").val(json[1].Prod_Name);
-						$("#productImage").attr("src","<%=request.getContextPath()%>/images/_027_Pimage/"+json[1].Product_Id+".jpg");
-						$('#summernote3').summernote('code', json[1].Features);
-//想要秀出內容大概是這樣 		$('#Features1').html(json[1].Features);
-						$("input[name='Ticket_type_1']").val(json[1].Ticket_type_1);
-						$("input[name='UnitPrice_1']").val(json[1].UnitPrice_1);
-						$("input[name='Ticket_type_2']").val(json[1].Ticket_type_2);
-						$("input[name='UnitPrice_2']").val(json[1].UnitPrice_2);
-						$("input[name='Ticket_type_3']").val(json[1].Ticket_type_3);
-						$("input[name='UnitPrice_3']").val(json[1].UnitPrice_3);
-						$("input[name='Ticket_type_4']").val(json[1].Ticket_type_4);
-						$("input[name='UnitPrice_4']").val(json[1].UnitPrice_4);
-						$("input[name='Discount_Rate']").val(json[1].Discount_Rate);
-						$("input[name='Acceptable_Discount_Rate']").val(json[1].Acceptable_Discount_Rate);
-						$("input[name='Region']").val(json[1].Region);
-						$("input[name='Country']").val(json[1].Country);
-						$('#summernote').summernote('code', json[1].Detail);
-						$('#summernote2').summernote('code', json[1].Rights);
-						
-					}
-				}
-			});
-		});
-		$("input[name='id']").focus(function() {
-			clearForm();
-			$(".error").first().html("");
-		});
-	});
-	
-		
-	function clearForm() {
-		var inputs = document.getElementsByTagName("input");
-		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].type == "text") {
-				inputs[i].value = "";
-			}
-		}
-	}
-</script>
 
-	<script>
- 
-<!-- 立即訂購 start-->
-$('#buynow').click(function(){
-	window.location='<c:url value="/DaytourProduct/DateAndTicket?Product_Id=${bean.product_Id}" />'
-});
-	
-		
-<!-- 立即訂購 end -->
+	</script>
 
-</script>
+	<!-- 立即訂購 start-->
+
+
+	<!-- 立即訂購 end -->
+
+	</script>
 
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-		
+// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
+	
 	}); <!-- document).ready 結尾-->
 	
 	</script>
 
 	<script>
-	
-	<!--切換產品區域功能 start -->
-	$('#region>button').click(function(){
-		var reg = $(this).val();
-// 		alert($(this).val());
-		loadProduct(reg); 
-		changesize();
-    })
-    
-    <!--切換產品區域功能 end -->
-	
 
+	$("#sending").click(function() {
+			var strContent = $("textarea").val();
+			
+// 			alert("前的strContent \r\n"+strContent);
+			strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+			strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+			strContent = strContent.replace(/\s/g, ' '); //空格处理
+// 			alert("转换之后的html代码为\r\n"+strContent);
+			$("textarea").val(strContent);
+		});
+	
+	
+	$("#show").click(function(){
+// 		alert("hihi");
+// 		alert($(this).val());
+   var contextPath = "${pageContext.request.contextPath}";
+// 	   alert(contextPath)
+		  $.getJSON(contextPath+'/_Comment/show',{Prod_Name:$(this).val()},function(data){
+			   var docFragment=$(document.createDocumentFragment());
+			   var txt ='';
+			   $.each(data,function(i,comment){
+				   alert(comment.Content)
+				  
+// 				   txt +='<div class="modal fade" id="activeModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content" style="margin-top: 100px"><div class="modal-header"><h5 class="modal-title" id="myModalLabel">'+${comment.Prod_Name}+' 出發日：'+${comment.TravelDate}+'</h5><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button></div><div class="modal-body">'+${comment.Chinese_Name}${comment.Content}+'</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button></div></div></div></div>';
+				   docFragment.append(txt);
+			   });
+			   $('#forModal').html(docFragment);
+		   })
+		$('#activeModal').removeClass("modal fade");
+		$('#activeModal').addClass("modal fade show")
+	})
+			
 	</script>
 
 	<script>

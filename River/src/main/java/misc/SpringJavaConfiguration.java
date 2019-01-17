@@ -25,10 +25,11 @@ import _27_Order.model.OrderSellBean;
 import _27_Order.model.OrderSumBean;
 import _27_Order.model.TravelerBean;
 import _27_Partner.model.StaffBean;
+import _Comment.model.CommentBean;
 
 
 @Configuration
-@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model","_21_traveling.model","sabre.model","_27_Order.model","_27_Partner.model"})
+@ComponentScan(basePackages={"DaytourProduct.model","ShoppingCart.model","_11.model","_21_traveling.model","sabre.model","_27_Order.model","_27_Partner.model","_Comment.model"})
 @EnableTransactionManagement
 public class SpringJavaConfiguration {
 	@Bean
@@ -56,7 +57,7 @@ public class SpringJavaConfiguration {
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
 		builder.addAnnotatedClasses( DayTour_ProductBean.class,ShoppingCartBean.class,MemberBean.class
-				,TouristAttractionBean.class,TravelItineraryBean.class,TravelerBean.class,OrderItemBean.class,OrderSellBean.class,StaffBean.class);
+				,TouristAttractionBean.class,TravelItineraryBean.class,TravelerBean.class,OrderItemBean.class,OrderSellBean.class,StaffBean.class,CommentBean.class);
 
 
 		Properties props = new Properties();

@@ -37,11 +37,15 @@ import com.google.gson.JsonObject;
 import DaytourProduct.misc.PrimitiveNumberEditor;
 import DaytourProduct.model.DayTour_ProductBean;
 import DaytourProduct.model.ProductService;
+import _Comment.model.CommentBean;
+import _Comment.model.CommentService;
 
 @Controller
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CommentService commentService;
 
 	@InitBinder
 	public void registerPropertyEditor(WebDataBinder webDataBinder) {
@@ -274,9 +278,15 @@ public class ProductController {
 		if (Product_Id != null) {
 
 			DayTour_ProductBean result = productService.findByPrimaryKey(Product_Id);
+			
 			System.out.println("bean=" + result);
 			model.addAttribute("bean", result);
 //不知道會不會用到	session.setAttribute("bean", result);
+			
+		List<CommentBean> comments = commentService.findByProd_Name(result.getProd_Name());
+		System.out.println(comments);
+		
+		model.addAttribute("comments", comments);
 
 			return "product.select";
 

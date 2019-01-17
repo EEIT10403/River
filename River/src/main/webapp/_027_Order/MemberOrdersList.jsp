@@ -276,9 +276,9 @@
 									type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
 									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">我的機票</a>
 								<a class="btn btn-secondary"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
+									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑
 								</a> <a class="btn btn-secondary"
 									href="<c:url value="/Member/Logout" />">登出 </a>
 							</div>
@@ -303,7 +303,7 @@
 											items="${orderList}">
 											<tr class="table-Default">
 												<td>${anOrder.order_No}</td>
-												<td>${anOrder.orderDate}</td>
+												<td>${fn:substring(anOrder.orderDate, 0,11)}</td>
 												<td>${anOrder.prod_Name}</td>
 												<td>${anOrder.travelDate}</td>
 
