@@ -83,7 +83,7 @@ input, textarea {
 
 .item-slick1 {
 padding-bottom;
-	height: 650px;
+	height: 350px;
 }
 .btn  {
 margin-right:15px;

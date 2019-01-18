@@ -68,7 +68,7 @@ input, textarea {
 
 
 .item-slick1{
-height:650px;
+height:350px;
 }
 #center1{
 margin: 150px 0;
