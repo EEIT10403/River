@@ -30,8 +30,7 @@ import _21_traveling.model.dao.TouristAttractionDAOHibernate;
 public class SearchTAController {
 	@Autowired
 	private TouristAttractionService touristAttractionService;
-	@Autowired
-	private TouristAttractionDAOHibernate touristAttractionDAOHibernate;
+
 
 	@ResponseBody
 	@RequestMapping(value = { "/_21_/searchta" })
@@ -50,7 +49,7 @@ public class SearchTAController {
 
 			// 搜尋景點 List
 
-			List<TouristAttractionBean> talist = touristAttractionDAOHibernate.findbyAddrTA("%" + address + "%",
+			List<TouristAttractionBean> talist = touristAttractionService.findbyAddrTA("%" + address + "%",
 					"%" + touristarea + "%");
 
 //			int len = talist.size();
@@ -83,7 +82,7 @@ public class SearchTAController {
 		OutputStream os = null;
 		InputStream is = null;
 		try {
-			TouristAttractionBean tBean = touristAttractionDAOHibernate.select(id);
+			TouristAttractionBean tBean = touristAttractionService.findByPrimaryKey(id);
 			is = tBean.getImg().getBinaryStream();
 
 			// 由圖片檔的檔名來得到檔案的MIME型態

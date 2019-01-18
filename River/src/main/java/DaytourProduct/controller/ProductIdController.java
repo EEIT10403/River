@@ -99,6 +99,7 @@ public class ProductIdController {
 //			}
 			
 			JsonObject product = new JsonObject();
+			
 			product.addProperty("Product_Id", data.getProduct_Id());
 			product.addProperty("Prod_Name", data.getProd_Name());
 			product.addProperty("Features", data.getFeatures());

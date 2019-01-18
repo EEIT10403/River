@@ -7,3 +7,13 @@ https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=%E5%8F%B
 
 
 layoutit
+
+
+http://api.jqueryui.com/sortable/#method-toArray
+toArray
+
+sort（event，ui）類型：sort
+在排序期間觸發此事件。
+
+透過Ajax 跳轉頁面
+https://blog.csdn.net/qq_39654446/article/details/78559251

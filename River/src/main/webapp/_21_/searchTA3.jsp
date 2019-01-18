@@ -688,17 +688,7 @@ height:650px;
 
 
 
-<!-- MAP -->
-  
 
-
-
-
-   
-    
-    
-    
-    
 	<!--===============================================================================================-->
 	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
@@ -784,6 +774,16 @@ height:650px;
 	$("#pdiv").on("click ", ".js-addwish-b2", function(e) {
 			e.preventDefault();
 		});
+	
+	$("#pdiv").on("click", ".js-addwish-b2", function() {
+		var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+		swal(nameProduct, "is added to wishlist !", "success");
+		$(this).removeClass("js-addwish-b2")
+		$(this).addClass('js-addedwish-b2');
+		
+	});
+	
+	
 
 // 	$("#pdiv").find('.js-addwish-b2').each(function(){   
 // 			$(this).on('click', function(){
@@ -797,13 +797,7 @@ height:650px;
 		
 
 
-			$("#pdiv").on("click", ".js-addwish-b2", function() {
-				var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-				swal(nameProduct, "is added to wishlist !", "success");
-				$(this).removeClass("js-addwish-b2")
-				$(this).addClass('js-addedwish-b2');
-				
-			});
+			
               
 		    $('#pdiv').on('click','.js-show-modal1',function(e){
 		    	$('.js-modal1').addClass('show-modal1');
@@ -879,7 +873,7 @@ $("#pdiv").on("click",".isotope-item",function(){
 	var TAlat =Number($(".isotope-item").find(".TAlat").html());
 	var TAlatlng1 ={lat:TAlat ,lng:TAlng}
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 12,
         center:TAlatlng1
       });
 	 var marker = new google.maps.Marker({position: TAlatlng1, map: map});
@@ -893,6 +887,7 @@ $("#pdiv").on("click",".isotope-item",function(){
 	
 
 </script>
+
 
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 
@@ -159,6 +160,9 @@ height:50px;
 font-size: 25px;
 font-weight:600;
 margin: 25px 0;
+}
+.ttitile{
+line-height: 50px;
 }
 
 </style>
@@ -363,13 +367,16 @@ margin: 25px 0;
 		<!-- Product -->
 	</div>
 			<div class="d-flex justify-content-center">
-				<h1>日本九州三日遊</h1>
+				<h1>${param.tiname}</h1>
 			 </div>
-		<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center ttitile">
 			<label for="from">起始日</label>
-			<input type="date" id="from" name="from" value="2019-01-31">
+			<input type="date" id="from" name="from" value="${param.from}">
 			<label for="to">結束日</label>
-			<input type="date" id="to" name="to" value="2019-02-02">
+			<input type="date" id="to" name="to" value="${param.to}">
+			<label for="to">共計</label>
+			<input type="text" id="tday" style="width:100px" name="tday" value="${param.tday}">
+			<label for="to">日</label>
  		</div>
 
 
@@ -401,89 +408,10 @@ margin: 25px 0;
             <h3>行程總覽</h3>
             <span  class="badge badge-pill badge-secondary" id="day1">第1天</span>
   
-    <div id="draggable">
-    <!-- 單個景點元素1 -->  
-	     <div class="row oneTA">
-	   
-				 <div class="col-sm-2" >
-					  	 <div class="icon-maker">1</div>  
-		    	</div>
-				<div class="col-sm-9">
-					      <h3>太鼓谷稻成神社</h3>
-                          <div class="TLarea">日本 島根</div>
-                          <div class="TAid" hidden='true'>1</div>				
-				          <div  class="TAlng" hidden='true'>131.7689333</div>
-						  <div  class="TAlat" hidden='true'>34.4653022</div>
-					      <div  class="summary" hidden='true'>太鼓谷稻成神社位在島根縣的津和他是山陰地區最大的稻荷神社不同於出雲大社是結緣神社(祈求戀愛)太鼓谷稻成神社主要是祈求財運~生意興隆等所以太鼓谷稻成神社的神被人們當作“達成願望”之神而崇敬</div>
-		    	</div>
-	    </div>
-	
-    <!-- 單個景點結尾 --> 
-     
-     <!-- 單個景點元素2 -->
-   
-	    <div class="row oneTA">
-				<div class="col-sm-2">
-					  	 <div class="icon-maker">2</div>  
-		    	</div>
-				<div class="col-sm-9">
-					      <h3>伏見稻荷大社</h3>
-                          <div class="TLarea">日本 京都</div>
-                          <div class="TAid" hidden='true'>22</div>				
-				          <div  class="TAlng" hidden='true'>135.7726717</div>
-						  <div  class="TAlat" hidden='true'>34.9671402</div>
-					      <div  class="summary" hidden='true'>「稻荷神社」堪稱是最貼近日本人生活的神社。據說全國共有3萬座稻荷神社，在日本各地受到所有男女老幼的喜愛。其總本宮便是京都的伏見稻荷大社。自西元711年神明鎮座以來，長達1300年的期間匯集了人們的信仰，被尊崇為保佑五穀豐登、商業興盛、家庭安全、諸願望皆得實現之神。近年來除了日本人之外，也有許多外國參拜客、觀光客造訪，稻荷神社已成為代表京都與日本的名勝，聞名於世。</div>
-		    	</div>
-	    </div>
-	
-
-    <!-- 單個景點結尾 --> 
-   
-    
-   <span class="badge badge-pill badge-secondary" id="day2">第2天</span>
-
+    <div id="draggable" style="height:350px">
   
-  
-    
-    
-    
-    <!-- 單個景點元素3 -->
-  
-	    <div class="row oneTA">
-				<div class="col-sm-2">
-					  	 <div class="icon-maker">3</div>  
-		    	</div>
-				<div class="col-sm-9">
-					      <h3>三號神社</h3>
-                          <div class="TLarea">日本 島根</div>
-                          <div class="TAid" hidden='true'>333</div>				
-				          <div  class="TAlng" hidden='true'>131.7689333</div>
-						  <div  class="TAlat" hidden='true'>34.4653022</div>
-					      <div  class="summary" hidden='true'>太鼓谷稻成神社位在島根縣的津和他是山陰地區最大的稻荷神社不同於出雲大社是結緣神社(祈求戀愛)太鼓谷稻成神社主要是祈求財運~生意興隆等所以太鼓谷稻成神社的神被人們當作“達成願望”之神而崇敬</div>
-		    	</div>
-	    </div>
-	
-
-    <!-- 單個景點結尾 --> 
-        <!-- 單個景點元素4 -->
-  
-	    <div class="row oneTA">
-				<div class="col-sm-2">
-					  	 <div class="icon-maker">4</div>  
-		    	</div>
-				<div class="col-sm-9">
-					      <h3>四號神社</h3>
-                          <div class="TLarea">日本 島根</div>
-                          <div class="TAid" hidden='true'>4444</div>				
-				          <div  class="TAlng" hidden='true'>131.7689333</div>
-						  <div  class="TAlat" hidden='true'>34.4653022</div>
-					      <div  class="summary" hidden='true'>太鼓谷稻成神社位在島根縣的津和他是山陰地區最大的稻荷神社不同於出雲大社是結緣神社(祈求戀愛)太鼓谷稻成神社主要是祈求財運~生意興隆等所以太鼓谷稻成神社的神被人們當作“達成願望”之神而崇敬</div>
-		    	</div>
-	    </div>
-	
-
-    <!-- 單個景點結尾 --> 
-       <span class="badge badge-pill badge-secondary" id="day3">第3天</span>
+	     
+<!--        <span class="badge badge-pill badge-secondary" id="day3">第3天</span> -->
     </div>
     
   </div>

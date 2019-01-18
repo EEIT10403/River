@@ -2,13 +2,14 @@ package _21_traveling.model.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
 
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import _21_traveling.model.TravelItineraryBean;
 import _21_traveling.model.TravelItineraryDAO;
 
@@ -16,12 +17,19 @@ import _21_traveling.model.TravelItineraryDAO;
 @Repository
 public class TravelItineraryDAOHibernate implements TravelItineraryDAO {
     @Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 
 
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		Session session;
+		try {
+		  session = sessionFactory.getCurrentSession();
+		    
+		} catch (HibernateException e) {
+		    session = sessionFactory.openSession();
+		}
+		return session;
 	}
 
 	@Override
@@ -76,6 +84,21 @@ public class TravelItineraryDAOHibernate implements TravelItineraryDAO {
 			return bean;
 		}
 		return null;
+	}
+
+	@Override
+	public List<TravelItineraryBean> findbyMemberId(Integer memberId) {
+		   if(memberId!=null) {
+		    	  
+				Query query = this.getSession().createQuery("from TravelItineraryBean where memberid = ?1")
+						.setParameter(1,memberId);
+				List<TravelItineraryBean> list = query.list();
+
+				return list;
+		      }
+		      return null;
+			
+		
 	}
 
 }

@@ -13,6 +13,7 @@ public class TravelItineraryBean {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Integer memberid;
+	private String t_name;
 	private Integer touristday; 
 	private java.util.Date firstday;
 	private java.util.Date lastday;
@@ -34,6 +35,12 @@ public class TravelItineraryBean {
 	}
 	public void setMemberid(Integer memberid) {
 		this.memberid = memberid;
+	}
+	public String getT_name() {
+		return t_name;
+	}
+	public void setT_name(String t_name) {
+		this.t_name = t_name;
 	}
 	public Integer getTouristday() {
 		return touristday;
@@ -79,10 +86,12 @@ public class TravelItineraryBean {
 	}
 	@Override
 	public String toString() {
-		return "TravelItineraryBean [id=" + id + ", memberid=" + memberid + ", touristday=" + touristday + ", firstday="
-				+ firstday + ", lastday=" + lastday + ", sequence=" + sequence + ", dailyitinerary=" + dailyitinerary
-				+ ", ticketno=" + ticketno + ", summary=" + summary + "]";
+		return "TravelItineraryBean [id=" + id + ", memberid=" + memberid + ", t_name=" + t_name + ", touristday="
+				+ touristday + ", firstday=" + firstday + ", lastday=" + lastday + ", sequence=" + sequence
+				+ ", dailyitinerary=" + dailyitinerary + ", ticketno=" + ticketno + ", summary=" + summary + "]";
 	}
+	
+    
 	
 
 }

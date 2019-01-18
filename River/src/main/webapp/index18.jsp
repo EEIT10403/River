@@ -68,8 +68,8 @@
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a class="logo"> <img src="images/icons/logo-11.png"
-							alt="IMG-LOGO">
+						<a class="logo" href="<c:url value="/index18.jsp" />"> <img
+							src="images/icons/logo-11.png" alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
@@ -78,56 +78,65 @@
 								<li class="active-menu"><a
 									href="<c:url value="/index18.jsp" />">首頁</a></li>
 								<c:if test="${not empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
 
 									<li class="label1"><a
 										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="blog.html">行程安排</a></li>
+									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-									<li><a
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員專區</a></li>
 								</c:if>
-								
+
 								<c:if test="${empty member_Id}">
 									<li><a href="product.html">景點查詢</a></li>
 
 									<li class="label1"><a
 										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程安排</a></li>
+									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-									<li><a
-										href="<c:url value="/_11_secure/login.jsp" />">會員專區</a></li>
 								</c:if>
 								<c:if test="${empty staff_id}">
-								<li><a
-									href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
-                                </c:if>
-                                <c:if test="${not empty staff_id}">
-								<li><a
-									href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
-                                </c:if>
+									<li><a
+										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+								</c:if>
+								<c:if test="${not empty staff_id}">
+									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+								</c:if>
 							</ul>
 						</div>
 
 						<!-- Icon header -->
 						<div class="wrap-icon-header flex-w flex-r-m">
-							<div
-								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-								<i class="zmdi zmdi-search"></i>
-							</div>
 
-							<div
-								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-								data-notify="2">
-								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
+							<div class="dropdown">
 
-							<a href="#"
-								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-							</a>
+								<button class="btn btn-default dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<c:if test="${not empty member_Id}">
+										<a class="dropdown-item"
+											href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/Logout" />">登出</a>
+									</c:if>
+									<c:if test="${empty member_Id}">
+										<a class="dropdown-item"
+											href="<c:url value="/_11_secure/login.jsp" />">登入</a>
+									</c:if>
+								</div>
+							</div>
+<!-- 							<div -->
+<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+<!-- 								<i class="zmdi zmdi-search"></i> -->
+<!-- 							</div> -->
+
 						</div>
 					</nav>
 				</div>
@@ -142,22 +151,32 @@
 				</div>
 
 				<!-- Icon header -->
-				<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-						<i class="zmdi zmdi-search"></i>
+				<div>
+
+					<div class="dropdown">
+
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<c:if test="${not empty member_Id}">
+								<a class="dropdown-item"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
+								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
+							</c:if>
+							<c:if test="${empty member_Id}">
+								<a class="dropdown-item"
+									href="<c:url value="/_11_secure/login.jsp" />">登入</a>
+							</c:if>
+						</div>
 					</div>
 
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-						data-notify="2">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
-
-					<a href="#"
-						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-					</a>
 				</div>
 
 				<!-- Button show menu -->
@@ -172,45 +191,55 @@
 			<div class="menu-mobile">
 
 
-				<ul class="main-menu-m">
-					<li><a href="<c:url value="/index18.jsp" />">Home</a> <span
-						class="arrow-main-menu-m"> <i class="fa fa-angle-right"
-							aria-hidden="true"></i>
-					</span></li>
+					<ul class="main-menu">
+								<li class="active-menu"><a
+									href="<c:url value="/index18.jsp" />">首頁</a></li>
+								<c:if test="${not empty member_Id}">
 
-					<li><a href="product.html">Shop</a></li>
+									<li class="label1"><a
+										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-					<li><a href="<c:url value="/WebIndex18/flight18.jsp" />"
-						class="label1 rs1">航班查詢</a></li>
+									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-					<li><a href="blog.html">Blog</a></li>
+								</c:if>
 
-					<li><a
-						href="<c:url value="/_011_memberpages/MemberHome.jsp" />">會員專區</a></li>
+								<c:if test="${empty member_Id}">
+									<li><a href="product.html">景點查詢</a></li>
 
-					<li><a
-						href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">合作廠商登入</a></li>
-				</ul>
+									<li class="label1"><a
+										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+
+									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+
+								</c:if>
+								<c:if test="${empty staff_id}">
+									<li><a
+										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+								</c:if>
+								<c:if test="${not empty staff_id}">
+									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+								</c:if>
+							</ul>
 			</div>
 
 			<!-- Modal Search -->
-			<div
-				class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-				<div class="container-search-header">
-					<button
-						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-						<img src="images/icons/icon-close2.png" alt="CLOSE">
-					</button>
+<!-- 			<div -->
+<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+<!-- 				<div class="container-search-header"> -->
+<!-- 					<button -->
+<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+<!-- 					</button> -->
 
-					<form class="wrap-search-header flex-w p-l-15">
-						<button class="flex-c-m trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-						<input class="plh3" type="text" name="search"
-							placeholder="Search...">
-					</form>
-				</div>
-			</div>
+<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+<!-- 						<button class="flex-c-m trans-04"> -->
+<!-- 							<i class="zmdi zmdi-search"></i> -->
+<!-- 						</button> -->
+<!-- 						<input class="plh3" type="text" name="search" -->
+<!-- 							placeholder="Search..."> -->
+<!-- 					</form> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</header>
 
 		<!-- Cart -->
@@ -312,9 +341,9 @@
 				<div class="flex-w flex-sb-m p-b-52">
 					<!-- 產品顯示區塊 -->
 					<div class="flex-w flex-l-m filter-tope-group m-tb-10" id='region'>
-						<button
-							class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
-							data-filter="*">All Products</button>
+						<!-- 						<button -->
+						<!-- 							class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" -->
+						<!-- 							data-filter="*">All Products</button> -->
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 							value='Hok'>
 							<!-- data-filter=".women" -->
@@ -334,24 +363,24 @@
 							value='Kyu'>九州</button>
 					</div>
 					<!-- Search Filter Icon -->
-					<div class="flex-w flex-c-m m-tb-10">
-						<div
-							class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-							<i
-								class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-							<i
-								class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-							Filter
-						</div>
+					<!-- 					<div class="flex-w flex-c-m m-tb-10"> -->
+					<!-- 						<div -->
+					<!-- 							class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter"> -->
+					<!-- 							<i -->
+					<!-- 								class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i> -->
+					<!-- 							<i -->
+					<!-- 								class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i> -->
+					<!-- 							Filter -->
+					<!-- 						</div> -->
 
-						<div
-							class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-							<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-							<i
-								class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-							Search
-						</div>
-					</div>
+					<!-- 						<div -->
+					<!-- 							class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search"> -->
+					<!-- 							<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i> -->
+					<!-- 							<i -->
+					<!-- 								class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i> -->
+					<!-- 							Search -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
 
 					<!-- Search product -->
 					<div class="dis-none panel-search w-full p-t-10 p-b-15">
@@ -366,120 +395,9 @@
 					</div>
 
 					<!-- Filter -->
-					<div class="dis-none panel-filter w-full p-t-10">
-						<div
-							class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-							<div class="filter-col1 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">Sort By</div>
-
-								<ul>
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> Default </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> Popularity </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> Average rating </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04 filter-link-active">
-											Newness </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> Price: Low to High
-									</a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> Price: High to Low
-									</a></li>
-								</ul>
-							</div>
-
-							<div class="filter-col2 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">Price</div>
-
-								<ul>
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04 filter-link-active">
-											All </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> $0.00 - $50.00 </a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> $50.00 - $100.00 </a>
-									</li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> $100.00 - $150.00
-									</a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> $150.00 - $200.00
-									</a></li>
-
-									<li class="p-b-6"><a href="#"
-										class="filter-link stext-106 trans-04"> $200.00+ </a></li>
-								</ul>
-							</div>
-
-							<div class="filter-col3 p-r-15 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">Color</div>
-
-								<ul>
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #222;"> <i class="zmdi zmdi-circle"></i>
-									</span> <a href="#" class="filter-link stext-106 trans-04"> Black
-									</a></li>
-
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #4272d7;"> <i class="zmdi zmdi-circle"></i>
-									</span> <a href="#"
-										class="filter-link stext-106 trans-04 filter-link-active">
-											Blue </a></li>
-
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #b3b3b3;"> <i class="zmdi zmdi-circle"></i>
-									</span> <a href="#" class="filter-link stext-106 trans-04"> Grey </a>
-									</li>
-
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #00ad5f;"> <i class="zmdi zmdi-circle"></i>
-									</span> <a href="#" class="filter-link stext-106 trans-04"> Green
-									</a></li>
-
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #fa4251;"> <i class="zmdi zmdi-circle"></i>
-									</span> <a href="#" class="filter-link stext-106 trans-04"> Red </a></li>
-
-									<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
-										style="color: #aaa;"> <i class="zmdi zmdi-circle-o"></i>
-									</span> <a href="#" class="filter-link stext-106 trans-04"> White
-									</a></li>
-								</ul>
-							</div>
-
-							<div class="filter-col4 p-b-27">
-								<div class="mtext-102 cl2 p-b-15">Tags</div>
-
-								<div class="flex-w p-t-4 m-r--5">
-									<a href="#"
-										class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										Fashion </a> <a href="#"
-										class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										Lifestyle </a> <a href="#"
-										class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										Denim </a> <a href="#"
-										class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										Streetstyle </a> <a href="#"
-										class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-										Crafts </a>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
+
+
 				<!-- 產品大區塊start -->
 				<div id='frame'>
 					<div class="row isotope-grid" id='ProductFrame'>
@@ -533,7 +451,7 @@
 				<div class="flex-c-m flex-w w-full p-t-45">
 					<a href="#"
 						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-						Load More </a>
+						Back to Top </a>
 				</div>
 			</div>
 		</section>
@@ -544,47 +462,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Categories</h4>
+						<h4 class="stext-301 cl0 p-b-30">關於百川</h4>
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Women </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Men </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 鄭祺融 </a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Watches </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 陳建良 </a></li>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 張誌元 </a></li>
 						</ul>
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Help</h4>
+						<h4 class="stext-301 cl0 p-b-30">特別感謝</h4>
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Track Order </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04">資策會</a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Returns </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04">先啟資訊 </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a></li>
-
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a></li>
 						</ul>
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+						<h4 class="stext-301 cl0 p-b-30">訂購諮詢</h4>
 
-						<p class="stext-107 cl7 size-201">Any questions? Let us know
-							in store at 8th floor, 379 Hudson St, New York, NY 10018 or call
-							us on (+1) 96 716 6879</p>
+						<p class="stext-107 cl7 size-201">台北市大安區復興南路一段390號 2,3,15樓
+							+886 (0)2 6631 6666</p>
 
 						<div class="p-t-27">
 							<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
@@ -598,21 +512,8 @@
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+						<h4 class="stext-301 cl0 p-b-30">菁英招募</h4>
 
-						<form>
-							<div class="wrap-input1 w-full p-b-4">
-								<input class="input1 bg-none plh1 stext-107 cl7" type="text"
-									name="email" placeholder="email@example.com">
-								<div class="focus-input1 trans-04"></div>
-							</div>
-
-							<div class="p-t-18">
-								<button
-									class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Subscribe</button>
-							</div>
-						</form>
 					</div>
 				</div>
 
@@ -655,167 +556,6 @@
 		</div>
 
 		<!-- Modal1 商品明細頁-->
-		<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-			<div class="overlay-modal1 js-hide-modal1"></div>
-
-			<div class="container">
-				<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-					<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-						<img src="images/icons/icon-close.png" alt="CLOSE">
-					</button>
-
-					<div class="row">
-						<div class="col-md-6 col-lg-7 p-b-30">
-							<!-- 圖片區塊 -->
-							<div class="p-l-25 p-r-30 p-lr-0-lg">
-								<div class="wrap-slick3 flex-sb flex-w">
-									<div class="wrap-slick3-dots"></div>
-									<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-									<div class="slick3 gallery-lb">
-										<div class="item-slick3"
-											data-thumb="images/product-detail-01.jpg">
-											<div class="wrap-pic-w pos-relative">
-												<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
-												<a
-													class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-													href="images/product-detail-01.jpg"> <i
-													class="fa fa-expand"></i>
-												</a>
-											</div>
-										</div>
-
-										<div class="item-slick3"
-											data-thumb="images/product-detail-02.jpg">
-											<div class="wrap-pic-w pos-relative">
-												<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-												<a
-													class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-													href="images/product-detail-02.jpg"> <i
-													class="fa fa-expand"></i>
-												</a>
-											</div>
-										</div>
-
-										<div class="item-slick3"
-											data-thumb="images/product-detail-03.jpg">
-											<div class="wrap-pic-w pos-relative">
-												<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-												<a
-													class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-													href="images/product-detail-03.jpg"> <i
-													class="fa fa-expand"></i>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-6 col-lg-5 p-b-30">
-							<!-- 文字區塊-->
-							<div class="p-r-50 p-t-5 p-lr-0-lg">
-								<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-									Lightweight Jacket</h4>
-
-								<span class="mtext-106 cl2"> $58.79 </span>
-
-								<p class="stext-102 cl3 p-t-23">Nulla eget sem vitae eros
-									pharetra viverra. Nam vitae luctus ligula. Mauris consequat
-									ornare feugiat.</p>
-
-								<!--  -->
-								<!-- 選單與Add to cart-->
-								<div class="p-t-33">
-									<div class="flex-w flex-r-m p-b-10">
-										<div class="size-203 flex-c-m respon6">Size</div>
-
-										<div class="size-204 respon6-next">
-											<div class="rs1-select2 bor8 bg0">
-												<select class="js-select2" name="time">
-													<option>Choose an option</option>
-													<option>Size S</option>
-													<option>Size M</option>
-													<option>Size L</option>
-													<option>Size XL</option>
-												</select>
-												<div class="dropDownSelect2"></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="flex-w flex-r-m p-b-10">
-										<div class="size-203 flex-c-m respon6">Color</div>
-
-										<div class="size-204 respon6-next">
-											<div class="rs1-select2 bor8 bg0">
-												<select class="js-select2" name="time">
-													<option>Choose an option</option>
-													<option>Red</option>
-													<option>Blue</option>
-													<option>White</option>
-													<option>Grey</option>
-												</select>
-												<div class="dropDownSelect2"></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="flex-w flex-r-m p-b-10">
-										<div class="size-204 flex-w flex-m respon6-next">
-											<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-												<div
-													class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-													<i class="fs-16 zmdi zmdi-minus"></i>
-												</div>
-
-												<input class="mtext-104 cl3 txt-center num-product"
-													type="number" name="num-product" value="1">
-
-												<div
-													class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-													<i class="fs-16 zmdi zmdi-plus"></i>
-												</div>
-											</div>
-
-											<button
-												class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-												Add to cart</button>
-										</div>
-									</div>
-								</div>
-
-								<!--  社群區塊-->
-								<div class="flex-w flex-m p-l-100 p-t-40 respon7">
-									<div class="flex-m bor9 p-r-10 m-r-11">
-										<a href="#"
-											class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-											data-tooltip="Add to Wishlist"> <i
-											class="zmdi zmdi-favorite"></i>
-										</a>
-									</div>
-
-									<a href="#"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-										data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
-									</a> <a href="#"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-										data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
-									</a> <a href="#"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-										data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!--  Modal終點-->
 
 	</div>

@@ -20,12 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import _21_traveling.misc.EDMUtils;
 import _21_traveling.model.TouristAttractionBean;
+import _21_traveling.model.TouristAttractionService;
 import _21_traveling.model.dao.TouristAttractionDAOHibernate;
 
 @Controller
 public class InsertTAController {
 	@Autowired
-	TouristAttractionDAOHibernate touristAttractionDAOHibernate;
+	TouristAttractionService taService;
 
 	@ResponseBody
 	@RequestMapping(value = {"/insertta","/_21_/insertta"})
@@ -41,7 +42,7 @@ public class InsertTAController {
 				Blob imgBlob = EDMUtils.fileToBlob(is, 10240000);
 				bean.setImg(imgBlob);
 				// 新增資料
-				touristAttractionDAOHibernate.insert(bean);
+				taService.addTouristAttraction(bean);
 				System.out.println(bean);
 			JSONObject result=new JSONObject();
 				result.append("id", bean.getId());
