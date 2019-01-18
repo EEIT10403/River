@@ -229,14 +229,14 @@
 	    <div class="bread flat">
 	      <a href="#" class="">選擇航班</a>
 	      <a href="#" class="active">填寫訂購單</a>
-	      <a href="#" class="">選擇付款方式</a>
+	      <a href="#" class="">選擇付款</a>
 	      <a href="#" class="">完成訂購</a>
 	    </div>
 	  </div>
 	</div>
 <div class="col-sm-12 order-title">
     <div class="row">
-        <i class="icon-marker indexCount">一、</i>
+        <i class="icon-marker indexCount"><i class="fa fa-eercast" aria-hidden="true" style="color:green;">&nbsp;</i></i>
         <h4>訂單明細</h4>
         
     </div>
@@ -250,7 +250,7 @@
 					<tr>
 						<th class="loginTable_detail_title">商品名稱</th>
 						
-							<td>${orderBean.f_start}/${orderBean.f_startend}/${orderBean.f_end}</td>
+							<td>${forderBean.f_start}/${forderBean.f_startend}/${forderBean.f_end}</td>
 						
 					</tr>
 					<tr>
@@ -271,13 +271,13 @@
 								  	  
 								  	  	<td class='orderDetail-number' rowspan="1">1</td>
 								  	<td>
-										<fmt:formatDate value="${orderBean.f_goDateStart}" type="date" pattern="yyyy/MM/dd(E)"/><br>
-								  	 	<fmt:formatDate value="${orderBean.f_goDateStart}" type="time" pattern="HH:mm"/> ~ 
-								  		<fmt:formatDate value="${orderBean.f_goDateEnd}" type="time" pattern="HH:mm"/>
+										<fmt:formatDate value="${forderBean.f_goDateStart}" type="date" pattern="yyyy/MM/dd(E)"/><br>
+								  	 	<fmt:formatDate value="${forderBean.f_goDateStart}" type="time" pattern="HH:mm"/> ~ 
+								  		<fmt:formatDate value="${forderBean.f_goDateEnd}" type="time" pattern="HH:mm"/>
 								  	</td>
 								  	
 							<!--轉換機場代號為中文名稱 -->
-								<c:set var="airportStart" value="${orderBean.f_start}"/>
+								<c:set var="airportStart" value="${forderBean.f_start}"/>
 									<c:choose>
 									 	<c:when test="${airportStart == 'TPE'}">
 									      <c:set var="airportStart" value="桃園國際機場 (TPE)"/></c:when>
@@ -300,7 +300,7 @@
 									      
 									</c:choose>
 									
-								<c:set var="airportStartend" value="${orderBean.f_startend}"/>
+								<c:set var="airportStartend" value="${forderBean.f_startend}"/>
 									<c:choose>
 									 	<c:when test="${airportStartend == 'TPE'}">
 									      <c:set var="airportStartend" value="桃園國際機場 (TPE)"/></c:when>
@@ -323,7 +323,7 @@
 									      
 									</c:choose>
 									
-								<c:set var="airportEndback" value="${orderBean.f_endback}"/>
+								<c:set var="airportEndback" value="${forderBean.f_endback}"/>
 									<c:choose>
 									 	<c:when test="${airportEndback == 'TPE'}">
 									      <c:set var="airportEndback" value="桃園國際機場 (TPE)"/></c:when>
@@ -346,7 +346,7 @@
 									      
 									</c:choose>
 									
-								<c:set var="airportEnd" value="${orderBean.f_end}"/>
+								<c:set var="airportEnd" value="${forderBean.f_end}"/>
 									<c:choose>
 									 	<c:when test="${airportEnd == 'TPE'}">
 									      <c:set var="airportEnd" value="桃園國際機場 (TPE)"/></c:when>
@@ -377,9 +377,9 @@
 										
 								  	  </td>
 								  	  <td>
-								  	  	<span>${orderBean.airLine_go}</span>
-								  	  	<span>${orderBean.flight_numbergo}</span>
-								  	  	<span class="orderDetail-cabinClass">${orderBean.f_cabin}</span>
+								  	  	<span>${forderBean.airLine_go}</span>
+								  	  	<span>${forderBean.flight_numbergo}</span>
+								  	  	<span class="orderDetail-cabinClass">${forderBean.f_cabin}</span>
 								  	  	
 								  	  </td>
 								  	  <td>
@@ -399,9 +399,9 @@
 								  	  	<td class='orderDetail-number' rowspan="1">2</td>
 								  	  
 								  	  <td>
-								  	  	<fmt:formatDate value="${orderBean.f_backDateStart}" type="date" pattern="yyyy/MM/dd(E)"/><br>
-								  	 	<fmt:formatDate value="${orderBean.f_backDateStart}" type="time" pattern="HH:mm"/> ~ 
-								  		<fmt:formatDate value="${orderBean.f_backDateEnd}" type="time" pattern="HH:mm"/>
+								  	  	<fmt:formatDate value="${forderBean.f_backDateStart}" type="date" pattern="yyyy/MM/dd(E)"/><br>
+								  	 	<fmt:formatDate value="${forderBean.f_backDateStart}" type="time" pattern="HH:mm"/> ~ 
+								  		<fmt:formatDate value="${forderBean.f_backDateEnd}" type="time" pattern="HH:mm"/>
 								  	  			
 								  	  </td>
 								  	  <td>
@@ -411,9 +411,9 @@
 										
 								  	  </td>
 								  	  <td>
-								  	  	<span>${orderBean.airLine_back}</span>
-								  	  	<span>${orderBean.flight_numberback}</span>
-								  	  	<span class="orderDetail-cabinClass">${orderBean.f_cabin}</span>
+								  	  	<span>${forderBean.airLine_back}</span>
+								  	  	<span>${forderBean.flight_numberback}</span>
+								  	  	<span class="orderDetail-cabinClass">${forderBean.f_cabin}</span>
 								  	  	
 								  	  </td>
 								  	  <td>
@@ -437,14 +437,14 @@
 						<th>成行人數</th>
 						<td>
 							
-						  成人票${orderBean.f_adult}人&nbsp;&nbsp;(每人${oneperson}元 + 參考稅金${adulttax}元)
+						  成人票${forderBean.f_adult}人&nbsp;&nbsp;(每人${foneAdult}元 + 參考稅金${fonetaxAdult}元)
 						  
 						</td>
 					</tr>
 					<tr>
 						<th>應付總額</th>
 						<td>
-							NT$&nbsp;&nbsp;<span class='orange-dark'>${orderBean.f_total}</span>元含稅
+							NT$&nbsp;&nbsp;<span class='orange-dark'>${forderBean.f_total}</span>元含稅
 						</td>
 					</tr>
 					<tr>
@@ -462,7 +462,7 @@
 <!--  填寫旅客名單        -->     
 <div class="col-sm-12 order-title">
     <div class="row">
-        <i class="icon-marker indexCount">二、</i>
+        <i class="icon-marker indexCount"><i class="fa fa-eercast" aria-hidden="true" style="color:green;">&nbsp;</i></i>
         <h4>填寫旅客名單</h4>
         	<h6><span class="text-orange">*為必填</span>行程前確認相關事宜對象</h6>
     </div>
@@ -473,7 +473,7 @@
 <!--  填寫旅客名單        -->        
     <div class="col-sm-11 col-sm-offset-1">
 
-	<c:set var="adult" value="${orderBean.f_adult}"/>
+	<c:set var="adult" value="${forderBean.f_adult}"/>
 	<c:if test="${adult != 0}">
 		<c:forEach var="adultP" begin="1" end="${adult}"> 	
 	 	
@@ -488,14 +488,14 @@
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="chname" value="${param.chname}">
+                            <input type="text" class="" name="fchname" value="${param.fchname}">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="gender">
+	                        <select name="fgender">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -505,21 +505,21 @@
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="enfirstname" value="${param.enfirstname}">
+                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="enlastname" value="${param.enlastname}">
+                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">出生日期</th>
                         <td>
-                            <input class="" type="text" name="birth" value="${param.birth}" placeholder="格式：yyyy-MM-dd">
+                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
                         </td>
                     </tr>
                     
@@ -545,7 +545,7 @@
    
 <div class="col-sm-12 order-title">
     <div class="row">
-        <i class="icon-marker indexCount">三、</i>
+        <i class="icon-marker indexCount"><i class="fa fa-eercast" aria-hidden="true" style="color:green;">&nbsp;</i></i>
         <h4>行程聯絡人</h4>
         	<h6><span class="text-orange">*為必填</span></h6>
     </div>
@@ -565,14 +565,14 @@
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="chname02" value="${param.chname02}">
+                            <input type="text" class="" name="chnameCTT" value="${param.chnameCTT}">
                         </td>
                     </tr>
                     
                   	<tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="gender">
+	                        <select name="genderCTT">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -582,28 +582,28 @@
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="enfirstname02" value="${param.enfirstname02}">
+                            <input type="text" class="" name="enfirstnameCTT" value="${param.enfirstnameCTT}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="enlastname02" value="${param.enlastname02}">
+                            <input type="text" class="" name="enlastnameCTT" value="${param.enlastnameCTT}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                              
                     <tr>
                         <th class="required">手　機</th>
                         <td>
-                       		<input type="text" class="" name="phone02" value="${param.phone02}"  placeholder="格式：0933123123">
+                       		<input type="text" class="" name="phoneCTT" value="${param.phoneCTT}"  placeholder="格式：0933123123">
                     	</td>
                     </tr>
                     
                     <tr>
                         <th class="required">e-mail</th>
                         <td>
-                            <input type="text" class="" name="mail02" value="${param.mail02}" size="40">  
+                            <input type="text" class="" name="mailCTT" value="${param.mailCTT}" size="40">  
                         </td>
                     </tr>
                                         
@@ -617,31 +617,38 @@
     </div>
 </div>
 
-<!-- 傳送orderBean資料專區 -->
+<!-- 傳送forderBean資料專區 -->
 
-<input type="hidden" name="F_start" value="${orderBean.f_start}">
-<input type="hidden" name="F_startend" value="${orderBean.f_startend}">
-<input type="hidden" name="F_endback" value="${orderBean.f_endback}">
-<input type="hidden" name="F_end" value="${orderBean.f_end}">
+<input type="hidden" name="F_start" value="${forderBean.f_start}">
+<input type="hidden" name="F_startend" value="${forderBean.f_startend}">
+<input type="hidden" name="F_endback" value="${forderBean.f_endback}">
+<input type="hidden" name="F_end" value="${forderBean.f_end}">
 <input type="hidden" name="Cn_start" value="${airportStart}">
 <input type="hidden" name="Cn_startend" value="${airportStartend}">
 <input type="hidden" name="Cn_endback" value="${airportEndback}">
 <input type="hidden" name="Cn_end" value="${airportEnd}">
-<input type="hidden" name="F_goDateStart" value="<fmt:formatDate value="${orderBean.f_goDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-<input type="hidden" name="F_goDateEnd" value="<fmt:formatDate value="${orderBean.f_goDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-<input type="hidden" name="F_backDateStart" value="<fmt:formatDate value="${orderBean.f_backDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-<input type="hidden" name="F_backDateEnd" value="<fmt:formatDate value="${orderBean.f_backDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-<input type="hidden" name="F_toatalTimeGo" value="${orderBean.f_toatalTimeGo}分">
-<input type="hidden" name="F_toatalTimeEnd" value="${orderBean.f_toatalTimeEnd}分">
-<input type="hidden" name="AirLine_go" value="${orderBean.airLine_go}">
-<input type="hidden" name="AirLine_back" value="${orderBean.airLine_back}">
-<input type="hidden" name="Flight_numbergo" value="${orderBean.flight_numbergo}">
-<input type="hidden" name="Flight_numberback" value="${orderBean.flight_numberback}">
-<input type="hidden" name="F_cabin" value="${orderBean.f_cabin}">
+<input type="hidden" name="F_goDateStart" value="<fmt:formatDate value="${forderBean.f_goDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>">
+<input type="hidden" name="F_goDateEnd" value="<fmt:formatDate value="${forderBean.f_goDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>">
+<input type="hidden" name="F_backDateStart" value="<fmt:formatDate value="${forderBean.f_backDateStart}" pattern="yyyy-MM-dd HH:mm:ss"/>">
+<input type="hidden" name="F_backDateEnd" value="<fmt:formatDate value="${forderBean.f_backDateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/>">
+<input type="hidden" name="F_toatalTimeGo" value="${forderBean.f_toatalTimeGo}分">
+<input type="hidden" name="F_toatalTimeEnd" value="${forderBean.f_toatalTimeEnd}分">
+<input type="hidden" name="AirLine_go" value="${forderBean.airLine_go}">
+<input type="hidden" name="AirLine_back" value="${forderBean.airLine_back}">
+<input type="hidden" name="Flight_numbergo" value="${forderBean.flight_numbergo}">
+<input type="hidden" name="Flight_numberback" value="${forderBean.flight_numberback}">
+<input type="hidden" name="F_cabin" value="${forderBean.f_cabin}">
+
 <input type="hidden" name="F_adult" value="${adult}">
-<input type="hidden" name="F_tax" value="${adulttax}">
-<input type="hidden" name="F_price" value="${oneperson}">
-<input type="hidden" name="F_total" value="${orderBean.f_total}">
+
+<input type="hidden" name="F_total" value="${forderBean.f_total}">
+<input type="hidden" name="F_taxAdult" value="${fonetaxAdult}">
+<input type="hidden" name="F_priceAdult" value="${foneAdult}">
+
+<input type="hidden" name="Forder_No" value="${forder_No}">
+
+
+
 
 
 <!-- 		<input type="submit" class="order-submit" name="prodaction" value="送出訂單">	 -->
@@ -656,30 +663,31 @@
     <div class="am-modal-bd">
     
 <!--     內容區域 -->
-印出來： ${orderBean.f_start} <br>
-印出來：  ${orderBean.f_startend}<br>
-印出來： ${orderBean.f_endback} <br>
-印出來： ${orderBean.f_end} <br>
-印出來： ${orderBean.f_goDateStart} ~ 
-		${orderBean.f_goDateEnd}<br>
+訂單編號:${forder_No}<br>
+印出來： ${forderBean.f_start} <br>
+印出來：  ${forderBean.f_startend}<br>
+印出來： ${forderBean.f_endback} <br>
+印出來： ${forderBean.f_end} <br>
+印出來： ${forderBean.f_goDateStart} ~ 
+		${forderBean.f_goDateEnd}<br>
 印出來：  ${airportStart}<br>
 印出來：  ${airportStartend}<br>
-印出來：  ${orderBean.airLine_go}<br>
-印出來：  ${orderBean.flight_numbergo}<br>
-印出來：  ${orderBean.f_cabin}<br>
-印出來： ${orderBean.f_backDateStart} ~ 
-  		${orderBean.f_backDateEnd}<br>
+印出來：  ${forderBean.airLine_go}<br>
+印出來：  ${forderBean.flight_numbergo}<br>
+印出來：  ${forderBean.f_cabin}<br>
+印出來： ${forderBean.f_backDateStart} ~ 
+  		${forderBean.f_backDateEnd}<br>
 印出來：  ${airportEndback}<br>
 印出來：  ${airportEnd}<br>
-印出來：  ${orderBean.airLine_back}<br>
-印出來：  ${orderBean.flight_numberback}<br>
-印出來：  ${orderBean.f_cabin}<br>
+印出來：  ${forderBean.airLine_back}<br>
+印出來：  ${forderBean.flight_numberback}<br>
+印出來：  ${forderBean.f_cabin}<br>
 成人數量：  ${adult}<br>
-總價格：  ${orderBean.f_total}<br>
-單成人： ${oneperson}<br>
-單成人稅：  ${adulttax}<br>
-去程時間：  ${orderBean.f_toatalTimeGo}<br>
-回程時間：  ${orderBean.f_toatalTimeEnd}<br>
+總價格：  ${forderBean.f_total}<br>
+單成人： ${foneAdult}<br>
+單成人稅：  ${fonetaxAdult}<br>
+去程時間：  ${forderBean.f_toatalTimeGo}分<br>
+回程時間：  ${forderBean.f_toatalTimeEnd}分<br>
 
 
 

@@ -3287,3 +3287,8 @@ textarea.remark {
   background-color: #0000;
 }
 
+.formorderBtns{
+	float:right;
+    margin: 10px;
+}
+
