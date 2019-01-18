@@ -143,7 +143,7 @@ public class FormController {
 //解析機票JSON	
 		String jsonData = BFMjson.toString();
 //		System.out.println(bfmsearch.toString());
-//		System.out.println(jsonData);
+		System.out.println(jsonData);
 		
 		Gson gson = new Gson();
 
@@ -160,7 +160,7 @@ public class FormController {
 		
 
 		
-		return "form.success";
+		return "fform.success";
 		
 		
 	}

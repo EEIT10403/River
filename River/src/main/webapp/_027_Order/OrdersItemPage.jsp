@@ -68,7 +68,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-		<header>
+					<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -78,46 +78,75 @@
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a class="logo"> <img src="../images/icons/logo-11.png"
-							alt="IMG-LOGO">
+						<a class="logo" href="<c:url value="/index18.jsp" />"> <img
+							src="../images/icons/logo-11.png" alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
 								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">Home</a></li>
+									href="<c:url value="/index18.jsp" />">首頁</a></li>
+								<c:if test="${not empty member_Id}">
 
-								<li><a href="product.html">Shop</a></li>
+									<li class="label1"><a
+										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-								<li class="label1"><a
-									href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								<li><a href="blog.html">Blog</a></li>
+								</c:if>
 
-								<li><a href="about.html">About</a></li>
+								<c:if test="${empty member_Id}">
+									<li><a href="product.html">景點查詢</a></li>
 
-								<li><a href="contact.html">Contact</a></li>
+									<li class="label1"><a
+										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+
+									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+
+								</c:if>
+								<c:if test="${empty staff_id}">
+									<li><a
+										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+								</c:if>
+								<c:if test="${not empty staff_id}">
+									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+								</c:if>
 							</ul>
 						</div>
 
 						<!-- Icon header -->
 						<div class="wrap-icon-header flex-w flex-r-m">
-							<div
-								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-								<i class="zmdi zmdi-search"></i>
-							</div>
 
-							<div
-								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-								data-notify="2">
-								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
+							<div class="dropdown">
 
-							<a href="#"
-								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-							</a>
+								<button class="btn btn-default dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<c:if test="${not empty member_Id}">
+										<a class="dropdown-item"
+											href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
+										<a class="dropdown-item"
+											href="<c:url value="/Member/Logout" />">登出</a>
+									</c:if>
+									<c:if test="${empty member_Id}">
+										<a class="dropdown-item"
+											href="<c:url value="/_11_secure/login.jsp" />">登入</a>
+									</c:if>
+								</div>
+							</div>
+<!-- 							<div -->
+<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+<!-- 								<i class="zmdi zmdi-search"></i> -->
+<!-- 							</div> -->
+
 						</div>
 					</nav>
 				</div>
@@ -128,26 +157,36 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
+						src="images/icons/logo-11.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
-				<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-						<i class="zmdi zmdi-search"></i>
+				<div>
+
+					<div class="dropdown">
+
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<c:if test="${not empty member_Id}">
+								<a class="dropdown-item"
+									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+								<a class="dropdown-item"
+									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
+								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
+							</c:if>
+							<c:if test="${empty member_Id}">
+								<a class="dropdown-item"
+									href="<c:url value="/_11_secure/login.jsp" />">登入</a>
+							</c:if>
+						</div>
 					</div>
 
-					<div
-						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-						data-notify="2">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
-
-					<a href="#"
-						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-					</a>
 				</div>
 
 				<!-- Button show menu -->
@@ -162,43 +201,55 @@
 			<div class="menu-mobile">
 
 
-				<ul class="main-menu-m">
-					<li><a href="<c:url value="/index18.jsp" />">Home</a> <span
-						class="arrow-main-menu-m"> <i class="fa fa-angle-right"
-							aria-hidden="true"></i>
-					</span></li>
+					<ul class="main-menu">
+								<li class="active-menu"><a
+									href="<c:url value="/index18.jsp" />">首頁</a></li>
+								<c:if test="${not empty member_Id}">
 
-					<li><a href="product.html">Shop</a></li>
+									<li class="label1"><a
+										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-					<li><a href="<c:url value="/WebIndex18/flight18.jsp" />"
-						class="label1 rs1">航班查詢</a></li>
+									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-					<li><a href="blog.html">Blog</a></li>
+								</c:if>
 
-					<li><a href="about.html">About</a></li>
+								<c:if test="${empty member_Id}">
+									<li><a href="product.html">景點查詢</a></li>
 
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
+									<li class="label1"><a
+										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+
+									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+
+								</c:if>
+								<c:if test="${empty staff_id}">
+									<li><a
+										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+								</c:if>
+								<c:if test="${not empty staff_id}">
+									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+								</c:if>
+							</ul>
 			</div>
 
 			<!-- Modal Search -->
-			<div
-				class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-				<div class="container-search-header">
-					<button
-						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-						<img src="../images/icons/icon-close2.png" alt="CLOSE">
-					</button>
+<!-- 			<div -->
+<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+<!-- 				<div class="container-search-header"> -->
+<!-- 					<button -->
+<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+<!-- 					</button> -->
 
-					<form class="wrap-search-header flex-w p-l-15">
-						<button class="flex-c-m trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-						<input class="plh3" type="text" name="search"
-							placeholder="Search...">
-					</form>
-				</div>
-			</div>
+<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+<!-- 						<button class="flex-c-m trans-04"> -->
+<!-- 							<i class="zmdi zmdi-search"></i> -->
+<!-- 						</button> -->
+<!-- 						<input class="plh3" type="text" name="search" -->
+<!-- 							placeholder="Search..."> -->
+<!-- 					</form> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</header>
 
 		<!-- Cart -->

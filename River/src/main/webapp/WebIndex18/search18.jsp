@@ -764,8 +764,8 @@
       <c:forEach var="bean" items="${PricedItinerary}" varStatus="status">
 	<!--航程價格-->    
 		<c:set var="totalFareamount" value="${bean.airItineraryPricingInfo[0].itinTotalFare.totalFare.amount}"/>
-		<c:set var="baseFare" value="${bean.airItineraryPricingInfo[0].itinTotalFare.baseFare.amount}"/>
-		<c:set var="tax" value="${bean.airItineraryPricingInfo[0].itinTotalFare.taxes.tax[0].amount}"/>
+		<c:set var="baseFareAdult" value="${bean.airItineraryPricingInfo[0].itinTotalFare.baseFare.amount}"/>
+		<c:set var="taxAdult" value="${bean.airItineraryPricingInfo[0].itinTotalFare.taxes.tax[0].amount}"/>
 	<!--去程航班資訊 --> 		
 		<c:set var="elapsedTimeGo" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].elapsedTime}"/>
 	<!--整除分鐘 -->
@@ -1237,8 +1237,8 @@
 <input type="hidden" name="F_cabin" value="經濟艙">
 <input type="hidden" name="F_adult" value="${formBean.people}">
 
-<input type="hidden" name="F_tax" value="<fmt:parseNumber integerOnly="true" value="${tax}"/>">
-<input type="hidden" name="F_price" value="<fmt:parseNumber integerOnly="true" value="${baseFare}"/>">
+<input type="hidden" name="F_taxAdult" value="<fmt:parseNumber integerOnly="true" value="${taxAdult}"/>">
+<input type="hidden" name="F_priceAdult" value="<fmt:parseNumber integerOnly="true" value="${baseFareAdult}"/>">
 <input type="hidden" name="F_total" value="<fmt:formatNumber value='${totalFareamount}' type="number"/>">
 
 <!-- <br> -->
@@ -1260,12 +1260,12 @@
 <%-- 成人數：${formBean.people}<br> --%>
 <!-- fmt:formatNumber type="number" 出來會是123456.0 --> 
 <%-- 印出來：NT$<fmt:formatNumber value='${totalFareamount}' type="number"/><br> --%>
-<%-- 印出來：NT$<fmt:formatNumber value='${baseFare}' type='number'/><br> --%>
-<%-- 印出來：NT$<fmt:formatNumber value='${tax}' type='number'/><br> --%>
+<%-- 印出來：NT$<fmt:formatNumber value='${baseFareAdult}' type='number'/><br> --%>
+<%-- 印出來：NT$<fmt:formatNumber value='${taxAdult}' type='number'/><br> --%>
 <!-- fmt:parseNumber integerOnly="true" 出來會是123456 --> 
 <%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${totalFareamount}"/><br> --%>
-<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFare}"/><br> --%>
-<%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${tax}"/><br> --%>
+<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFareAdult}"/><br> --%>
+<%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${taxAdult}"/><br> --%>
        
        
 <span class="check">

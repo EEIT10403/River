@@ -50,7 +50,7 @@
 		<property name="contextRelative" value="true"></property>
 	</bean>
 	
-	<bean id="form.success" class="org.springframework.web.servlet.view.RedirectView">
+	<bean id="fform.success" class="org.springframework.web.servlet.view.RedirectView">
 		<property name="url" value="/WebIndex18/search18.jsp"></property>	
 		<property name="contextRelative" value="true"></property>
 	</bean>
@@ -58,6 +58,15 @@
 		<property name="url" value="/WebIndex18/confirm18.jsp"></property>	
 		<property name="contextRelative" value="true"></property>
 	</bean>
+	<bean id="forder.confirm" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="url" value="/WebIndex18/fpay18.jsp"></property>	
+		<property name="contextRelative" value="true"></property>
+	</bean>
+	<bean id="forder.histroy" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="url" value="/WebIndex18/HistoryFOlist18.jsp"></property>	
+		<property name="contextRelative" value="true"></property>
+	</bean>
+	
 	
 	
 </beans>

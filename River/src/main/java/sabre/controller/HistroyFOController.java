@@ -1,7 +1,6 @@
 package sabre.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import sabre.model.F_ContactBean;
@@ -22,7 +20,7 @@ import sabre.model.F_PassengerBean;
 
 @Controller
 @SessionAttributes(names= {"F_OrderBean","F_Order_PassengerBean","F_ContactBean"})
-public class ConfirmController {
+public class HistroyFOController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder)
@@ -33,15 +31,9 @@ public class ConfirmController {
 	}
 	
 	
-	@RequestMapping(path= {"/confirm.cntroller"},method=RequestMethod.POST)
+	@RequestMapping(path= {"/histroy.cntroller"},method=RequestMethod.POST)
 	public String saveOrder(F_OrderBean forderBean,F_PassengerBean fpassengerBean,F_ContactBean fcontactBean,Model model,
-			BindingResult bindingResult,HttpSession session,
-			@RequestParam(value="fchname", required = false) List<String> fchname,
-			@RequestParam(value="fenfirstname", required = false) List<String> fenfirstname,
-			@RequestParam(value="fenlastname", required = false) List<String> fenlastname,
-			@RequestParam(value="fgender", required = false) List<String> fgender,
-			@RequestParam(value="fbirth", required = false) List<String> fbirth
-			) throws Exception {
+			BindingResult bindingResult,HttpSession session) throws Exception {
 		
 //旅客資料to訂購頁面
 			       
@@ -49,14 +41,11 @@ public class ConfirmController {
 		System.out.println("F_ContactBean ="+fcontactBean);
 		System.out.println("F_OrderBean ="+forderBean);
 
-		
-
-	    
 		session.setAttribute("fpassengerBean",fpassengerBean);
 		session.setAttribute("fcontactBean",fcontactBean);
 		session.setAttribute("forderBean",forderBean);
 				
-		return "forder.confirm";
+		return "forder.histroy";
 		
 		
 	}	
