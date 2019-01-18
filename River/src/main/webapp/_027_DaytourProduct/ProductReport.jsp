@@ -99,7 +99,6 @@
 								</c:if>
 
 								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
 
 									<li class="label1"><a
 										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
@@ -216,7 +215,6 @@
 								</c:if>
 
 								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
 
 									<li class="label1"><a
 										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
