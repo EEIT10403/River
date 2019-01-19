@@ -95,13 +95,58 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">合作廠商登入</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 						</div>
 
 						<!-- Icon header -->
@@ -131,10 +176,10 @@
 									</c:if>
 								</div>
 							</div>
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
 						</div>
 					</nav>
@@ -190,55 +235,55 @@
 			<div class="menu-mobile">
 
 
-					<ul class="main-menu">
-								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+				<ul class="main-menu">
+					<li class="active-menu"><a
+						href="<c:url value="/index18.jsp" />">首頁</a></li>
+					<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								</c:if>
+					</c:if>
 
-								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
+					<c:if test="${empty member_Id}">
+						<li><a href="product.html">景點查詢</a></li>
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
-								</c:if>
-							</ul>
+					</c:if>
+					<c:if test="${empty staff_id}">
+						<li><a
+							href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+					</c:if>
+				</ul>
 			</div>
 
 			<!-- Modal Search -->
-<!-- 			<div -->
-<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-<!-- 				<div class="container-search-header"> -->
-<!-- 					<button -->
-<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-<!-- 					</button> -->
+			<!-- 			<div -->
+			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+			<!-- 				<div class="container-search-header"> -->
+			<!-- 					<button -->
+			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+			<!-- 					</button> -->
 
-<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-<!-- 						<button class="flex-c-m trans-04"> -->
-<!-- 							<i class="zmdi zmdi-search"></i> -->
-<!-- 						</button> -->
-<!-- 						<input class="plh3" type="text" name="search" -->
-<!-- 							placeholder="Search..."> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+			<!-- 						<button class="flex-c-m trans-04"> -->
+			<!-- 							<i class="zmdi zmdi-search"></i> -->
+			<!-- 						</button> -->
+			<!-- 						<input class="plh3" type="text" name="search" -->
+			<!-- 							placeholder="Search..."> -->
+			<!-- 					</form> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 		</header>
 
 		<!-- Cart -->
