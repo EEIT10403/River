@@ -531,9 +531,8 @@
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
 	
-	}); <!-- document).ready 結尾-->
+	}); 
 	
 	</script>
 

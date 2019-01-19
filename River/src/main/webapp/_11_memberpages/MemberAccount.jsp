@@ -304,7 +304,7 @@
 											<td>${mBean.email}</td>
 											<td>${mBean.chinese_Name}</td>
 											<td>${mBean.english_Name}</td>
-											<td>${mBean.ID_number}</td>
+											<td id='identity'>${mBean.ID_number}</td>
 											<td>${mBean.telephone}</td>
 										</tr>
 									</tbody>
@@ -497,8 +497,13 @@
 	<script>
 	<!--讀出產品的功能 start -->
 	$(document).ready(function() {	
-// 		window.location='<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />'
-	}); <!-- document).ready 結尾-->
+		
+		var id =$('#identity').text();
+		var toSecure = id.substring(3,8);
+		id = id.replace(toSecure,'XXXXX');
+		$('#identity').text(id);
+		
+	}); 
 	
 	</script>
 
