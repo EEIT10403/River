@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiObjectFactoryBean;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -68,5 +70,23 @@ public class SpringJavaConfiguration {
 
 		return builder.buildSessionFactory();
 	}
-	
+	@Bean
+	public MailSender mailSender() {
+		
+		JavaMailSenderImpl sender = new JavaMailSenderImpl();
+		sender.setHost("smtp.gmail.com");
+		sender.setPort(587);
+		sender.setUsername("hundredriver0131");
+		sender.setPassword("river0131");
+		Properties props = new Properties();
+		props.setProperty("mail.transport.protocol", "smtp"); 
+		props.setProperty("mail.smtp.auth", "true");
+		props.setProperty("mail.smtp.starttls.enable", "true");
+		
+		sender.setJavaMailProperties(props);
+		
+		return sender;
+		
+		
+	}
 }

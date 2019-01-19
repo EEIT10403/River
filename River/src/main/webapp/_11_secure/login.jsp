@@ -705,18 +705,18 @@
 			// API call for Google login  
 			gapi.auth2.getAuthInstance().signIn().then(function(success) {
 				// Login API call is successful 
-				alert("成功");
+// 				alert("成功");
 				let Google_ID = success["El"];
-				alert("成功Google_ID"+Google_ID);
+// 				alert("成功Google_ID"+Google_ID);
 				txt = '<c:url value="/_11_secure/GoogleLogin?member_Id='+Google_ID+'" />'
-				alert(txt);
+// 				alert(txt);
 				window.location=txt
 // 				window.location = "http://localhost:8080/River";
 
 			}, function(error) {
 				// Error occurred
 				// console.log(error) to find the reason
-				alert("失敗");
+// 				alert("失敗");
 				console.log(error);
 			}
 

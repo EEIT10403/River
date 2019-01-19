@@ -289,6 +289,8 @@
 								<form
 									action="<c:url value="/_11_memberpages/member.controller" />"
 									method="post">
+									<input type="hidden"
+													name="member_Id" value="${mBean.member_Id}">
 									<table class="table table-hover table-bordered">
 										<thead>
 											<tr style="background-color: #3be8b0">
@@ -302,8 +304,7 @@
 										</thead>
 										<tbody>
 											<tr class="table-Default">
-<%-- 												<td>${mBean.member_Id}<input type="hidden" --%>
-<%-- 													name="member_Id" value="${mBean.member_Id}"></td> --%>
+												
 												<td><input type="text" name="email"
 													value="${mBean.email}"><span class="errors">${errors.email}</span></td>
 												<td><input type="text" name="chinese_Name"

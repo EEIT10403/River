@@ -4,26 +4,29 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import DaytourProduct.misc.PrimitiveNumberEditor;
 import DaytourProduct.model.DayTour_ProductBean;
 import DaytourProduct.model.ProductService;
+import _11.model.MemberBean;
+import _11.model.MemberService;
 import _27_Order.model.OrderItemBean;
 import _27_Order.model.OrderItemService;
 import _27_Order.model.OrderSellBean;
@@ -45,6 +48,15 @@ public class MemberOrderPage {
 	private OrderSellService orderSellService;
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private MailSender mailSender;
+	@Autowired
+	private JavaMailSender mailSenderObj;
+
 
 	@InitBinder
 	public void registerPropertyEditor(WebDataBinder webDataBinder) {
@@ -280,6 +292,30 @@ public class MemberOrderPage {
 //			System.out.println("後端"+Orderlist);
 			System.out.println("orderSellBean"+orderSellBean);
 			
+//寄無標籤平信
+//			SimpleMailMessage emailObj = new SimpleMailMessage();
+//			emailObj.setTo("qool0636@gmail.com");
+//			emailObj.setSubject("百川旅遊訂購明細"+orderSellBean.getOrder_No());
+//			emailObj.setText("衷心感謝");
+//
+//			mailSender.send(emailObj);
+			
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			String OrderDate = df.format(orderSellBean.getOrderDate());
+			
+			String mailContent="<div style=\"margin:5% 10%\"><p><br></p><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: small; background-color: rgb(255, 255, 255);\"><tbody><tr><td style=\"margin: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; line-height: 23px; font-size: 15px; padding-bottom: 10px;\"><span style=\"color: rgb(0, 0, 0);\">親愛的顧客您好：</span></td></tr><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 15px; line-height: 23px; padding-bottom: 10px;\"><span style=\"color: rgb(0, 0, 0);\">謝謝您訂購百川旅遊的商品，付款作業已經完成<br>以下為本次訂單明細與相關資訊，敬請參閱</span></td></tr></tbody></table></td></tr><tr><td style=\"margin: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; line-height: 24px; font-size: 15px;\"><span style=\"color: rgb(181, 99, 8);\">訂單編號："+orderSellBean.getOrder_No()+"</span></td></tr><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; line-height: 24px; font-size: 15px;\"><p><span style=\"color: rgb(0, 0, 0);\">訂購日期："+OrderDate+"</span></p><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: small; background-color: rgb(255, 255, 255);\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; line-height: 22px; font-size: 15px; padding-bottom: 5px;\"><span style=\"color: rgb(0, 0, 0);\"><img valign=\"bottom\" src=\"https://ci3.googleusercontent.com/proxy/3vq3MtryvVWH5WxtQ8qfVgAfhjJnrhOTv5NH9QmlRxM85KzP_9X5eNN-HkRp72MD3REOf8AzkRb9Vk_rRqTNYRLKNJCicJedfsVc1PCx4GgKld1SH7wlF7tI1UwY32Y=s0-d-e1-ft#https://member.eztravel.com.tw/mweb/member/assets/images/icons/scamAlert.png\" class=\"CToWUd\" style=\"vertical-align: bottom;\">&nbsp;防詐騙提醒說明</span></td></tr><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; line-height: 24px; font-size: 13px; background-color: rgb(250, 250, 250); padding: 12px;\"><span style=\"color: rgb(0, 0, 0);\">我們不會以任何原因，請求顧客操作ATM作帳款變更，<wbr>或索取信用卡資料，若有疑慮請洽客服專線。</span></td></tr></tbody></table><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: small; background-color: rgb(255, 255, 255);\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 20px; padding-bottom: 6px; border-bottom: 1px solid rgb(204, 204, 204);\"><span style=\"font-weight: bold; color: rgb(57, 123, 33);\">訂購明細</span></td></tr><tr><td style=\"margin: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"margin: 0px; padding-top: 20px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 15px; color: rgb(0, 102, 0);\"><br></td></tr></tbody></table></td></tr><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 18px; padding-top: 4px;\"><br></td></tr></tbody></table></td></tr></tbody></table><table class=\"table table-hover table-bordered\" style=\"margin: 0px 0px 1rem; padding: 0px; width: 941.6px; background-color: rgb(255, 255, 255); border-color: rgb(233, 236, 239); color: rgb(102, 102, 102); font-family: Arial, sans-serif;\"><thead style=\"margin: 0px; padding: 0px;\"><tr style=\"margin: 0px; padding: 0px; background-color: rgb(59, 232, 176);\"><td style=\"margin: 0px; padding: 0.75rem; border-top: 1px solid rgb(233, 236, 239); border-right-color: rgb(233, 236, 239); border-bottom-color: rgb(233, 236, 239); border-left-color: rgb(233, 236, 239);\">商品名稱</td></tr></thead><tbody style=\"margin: 0px; padding: 0px;\"><tr class=\"table-Default\" style=\"margin: 0px; padding: 0px;\"><td style=\"margin: 0px; padding: 0.75rem; border-color: rgb(233, 236, 239);\">"+orderSellBean.getProd_Name()+"<br></td></tr></tbody></table><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: small; background-color: rgb(255, 255, 255);\"><tbody><tr><td style=\"margin: 0px; padding-top: 35px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"margin: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"margin: 0px; padding-top: 20px; border-spacing: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; border: 1px solid rgb(171, 234, 69); background-color: rgb(242, 250, 236); font-size: 15px; padding: 11px 17px;\">訂單總金額&nbsp;<span style=\"font-size: 18px; color: rgb(255, 102, 0);\">"+orderSellBean.getTotal_Amount()+"</span>&nbsp;元</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style=\"margin: 0px; padding-top: 35px;\"></td></tr></tbody></table><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: small; background-color: rgb(255, 255, 255);\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 20px; padding-bottom: 6px; border-bottom: 1px solid rgb(204, 204, 204);\"><span style=\"color: rgb(57, 123, 33);\">服務洽詢</span></td></tr><tr><td style=\"margin: 0px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; padding-top: 10px; padding-bottom: 10px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td style=\"font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; padding-bottom: 2px; padding-top: 2px;\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td valign=\"top\" align=\"center\" style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; color: rgb(126, 221, 49); width: 17px; font-size: 20px; line-height: 24px;\">•</td><td style=\"font-family: &quot;Microsoft JhengHei&quot;, Arial, &quot;LiHei Pro Medium&quot;, sans-serif; margin: 0px; font-size: 15px; line-height: 24px;\">客服人員：白三</td></tr></tbody></table></td></tr><tr><td style=\"margin: 0px; font-size: 15px; line-height: 27px; padding-left: 17px;\">聯絡電話：02-6663366 分機 111</td></tr><tr><td style=\"margin: 0px; font-size: 15px; line-height: 27px; padding-left: 17px;\">傳真：02-26355555&nbsp;</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><p><br></p><p><br></p><p><br></p></td></tr></tbody></table></td></tr></tbody></table><br></div>";
+			MemberBean mBean= memberService.findById(member_Id);
+			String mailTo = mBean.getemail();
+			
+			mailSenderObj.send(new MimeMessagePreparator() {
+				            public void prepare(MimeMessage mimeMessage) throws Exception {
+				                MimeMessageHelper mimeMsgHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");             
+				                mimeMsgHelperObj.setTo(mailTo);
+				                mimeMsgHelperObj.setText(mailContent,true);
+				                mimeMsgHelperObj.setSubject("百川旅遊訂購明細"+orderSellBean.getOrder_No());
+				 
+				            }
+			});
 			
 			
 			

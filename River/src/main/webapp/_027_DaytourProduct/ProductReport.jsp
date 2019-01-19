@@ -716,7 +716,7 @@
 //	 	        labels: ["a", "b", "c", "d"],
 		        datasets: [{
 		            label: '# of Sales',
-		            data: [${SalesSumH[0].totalSales},${SalesSumH[1].totalSales},${SalesSumH[2].totalSales}],
+		            data: [${SalesSumH[0].totalSales},${SalesSumH[1].totalSales},${SalesSumH[2].totalSales}], 
 //	 	            data: [11,22,33,44],
 		            backgroundColor: [
 		                'rgba(255, 99, 132, 0.2)',
