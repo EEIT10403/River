@@ -355,7 +355,7 @@
 									data-toggle="collapse" data-parent="#card-454342"
 									href="#card-element-120895"><img
 										src="../images/icons/Register.png" width="80" height="80">
-										立刻註冊</a>
+										</a>
 
 								</span> <span> <!-- 								Facebook登入：<input type="button" value="Facebook登入" -->
 									<!-- 									onclick="FBLogin();" /> --> <!-- 								<input type="button" value="Facebook登入" -->
@@ -371,10 +371,13 @@
 										<img src="../images/icons/google.png" width="80" height="80">
 									</button> <!-- 								 <input type="button" value="Google登入" onclick="GoogleLogin();" -->
 									<!-- 								style="background-image: url(../images/icons/google.png); width: 80px; height: 80px;"> -->
+								   <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1640084803&redirect_uri=http://localhost:8080/River/_11_secure/LineLogin&state=087223ff0a1223a55c6cff2a6dd67f9a&scope=openid%20email%20profile">
+								   <img src="../images/icons/line-me.png" width="80" height="80"></a>
+								
 								</span>
 							</div>
 						</div>
-
+           
 						<div class="row">
 							<div class="col-md-12">
 								<div id="card-454342">
@@ -571,10 +574,9 @@
 							target="_blank">Colorlib</a> &amp; distributed by <a
 							href="https://themewagon.com" target="_blank">ThemeWagon</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
 					</p>
 				</div>
-			</div>
+			</div>${param.code}
 		</footer>
 
 		<!-- Back to top -->
@@ -598,7 +600,12 @@
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
-
+    
+    
+    <script>
+    
+    </script>
+    
 	<script>
 		function Register() {
 			window.location = '<c:url value="/_11_memberpages/AccountRegister.jsp" />'

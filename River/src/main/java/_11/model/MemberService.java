@@ -16,7 +16,7 @@ public class MemberService {
 	private MemberDAO memberDAO = null;
 	
 	
-	public MemberBean Googlelogin(String username) {
+	public MemberBean ThirdPartylogin(String username) {
 		MemberBean bean = memberDAO.findByPrimaryKey(username);
 		
 		if(bean != null) {

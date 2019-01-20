@@ -285,9 +285,6 @@
 								修改產品系統</a> 
 								
 								<a class="btn btn-info btn-large" type="button" id=""
-								href="<c:url value="/export.do" />"> 匯出報表</a>
-								
-								<a class="btn btn-info btn-large" type="button" id=""
 								href="<c:url value="/Partner/Logout" />"> 登出</a>
 								
 						</div>
@@ -307,6 +304,8 @@
 								onclick="Hokkaido()">北海道</button>
 							<button class="btn btn-info btn-large" type="button"
 								onclick="Okinawa()">沖繩</button>
+							<a class="btn btn-warning btn-large" type="button" id=""
+								href="<c:url value="/export.do" />" style="float:right;"> 匯出Excel報表</a>
 							
 						</div>
 
