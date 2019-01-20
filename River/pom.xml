@@ -131,7 +131,6 @@
 			<version>5.1.3.RELEASE</version>
 		</dependency>
 
-
 		<!-- 羅平+, 為了歐付寶 -->
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
@@ -139,11 +138,11 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-beans</artifactId> -->
-<!-- 			<version>5.1.3.RELEASE</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-beans</artifactId> -->
+		<!-- <version>5.1.3.RELEASE</version> -->
+		<!-- </dependency> -->
 		<!-- 為了寄email -0119 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 		<dependency>
@@ -162,6 +161,13 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
 		</dependency>
 
 

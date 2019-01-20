@@ -282,8 +282,14 @@
 							<a style="margin-left: 75%" class="btn btn-info btn-large"
 								type="button" id=""
 								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
-								修改產品系統</a> <a class="btn btn-info btn-large" type="button" id=""
+								修改產品系統</a> 
+								
+								<a class="btn btn-info btn-large" type="button" id=""
+								href="<c:url value="/export.do" />"> 匯出報表</a>
+								
+								<a class="btn btn-info btn-large" type="button" id=""
 								href="<c:url value="/Partner/Logout" />"> 登出</a>
+								
 						</div>
 						<div class="page-header"></div>
 						<div style="margin:auto;padding:0px 50px 30px 30px" >

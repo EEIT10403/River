@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import DaytourProduct.misc.PrimitiveNumberEditor;
 import DaytourProduct.model.DayTour_ProductBean;
@@ -152,6 +155,22 @@ public class MemberOrderPage {
 		return "Order.payment";
 
 	}
+	
+	@RequestMapping("/export.do")
+	     public @ResponseBody String export(HttpServletResponse response){    
+	         response.setContentType("application/binary;charset=UTF-8");
+	        try{
+	            ServletOutputStream out=response.getOutputStream();
+	             String fileName=new String(("SalesReport "+ new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date())).getBytes(),"UTF-8");
+	            response.setHeader("Content-disposition", "attachment; filename=" + fileName + ".xls");
+	            String[] titles = { "Order_No", "Product_Id", "Ticket_type", "Prod_Name","Quantity","UnitPrice","Total_Amount" }; 
+	            orderItemService.export(titles, out);
+	            return "product.report";
+	        } catch(Exception e){
+	             e.printStackTrace();
+	            return "product.report";
+	         }
+	     }
 	
 	@RequestMapping("/Order/GetSalesSum")
 	public String GetSalesSum(Model model,
