@@ -96,7 +96,6 @@
 								</c:if>
 
 								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
 
 									<li class="label1"><a
 										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
@@ -388,7 +387,7 @@
 						<img alt="Bootstrap Image Preview" style='width:480px; height:300px;border-radius:10px'
 							id='productImage' 
 							src='<%=request.getContextPath()%>/images/color.jpg' />
-						<span>上傳新圖檔</span><input type="file" name="Main_Image"
+						<span>上傳新圖檔</span><input type="file" name="Main_Image" id="uploadPic"
 							value="${param.Main_Image}">
 					</div>
 
@@ -403,8 +402,8 @@
 								<option value="EU">歐洲</option>
 								<option value="AM">美加</option>
 						</select></span> <span>地區: <select name="Region">
-								<option value="Kan">關西</option>
 								<option value="Tok">關東</option>
+								<option value="Kan">關西</option>
 								<option value="Kyu">九州</option>
 								<option value="Oki">沖繩</option>
 								<option value="Hok">北海道</option>
@@ -767,6 +766,36 @@
 			}
 		}
 	}
+</script>
+
+<script>
+
+$("#uploadPic").change(function(){
+
+  readURL(this);
+
+});
+
+ 
+
+function readURL(input){
+
+  if(input.files && input.files[0]){
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+
+       $("#productImage").attr('src', e.target.result);
+
+    }
+
+    reader.readAsDataURL(input.files[0]);
+
+  }
+
+}
+
 </script>
 
 	<script>

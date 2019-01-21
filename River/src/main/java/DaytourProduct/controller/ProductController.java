@@ -152,9 +152,9 @@ public class ProductController {
 			System.out.println(name);
 
 			String originFileName = file.getOriginalFilename();
-//			System.out.println(originFileName);
-//			String extension = originFileName.substring(originFileName.lastIndexOf("."));
-//			System.out.println(extension);
+			System.out.println(originFileName);
+			String extension = originFileName.substring(originFileName.lastIndexOf("."));
+			System.out.println(extension);
 
 			if (originFileName != null && originFileName.trim().length() > 0) {
 				sizeInBytes = file.getSize();
