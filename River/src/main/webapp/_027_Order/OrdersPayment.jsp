@@ -67,7 +67,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-				<header>
+		<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -141,10 +141,10 @@
 									</c:if>
 								</div>
 							</div>
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
 						</div>
 					</nav>
@@ -200,55 +200,55 @@
 			<div class="menu-mobile">
 
 
-					<ul class="main-menu">
-								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+				<ul class="main-menu">
+					<li class="active-menu"><a
+						href="<c:url value="/index18.jsp" />">首頁</a></li>
+					<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								</c:if>
+					</c:if>
 
-								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
+					<c:if test="${empty member_Id}">
+						<li><a href="product.html">景點查詢</a></li>
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
-								</c:if>
-							</ul>
+					</c:if>
+					<c:if test="${empty staff_id}">
+						<li><a
+							href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+					</c:if>
+				</ul>
 			</div>
 
 			<!-- Modal Search -->
-<!-- 			<div -->
-<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-<!-- 				<div class="container-search-header"> -->
-<!-- 					<button -->
-<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-<!-- 					</button> -->
+			<!-- 			<div -->
+			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+			<!-- 				<div class="container-search-header"> -->
+			<!-- 					<button -->
+			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+			<!-- 					</button> -->
 
-<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-<!-- 						<button class="flex-c-m trans-04"> -->
-<!-- 							<i class="zmdi zmdi-search"></i> -->
-<!-- 						</button> -->
-<!-- 						<input class="plh3" type="text" name="search" -->
-<!-- 							placeholder="Search..."> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+			<!-- 						<button class="flex-c-m trans-04"> -->
+			<!-- 							<i class="zmdi zmdi-search"></i> -->
+			<!-- 						</button> -->
+			<!-- 						<input class="plh3" type="text" name="search" -->
+			<!-- 							placeholder="Search..."> -->
+			<!-- 					</form> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 		</header>
 
 		<!-- Cart -->
@@ -284,7 +284,8 @@
 
 									<a class="btn btn-secondary"
 										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
-										type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
+										type="button">訂單查詢及付款</a> 
+									<a class="btn btn-info" type="button"
 										href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 									<a class="btn btn-secondary"
 										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
@@ -330,27 +331,55 @@
 											</c:forEach>
 
 											<tr>
-												<td colspan="5" style="margin-right: 30px" align="right">應付金額：${order.total_Amount}</td>
+												<td colspan="5" style="margin-right: 30px;color:red" align="right">應付金額：${order.total_Amount} 元</td>
 											</tr>
 										</tbody>
 
 									</table>
 								</div>
 							</div>
-							<form
+							
+						</div>
+					</div>
+					<br>
+					<DIV
+						style="OVERFLOW: scroll; HEIGHT: 300px; background-color: white ; border:solid 1px gray">
+
+						<h4 class="text-logo-green">敬請詳閱付款頁內容</h4>
+						<br>
+						<div >
+							<ul class="ul-default" >
+								<li>票券和部分活動，付款成功後不接受取消與更改，敬請留意，並詳閱商品頁中相關使用和限制說明。</li>
+								<li>部分活動因性質特殊，受天候或當地特別條件影響，在出發當天或前一天有取消或變更行程內容的狀況。敬請詳閱商品頁中相關說明。謝謝。</li>
+							</ul>
+						</div>
+						<br>
+						<div>
+							．<b>◆退改須知</b><br>．此票券一經出券開票，即不可退票或更改，敬請見諒。<br>．請於指定時間提前至集合點等候，逾時未抵達現場，巴士公司將不會主動連絡。<br>．因個人因素未準時抵達或未攜帶預約確認書，視同放棄，恕無法退費<br>．所選日期若滿團，將建議其他日期出發，若無法配合將退還全額費用。<br>．在日本當地若因個人因素自行取消參加時，視同放棄，恕無法退費。<b>◆適用對象</b><br>．成人票(12歲以上)<br>．兒童票(6-11歲)<br>．兒童票(3-5歲)註：未滿3歲孩童免費，也不含巴士座位、餐食。(如需佔位請訂購兒童票)<b>◆適用日期</b>2018/12/20~2019/4/19，可出發日期請參考日曆<b>◆回覆工作天</b>3-5個工作天
+							<b>◆訂購所需資訊</b><br>．旅客護照中英文姓名<br>．出發日期<br>．西元出生年月日<br>．前一天住宿酒店名稱<br>．在日本可連絡的手機號碼、E-MAIL
+							<br> <br> <br>
+						</div>
+						<br>
+						<div>
+							．<b>◆注意事項</b><br>．會因季節關係報名人數眾多可能出現滿團，請儘早預訂。<br>．原本設定的可預約日期，可能受設施的營業狀況或休息日等影響而臨時取消可預約日期。<br>．水果成熟期會因天氣影響而有變化，亦可能食用事先所採好的水果<br>．請自行準備玩雪用手套、禦寒衣物、輕便的服裝與鞋子<br>．因交通、天氣等不可抗力因素所引起的時間延誤、行程變更或景點取消等，不另退費敬請理解。<br>．若遇台風/暴風雪等天候不佳的情況，於出發前一天15:00(日本時間)，決定是否取消出發，之後將隨時以電子郵件形式通知。<br>
+						</div>
+
+
+					</div>
+					
+					<form
 								action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />"
-								method="POST" id="aio">
+								method="POST" id="aio" style="margin:4% 45%">
 
 								<input type="hidden" name="itemName" value="${order.prod_Name}">
 								<input type="hidden" name="totalAmount"
-									value="${order.total_Amount}"> 
-								<input type="hidden" name="Order_No" value="${order.order_No}">
-								<button type="submit" value="Submit" > 
-								<img src="../images/icons/allpay.png" width="80" height="80"></button>
+									value="${order.total_Amount}"> <input type="hidden"
+									name="Order_No" value="${order.order_No}">
+								信用卡付款 <button type="submit" value="Submit" >
+									<img src="../images/icons/allpay.png" width="80" height="80" style="margin-top:5px"  >
+								</button>
 								<br>
 							</form>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

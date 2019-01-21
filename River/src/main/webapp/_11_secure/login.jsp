@@ -320,7 +320,7 @@
 						</div>
 
 						<div align="center"
-							style="margin: 30px 400px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
+							style="margin: 30px 350px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
 
 							<form action="<c:url value="/_11_secure/login.controller" />"
 								method="post" style="padding-top: 20px">
@@ -385,6 +385,9 @@
 										<div class="card-header">
 											<a class="card-link" data-toggle="collapse"
 												data-parent="#card-454342" href="#card-element-120895">快速註冊</a>
+											<button class="card-link" 
+												 onclick="oneClick()">一鍵帶入</button>
+											
 										</div>
 										<div id="card-element-120895" class="collapse">
 											<div class="card-body">
@@ -407,7 +410,7 @@
 															<tr class="table-Default">
 																<td>${param.member_Id}<input type="text"
 																	name="member_Id" value="${param.member_Id}"></td>
-																	<td><input type="text" name ="password" value="${param.password}"></td>
+																	<td><input type="password" name ="password" value="${param.password}"></td>
 																<td><input type="text" name="email"
 																	value="${param.email}"><span class="errors">${param.email}</span></td>
 																<td><input type="text" name="chinese_Name"
@@ -604,6 +607,21 @@
     
     <script>
     
+    function oneClick(){
+    	
+    	$("input[name='member_Id']").val('PingLo');
+		$("input[name='email']").val('pinglotw@gmail.com');
+		$("input[name='chinese_Name']").val('羅平');
+		$("input[name='english_Name']").val('Ping');
+		$("input[name='ID_number']").val('A123456789');
+		$("input[name='telephone']").val('0988888888');
+		$("input[name='country']").val('Taiwan');
+		$("input[name='birthday']").val('1988-08-08');
+		$("input[name='sex']").val('M');
+		$("input[name='Address']").val('台北市內湖區');
+    	
+    }
+    
     </script>
     
 	<script>
@@ -652,11 +670,14 @@
 					//抓userID
 					let FB_ID = response["authResponse"]["userID"];
 					console.log("userID:" + FB_ID);
-					window.location = "http://localhost:8080//River";
+// 					alert("userID:" + FB_ID);
+					
+					txt = '<c:url value="/_11_secure/FBLogin?member_Id='+FB_ID+'" />'
+					window.location=txt
 
 				} else {
 					// user FB取消授權
-					alert("Facebook帳號無法登入");
+// 					alert("Facebook帳號無法登入");
 				}
 			}, {
 				scope : 'public_profile,email'
