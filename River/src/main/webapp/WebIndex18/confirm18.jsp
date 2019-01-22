@@ -49,12 +49,67 @@
 	 
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="../css/order.min.css" />
+	
 <!--===============================================================================================-->	
 		
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
 	
 <!--===============================================================================================-->
+
+<style>
+	table.greenTable {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #CFEEBA;
+  width: 100%;
+  text-align: center;
+}
+table.greenTable td, table.greenTable th {
+  border: 1px solid #5A9453;
+  padding: 3px 2px;
+}
+table.greenTable tbody td {
+  font-size: 13px;
+  color: #000000;
+}
+table.greenTable tr:nth-child(even) {
+  background: #CFEEBA;
+}
+table.greenTable thead {
+  background: #24943A;
+  background: -moz-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  background: -webkit-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  background: linear-gradient(to bottom, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  border-bottom: 0px solid #444444;
+}
+table.greenTable thead th {
+  font-size: 15px;
+  font-weight: normal;
+ 
+  text-align: center;
+  border-left: 2px solid #24943A;
+}
+table.greenTable thead th:first-child {
+  border-left: none;
+}
+
+table.greenTable tfoot td {
+  font-size: 13px;
+}
+table.greenTable tfoot .links {
+  text-align: right;
+}
+table.greenTable tfoot .links a{
+  display: inline-block;
+  background: #FFFFFF;
+  color: #24943A;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+	
+	
+</style>
+
 
 </head>
 <body class="animsition">
@@ -111,8 +166,8 @@
 
 							<div class="dropdown">
 
-								<button class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+								<button class="btn dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<c:if test="${not empty member_Id}">
@@ -156,8 +211,8 @@
 
 					<div class="dropdown">
 
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+						<button class="btn dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<c:if test="${not empty member_Id}">
@@ -246,26 +301,12 @@
 
 		
 
-	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				
-				<div class="it2" style=" background: #DDDDDD;">
-				
-				<div>
-				
-				
-				
-				</div>
-				
-				
-				
-					
-				</div>
-			</div>
-		</div>
-	</section>
+		<!-- Slider -->
+	<div style="margin:60px;">
+		
+	
+	
+	</div>
 
 
 
@@ -273,7 +314,7 @@
 <!-- container start -->
 <div class="container">
   
-	<div class="col-sm-12 hidden-ie">
+	<div style="padding-left: 15px;">
 	  <div class="step row">
 	    <div class="bread flat">
 	      <a href="#" class="">選擇航班</a>
@@ -484,11 +525,18 @@
 					</tr>
 					<tr>
 						<th>成行人數</th>
-						<td>
-							
-						  成人票${forderBean.f_adult}人&nbsp;&nbsp;(每人${foneAdult}元 + 參考稅金${fonetaxAdult}元)
-						  
+						 <td>
+								成人票${forderBean.f_adult}人&nbsp;&nbsp;(每人${forderBean.f_priceAdult}元 + 參考稅金${forderBean.f_taxAdult}元)<br>
+						 
+						    <c:if test="${forderBean.f_child != 0}">
+						    	孩童票${forderBean.f_child}人&nbsp;&nbsp;(每人${forderBean.f_priceChild}元 + 參考稅金${forderBean.f_taxChild}元)<br>   	
+						    </c:if>
+						
+					 		<c:if test="${forderBean.f_baby != 0}">
+						      	嬰兒票${forderBean.f_baby}人&nbsp;&nbsp;(每人${forderBean.f_priceBaby}元 + 參考稅金${forderBean.f_taxBaby}元)<br> 	
+						    </c:if>
 						</td>
+						
 					</tr>
 					<tr>
 						<th>應付總額</th>
@@ -531,7 +579,7 @@
             <div class="table-head pull-left">
                 <h4 class="text-dark-green"><i class="icon-arrowLeft"></i>旅客&nbsp;成人<c:out value="${adultP}"/></h4>
             </div>
-<!--  填寫旅客名單        -->
+<!--  填寫旅客名單成人        -->
  			<table class="table-form">
                 <tbody>
                     <tr>
@@ -578,6 +626,121 @@
        	 
     </c:forEach>   
     </c:if>
+    
+	<c:set var="child" value="${forderBean.f_child}"/>
+	<c:if test="${child != 0}">
+		<c:forEach var="childP" begin="1" end="${child}"> 	
+	 	
+	        <div class="row form-padding">
+		
+            <div class="table-head pull-left">
+                <h4 class="text-dark-green"><i class="icon-arrowLeft"></i>旅客&nbsp;孩童<c:out value="${childP}"/></h4>
+            </div>
+<!--  填寫旅客名單孩童        -->
+ 			<table class="table-form">
+                <tbody>
+                    <tr>
+                        <th class="required">中文姓名</th>
+                        <td>
+                            <input type="text" class="" name="fchname" value="${param.fchname}">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">稱 謂</th>
+                        <td>
+	                        <select name="fgender">
+								<option value="male">先生</option>
+								<option value="female">女士</option>
+							</select>
+                        </td> 
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">英文姓</th>
+                        <td>
+                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">英文名</th>
+                        <td>
+                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">出生日期</th>
+                        <td>
+                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            </div>
+       	 
+    </c:forEach>   
+    </c:if>
+    
+	<c:set var="baby" value="${forderBean.f_baby}"/>
+	<c:if test="${baby != 0}">
+		<c:forEach var="babyP" begin="1" end="${baby}"> 	
+	 	
+	        <div class="row form-padding">
+		
+            <div class="table-head pull-left">
+                <h4 class="text-dark-green"><i class="icon-arrowLeft"></i>旅客&nbsp;嬰兒<c:out value="${babyP}"/></h4>
+            </div>
+<!--  填寫旅客名單嬰兒        -->
+ 			<table class="table-form">
+                <tbody>
+                    <tr>
+                        <th class="required">中文姓名</th>
+                        <td>
+                            <input type="text" class="" name="fchname" value="${param.fchname}">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">稱 謂</th>
+                        <td>
+	                        <select name="fgender">
+								<option value="male">先生</option>
+								<option value="female">女士</option>
+							</select>
+                        </td> 
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">英文姓</th>
+                        <td>
+                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">英文名</th>
+                        <td>
+                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th class="required">出生日期</th>
+                        <td>
+                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            </div>
+       	 
+    </c:forEach>   
+    </c:if>
+    
 	</div>
 
 
@@ -614,14 +777,14 @@
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="chnameCTT" value="${param.chnameCTT}">
+                            <input type="text" id="chnameCTT" name="chnameCTT" value="${param.chnameCTT}">
                         </td>
                     </tr>
                     
                   	<tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="genderCTT">
+	                        <select name="genderCTT" id="genderCTT">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -631,28 +794,28 @@
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="enfirstnameCTT" value="${param.enfirstnameCTT}" style="text-transform:uppercase;">
+                            <input type="text" id="enfirstnameCTT" name="enfirstnameCTT" value="${param.enfirstnameCTT}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="enlastnameCTT" value="${param.enlastnameCTT}" style="text-transform:uppercase;">
+                            <input type="text" id="enlastnameCTT" name="enlastnameCTT" value="${param.enlastnameCTT}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                              
                     <tr>
                         <th class="required">手　機</th>
                         <td>
-                       		<input type="text" class="" name="phoneCTT" value="${param.phoneCTT}"  placeholder="格式：0933123123">
+                       		<input type="text" id="phoneCTT" name="phoneCTT" value="${param.phoneCTT}"  placeholder="格式：0933123123">
                     	</td>
                     </tr>
                     
                     <tr>
                         <th class="required">e-mail</th>
                         <td>
-                            <input type="text" class="" name="mailCTT" value="${param.mailCTT}" size="40">  
+                            <input type="text" id="mailCTT" name="mailCTT" value="${param.mailCTT}" size="40">  
                         </td>
                     </tr>
                                         
@@ -689,15 +852,22 @@
 <input type="hidden" name="F_cabin" value="${forderBean.f_cabin}">
 
 <input type="hidden" name="F_adult" value="${adult}">
+<input type="hidden" name="F_child" value="${child}">
+<input type="hidden" name="F_baby" value="${baby}">
 
 <input type="hidden" name="F_total" value="${forderBean.f_total}">
-<input type="hidden" name="F_taxAdult" value="${fonetaxAdult}">
-<input type="hidden" name="F_priceAdult" value="${foneAdult}">
+<input type="hidden" name="F_taxAdult" value="${forderBean.f_taxAdult}">
+<input type="hidden" name="F_priceAdult" value="${forderBean.f_priceAdult}">
+
+<input type="hidden" name="F_taxChild" value="${forderBean.f_taxChild}">
+<input type="hidden" name="F_priceChild" value="${forderBean.f_priceChild}">
+
+<input type="hidden" name="F_taxBaby" value="${forderBean.f_taxBaby}">
+<input type="hidden" name="F_priceBaby" value="${forderBean.f_priceBaby}">
 
 <input type="hidden" name="Forder_No" value="${forder_No}">
-
-
-
+<input type="hidden" name="Booking_code" value="${booking_code}">
+<input type="hidden" name="Member_Id" value="${member_Id}">
 
 
 <!-- 		<input type="submit" class="order-submit" name="prodaction" value="送出訂單">	 -->
@@ -707,36 +877,48 @@
 <button type="button" class="order-submit am-btn am-btn-success" name="prodaction" id="doc-prompt-toggle">送出訂單</button>
 
 <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
-  <div class="am-modal-dialog">
-    <div class="am-modal-hd">請確認資料無誤</div>
+  <div class="am-modal-dialog" style="width:50%">
+    <div class="am-modal-hd" style="color:red;">請確認資料無誤</div>
     <div class="am-modal-bd">
     
 <!--     內容區域 -->
-訂單編號:${forder_No}<br>
-印出來： ${forderBean.f_start} <br>
-印出來：  ${forderBean.f_startend}<br>
-印出來： ${forderBean.f_endback} <br>
-印出來： ${forderBean.f_end} <br>
-印出來： ${forderBean.f_goDateStart} ~ 
-		${forderBean.f_goDateEnd}<br>
-印出來：  ${airportStart}<br>
-印出來：  ${airportStartend}<br>
-印出來：  ${forderBean.airLine_go}<br>
-印出來：  ${forderBean.flight_numbergo}<br>
-印出來：  ${forderBean.f_cabin}<br>
-印出來： ${forderBean.f_backDateStart} ~ 
-  		${forderBean.f_backDateEnd}<br>
-印出來：  ${airportEndback}<br>
-印出來：  ${airportEnd}<br>
-印出來：  ${forderBean.airLine_back}<br>
-印出來：  ${forderBean.flight_numberback}<br>
-印出來：  ${forderBean.f_cabin}<br>
-成人數量：  ${adult}<br>
-總價格：  ${forderBean.f_total}<br>
-單成人： ${foneAdult}<br>
-單成人稅：  ${fonetaxAdult}<br>
-去程時間：  ${forderBean.f_toatalTimeGo}分<br>
-回程時間：  ${forderBean.f_toatalTimeEnd}分<br>
+	訂單編號:${forder_No}<br>
+	
+	
+	<table class="greenTable">
+	
+	
+		<thead >
+		<tr>
+		<th colspan="6" style="background-color: #F0F0F0; color:red;">主要聯絡人</th>
+		</tr>
+		</thead>
+		<thead>
+		<tr>
+		<th>中文姓名</th>
+		<th>稱 謂</th>
+		<th>英文姓</th>
+		<th>英文名</th>
+		<th>手　機</th>
+		<th>e-mail</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td><span id="chnameCTT2"></span></td>
+		<td><span id="genderCTT2"></span></td>
+		<td><span id="enfirstnameCTT2"></span></td>
+		<td><span id="enlastnameCTT2"></span></td>
+		<td><span id="phoneCTT2"></span></td>
+		<td><span id="mailCTT2"></span></td>
+		</tr>
+		</tbody>
+	</table>
+
+
+
+
 
 
 
@@ -1334,7 +1516,32 @@ $(function() {
 
 </script>
 
-
+<script>
+  $('#chnameCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#chnameCTT2').text($(this).val());
+  });
+  $('#genderCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#genderCTT2').text($(this).val());
+  });
+  $('#enfirstnameCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#enfirstnameCTT2').text($(this).val());
+  });
+  $('#enlastnameCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#enlastnameCTT2').text($(this).val());
+  });
+  $('#phoneCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#phoneCTT2').text($(this).val());
+  });
+  $('#mailCTT').on('keyup blur', function() {
+    console.log('asdf');
+    $('#mailCTT2').text($(this).val());
+  });
+</script>
 	
 	
 <!--===============================================================================================-->

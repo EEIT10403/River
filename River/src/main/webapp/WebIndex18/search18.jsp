@@ -110,8 +110,8 @@
 
 							<div class="dropdown">
 
-								<button class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+								<button class="btn dropdown-toggle" type="button" style="color:black;"
+									id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<c:if test="${not empty member_Id}">
@@ -155,8 +155,8 @@
 
 					<div class="dropdown">
 
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+						<button class="btn dropdown-toggle" type="button" style="color:black;"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<c:if test="${not empty member_Id}">
@@ -240,32 +240,14 @@
 <!-- 				</div> -->
 <!-- 			</div> -->
 		</header>
-
-	<!-- Cart -->
 	
 
-		
-
 	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				
-				<div class="it2" style=" background: #DDDDDD;">
-				
-				<div>
-				
-				
-				
-				</div>
-				
-				
-				
-					
-				</div>
-			</div>
-		</div>
-	</section>
+	<div style="margin:60px;">
+		
+	
+	
+	</div>
 
 
 
@@ -814,8 +796,15 @@
       <c:forEach var="bean" items="${PricedItinerary}" varStatus="status">
 	<!--航程價格-->    
 		<c:set var="totalFareamount" value="${bean.airItineraryPricingInfo[0].itinTotalFare.totalFare.amount}"/>
-		<c:set var="baseFareAdult" value="${bean.airItineraryPricingInfo[0].itinTotalFare.baseFare.amount}"/>
-		<c:set var="taxAdult" value="${bean.airItineraryPricingInfo[0].itinTotalFare.taxes.tax[0].amount}"/>
+		<c:set var="baseFareAdult" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[0].passengerFare.baseFare.amount}"/>
+		<c:set var="taxAdult" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[0].passengerFare.taxes.totalTax.amount}"/>
+		<c:set var="baseFareChild" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[1].passengerFare.baseFare.amount}"/>
+		<c:set var="taxChild" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[1].passengerFare.taxes.totalTax.amount}"/>
+		<c:set var="baseFareBaby" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[2].passengerFare.baseFare.amount}"/>
+		<c:set var="taxBaby" value="${bean.airItineraryPricingInfo[0].PTC_FareBreakdowns.PTC_FareBreakdown[2].passengerFare.taxes.totalTax.amount}"/>
+		<c:if test="${taxBaby == null}">
+			<c:set var="taxBaby" value="0"/>
+		</c:if>
 	<!--去程航班資訊 --> 		
 		<c:set var="elapsedTimeGo" value="${bean.airItinerary.originDestinationOptions.originDestinationOption[0].elapsedTime}"/>
 	<!--整除分鐘 -->
@@ -1286,10 +1275,23 @@
 <input type="hidden" name="Flight_numberback" value="${operatingAirlineEnd}${flightNumberEnd}">
 <input type="hidden" name="F_cabin" value="經濟艙">
 <input type="hidden" name="F_adult" value="${formBean.people}">
+<input type="hidden" name="F_child" value="${formBean.people2}">
+<input type="hidden" name="F_baby" value="${formBean.people3}">
+
+<input type="hidden" name="F_total" value="<fmt:formatNumber value='${totalFareamount}' type="number"/>">
 
 <input type="hidden" name="F_taxAdult" value="<fmt:parseNumber integerOnly="true" value="${taxAdult}"/>">
 <input type="hidden" name="F_priceAdult" value="<fmt:parseNumber integerOnly="true" value="${baseFareAdult}"/>">
-<input type="hidden" name="F_total" value="<fmt:formatNumber value='${totalFareamount}' type="number"/>">
+
+<input type="hidden" name="F_taxChild" value="<fmt:parseNumber integerOnly="true" value="${taxChild}"/>">
+<input type="hidden" name="F_priceChild" value="<fmt:parseNumber integerOnly="true" value="${baseFareChild}"/>">
+
+<input type="hidden" name="F_taxBaby" value="<fmt:parseNumber integerOnly="true" value="${taxBaby}"/>">
+<input type="hidden" name="F_priceBaby" value="<fmt:parseNumber integerOnly="true" value="${baseFareBaby}"/>">
+
+
+
+
 
 <!-- <br> -->
 <%-- 印出來：${departureAirportlocationCode}<br> --%>
@@ -1316,6 +1318,10 @@
 <%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${totalFareamount}"/><br> --%>
 <%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFareAdult}"/><br> --%>
 <%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${taxAdult}"/><br> --%>
+<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFareChild}"/><br> --%>
+<%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${taxChild}"/><br> --%>
+<%-- 印出來：NT$  <fmt:parseNumber integerOnly="true" value="${baseFareBaby}"/><br> --%>
+<%-- 印出來：NT$ <fmt:parseNumber integerOnly="true" value="${taxBaby}"/><br> --%>
        
        
 <span class="check">

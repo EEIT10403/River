@@ -68,7 +68,7 @@ public class BFMSearchService {
 			tokenresponse.append(inputLine);
 		}
 		in.close();
-		System.out.println("TOKEN JSON :" + tokenresponse.toString());
+		System.out.println("TOKEN JSON :有正常執行");
 
 		Gson gson = new Gson();
 		token = gson.fromJson(tokenresponse.toString(), Token.class);

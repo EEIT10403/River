@@ -1,8 +1,6 @@
 package sabre.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,11 +8,9 @@ import javax.persistence.Table;
 @Table(name = "F_Order")
 public class F_OrderBean {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int F_serialNum;
 	private String Forder_No;
-	private String Booking_code;
 	
+	private String Booking_code;
 	private String Member_Id;
 		
 	private String F_start;
@@ -58,28 +54,20 @@ public class F_OrderBean {
 	
 	@Override
 	public String toString() {
-		return "F_OrderBean [F_serialNum=" + F_serialNum + ", Forder_No=" + Forder_No + ", Booking_code=" + Booking_code
-				+ ", Member_Id=" + Member_Id + ", F_start=" + F_start + ", F_startend=" + F_startend + ", F_endback="
-				+ F_endback + ", F_end=" + F_end + ", Cn_start=" + Cn_start + ", Cn_startend=" + Cn_startend
-				+ ", Cn_endback=" + Cn_endback + ", Cn_end=" + Cn_end + ", F_goDateStart=" + F_goDateStart
-				+ ", F_goDateEnd=" + F_goDateEnd + ", F_backDateStart=" + F_backDateStart + ", F_backDateEnd="
-				+ F_backDateEnd + ", F_toatalTimeGo=" + F_toatalTimeGo + ", F_toatalTimeEnd=" + F_toatalTimeEnd
-				+ ", AirLine_go=" + AirLine_go + ", AirLine_back=" + AirLine_back + ", Flight_numbergo="
-				+ Flight_numbergo + ", Flight_numberback=" + Flight_numberback + ", F_cabin=" + F_cabin + ", F_adult="
-				+ F_adult + ", F_child=" + F_child + ", F_baby=" + F_baby + ", F_taxAdult=" + F_taxAdult
-				+ ", F_priceAdult=" + F_priceAdult + ", F_taxChild=" + F_taxChild + ", F_priceChild=" + F_priceChild
-				+ ", F_taxBaby=" + F_taxBaby + ", F_priceBaby=" + F_priceBaby + ", F_total=" + F_total + ", F_Unpaid="
-				+ F_Unpaid + "]";
+		return "F_OrderBean [Forder_No=" + Forder_No + ", Booking_code=" + Booking_code + ", Member_Id=" + Member_Id
+				+ ", F_start=" + F_start + ", F_startend=" + F_startend + ", F_endback=" + F_endback + ", F_end="
+				+ F_end + ", Cn_start=" + Cn_start + ", Cn_startend=" + Cn_startend + ", Cn_endback=" + Cn_endback
+				+ ", Cn_end=" + Cn_end + ", F_goDateStart=" + F_goDateStart + ", F_goDateEnd=" + F_goDateEnd
+				+ ", F_backDateStart=" + F_backDateStart + ", F_backDateEnd=" + F_backDateEnd + ", F_toatalTimeGo="
+				+ F_toatalTimeGo + ", F_toatalTimeEnd=" + F_toatalTimeEnd + ", AirLine_go=" + AirLine_go
+				+ ", AirLine_back=" + AirLine_back + ", Flight_numbergo=" + Flight_numbergo + ", Flight_numberback="
+				+ Flight_numberback + ", F_cabin=" + F_cabin + ", F_adult=" + F_adult + ", F_child=" + F_child
+				+ ", F_baby=" + F_baby + ", F_taxAdult=" + F_taxAdult + ", F_priceAdult=" + F_priceAdult
+				+ ", F_taxChild=" + F_taxChild + ", F_priceChild=" + F_priceChild + ", F_taxBaby=" + F_taxBaby
+				+ ", F_priceBaby=" + F_priceBaby + ", F_total=" + F_total + ", F_Unpaid=" + F_Unpaid + "]";
 	}
 
-	public int getF_serialNum() {
-		return F_serialNum;
-	}
-
-	public void setF_serialNum(int f_serialNum) {
-		F_serialNum = f_serialNum;
-	}
-
+	
 	public String getForder_No() {
 		return Forder_No;
 	}

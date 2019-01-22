@@ -3,11 +3,20 @@ package sabre.model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "F_Contact")
 public class F_ContactBean {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int F_serialNum;
+	private String Forder_No;
+	private String Member_Id;
+	
 	private String chnameCTT;
 	private String enfirstnameCTT;
 	private String enlastnameCTT;
@@ -16,8 +25,27 @@ public class F_ContactBean {
 	private String mailCTT;
 	@Override
 	public String toString() {
-		return "F_ContactBean [chnameCTT=" + chnameCTT + ", enfirstnameCTT=" + enfirstnameCTT + ", enlastnameCTT="
-				+ enlastnameCTT + ", genderCTT=" + genderCTT + ", phoneCTT=" + phoneCTT + ", mailCTT=" + mailCTT + "]";
+		return "F_ContactBean [F_serialNum=" + F_serialNum + ", Forder_No=" + Forder_No + ", Member_Id=" + Member_Id
+				+ ", chnameCTT=" + chnameCTT + ", enfirstnameCTT=" + enfirstnameCTT + ", enlastnameCTT=" + enlastnameCTT
+				+ ", genderCTT=" + genderCTT + ", phoneCTT=" + phoneCTT + ", mailCTT=" + mailCTT + "]";
+	}
+	public int getF_serialNum() {
+		return F_serialNum;
+	}
+	public void setF_serialNum(int f_serialNum) {
+		F_serialNum = f_serialNum;
+	}
+	public String getForder_No() {
+		return Forder_No;
+	}
+	public void setForder_No(String forder_No) {
+		Forder_No = forder_No;
+	}
+	public String getMember_Id() {
+		return Member_Id;
+	}
+	public void setMember_Id(String member_Id) {
+		Member_Id = member_Id;
 	}
 	public String getChnameCTT() {
 		return chnameCTT;

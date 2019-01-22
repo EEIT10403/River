@@ -108,8 +108,8 @@
 
 							<div class="dropdown">
 
-								<button class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+								<button class="btn dropdown-toggle" type="button"
+									id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<c:if test="${not empty member_Id}">
@@ -153,8 +153,8 @@
 
 					<div class="dropdown">
 
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+						<button class="btn dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<c:if test="${not empty member_Id}">

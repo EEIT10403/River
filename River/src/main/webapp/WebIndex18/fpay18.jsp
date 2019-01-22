@@ -111,8 +111,8 @@
 
 							<div class="dropdown">
 
-								<button class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+								<button class="btn dropdown-toggle" type="button" style="color:black;"
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<c:if test="${not empty member_Id}">
@@ -156,8 +156,8 @@
 
 					<div class="dropdown">
 
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
+						<button class="btn dropdown-toggle" type="button" style="color:black;
+							id="dropdownMenuButton" data-toggle="dropdown">會員專區 ▾</button>
 
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<c:if test="${not empty member_Id}">
@@ -246,26 +246,12 @@
 
 		
 
-	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				
-				<div class="it2" style=" background: #DDDDDD;">
-				
-				<div>
-				
-				
-				
-				</div>
-				
-				
-				
-					
-				</div>
-			</div>
-		</div>
-	</section>
+		<!-- Slider -->
+	<div style="margin:60px;">
+		
+	
+	
+	</div>
 
 
 
@@ -273,7 +259,7 @@
 <!-- container start -->
 <div class="container">
   
-	<div class="col-sm-12 hidden-ie">
+	<div style="padding-left: 15px;">
 	  <div class="step row">
 	    <div class="bread flat">
 	      <a href="#" class="">選擇航班</a>
@@ -332,7 +318,7 @@
 			       	 ${forderBean.airLine_go} ${forderBean.flight_numbergo} <div>${forderBean.f_cabin}</div>
 			     </td>
 			
-			          <td rowspan="2">SVV7MF</td>
+			          <td rowspan="2">${forderBean.booking_code}</td>
 			        
 			        <td>&nbsp;&nbsp;&nbsp;OK</td>
 			      
@@ -403,14 +389,16 @@
 			  </tr>
 			  
 			  <c:set var="adult" value="${forderBean.f_adult}"/>
-			  <c:choose>
-				<c:when test="${adult != 0}">
+			  <c:set var="child" value="${forderBean.f_child}"/>
+			  <c:set var="baby" value="${forderBean.f_baby}"/>
+			  
+				<c:if test="${adult != 0}">
 				<c:forEach var="adultP" begin="0" end="${adult-1}"> 
 			  	 <!-- 這裡開始是成人旅客姓名-->
 			    <tr>
 			      <td>
-			        <div class="rwdItem-pc">${fpassengerBean.fchname[adultP]}</div>
-			        <div style="font-size: 15px">${fpassengerBean.fenfirstname[adultP]}&nbsp;${fpassengerBean.fenlastname[adultP]}</div>
+			        <div class="rwdItem-pc">${fpassengerListBean.fchname[adultP]}</div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[adultP]}&nbsp;${fpassengerListBean.fenlastname[adultP]}</div>
 			      </td>
 				  
 			      <td>
@@ -431,8 +419,66 @@
 			        
 			    </tr>
 			   </c:forEach> 
-			   </c:when>  
-    		   </c:choose>
+			   </c:if>  
+			   
+				<c:if test="${child != 0}">
+				<c:forEach var="childP" begin="${adult}" end="${adult+child-1}"> 
+			  	 <!-- 這裡開始是成人旅客姓名-->
+			    <tr>
+			      <td>
+			        <div class="rwdItem-pc">${fpassengerListBean.fchname[childP]}</div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[childP]}&nbsp;${fpassengerListBean.fenlastname[childP]}</div>
+			      </td>
+				  
+			      <td>
+			      <span style="font-size: 15px">${forderBean.f_start}/${forderBean.f_startend}/${forderBean.f_end}</span>
+			      </td>
+			      
+			      <td>
+			       	 ${forderBean.f_priceChild}&nbsp;元<div></div>
+			     </td>
+			
+			        <td>${forderBean.f_taxChild}&nbsp;元</td>
+			        
+			        <c:choose>
+					    <c:when test="${child != 0}">
+					       <td>孩童票</td>
+					    </c:when>
+			        </c:choose>
+			        
+			    </tr>
+			   </c:forEach> 
+			   </c:if>  
+			   
+				<c:if test="${baby != 0}">
+				<c:forEach var="babyP" begin="${child+adult}" end="${baby+child+adult-1}"> 
+			  	 <!-- 這裡開始是成人旅客姓名-->
+			    <tr>
+			      <td>
+			        <div class="rwdItem-pc">${fpassengerListBean.fchname[babyP]}</div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[babyP]}&nbsp;${fpassengerListBean.fenlastname[babyP]}</div>
+			      </td>
+				  
+			      <td>
+			      <span style="font-size: 15px">${forderBean.f_start}/${forderBean.f_startend}/${forderBean.f_end}</span>
+			      </td>
+			      
+			      <td>
+			       	 ${forderBean.f_priceBaby}&nbsp;元<div></div>
+			     </td>
+			
+			        <td>${forderBean.f_taxBaby}&nbsp;元</td>
+			        
+			        <c:choose>
+					    <c:when test="${baby != 0}">
+					       <td>嬰兒票</td>
+					    </c:when>
+			        </c:choose>
+			        
+			    </tr>
+			   </c:forEach> 
+			   </c:if>  
+			 
     		   
     		   
     		   
@@ -461,10 +507,17 @@
 			
 		<!--按鈕區域 -->
 			<div class="formorderBtns">
+
+			<div style="float:left;">
+	   			<a class="button grayBtn left"
+				href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />"
+				type="button">回訂單明細</a> 
+			</div>
 		
-			<a href="<c:url value="/WebIndex18/HistoryFOlist18.jsp" />" class="button grayBtn left">回訂單明細</a>
-		
+			<span style="float:right;">
 			 <button class="greenBtn submit-btn">進行付款</button>
+			 </span>
+			 
 			</div>
 			
 			

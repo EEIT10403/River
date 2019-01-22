@@ -69,8 +69,17 @@ public class FormController {
 		Date godate =formBean.getGodate();
 		Date backdate =formBean.getBackdate();
 		Integer People =formBean.getPeople();
+		if(formBean.getPeople() == null) {
+			 People = 1;
+		}
 		Integer People2 =formBean.getPeople2();
+		if(formBean.getPeople2() == null) {
+			 People2 = 0;
+		}
 		Integer People3 =formBean.getPeople3();
+		if(formBean.getPeople3() == null) {
+			 People3 = 0;
+		}
 		String people = Integer.toString(People);
 		String people2 = Integer.toString(People2);
 		String people3 = Integer.toString(People3);
@@ -83,25 +92,31 @@ public class FormController {
 		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         String backdatetime = format2.format(backdate.getTime());
         System.out.println("回程時間 ="+backdatetime);
-        
         StringBuffer bfmsearch = new StringBuffer();
-           
+        
+         
+    
+//這裡是正確修改人數對照用        																																																																																																																																																																																																																																																																																	\"TravelerInfoSummary\":{\"AirTravelerAvail\":[{"PassengerTypeQuantity":[{"Code":"ADT","Quantity":"+people+"},{"Code":"CNN","Quantity":"+people2+"},{"Code":"INF","Quantity":"+people3+"}]}]}																																		
+        
         if (People2 == 0 & People3 == 0) {
-        //無小孩版本
+        	System.out.println("只有大人");
             bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
 
         }else if (People2 != 0 & People3 == 0) {
-        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"}],\"PassengerTypeQuantity\":[{\"Code\":\"CNN\",\"Quantity\":"+people2+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
+        	System.out.println("大人、小孩");
+        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"},{\"Code\":\"CNN\",\"Quantity\":"+people2+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
             
         }else if (People2 == 0 & People3 != 0) {
-        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"}],\"PassengerTypeQuantity\":[{\"Code\":\"INF\",\"Quantity\":"+people3+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
+        	System.out.println("大人、嬰兒");
+        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"},{\"Code\":\"INF\",\"Quantity\":"+people3+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
             
         }else {
-        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"}],\"PassengerTypeQuantity\":[{\"Code\":\"CNN\",\"Quantity\":"+people2+"}],\"PassengerTypeQuantity\":[{\"Code\":\"INF\",\"Quantity\":"+people3+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
+        	System.out.println("都有");
+        	bfmsearch.append("{\"OTA_AirLowFareSearchRQ\":{\"ResponseType\":\"OTA\",\"ResponseVersion\":\"3.4.0\",\"Target\":\"Production\",\"Version\":\"3.4.0\",\"POS\":{\"Source\":[{\"PseudoCityCode\":\"A2U8\",\"RequestorID\":{\"Type\":\"1\",\"ID\":\"1\",\"CompanyName\":{\"Code\":\"TN\"}}}]},\"OriginDestinationInformation\":[{\"RPH\":\"1\",\"DepartureDateTime\":\""+godatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+city+"\"},\"DestinationLocation\":{\"LocationCode\":\""+endcity+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}},{\"RPH\":\"2\",\"DepartureDateTime\":\""+backdatetime+"\",\"OriginLocation\":{\"LocationCode\":\""+endcity+"\"},\"DestinationLocation\":{\"LocationCode\":\""+city+"\"},\"TPA_Extensions\":{\"SegmentType\":{\"Code\":\"O\"}}}],\"TravelPreferences\":{\"ValidInterlineTicket\":true,\"FlightTypePref\":{\"MaxConnections\":\"0\"},\"CabinPref\":[{\"Cabin\":\"Y\",\"PreferLevel\":\"Preferred\"}],\"TPA_Extensions\":{\"TripType\":{\"Value\":\"Return\"},\"LongConnectTime\":{\"Min\":780,\"Max\":1200,\"Enable\":true},\"ExcludeCallDirectCarriers\":{\"Enabled\":true}}},\"TravelerInfoSummary\":{\"SeatsRequested\":[1],\"AirTravelerAvail\":[{\"PassengerTypeQuantity\":[{\"Code\":\"ADT\",\"Quantity\":"+people+"},{\"Code\":\"CNN\",\"Quantity\":"+people2+"},{\"Code\":\"INF\",\"Quantity\":"+people3+"}]}]},\"TPA_Extensions\":{\"IntelliSellTransaction\":{\"RequestType\":{\"Name\":\"50ITINS\"}}}}}");
             
         }
         
-     
+        
 //呼叫model
 		Token token = bFMSearchService.getBFM();
 		
@@ -138,12 +153,11 @@ public class FormController {
 		}
 		in2.close();
 		
-
-
+		
 //解析機票JSON	
 		String jsonData = BFMjson.toString();
 //		System.out.println(bfmsearch.toString());
-		System.out.println(jsonData);
+//		System.out.println(jsonData);
 		
 		Gson gson = new Gson();
 
@@ -158,7 +172,7 @@ public class FormController {
 		List<pricedItinerary> PricedItinerary= jsonBean.getOTA_AirLowFareSearchRS().getPricedItineraries().getPricedItinerary();
 		session.setAttribute("PricedItinerary", PricedItinerary);
 		
-
+		
 		
 		return "fform.success";
 		

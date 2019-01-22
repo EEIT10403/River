@@ -324,7 +324,7 @@
 									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
 									type="button">訂單查詢及付款</a> 
 								<a class="btn btn-secondary"
-									href="<c:url value="/WebIndex18/HistoryFOlist18.jsp?member_Id=${member_Id}" />"
+									href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />"
 									type="button">機票查詢及付款</a> 
 								<a class="btn btn-secondary"
 									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
@@ -336,6 +336,7 @@
 									href="<c:url value="/Member/Logout" />">登出 </a>
 							</div>
 						</div>
+<%-- 						${orderList} --%>
 						<div class="row">
 							<div class="col-md-12">
 								<hr>
@@ -343,8 +344,8 @@
 									<thead>
 										<tr style="background-color: #3be8b0">
 											<td>#訂單編號</td>
-											<td>訂單日期</td>
 											<td>商品名稱</td>
+											<td>航程目標</td>
 											<td>出發日期</td>
 											<td>回程日期</td>
 											<td>訂單明細</td>
@@ -356,51 +357,18 @@
 										<c:forEach varStatus="stVar" var="anOrder"
 											items="${orderList}">
 											<tr class="table-Default">
-												<td>${anOrder.order_No}</td>
-												<td>${anOrder.orderDate}</td>
-												<td>${anOrder.prod_Name}</td>
-												<td>${anOrder.travelDate}</td>
-												<td>${anOrder.travelDate}</td>
+												<td>${anOrder.forder_No}</td>
+												<td>${anOrder.f_start}/${anOrder.f_startend}/${anOrder.f_end}</td>
+												<td>${anOrder.cn_start}<br>${anOrder.cn_startend}</td>
+												<td>${anOrder.f_goDateStart}</td>
+												<td>${anOrder.f_backDateEnd}</td>
 
 												<td><a class="btn btn-primary"
-													href="<c:url value="/Order/OrdersItemPage?Order_No=${anOrder.order_No}" />"
+													href="<c:url value="/histroy.cntroller?Forder_No=${anOrder.forder_No}" />"
 													type="button">查看明細</a></td>
-												<td>${anOrder.total_Amount}</td>
-												<td><c:if test="${anOrder.canceltag}">
-													完成付款
-												</c:if> <c:if test="${empty anOrder.canceltag}">
-														<a class="btn btn-danger"
-															href="#delete${anOrder.order_No}" type="button"
-															data-toggle="modal">刪除訂單</a>
-														<div class="modal fade" id="delete${anOrder.order_No}"
-															role="dialog" aria-labelledby="myModalLabel"
-															aria-hidden="true">
-															<div class="modal-dialog" role="document">
-																<div class="modal-content" style="margin-top: 100px">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="myModalLabel">刪除</h5>
-																		<button type="button" class="close"
-																			data-dismiss="modal">
-																			<span aria-hidden="true">×</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">確認要刪除訂單${anOrder.order_No}嗎?</div>
-																	<div class="modal-footer">
-																		<a class="btn btn-warning"
-																			href="<c:url value="/Order/DeleteOrderSell?Order_No=${anOrder.order_No}" />"
-																			type="button">確定刪除</a>
-																		<button type="button" class="btn btn-secondary"
-																			data-dismiss="modal">取消</button>
-																	</div>
-																</div>
+												<td>NT$ ${anOrder.f_total}元</td>
+												
 
-															</div>
-
-														</div>
-														<!-- Modal end -->
-													</c:if></td>
-
-												<!-- Modal start -->
 
 
 											</tr>

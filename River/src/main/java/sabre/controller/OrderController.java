@@ -2,6 +2,7 @@ package sabre.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,28 +37,30 @@ public class OrderController {
 		
 		System.out.println("F_OrderBean ="+forderBean);
 		
-	//金額人數計算
-		int priceAdult = forderBean.getF_priceAdult();
-		int foneAdult = (priceAdult/forderBean.getF_adult()); 
-				
-		int taxAdult = forderBean.getF_taxAdult();
-		int fonetaxAdult = (taxAdult/forderBean.getF_adult()); 
-		
-		System.out.println("oneAdult ="+foneAdult);
-		System.out.println("taxadult ="+fonetaxAdult);
 	//生產訂單編號
-			Date date = new Date();
-		       SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");       
-		       String FODstr = bartDateFormat.format(date);
-			
-		       String Forder_No = "FOD"+FODstr;
-		       System.out.println("FOD ="+Forder_No);		
+		Date date = new Date();
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");       
+		String FODstr = bartDateFormat.format(date);
+		
+		String Forder_No = "FOD"+FODstr;
+		System.out.println("FOD ="+Forder_No);
+		       
+   //生產訂位六碼
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		Random random = new Random();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < 6; ++i) {
+		    int number = random.nextInt(26);
+		    sb.append(alphabet.charAt(number));
+		}
+		String Booking_code = sb.toString();
+		System.out.println("Booking_code ="+Booking_code); 
+	    
+
+		     
 	
-		
-		
+		session.setAttribute("booking_code", Booking_code);
 		session.setAttribute("forder_No", Forder_No);
-		session.setAttribute("foneAdult", foneAdult);
-		session.setAttribute("fonetaxAdult", fonetaxAdult);
 		session.setAttribute("forderBean", forderBean);
 
 				
