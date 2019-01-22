@@ -370,12 +370,12 @@
 							<hr>
 							<!-- 							<a class="btn btn-primary btn-large" href="#checkId" -->
 							<!-- 								data-toggle="modal" style="padding:20px">輸入產品代號</a> -->
-							<a style="margin-left: 75%" class="btn btn-info btn-large"
+							<a style="margin-left: 75%" class="btn btn-secondary btn-large"
 								type="button" id=""
 								href="<c:url value="/_027_DaytourProduct/ManageProduct.jsp" />">
 								修改產品系統</a> 
 								
-								<a class="btn btn-info btn-large" type="button" id=""
+								<a class="btn btn-secondary btn-large" type="button" id=""
 								href="<c:url value="/Partner/Logout" />"> 登出</a>
 								
 						</div>

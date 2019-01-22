@@ -14,6 +14,8 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
@@ -99,9 +101,9 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
+									<li><a id="modal-193880" href="#partnerLogin"
+										role="button" class="btn" data-toggle="modal">管理員專區</a></li>
+
 								</c:if>
 								<c:if test="${not empty staff_id}">
 									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
@@ -121,7 +123,7 @@
 										<div class="modal-body">
 											<form action="<c:url value="/partner/login" />"
 												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
+												<table style="margin-left: 20%">
 													<tr>
 														<td>登入帳號 :</td>
 														<td><input type="text" name="staff_Id"
@@ -129,8 +131,8 @@
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
+													<tr">
+														<td>登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
 															style="border: solid 1px; margin: 5px"></td>
@@ -260,58 +262,58 @@
 
 					</c:if>
 					<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
-							</ul>
+						<li><a id="modal-193880" href="#partnerLogin" role="button"
+							class="btn" data-toggle="modal">管理員專區</a></li>
 
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
+					</c:if>
+				</ul>
 
-										</div>
-									</div>
-
-								</div>
+				<div class="modal fade" id="partnerLogin" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="<c:url value="/partner/login" />"
+									style="padding-top: 20px" method="get">
+									<table style="margin-left: 20%">
+										<tr>
+											<td>登入帳號 :</td>
+											<td><input type="text" name="staff_Id"
+												value="${param.staff_Id}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx1}</span></td>
+										</tr>
+										<tr">
+											<td>登入密碼 :</td>
+											<td><input type="password" name="password"
+												value="${param['password']}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx2}</span></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td align="right" style="padding: 20px"><button
+													type="submit" id='confirmBtn' type="button"
+													class="btn btn-block btn-info">登入</button></td>
+										</tr>
+									</table>
+								</form>
 
 							</div>
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 
 			<!-- Modal Search -->
@@ -380,7 +382,14 @@
 								<h5 class="card-header">選擇日期與票種</h5>
 								<div class="card-body">
 									<p class="card-text ">
-										使用日期 <input type="date" name="TravelDate" value="">
+										使用日期 <input type="date" name="TravelDate" value="" min="2019-02-01">
+<script>
+var date =new Date().toDateInputValue();
+alert(date)
+
+</script>
+
+
 									</p>
 									<p class="card-text " align="right">單位: 新台幣/元</p>
 
@@ -534,7 +543,7 @@
 
 
 		<!-- Footer -->
-				<footer class="bg3 p-t-75 p-b-32">
+		<footer class="bg3 p-t-75 p-b-32">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-lg-3 p-b-50">
@@ -646,7 +655,7 @@
 
 
 	<script>
- 
+	
 <!-- 修改張數start-->
 function ticketQty() {
 	$('#ticketQty').empty();
