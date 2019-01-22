@@ -341,18 +341,12 @@
 									<td align="right" style="padding:20px"><button type="submit" id='confirmBtn' type="button" class="btn btn-block btn-info">登入</button></td>
 								</tr>
 							</table>
-<!-- 							<select name="myLocale"> -->
-<!-- 								<option value="zh_TW">中文</option> -->
-<!-- 								<option value="en_US">英文</option> -->
-<!-- 							</select> -->
 						</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- 產品顯示部分end -->
 
 
 

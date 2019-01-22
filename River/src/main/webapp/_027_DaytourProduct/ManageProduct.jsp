@@ -67,7 +67,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-						<header>
+				<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -104,13 +104,58 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 						</div>
 
 						<!-- Icon header -->
@@ -128,7 +173,7 @@
 										<a class="dropdown-item"
 											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 										<a class="dropdown-item"
-											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+											href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 										<a class="dropdown-item"
 											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 										<a class="dropdown-item"
@@ -140,10 +185,10 @@
 									</c:if>
 								</div>
 							</div>
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
 						</div>
 					</nav>
@@ -155,7 +200,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="images/icons/logo-11.png" alt="IMG-LOGO"></a>
+						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -173,7 +218,7 @@
 								<a class="dropdown-item"
 									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 								<a class="dropdown-item"
-									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+									href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 								<a class="dropdown-item"
 									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
@@ -199,55 +244,101 @@
 			<div class="menu-mobile">
 
 
-					<ul class="main-menu">
-								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+				<ul class="main-menu">
+					<li class="active-menu"><a
+						href="<c:url value="/index18.jsp" />">首頁</a></li>
+					<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								</c:if>
+					</c:if>
 
-								<c:if test="${empty member_Id}">
+					<c:if test="${empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+					</c:if>
+					<c:if test="${empty staff_id}">
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 			</div>
 
 			<!-- Modal Search -->
-<!-- 			<div -->
-<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-<!-- 				<div class="container-search-header"> -->
-<!-- 					<button -->
-<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-<!-- 					</button> -->
+			<!-- 			<div -->
+			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+			<!-- 				<div class="container-search-header"> -->
+			<!-- 					<button -->
+			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+			<!-- 					</button> -->
 
-<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-<!-- 						<button class="flex-c-m trans-04"> -->
-<!-- 							<i class="zmdi zmdi-search"></i> -->
-<!-- 						</button> -->
-<!-- 						<input class="plh3" type="text" name="search" -->
-<!-- 							placeholder="Search..."> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+			<!-- 						<button class="flex-c-m trans-04"> -->
+			<!-- 							<i class="zmdi zmdi-search"></i> -->
+			<!-- 						</button> -->
+			<!-- 						<input class="plh3" type="text" name="search" -->
+			<!-- 							placeholder="Search..."> -->
+			<!-- 					</form> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 		</header>
+
 
 		<!-- Cart -->
 
@@ -268,9 +359,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="jumbotron">
+						<div class="jumbotron" style="background-image: url('../images/boardcolor.jpg')">
 							<h2>產品管理平台</h2>
-							<p>${staff_Name}，早安， 好好賣阿。</p>
+							<p>${staff_Name}，早安，請輸入產品代號以進行內容修改。</p>
 							<hr>
 							<a class="btn btn-primary btn-large" href="#checkId"
 								data-toggle="modal" style="padding:20px">輸入產品代號</a>
@@ -293,10 +384,10 @@
 				</div>
 				<div class="row">
 					<div class="col-md-7" style='padding: 30px'>
-						<img alt="Bootstrap Image Preview" style='width: 500px'
-							id='productImage'
-							src='<%=request.getContextPath()%>/images/_027_Pimage/white.jpg' />
-						<span>上傳新圖檔</span><input type="file" name="Main_Image"
+						<img alt="Bootstrap Image Preview" style='width:480px; height:300px;border-radius:10px'
+							id='productImage' 
+							src='<%=request.getContextPath()%>/images/color.jpg' />
+						<span>上傳新圖檔</span><input type="file" name="Main_Image" id="uploadPic"
 							value="${param.Main_Image}">
 					</div>
 
@@ -311,8 +402,8 @@
 								<option value="EU">歐洲</option>
 								<option value="AM">美加</option>
 						</select></span> <span>地區: <select name="Region">
-								<option value="Kan">關西</option>
 								<option value="Tok">關東</option>
+								<option value="Kan">關西</option>
 								<option value="Kyu">九州</option>
 								<option value="Oki">沖繩</option>
 								<option value="Hok">北海道</option>
@@ -496,51 +587,47 @@
 
 
 		<!-- Footer -->
-		<footer class="bg3 p-t-75 p-b-32">
+			<footer class="bg3 p-t-75 p-b-32">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Categories</h4>
+						<h4 class="stext-301 cl0 p-b-30">關於百川</h4>
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Women </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Men </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 鄭祺融 </a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Watches </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 陳建良 </a></li>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 張誌元 </a></li>
 						</ul>
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Help</h4>
+						<h4 class="stext-301 cl0 p-b-30">特別感謝</h4>
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Track Order </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04">資策會</a></li>
 
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Returns </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04">先啟資訊 </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a></li>
-
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a></li>
 						</ul>
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+						<h4 class="stext-301 cl0 p-b-30">訂購諮詢</h4>
 
-						<p class="stext-107 cl7 size-201">Any questions? Let us know
-							in store at 8th floor, 379 Hudson St, New York, NY 10018 or call
-							us on (+1) 96 716 6879</p>
+						<p class="stext-107 cl7 size-201">台北市大安區復興南路一段390號 2,3,15樓
+							+886 (0)2 6631 6666</p>
 
 						<div class="p-t-27">
 							<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
@@ -554,21 +641,8 @@
 					</div>
 
 					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+						<h4 class="stext-301 cl0 p-b-30">菁英招募</h4>
 
-						<form>
-							<div class="wrap-input1 w-full p-b-4">
-								<input class="input1 bg-none plh1 stext-107 cl7" type="text"
-									name="email" placeholder="email@example.com">
-								<div class="focus-input1 trans-04"></div>
-							</div>
-
-							<div class="p-t-18">
-								<button
-									class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Subscribe</button>
-							</div>
-						</form>
 					</div>
 				</div>
 
@@ -596,11 +670,11 @@
 							target="_blank">Colorlib</a> &amp; distributed by <a
 							href="https://themewagon.com" target="_blank">ThemeWagon</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
 					</p>
 				</div>
 			</div>
 		</footer>
+
 
 
 		<!-- Back to top -->
@@ -692,6 +766,36 @@
 			}
 		}
 	}
+</script>
+
+<script>
+
+$("#uploadPic").change(function(){
+
+  readURL(this);
+
+});
+
+ 
+
+function readURL(input){
+
+  if(input.files && input.files[0]){
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+
+       $("#productImage").attr('src', e.target.result);
+
+    }
+
+    reader.readAsDataURL(input.files[0]);
+
+  }
+
+}
+
 </script>
 
 	<script>

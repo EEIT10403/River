@@ -95,13 +95,58 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 						</div>
 
 						<!-- Icon header -->
@@ -131,10 +176,10 @@
 									</c:if>
 								</div>
 							</div>
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
 						</div>
 					</nav>
@@ -190,55 +235,100 @@
 			<div class="menu-mobile">
 
 
-					<ul class="main-menu">
-								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+				<ul class="main-menu">
+					<li class="active-menu"><a
+						href="<c:url value="/index18.jsp" />">首頁</a></li>
+					<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								</c:if>
+					</c:if>
 
-								<c:if test="${empty member_Id}">
-									<li><a href="product.html">景點查詢</a></li>
+					<c:if test="${empty member_Id}">
+						<li><a href="product.html">景點查詢</a></li>
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+					</c:if>
+					<c:if test="${empty staff_id}">
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 			</div>
 
 			<!-- Modal Search -->
-<!-- 			<div -->
-<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-<!-- 				<div class="container-search-header"> -->
-<!-- 					<button -->
-<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-<!-- 					</button> -->
+			<!-- 			<div -->
+			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+			<!-- 				<div class="container-search-header"> -->
+			<!-- 					<button -->
+			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+			<!-- 					</button> -->
 
-<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-<!-- 						<button class="flex-c-m trans-04"> -->
-<!-- 							<i class="zmdi zmdi-search"></i> -->
-<!-- 						</button> -->
-<!-- 						<input class="plh3" type="text" name="search" -->
-<!-- 							placeholder="Search..."> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+			<!-- 						<button class="flex-c-m trans-04"> -->
+			<!-- 							<i class="zmdi zmdi-search"></i> -->
+			<!-- 						</button> -->
+			<!-- 						<input class="plh3" type="text" name="search" -->
+			<!-- 							placeholder="Search..."> -->
+			<!-- 					</form> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 		</header>
 
 		<!-- Cart -->
@@ -333,6 +423,7 @@
 
 
 		<!-- Product -->
+		
 		<section class="bg0 p-t-23 p-b-140">
 			<div class="container">
 
@@ -465,7 +556,7 @@
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅　平 </a></li>
 
 							<li class="p-b-10"><a href="#"
 								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
@@ -575,12 +666,12 @@
 function loadProduct(region){
 	$.getJSON('DisplayByRegion',{region:region},function(getdata){
 		var docFrag =$(document.createDocumentFragment());
-		console.log("我回來了"+getdata);
+// 		console.log("我回來了"+getdata);
 		var txt ='<div class="row isotope-grid">';
 		$.each(getdata,function(index,product){
-			console.log("產品"+product.product_Id);
-			console.log("產品"+product.prod_Name);
-			console.log("產品"+product.unitPrice_1);
+// 			console.log("產品"+product.product_Id);
+// 			console.log("產品"+product.prod_Name);
+// 			console.log("產品"+product.unitPrice_1);
 <%-- 原版 	      docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id=K1000001"><a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">靠背</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">靠杯</a><span class="stext-105 cl3">$16.64</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
 <%-- 在迴圈做		  docFrag.append('<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/getProductMainImage?Product_Id='+product.product_Id+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'); --%>
 

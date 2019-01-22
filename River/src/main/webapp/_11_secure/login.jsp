@@ -62,7 +62,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-				<header>
+		<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -99,13 +99,58 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 						</div>
 
 						<!-- Icon header -->
@@ -123,7 +168,7 @@
 										<a class="dropdown-item"
 											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 										<a class="dropdown-item"
-											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+											href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 										<a class="dropdown-item"
 											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 										<a class="dropdown-item"
@@ -135,10 +180,10 @@
 									</c:if>
 								</div>
 							</div>
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
 						</div>
 					</nav>
@@ -150,7 +195,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="images/icons/logo-11.png" alt="IMG-LOGO"></a>
+						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -168,7 +213,7 @@
 								<a class="dropdown-item"
 									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 								<a class="dropdown-item"
-									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+									href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 								<a class="dropdown-item"
 									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
@@ -194,54 +239,99 @@
 			<div class="menu-mobile">
 
 
-					<ul class="main-menu">
-								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+				<ul class="main-menu">
+					<li class="active-menu"><a
+						href="<c:url value="/index18.jsp" />">首頁</a></li>
+					<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
 
-								</c:if>
+					</c:if>
 
-								<c:if test="${empty member_Id}">
+					<c:if test="${empty member_Id}">
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
+						<li class="label1"><a
+							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
 
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
+						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
 
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a
-										href="<c:url value="/_027_Partner/PartnerLogin.jsp" />">合作廠商登入</a></li>
+					</c:if>
+					<c:if test="${empty staff_id}">
+									<li><a id="modal-193880" href="#partnerLogin" role="button"
+										class="btn" data-toggle="modal">管理員專區</a></li>
+									
 								</c:if>
 								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">合作廠商登入</a></li>
+									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
 								</c:if>
 							</ul>
+
+							<div class="modal fade" id="partnerLogin" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form action="<c:url value="/partner/login" />"
+												style="padding-top: 20px" method="get">
+												<table style="margin-left:20%">
+													<tr>
+														<td>登入帳號 :</td>
+														<td><input type="text" name="staff_Id"
+															value="${param.staff_Id}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx1}</span></td>
+													</tr>
+													<tr ">
+														<td >登入密碼 :</td>
+														<td><input type="password" name="password"
+															value="${param['password']}"
+															style="border: solid 1px; margin: 5px"></td>
+														<td><span class="error">${errors.xxx2}</span></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td align="right" style="padding: 20px"><button
+																type="submit" id='confirmBtn' type="button"
+																class="btn btn-block btn-info">登入</button></td>
+													</tr>
+												</table>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
 			</div>
 
 			<!-- Modal Search -->
-<!-- 			<div -->
-<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-<!-- 				<div class="container-search-header"> -->
-<!-- 					<button -->
-<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-<!-- 					</button> -->
+			<!-- 			<div -->
+			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
+			<!-- 				<div class="container-search-header"> -->
+			<!-- 					<button -->
+			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
+			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
+			<!-- 					</button> -->
 
-<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-<!-- 						<button class="flex-c-m trans-04"> -->
-<!-- 							<i class="zmdi zmdi-search"></i> -->
-<!-- 						</button> -->
-<!-- 						<input class="plh3" type="text" name="search" -->
-<!-- 							placeholder="Search..."> -->
-<!-- 					</form> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
+			<!-- 						<button class="flex-c-m trans-04"> -->
+			<!-- 							<i class="zmdi zmdi-search"></i> -->
+			<!-- 						</button> -->
+			<!-- 						<input class="plh3" type="text" name="search" -->
+			<!-- 							placeholder="Search..."> -->
+			<!-- 					</form> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
 		</header>
 
 
@@ -288,25 +378,25 @@
 							<div class="carousel-inner">
 								<div class="carousel-item">
 									<img class="d-block w-100" alt="Carousel Bootstrap First"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
+										src="../images/member3.jpg" />
 									<div class="carousel-caption">
-										<h4>會員登入專區</h4>
+										<h4>會員登入</h4>
 										<p></p>
 									</div>
 								</div>
 								<div class="carousel-item active">
 									<img class="d-block w-100" alt="Carousel Bootstrap Second"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
+										src="../images/member1.jpg" />
 									<div class="carousel-caption">
-										<h4>會員登入專區</h4>
+										<h4>會員登入</h4>
 										<p></p>
 									</div>
 								</div>
 								<div class="carousel-item">
 									<img class="d-block w-100" alt="Carousel Bootstrap Third"
-										src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
+										src="../images/member2.jpg" />
 									<div class="carousel-caption">
-										<h4>會員登入專區</h4>
+										<h4>會員登入</h4>
 										<p></p>
 									</div>
 								</div>
@@ -320,7 +410,7 @@
 						</div>
 
 						<div align="center"
-							style="margin: 30px 400px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
+							style="margin: 30px 350px; background-color: #F0F7F4; border-radius: 10px; border: solid 1px #99E1D9; padding: 30px">
 
 							<form action="<c:url value="/_11_secure/login.controller" />"
 								method="post" style="padding-top: 20px">
@@ -355,7 +445,7 @@
 									data-toggle="collapse" data-parent="#card-454342"
 									href="#card-element-120895"><img
 										src="../images/icons/Register.png" width="80" height="80">
-										立刻註冊</a>
+										</a>
 
 								</span> <span> <!-- 								Facebook登入：<input type="button" value="Facebook登入" -->
 									<!-- 									onclick="FBLogin();" /> --> <!-- 								<input type="button" value="Facebook登入" -->
@@ -371,10 +461,13 @@
 										<img src="../images/icons/google.png" width="80" height="80">
 									</button> <!-- 								 <input type="button" value="Google登入" onclick="GoogleLogin();" -->
 									<!-- 								style="background-image: url(../images/icons/google.png); width: 80px; height: 80px;"> -->
+								   <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1640084803&redirect_uri=http://localhost:8080/River/_11_secure/LineLogin&state=087223ff0a1223a55c6cff2a6dd67f9a&scope=openid%20email%20profile">
+								   <img src="../images/icons/line-me.png" width="80" height="80"></a>
+								
 								</span>
 							</div>
 						</div>
-
+           
 						<div class="row">
 							<div class="col-md-12">
 								<div id="card-454342">
@@ -382,6 +475,9 @@
 										<div class="card-header">
 											<a class="card-link" data-toggle="collapse"
 												data-parent="#card-454342" href="#card-element-120895">快速註冊</a>
+											<button class="card-link" 
+												 onclick="oneClick()">一鍵帶入</button>
+											
 										</div>
 										<div id="card-element-120895" class="collapse">
 											<div class="card-body">
@@ -404,7 +500,7 @@
 															<tr class="table-Default">
 																<td>${param.member_Id}<input type="text"
 																	name="member_Id" value="${param.member_Id}"></td>
-																	<td><input type="text" name ="password" value="${param.password}"></td>
+																	<td><input type="password" name ="password" value="${param.password}"></td>
 																<td><input type="text" name="email"
 																	value="${param.email}"><span class="errors">${param.email}</span></td>
 																<td><input type="text" name="chinese_Name"
@@ -571,7 +667,6 @@
 							target="_blank">Colorlib</a> &amp; distributed by <a
 							href="https://themewagon.com" target="_blank">ThemeWagon</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
 					</p>
 				</div>
 			</div>
@@ -598,7 +693,27 @@
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
-
+    
+    
+    <script>
+    
+    function oneClick(){
+    	
+    	$("input[name='member_Id']").val('PingLo');
+		$("input[name='email']").val('pinglotw@gmail.com');
+		$("input[name='chinese_Name']").val('羅平');
+		$("input[name='english_Name']").val('Ping');
+		$("input[name='ID_number']").val('A123456789');
+		$("input[name='telephone']").val('0988888888');
+		$("input[name='country']").val('Taiwan');
+		$("input[name='birthday']").val('1988-08-08');
+		$("input[name='sex']").val('M');
+		$("input[name='Address']").val('台北市內湖區');
+    	
+    }
+    
+    </script>
+    
 	<script>
 		function Register() {
 			window.location = '<c:url value="/_11_memberpages/AccountRegister.jsp" />'
@@ -645,11 +760,14 @@
 					//抓userID
 					let FB_ID = response["authResponse"]["userID"];
 					console.log("userID:" + FB_ID);
-					window.location = "http://localhost:8080//River";
+// 					alert("userID:" + FB_ID);
+					
+					txt = '<c:url value="/_11_secure/FBLogin?member_Id='+FB_ID+'" />'
+					window.location=txt
 
 				} else {
 					// user FB取消授權
-					alert("Facebook帳號無法登入");
+// 					alert("Facebook帳號無法登入");
 				}
 			}, {
 				scope : 'public_profile,email'
@@ -705,18 +823,18 @@
 			// API call for Google login  
 			gapi.auth2.getAuthInstance().signIn().then(function(success) {
 				// Login API call is successful 
-				alert("成功");
+// 				alert("成功");
 				let Google_ID = success["El"];
-				alert("成功Google_ID"+Google_ID);
+// 				alert("成功Google_ID"+Google_ID);
 				txt = '<c:url value="/_11_secure/GoogleLogin?member_Id='+Google_ID+'" />'
-				alert(txt);
+// 				alert(txt);
 				window.location=txt
 // 				window.location = "http://localhost:8080/River";
 
 			}, function(error) {
 				// Error occurred
 				// console.log(error) to find the reason
-				alert("失敗");
+// 				alert("失敗");
 				console.log(error);
 			}
 
