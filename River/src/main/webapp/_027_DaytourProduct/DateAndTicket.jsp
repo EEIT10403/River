@@ -382,12 +382,9 @@
 								<h5 class="card-header">選擇日期與票種</h5>
 								<div class="card-body">
 									<p class="card-text ">
-										使用日期 <input type="date" name="TravelDate" value="" min="2019-02-01">
-<script>
-var date =new Date().toDateInputValue();
-alert(date)
+										使用日期 <input id="datePicker" type="date" name="TravelDate"
+											value="" min="2019-02-01">
 
-</script>
 
 
 									</p>
@@ -653,7 +650,20 @@ alert(date)
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
 
+	<script>
+	Date.prototype.toDateInputValue = (function() {
+	    var local = new Date(this);
+	    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+	    return local.toJSON().slice(0,10);
+	});
+// $(document).ready( function() {
+// 	alert(new Date());
+// 	alert(new Date().toDateInputValue());
+    $('#datePicker').val(new Date().toDateInputValue());
+    $('#datePicker').attr('min',new Date().toDateInputValue());
+// })​
 
+</script>
 	<script>
 	
 <!-- 修改張數start-->

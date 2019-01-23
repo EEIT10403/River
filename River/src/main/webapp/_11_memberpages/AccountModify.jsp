@@ -453,7 +453,7 @@
 												<td><input type="text" name="english_Name"
 													value="${mBean.english_Name}"></td>
 												<td><input type="text" name="ID_number"
-													value="${mBean.ID_number}" readonly><span
+													value="${mBean.ID_number}"><span
 													class="errors">${errors.ID_number}</span></td>
 												<td><input type="text" name="telephone"
 													value="${mBean.telephone}"><span class="errors">${errors.telephone}</span></td>

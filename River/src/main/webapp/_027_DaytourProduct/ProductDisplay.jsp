@@ -361,7 +361,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="page-header">
+						    
 							<h1>${bean.prod_Name}</h1>
+							<h5 style="float:right">產品編號: ${bean.product_Id}</h5>
+							
 						</div>
 					</div>
 				</div>
@@ -452,9 +455,9 @@
 											<table class="table table-hover table-sm table-bordered">
 													<thead>
 														<tr>
-															<th>體驗旅客：</th>
-															<th>留言日期：</th>
-															<th>留言內容：</th>
+															<th>體驗旅客</th>
+															<th>留言日期</th>
+															<th>留言內容</th>
 														</tr>
 													</thead>
 													<tbody>

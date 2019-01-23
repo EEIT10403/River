@@ -67,7 +67,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-	<header>
+		<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -104,9 +104,9 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
+									<li><a id="modal-193880" href="#partnerLogin"
+										role="button" class="btn" data-toggle="modal">管理員專區</a></li>
+
 								</c:if>
 								<c:if test="${not empty staff_id}">
 									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
@@ -126,7 +126,7 @@
 										<div class="modal-body">
 											<form action="<c:url value="/partner/login" />"
 												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
+												<table style="margin-left: 20%">
 													<tr>
 														<td>登入帳號 :</td>
 														<td><input type="text" name="staff_Id"
@@ -134,8 +134,8 @@
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
+													<tr">
+														<td>登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
 															style="border: solid 1px; margin: 5px"></td>
@@ -265,58 +265,58 @@
 
 					</c:if>
 					<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
-							</ul>
+						<li><a id="modal-193880" href="#partnerLogin" role="button"
+							class="btn" data-toggle="modal">管理員專區</a></li>
 
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
+					</c:if>
+				</ul>
 
-										</div>
-									</div>
-
-								</div>
+				<div class="modal fade" id="partnerLogin" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="<c:url value="/partner/login" />"
+									style="padding-top: 20px" method="get">
+									<table style="margin-left: 20%">
+										<tr>
+											<td>登入帳號 :</td>
+											<td><input type="text" name="staff_Id"
+												value="${param.staff_Id}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx1}</span></td>
+										</tr>
+										<tr">
+											<td>登入密碼 :</td>
+											<td><input type="password" name="password"
+												value="${param['password']}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx2}</span></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td align="right" style="padding: 20px"><button
+													type="submit" id='confirmBtn' type="button"
+													class="btn btn-block btn-info">登入</button></td>
+										</tr>
+									</table>
+								</form>
 
 							</div>
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 
 			<!-- Modal Search -->
@@ -370,16 +370,16 @@
 							<div style="text-align: center; margin: 30px">
 								<div class="btn-group btn-group-lg " role="group">
 
-									<a class="btn btn-secondary"
+										<a class="btn btn-info"
 										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />"
-										type="button">訂單查詢及付款</a> 
-									<a class="btn btn-info" type="button"
+										type="button">訂單查詢及付款</a> <a class="btn btn-secondary"
+										type="button"
+										href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
+									<a class="btn btn-secondary" type="button"
 										href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
-									<a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">商品追蹤</a>
-									<a class="btn btn-secondary"
-										href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">會員評鑑
-									</a> <a class="btn btn-secondary"
+									<a class="btn btn-secondary" type="button"
+										href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑
+									</a> <a class="btn btn-secondary" type="button"
 										href="<c:url value="/Member/Logout" />">登出 </a>
 								</div>
 							</div>
@@ -419,24 +419,25 @@
 											</c:forEach>
 
 											<tr>
-												<td colspan="5" style="margin-right: 30px;color:red" align="right">應付金額：${order.total_Amount} 元</td>
+												<td colspan="5" style="margin-right: 30px; color: red"
+													align="right">應付金額：${order.total_Amount} 元</td>
 											</tr>
 										</tbody>
 
 									</table>
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 					<br>
 					<DIV
-						style="OVERFLOW: scroll; HEIGHT: 300px; background-color: white ; border:solid 1px gray">
+						style="OVERFLOW: scroll; HEIGHT: 300px; background-color: white; border: solid 1px gray">
 
 						<h4 class="text-logo-green">敬請詳閱付款頁內容</h4>
 						<br>
-						<div >
-							<ul class="ul-default" >
+						<div>
+							<ul class="ul-default">
 								<li>票券和部分活動，付款成功後不接受取消與更改，敬請留意，並詳閱商品頁中相關使用和限制說明。</li>
 								<li>部分活動因性質特殊，受天候或當地特別條件影響，在出發當天或前一天有取消或變更行程內容的狀況。敬請詳閱商品頁中相關說明。謝謝。</li>
 							</ul>
@@ -454,20 +455,21 @@
 
 
 					</div>
-					
-					<form
-								action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />"
-								method="POST" id="aio" style="margin:4% 45%">
 
-								<input type="hidden" name="itemName" value="${order.prod_Name}">
-								<input type="hidden" name="totalAmount"
-									value="${order.total_Amount}"> <input type="hidden"
-									name="Order_No" value="${order.order_No}">
-								信用卡付款 <button type="submit" value="Submit" >
-									<img src="../images/icons/allpay.png" width="80" height="80" style="margin-top:5px"  >
-								</button>
-								<br>
-							</form>
+					<form
+						action="<c:url value="/frontEnd/aioCheckOut/aioCheckOutOneTime" />"
+						method="POST" id="aio" style="margin: 4% 45%">
+
+						<input type="hidden" name="itemName" value="${order.prod_Name}">
+						<input type="hidden" name="totalAmount"
+							value="${order.total_Amount}"> <input type="hidden"
+							name="Order_No" value="${order.order_No}"> 信用卡付款
+						<button type="submit" value="Submit">
+							<img src="../images/icons/allpay.png" width="80" height="80"
+								style="margin-top: 5px">
+						</button>
+						<br>
+					</form>
 				</div>
 			</div>
 		</div>
