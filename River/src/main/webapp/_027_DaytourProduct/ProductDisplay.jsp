@@ -365,6 +365,7 @@
 							<h1>${bean.prod_Name}</h1>
 							<h5 style="float:right">產品編號: ${bean.product_Id}</h5>
 							
+							
 						</div>
 					</div>
 				</div>
