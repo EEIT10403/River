@@ -10,7 +10,7 @@ import java.util.zip.GZIPInputStream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class GetLatLngFromJSON {
+public class GetTransferTime {
 	
 	public static void main(String[] args) {
 
@@ -30,11 +30,22 @@ public class GetLatLngFromJSON {
 //		System.out.println(location.toString());
 		
 		
-		
-		
-	
-		
-		
+//		String strjson = GetTransferTime.readhttp_info("https://maps.googleapis.com/maps/api/directions/json?origin=%E6%9E%97%E5%8F%A3&destination=%E6%96%B0%E8%8E%8A&avoid=highways&mode=driving&key=AIzaSyA1O4vNHfOVtr86ZtznzI4ZeqOBQIM7q5Y");	
+//		JSONObject json0 = new JSONObject(strjson);
+//		System.out.println(json0.toString());
+//		JSONArray json1=(JSONArray) json0.get("routes");
+//		System.out.println(json1.toString());
+//		JSONArray json2 = json1.getJSONObject(0).getJSONArray("legs");
+//		System.out.println(json2.toString());
+//		JSONObject json3 = json2.getJSONObject(0).getJSONObject("duration");
+//		JSONObject json4 = json2.getJSONObject(0).getJSONObject("distance");
+//		System.out.println(json3.toString());
+//		System.out.println(json4.toString());
+//		JSONArray result = new JSONArray();
+//		result.put(json3);
+//		result.put(json3);
+
+//		System.out.println(strjson);
 
 	}
 	
@@ -46,7 +57,10 @@ public class GetLatLngFromJSON {
 		            BufferedReader rufferedReader = null;   
 		            //用於解碼   
 		            GZIPInputStream gzin = null;   
-		               
+		            
+		            JSONObject result=null;
+		            
+		            
 		            try {   
 		                URL serverUrl = new URL(httpUrl);   
 		                httpURLConnection = (HttpURLConnection) serverUrl.openConnection();   
@@ -74,20 +88,30 @@ public class GetLatLngFromJSON {
 		                    //印出結果
 //		                    System.out.println(strBuffer);  	             
 		               }   
+		           
+		            JSONObject json0 = new JSONObject(strBuffer.toString());
+//		    		System.out.println(json0.toString());
+		    		JSONArray json1=(JSONArray) json0.get("routes");
+//		    		System.out.println(json1.toString());
+		    		JSONArray json2 = json1.getJSONObject(0).getJSONArray("legs");
+//		    		System.out.println(json2.toString());
+		    		JSONObject json3 = json2.getJSONObject(0).getJSONObject("duration");
+		    		JSONObject json4 = json2.getJSONObject(0).getJSONObject("distance");
+		    		Integer duration =json3.getInt("value");
+		    		Integer distance =json4.getInt("value");
+		    		
+		    		result = new JSONObject();
+		    		result.put("duration", duration);
+		    		result.put("distance",distance);
+//		     System.out.println("result="+result);
 		            }catch(Exception e) {   
 		                e.printStackTrace();   
 		            }
 		            finally{   
 		                httpURLConnection.disconnect();   
 		                //這裡把相關的流也關閉吧,我這裡就不寫了   
-		            }   
-		    		JSONObject json = new JSONObject(strBuffer.toString());
-		    		JSONArray arraycandidates= (JSONArray)json.getJSONArray("candidates");
-		    		JSONObject objectgeometry =arraycandidates.getJSONObject(0);
-		    		JSONObject objgeometry =objectgeometry.getJSONObject("geometry");
-		    		JSONObject location =objgeometry.getJSONObject("location");
-		            return location.toString(); 
-//		            return strBuffer.toString(); 
+		            } 
+		            return result.toString(); 
 		            
 		   } 
 

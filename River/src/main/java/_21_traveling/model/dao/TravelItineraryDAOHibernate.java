@@ -55,14 +55,7 @@ public class TravelItineraryDAOHibernate implements TravelItineraryDAO {
 			
 		}
 		if(update!=null) {
-			update.setDailyitinerary(bean.getDailyitinerary());
-			update.setFirstday(bean.getFirstday());
-			update.setLastday(bean.getLastday());
-			update.setMemberid(bean.getMemberid());
-			update.setSequence(bean.getSequence());
-			update.setSummary(bean.getSummary());
-			update.setTicketno(bean.getTicketno());
-			update.setTouristday(bean.getTouristday());
+			this.getSession().merge(bean);
 			
 			return update;
 		}

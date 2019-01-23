@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +9,7 @@
 <meta charset="UTF-8">
 
 <title>行程規劃♥</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/bootstrap.css" >
 <!--===============================================================================================-->
@@ -16,7 +18,6 @@
 <link rel="stylesheet" type="text/css"
 	href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="../fonts/iconic/css/material-design-iconic-font.min.css">
@@ -50,10 +51,10 @@
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link type="text/css" rel="stylesheet" href="../css/Tstyle.css" />
-<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="../css/jquery-ui.css" />
 <!--===============================================================================================-->
 
-<link type="text/css" rel="stylesheet" href="../css/jquery-ui.css" />
 
 <!--===============================================================================================-->
 
@@ -69,6 +70,8 @@ input, textarea {
 
 .item-slick1{
 height:350px;
+margin:0;
+padding:0;
 }
 #center1{
 margin: 150px 0;
@@ -100,14 +103,13 @@ font-size:25px;
 
 }
 
-</style>
 
+</style>
 
 </head>
 <body class="animsition">
 
-
-	<div class="container-fluid">
+	<div class="container-fluid"  style='width:100%' >
 		<!-- Header -->
 		<header>
 			<!-- Header desktop -->
@@ -115,7 +117,7 @@ font-size:25px;
 				<!-- Topbar -->
 
 
-				<div class="wrap-menu-desktop" style="height:60px">
+				<div class="wrap-menu-desktop" style="height: 60px">
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
@@ -127,7 +129,7 @@ font-size:25px;
 						<div class="menu-desktop">
 							<ul class="main-menu">
 								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">Home</a></li>
+									href="<c:url value='/index18.jsp'/>">Home</a></li>
 
 								<li><a href="product.html">Shop</a></li>
 
@@ -136,30 +138,30 @@ font-size:25px;
 
 								<li><a href="blog.html">Blog</a></li>
 
-								<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+								<li><a href="about.html">About</a></li>
 
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.html"></a></li>
 							</ul>
 						</div>
 
-		<!-- Icon header -->
+						<!-- Icon header -->
 						<div class="wrap-icon-header flex-w flex-r-m">
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
-<!-- 								<i class="zmdi zmdi-search"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
+							<!-- 								<i class="zmdi zmdi-search"></i> -->
+							<!-- 							</div> -->
 
-<!-- 							<div -->
-<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" -->
-<!-- 								data-notify="2"> -->
-<!-- 								<i class="zmdi zmdi-shopping-cart"></i> -->
-<!-- 							</div> -->
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" -->
+							<!-- 								data-notify="2"> -->
+							<!-- 								<i class="zmdi zmdi-shopping-cart"></i> -->
+							<!-- 							</div> -->
 
-<!-- 							<a href="#" -->
-<!-- 								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" -->
-<!-- 								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
-<!-- 							</a> -->
-							
+							<!-- 							<a href="#" -->
+							<!-- 								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" -->
+							<!-- 								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+							<!-- 							</a> -->
+
 						</div>
 					</nav>
 				</div>
@@ -174,23 +176,23 @@ font-size:25px;
 				</div>
 
 				<!-- Icon header -->
-<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
-<!-- 					<div -->
-<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
-<!-- 						<i class="zmdi zmdi-search"></i> -->
-<!-- 					</div> -->
+				<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
+				<!-- 						<i class="zmdi zmdi-search"></i> -->
+				<!-- 					</div> -->
 
-<!-- 					<div -->
-<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
-<!-- 						data-notify="2"> -->
-<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
-<!-- 					</div> -->
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
+				<!-- 						data-notify="2"> -->
+				<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
+				<!-- 					</div> -->
 
-<!-- 					<a href="#" -->
-<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
-<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
-<!-- 					</a> -->
-<!-- 				</div> -->
+				<!-- 					<a href="#" -->
+				<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
+				<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+				<!-- 					</a> -->
+				<!-- 				</div> -->
 
 				<!-- Button show menu -->
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -214,98 +216,98 @@ font-size:25px;
 
 					<li><a href="<c:url value="/WebIndex18/flight18.jsp" />"
 						class="label1 rs1">航班查詢</a></li>
-                   	<li>
-					<a href="blog.html">Blog</a>
-					</li>
+					<li><a href="blog.html">Blog</a></li>
 
-					<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+					<li><a href="about.html">About</a></li>
+
 					<li><a href="contact.html">Contact</a></li>
 				</ul>
 			</div>
 
 			<!-- Modal Search -->
 
-</header>
-			<!-- Cart -->
+		</header>
+		<!-- Cart -->
 
-			<!-- Slider -->
-			<section class="section-slide">
-				<div class="wrap-slick1">
-					<div class="slick1">
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-11.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="fadeInDown" data-delay="0">
-										<span class="ltext-101 cl2 respon2"> 景點搜尋 </span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="fadeInUp" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">River
-											Tourist</h2>
-									</div>
-
-
+		<!-- Slider -->
+		<section class="section-slide">
+			<div class="wrap-slick1">
+				<div class="slick1">
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-11.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="fadeInDown" data-delay="0">
+									<span class="ltext-101 cl2 respon2"> 景點搜尋 </span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="fadeInUp" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">River
+										Tourist</h2>
+								</div>
+
+
 							</div>
 						</div>
+					</div>
 
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-12.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rollIn" data-delay="0">
-										<span class="ltext-101 cl2 respon2">Wish You Have A
-											Pleasant Journey </span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="lightSpeedIn" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">Fantastic
-											Tourist</h2>
-									</div>
-
-
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-12.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rollIn" data-delay="0">
+									<span class="ltext-101 cl2 respon2">Wish You Have A
+										Pleasant Journey </span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="lightSpeedIn" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">Fantastic
+										Tourist</h2>
+								</div>
+
+
 							</div>
 						</div>
+					</div>
 
-						<div class="item-slick1"
-							style="background-image: url(../images/slide-13.jpg);">
-							<div class="container h-full">
-								<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rotateInDownLeft" data-delay="0">
-										<span class="ltext-101 cl2 respon2"> River Tourist 2019
-										</span>
-									</div>
-
-									<div class="layer-slick1 animated visible-false"
-										data-appear="rotateInUpRight" data-delay="800">
-										<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">New
-											arrivals</h2>
-									</div>
-								
-
+					<div class="item-slick1"
+						style="background-image: url(../images/slide-13.jpg);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rotateInDownLeft" data-delay="0">
+									<span class="ltext-101 cl2 respon2"> River Tourist 2019
+									</span>
 								</div>
+
+								<div class="layer-slick1 animated visible-false"
+									data-appear="rotateInUpRight" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">New
+										arrivals</h2>
+								</div>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
 
-			<!-- Banner -->
+		<!-- Banner -->
 
 
 
-			<!-- Product -->
 	</div>
-
-
+		<!-- Product -->
+			
+			
+			
 		<div id="maind" >
 		    <div class="d-flex justify-content-center"  id="center2">
 		    </div>
@@ -316,28 +318,35 @@ font-size:25px;
 							 <button type="button" class="btn text-center newTI">開始規劃新的旅程</button>
 							 <button type="button" class="btn text-center selectTI">我先前規劃的行程</button>
 						
-						<form action="planTourist2.jsp" method="post" class="newTIform" style="display:none">
+						<form action="plannewtourist" method="post" class="newTIform" style="display:none">
 								<div class="d-flex justify-content-center" style="margin-top:0">
 								<h2 class="ltext-201"  style="margin-bottom:30px">準備開始規劃新的旅程</h2>
 							
 								</div>
 								
-								行程名稱:<input type="text" name="tiname">
-								旅程的開始:<input type="text" id="from" name="from">
-								旅程最終日:<input type="text" id="to" name="to">
-								旅程共計天數:<input type="text" id="tday" name="tday">
-						<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" id="goplanti">開始規劃行程</button>
+								行程名稱:<input type="text" name="t_name">
+								旅程的開始:<input type="text" id="from" name="firstday">
+								旅程最終日:<input type="text" id="to" name="lastday">
+								旅程共計天數:<input type="text" id="tday" name="touristday">
+						<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" id="goplanti">建立新的行程</button>
 						</form>  
 						
 						   
-						<form action="" method="post" class="centerform" >
+						<form action="showTI" method="post" class="centerform" >
 						<input name='id' type="text" style="display:none" >
 						</form>
 		      </div>
 
-		</div>
-         
- 
+		</div>	
+			
+			
+			
+			
+			
+			
+
+
+
 
 
 
@@ -454,10 +463,191 @@ font-size:25px;
 	</footer>
 
 
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top"> <i
+			class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
 	
+<!-- Modal1 -->
+	<div id ="modal1" class="wrap-modal1 js-modal1 p-t-60 p-b-20 ">
+	
+		<div class="overlay-modal1 js-hide-modal1"></div>
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img  src="../images/icons/icon-close.png" alt="CLOSE">
+				</button>
+
+				<div class="row">
+				
+				<!-- 地圖區塊-->
+				<div  class="col-md-6 col-lg-7 p-b-30">  
+						<div id="map1">
+						</div>
+					</div>
+	
+				
+				<!-- 圖片區塊 -->
+					<div class="col-md-6 col-lg-5 p-b-30">  
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								
+
+								<div class="slick3 gallery-lb" style="width:100% ;">
+									<div class="item-slick3" data-thumb="../images/TAimages/TA1.jpg" >
+										<div class="wrap-pic-w pos-relative" >
+											<img name="imgmodal" src="../images/TAimages/TA1.jpg" alt="IMG-PRODUCT"style=" width:100%" >
+
+											<a  class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="../images/TAimages/TA1.jpg">
+												<i class="fa fa-expand" ></i>
+											</a>
+										</div>
+									</div>
+								</div>
+						<div class=" p-t-5 p-lr-0-lg" style="width:100%" >
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								Lightweight Jacket
+							</h4>
+
+							<span class="mtext-106 cl2">
+								$58.79
+							</span>
+
+							<p class="stext-102 cl3 p-t-23">
+								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							</p>
+							
+							<!-- 選單與Add to cart-->
+<!-- 							<div class="p-t-33">   -->
+<!-- 								<div class="flex-w flex-r-m p-b-10"> -->
+<!-- 									<div class="size-203 flex-c-m respon6"> -->
+<!-- 										Size -->
+<!-- 									</div> -->
+<!-- 									<div class="size-204 respon6-next"> -->
+<!-- 										<div class="rs1-select2 bor8 bg0"> -->
+<!-- 											<select class="js-select2" name="time"> -->
+<!-- 												<option>Choose an option</option> -->
+<!-- 												<option>Size S</option> -->
+<!-- 												<option>Size M</option> -->
+<!-- 												<option>Size L</option> -->
+<!-- 												<option>Size XL</option> -->
+<!-- 											</select> -->
+<!-- 											<div class="dropDownSelect2"></div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->	
+<!-- 								</div> -->
+
+								<div class="flex-w flex-r-m p-b-10">
+<!-- 									<div class="size-204 flex-w flex-m respon6-next"> -->
+<!-- 										<div class="wrap-num-product flex-w m-r-20 m-tb-10">										 -->
+<!-- 										</div> -->
+<!-- 										<button style="float:" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"> -->
+<!-- 											加入收藏 -->
+<!-- 										</button> -->
+<!-- 									</div> -->
+
+        							<div class="d-flex justify-content-center">
+										<button style="float:" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											加入收藏
+										</button>
+									</div>
+								</div>	
+							</div>
+
+						
+						</div>
+									
+
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+
 	
 
 
+
+
+	
+
+
+
+	<!--===============================================================================================-->
+	<script src="../js/jquery-3.3.1.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<!--===============================================================================================-->
+	<script src="../vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="../vendor/bootstrap/js/popper.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="../vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function() {
+			$(this).select2({
+				minimumResultsForSearch : 20,
+				dropdownParent : $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script>
+		$("#searchbtn").click(function() {				
+							
+				var ts = $("#touristarea").val()
+				var addr = $("#address").val()
+
+				
+				$.post("searchta",{"touristarea":ts,"address":addr},function(taList){
+
+					var txt1 ="<div class='row isotope-grid' id='isotope-grid'></div>"
+					$('#isotope-grid').empty();
+					
+					
+                              
+					var json = $.parseJSON(taList)
+					
+					var txt =""
+					json.forEach(function(TA){		
+						txt += '<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item name="fromsearch" "><div class="block2"><div class="block2-pic hov-img0">'						
+			            txt += '<img name="TAimage" src="${pageContext.servletContext.contextPath}/getTAImage?id='+TA.id+'" alt="IMG-PRODUCT">'		
+						txt += '<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">Quick View </a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="../product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'
+						txt +=TA.address
+						txt += '</a> <span class="stext-105 cl3">'+TA.touristarea+'</span><div  class="TAlng" hidden="true">'+TA.lng+'</div><div  class="TAlat" hidden="true">'+TA.lat+'</div><div  class="summary" hidden="true">'+TA.summary+'</div></div><div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04"	src="../images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="../images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>'	
+
+					})
+	       		
+			       		$('#isotope-grid').append(txt)	
+			       		$( '#isotope-grid' ).sortable( "refresh" );
+					
+					})
+				
+
+			})
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	<!--===============================================================================================-->
 	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../js/jquery-ui.js"></script>
@@ -482,9 +672,11 @@ font-size:25px;
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
-	
 		
- $(".newTI").on("click",function(){
+
+		
+		
+ $(".newTI").one("click",function(){
 	 
 	 $( ".newTI" ).hide( "fold",{direction:"down"},2000,showform );
 	 $( ".selectTI" ).hide( "slide",{direction:"right"},2000 );
@@ -494,7 +686,7 @@ font-size:25px;
 	 
 	})
 	
- $(".selectTI").on("click",function(){
+ $(".selectTI").one("click",function(){
 		 
 		 $( ".selectTI" ).hide( "fold",{direction:"down"},2000 );
 		 $( ".newTI" ).hide( "slide",{direction:"right"},2000,loadMemberTI);
@@ -537,10 +729,49 @@ font-size:25px;
 function showform(){
 	 $( ".newTIform" ).show( "explode", {}, 1500 );
 }
+	
+	
+	
+	
+$("#goplanti").one("click",function(){	
+	
+
+// 	$.ajax({
+// 	    url: 'newtourist',
+// 	    type: 'POST',
+// 	    cache: false,
+// 	    data: new FormData($('.newTIform')[0]),
+// 	    processData: false,
+// 	    contentType: false
+// 	}).done(function(res) {
+		
+// 			alert("123")
+	
+	
+// 	})
+	
+	
+	
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</script>
+	
+	
+	
 <!-- 日期格式初始化 -->
+	
 	<script type="text/javascript">
-//日期格式初始化
+
+	//日期格式初始化
 
 $( function() {
 
@@ -683,6 +914,7 @@ var DateDiff = function (sDate1, sDate2) { // sDate1 和 sDate2 是 2016-06-18 �
 		var id=$(this).parent().parent().find(".id").html()
 		$(".centerform").find("input[name=id]").val(id)
 		$(".centerform").submit()
+		alert(id)
 		alert("AAA")
 		
 	})
@@ -694,6 +926,7 @@ var DateDiff = function (sDate1, sDate2) { // sDate1 和 sDate2 是 2016-06-18 �
 	<!--===============================================================================================-->
 	<script src="../js/main.js"></script>
 
+	
 
 </body>
 </html>

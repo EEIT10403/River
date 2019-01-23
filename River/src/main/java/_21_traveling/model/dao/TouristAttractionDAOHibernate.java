@@ -57,12 +57,7 @@ public class TouristAttractionDAOHibernate implements TouristAttractionDAO {
 		TouristAttractionBean update = this.getSession().get(TouristAttractionBean.class, bean.getId());
 
 		if (update != null) {
-			update.setTouristarea(bean.getTouristarea());
-			update.setAddress(bean.getAddress());
-			update.setImg(bean.getImg());
-			update.setLat(bean.getLat());
-			update.setLng(bean.getLng());
-			update.setSummary(bean.getSummary());
+	        this.getSession().merge(bean);
 			return update;
 		}
 
