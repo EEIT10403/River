@@ -461,7 +461,8 @@
 										<img src="../images/icons/google.png" width="80" height="80">
 									</button> <!-- 								 <input type="button" value="Google登入" onclick="GoogleLogin();" -->
 									<!-- 								style="background-image: url(../images/icons/google.png); width: 80px; height: 80px;"> -->
-								   <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1640084803&redirect_uri=http://localhost:8080/River/_11_secure/LineLogin&state=087223ff0a1223a55c6cff2a6dd67f9a&scope=openid%20email%20profile">
+<!-- 								 <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1640084803&redirect_uri=http://localhost:8080/River/_11_secure/LineLogin&state=087223ff0a1223a55c6cff2a6dd67f9a&scope=openid%20email%20profile"> -->
+								   <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1640084803&redirect_uri=http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/_11_secure/LineLogin&state=087223ff0a1223a55c6cff2a6dd67f9a&scope=openid%20email%20profile">
 								   <img src="../images/icons/line-me.png" width="80" height="80"></a>
 								
 								</span>

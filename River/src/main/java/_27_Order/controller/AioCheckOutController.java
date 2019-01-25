@@ -252,10 +252,12 @@ public class AioCheckOutController {
 		aio.setHoldTradeAMT("0");
 		//��ݳ]�w�I�ڧ����q���^�Ǻ��}
 //		String returnURL = request.getContextPath()+"/Order/PayResult"; 不行這樣, 會留在歐付寶
-		aio.setReturnURL("http://localhost:8080/River/Order/PayResult");
+//		aio.setReturnURL("http://localhost:8080/River/Order/PayResult");
+		aio.setReturnURL("http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/Order/PayResult");
 		
 //		System.out.println(returnURL);
-		aio.setOrderResultURL("http://localhost:8080/River/Order/PayResult");
+//		aio.setOrderResultURL("http://localhost:8080/River/Order/PayResult");
+		aio.setOrderResultURL("http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/Order/PayResult");
 		try{
 			String html = all.aioCheckOut(aio, invoice);
 			System.out.println("媽我在這"+html);
