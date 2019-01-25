@@ -382,14 +382,8 @@
 								<h5 class="card-header">選擇日期與票種</h5>
 								<div class="card-body">
 									<p class="card-text ">
-<<<<<<< HEAD
-										使用日期 <input type="date" name="TravelDate" value="" min="2019-02-01">
-=======
 										使用日期 <input id="datePicker" type="date" name="TravelDate"
 											value="" min="2019-02-01">
->>>>>>> branch 'master' of https://github.com/EEIT10403/River.git
-
-
 
 									</p>
 									<p class="card-text " align="right">單位: 新台幣/元</p>
