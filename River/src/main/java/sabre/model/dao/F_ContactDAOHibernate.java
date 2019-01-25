@@ -2,6 +2,8 @@ package sabre.model.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class F_ContactDAOHibernate implements F_ContactDAO {
 				.setMaxResults(50)
 				.list();
 	}
+	
+	
+	
 	@Override
 	public F_ContactBean create(F_ContactBean bean) {
 		if(bean!=null) {
@@ -48,5 +53,28 @@ public class F_ContactDAOHibernate implements F_ContactDAO {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<F_ContactBean> findOrdersByMemberId(String MemberId){
+//		System.out.println("Order_No="+Order_No);
+		System.out.println("有近來hibernate2-"+MemberId);
+		Query query = this.getSession().createQuery("from F_ContactBean Where Member_Id=:xxx", F_ContactBean.class);
+		query.setParameter("xxx", MemberId);
+	
+		List<F_ContactBean> list = query.getResultList();
+//		System.out.println("有近findOrdersByMemberId ==>list="+list);
+	return list;
+	}
+	
+	@Override
+	public List<F_ContactBean> findOrdersByFOrder_No(String FOrder_No){
+//		System.out.println("Order_No="+Order_No);
+		System.out.println("有近來hibernate2-findOrdersByFOrder_No"+FOrder_No);
+		Query query = this.getSession().createQuery("from F_ContactBean Where FOrder_No=:xxx", F_ContactBean.class);
+		query.setParameter("xxx", FOrder_No);
+	
+		List<F_ContactBean> list = query.getResultList();
+//		System.out.println("有近findOrdersByMemberId ==>list="+list);
+	return list;
 	}
 }

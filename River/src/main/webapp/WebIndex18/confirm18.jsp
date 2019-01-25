@@ -562,6 +562,10 @@ table.greenTable tfoot .links a{
         <i class="icon-marker indexCount"><i class="fa fa-eercast" aria-hidden="true" style="color:green;">&nbsp;</i></i>
         <h4>填寫旅客名單</h4>
         	<h6><span class="text-orange">*為必填</span>行程前確認相關事宜對象</h6>
+        	
+        		
+		        <button style="float: right; padding-top: 10px" type="button" id="one-buttonOn" onclick="oneClick()">一鍵帶入</button>
+		        
     </div>
 </div>
 
@@ -585,14 +589,14 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="fchname" value="${param.fchname}">
+                            <input type="text" id="fchname${adultP}" name="fchname" value="${param.fchname}">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="fgender">
+	                        <select id="fgender${adultP}" name="fgender">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -602,21 +606,21 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
+                            <input type="text" id="fenfirstname${adultP}" name="fenfirstname"  value="${param.fenfirstname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
+                            <input type="text" id="fenlastname${adultP}" name="fenlastname"  value="${param.fenlastname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">出生日期</th>
                         <td>
-                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
+                            <input id="fbirth${adultP}" type="text" name="fbirth"  value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
                         </td>
                     </tr>
                     
@@ -642,14 +646,14 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="fchname" value="${param.fchname}">
+                            <input type="text" id="cchname${childP}" name="fchname" value="${param.fchname}">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="fgender">
+	                        <select id="cgender${childP}" name="fgender">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -659,21 +663,21 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
+                            <input type="text" id="cenfirstname${childP}" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
+                            <input type="text" id="cenlastname${childP}" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">出生日期</th>
                         <td>
-                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
+                            <input id="cbirth${childP}" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
                         </td>
                     </tr>
                     
@@ -699,14 +703,14 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">中文姓名</th>
                         <td>
-                            <input type="text" class="" name="fchname" value="${param.fchname}">
+                            <input type="text" id="bchname${babyP}" name="fchname" value="${param.fchname}">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">稱 謂</th>
                         <td>
-	                        <select name="fgender">
+	                        <select id="bgender${babyP}" name="fgender">
 								<option value="male">先生</option>
 								<option value="female">女士</option>
 							</select>
@@ -716,21 +720,21 @@ table.greenTable tfoot .links a{
                     <tr>
                         <th class="required">英文姓</th>
                         <td>
-                            <input type="text" class="" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
+                            <input type="text" id="benfirstname${babyP}" name="fenfirstname" value="${param.fenfirstname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">英文名</th>
                         <td>
-                            <input type="text" class="" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
+                            <input type="text" id="benlastname${babyP}" name="fenlastname" value="${param.fenlastname}" style="text-transform:uppercase;">
                         </td>
                     </tr>
                     
                     <tr>
                         <th class="required">出生日期</th>
                         <td>
-                            <input class="" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
+                            <input id="bbirth${babyP}" type="text" name="fbirth" value="${param.fbirth}" placeholder="格式：yyyy-MM-dd">
                         </td>
                     </tr>
                     
@@ -768,6 +772,7 @@ table.greenTable tfoot .links a{
         
     <div class="col-sm-11 col-sm-offset-1">
         <div class="row form-padding">
+        		
             <div class="table-head pull-left">
                 <h4 class="text-dark-green"><i class="icon-arrowLeft"></i>主要聯絡人</h4>
             </div>
@@ -884,13 +889,11 @@ table.greenTable tfoot .links a{
 <!--     內容區域 -->
 	訂單編號:${forder_No}<br>
 	
-	
+<!-- 連略人資料區 -->
 	<table class="greenTable">
-	
-	
 		<thead >
 		<tr>
-		<th colspan="6" style="background-color: #F0F0F0; color:red;">主要聯絡人</th>
+		<th colspan="6" style="background-color: #CCEEFF; color:red;">主要聯絡人</th>
 		</tr>
 		</thead>
 		<thead>
@@ -917,7 +920,117 @@ table.greenTable tfoot .links a{
 	</table>
 
 
+	
+		
+		
+		
+		
 
+
+<!-- 旅客資料區 -->
+
+<c:set var="adult" value="${forderBean.f_adult}"/>
+	<c:if test="${adult != 0}">
+		<c:forEach var="adultP" begin="1" end="${adult}">
+
+	<table class="greenTable">
+		<thead >
+		<tr>
+		<th colspan="6" style="background-color: #CCEEFF; color:red;">旅客&nbsp;成人<c:out value="${adultP}"/></th>
+		</tr>
+		</thead>
+		<thead>
+		<tr>
+		<th>中文姓名</th>
+		<th>稱 謂</th>
+		<th>英文姓</th>
+		<th>英文名</th>
+		<th>出生日期</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td><span id="fchname${adultP}a"></span></td>
+		<td><span id="fgender${adultP}a"></span></td>
+		<td><span id="fenfirstname${adultP}a"></span></td>
+		<td><span id="fenlastname${adultP}a"></span></td>
+		<td><span id="fbirth${adultP}a"></span></td>
+		</tr>
+		</tbody>
+	</table>
+
+	</c:forEach>
+</c:if>
+
+<c:set var="child" value="${forderBean.f_child}"/>
+	<c:if test="${child != 0}">
+		<c:forEach var="childP" begin="1" end="${child}">
+
+	<table class="greenTable">
+		<thead >
+		<tr>
+		<th colspan="6" style="background-color: #CCEEFF; color:red;">旅客&nbsp;孩童<c:out value="${childP}"/></th>
+		</tr>
+		</thead>
+		<thead>
+		<tr>
+		<th>中文姓名</th>
+		<th>稱 謂</th>
+		<th>英文姓</th>
+		<th>英文名</th>
+		<th>出生日期</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td><span id="fchname${childP}c"></span></td>
+		<td><span id="fgender${childP}c"></span></td>
+		<td><span id="fenfirstname${childP}c"></span></td>
+		<td><span id="fenlastname${childP}c"></span></td>
+		<td><span id="fbirth${childP}c"></span></td>
+		</tr>
+		</tbody>
+	</table>
+
+	</c:forEach>
+</c:if>
+
+<c:set var="baby" value="${forderBean.f_baby}"/>
+	<c:if test="${baby != 0}">
+		<c:forEach var="babyP" begin="1" end="${baby}">
+
+	<table class="greenTable">
+		<thead >
+		<tr>
+		<th colspan="6" style="background-color: #CCEEFF; color:red;">旅客&nbsp;嬰兒<c:out value="${babyP}"/></th>
+		</tr>
+		</thead>
+		<thead>
+		<tr>
+		<th>中文姓名</th>
+		<th>稱 謂</th>
+		<th>英文姓</th>
+		<th>英文名</th>
+		<th>出生日期</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr>
+		<td><span id="fchname${babyP}b"></span></td>
+		<td><span id="fgender${babyP}b"></span></td>
+		<td><span id="fenfirstname${babyP}b"></span></td>
+		<td><span id="fenlastname${babyP}b"></span></td>
+		<td><span id="fbirth${babyP}b"></span></td>
+		</tr>
+		</tbody>
+	</table>
+
+	</c:forEach>
+</c:if>
+	 	
 
 
 
@@ -960,150 +1073,94 @@ table.greenTable tfoot .links a{
 
 
 
-	<!-- Footer -->
-	<footer class="bg4 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
+		<!-- Footer -->
+			<footer class="bg3 p-t-75 p-b-32">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">關於百川</h4>
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+						<ul>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 鄭祺融 </a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 陳建良 </a></li>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 張誌元 </a></li>
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">特別感謝</h4>
+
+						<ul>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04">資策會</a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04">先啟資訊 </a></li>
+
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">訂購諮詢</h4>
+
+						<p class="stext-107 cl7 size-201">台北市大安區復興南路一段390號 2,3,15樓
+							+886 (0)2 6631 6666</p>
+
+						<div class="p-t-27">
+							<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-facebook"></i>
+							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-instagram"></i>
+							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-pinterest-p"></i>
 							</a>
-						</li>
+						</div>
+					</div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">菁英招募</h4>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
 					</div>
 				</div>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
+				<div class="p-t-40">
+					<div class="flex-c-m flex-w p-b-18">
+						<a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+						</a>
+					</div>
 
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
+					<p class="stext-107 cl6 txt-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						All rights reserved | Made with <i class="fa fa-heart-o"
+							aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">Colorlib</a> &amp; distributed by <a
+							href="https://themewagon.com" target="_blank">ThemeWagon</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
 				</div>
 			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
-		</div>
-	</footer>
+		</footer>
 
 
 	<!-- Back to top -->
@@ -1517,32 +1574,87 @@ $(function() {
 </script>
 
 <script>
-  $('#chnameCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#chnameCTT2').text($(this).val());
-  });
-  $('#genderCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#genderCTT2').text($(this).val());
-  });
-  $('#enfirstnameCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#enfirstnameCTT2').text($(this).val());
-  });
-  $('#enlastnameCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#enlastnameCTT2').text($(this).val());
-  });
-  $('#phoneCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#phoneCTT2').text($(this).val());
-  });
-  $('#mailCTT').on('keyup blur', function() {
-    console.log('asdf');
-    $('#mailCTT2').text($(this).val());
-  });
+    
+  $("#doc-prompt-toggle").on("click",function(){
+	  
+// 	  聯絡人資料區域
+	  $('#chnameCTT2').text($('#chnameCTT').val());
+	  $('#genderCTT2').text($('#genderCTT').val());
+	  $('#enfirstnameCTT2').text($('#enfirstnameCTT').val());
+	  $('#enlastnameCTT2').text($('#enlastnameCTT').val());
+	  $('#phoneCTT2').text($('#phoneCTT').val());
+	  $('#mailCTT2').text($('#mailCTT').val());
+	  
+	 	 
+// 	  旅客名單區域	  
+	  $('#fchname1a').text($('#fchname1').val());
+	  $('#fgender1a').text($('#fgender1').val());
+	  $('#fenfirstname1a').text($('#fenfirstname1').val());
+	  $('#fenlastname1a').text($('#fenlastname1').val());
+	  $('#fbirth1a').text($('#fbirth1').val());
+	 
+	  $('#fchname2a').text($('#fchname2').val());
+	  $('#fgender2a').text($('#fgender2').val());
+	  $('#fenfirstname2a').text($('#fenfirstname2').val());
+	  $('#fenlastname2a').text($('#fenlastname2').val());
+	  $('#fbirth2a').text($('#fbirth2').val());
+	 
+	  $('#fchname1c').text($('#cchname1').val());
+	  $('#fgender1c').text($('#cgender1').val());
+	  $('#fenfirstname1c').text($('#cenfirstname1').val());
+	  $('#fenlastname1c').text($('#cenlastname1').val());
+	  $('#fbirth1c').text($('#cbirth1').val());
+	 
+	  $('#fchname1b').text($('#bchname1').val());
+	  $('#fgender1b').text($('#bgender1').val());
+	  $('#fenfirstname1b').text($('#benfirstname1').val());
+	  $('#fenlastname1b').text($('#benlastname1').val());
+	  $('#fbirth1b').text($('#bbirth1').val());
+	 
+  })
+    
 </script>
-	
+
+<script>
+// 一鍵帶入用
+    function oneClick(){
+// 旅客名單區域	  	
+    	$("input[id='fchname1']").val('林小明');
+		$("select[id='fgender1']").val('male');
+		$("input[id='fenfirstname1']").val('LIN');
+		$("input[id='fenlastname1']").val('XIAO-MING');
+		$("input[id='fbirth1']").val('1990-01-01');
+		
+    	$("input[id='fchname2']").val('陳小美');
+		$("select[id='fgender2']").val('female');
+		$("input[id='fenfirstname2']").val('CHEN');
+		$("input[id='fenlastname2']").val('XIAO-MEI');
+		$("input[id='fbirth2']").val('1991-02-02');
+		
+    	$("input[id='cchname1']").val('林阿明');
+		$("select[id='cgender1']").val('male');
+		$("input[id='cenfirstname1']").val('LIN');
+		$("input[id='cenlastname1']").val('A-MING');
+		$("input[id='cbirth1']").val('2014-04-04');
+		
+    	$("input[id='bchname1']").val('林明美');
+		$("select[id='bgender1']").val('female');
+		$("input[id='benfirstname1']").val('LIN');
+		$("input[id='benlastname1']").val('MING-MEI');
+		$("input[id='bbirth1']").val('2018-03-03');
+		
+//聯絡人資料
+		$("input[id='chnameCTT']").val('林小明');
+		$("select[id='genderCTT']").val('male');
+		$("input[id='enfirstnameCTT']").val('LIN');
+		$("input[id='enlastnameCTT']").val('XIAO-MING');
+		$("input[id='fbirth1']").val('1990-01-01');
+		$("input[id='phoneCTT']").val('0940499499');
+		$("input[id='mailCTT']").val('LINLIN@Amail.com');
+		
+    }
+    
+</script>
 	
 <!--===============================================================================================-->
 	<script src="../js/main.js"></script>

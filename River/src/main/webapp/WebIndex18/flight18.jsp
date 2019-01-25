@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="/WebIndex18/500.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -74,11 +75,11 @@
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
-								<li class="active-menu"><a
+								<li  class="label1"><a
 									href="<c:url value="/index18.jsp" />">首頁</a></li>
 								<c:if test="${not empty member_Id}">
 
-									<li class="label1"><a
+									<li  class="active-menu"><a
 										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
 									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
@@ -794,150 +795,94 @@
 
 
 
-	<!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
+		<!-- Footer -->
+			<footer class="bg3 p-t-75 p-b-32">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">關於百川</h4>
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+						<ul>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 鄭祺融 </a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 陳建良 </a></li>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04"> 張誌元 </a></li>
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">特別感謝</h4>
+
+						<ul>
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04">資策會</a></li>
+
+							<li class="p-b-10"><a href="#"
+								class="stext-107 cl7 hov-cl1 trans-04">先啟資訊 </a></li>
+
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">訂購諮詢</h4>
+
+						<p class="stext-107 cl7 size-201">台北市大安區復興南路一段390號 2,3,15樓
+							+886 (0)2 6631 6666</p>
+
+						<div class="p-t-27">
+							<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-facebook"></i>
+							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-instagram"></i>
+							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+								class="fa fa-pinterest-p"></i>
 							</a>
-						</li>
+						</div>
+					</div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">菁英招募</h4>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
 					</div>
 				</div>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
+				<div class="p-t-40">
+					<div class="flex-c-m flex-w p-b-18">
+						<a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
+						</a> <a href="#" class="m-all-1"> <img
+							src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+						</a>
+					</div>
 
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
+					<p class="stext-107 cl6 txt-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						All rights reserved | Made with <i class="fa fa-heart-o"
+							aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">Colorlib</a> &amp; distributed by <a
+							href="https://themewagon.com" target="_blank">ThemeWagon</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
 				</div>
 			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
-		</div>
-	</footer>
+		</footer>
 
 
 	<!-- Back to top -->

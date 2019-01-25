@@ -5778,13 +5778,10 @@ to {
 }
 
 a.list-group-item, button.list-group-item {
-	color: #555
+	color: #555;
+	background-color: #ceebff
 }
 
-a.list-group-item .list-group-item-heading, button.list-group-item .list-group-item-heading
-	{
-	color: #333
-}
 
 a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus,
 	button.list-group-item:hover {

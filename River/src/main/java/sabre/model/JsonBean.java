@@ -251,6 +251,11 @@ public class JsonBean {
 							}
 							public Integer ElapsedTime;
 							public List<flightSegment> FlightSegment;
+							@Override
+							public String toString() {
+								return "originDestinationOption [ElapsedTime=" + ElapsedTime + ", FlightSegment="
+										+ FlightSegment + "]";
+							}
 							public static class flightSegment{
 								public String getDepartureDateTime() {
 									return DepartureDateTime;
@@ -302,6 +307,18 @@ public class JsonBean {
 								}
 								public operatingAirline getOperatingAirline() {
 									return OperatingAirline;
+								}
+								@Override
+								public String toString() {
+									return "flightSegment [DepartureDateTime=" + DepartureDateTime
+											+ ", ArrivalDateTime=" + ArrivalDateTime + ", StopQuantity=" + StopQuantity
+											+ ", FlightNumber=" + FlightNumber + ", ResBookDesigCode="
+											+ ResBookDesigCode + ", ElapsedTime=" + ElapsedTime + ", DepartureAirport="
+											+ DepartureAirport + ", ArrivalAirport=" + ArrivalAirport
+											+ ", OperatingAirline=" + OperatingAirline + ", Equipment=" + Equipment
+											+ ", MarketingAirline=" + MarketingAirline + ", MarriageGrp=" + MarriageGrp
+											+ ", DepartureTimeZone=" + DepartureTimeZone + ", ArrivalTimeZone="
+											+ ArrivalTimeZone + ", TPA_Extensions=" + TPA_Extensions + "]";
 								}
 								public void setOperatingAirline(operatingAirline operatingAirline) {
 									OperatingAirline = operatingAirline;

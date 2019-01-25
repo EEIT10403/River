@@ -26,6 +26,20 @@ public class F_ContactService {
 		}
 		return result;
 	}
+	
+	public List<F_ContactBean> findOrdersByMemberId(String Member_Id) {
+		return f_ContactDAO.findOrdersByMemberId(Member_Id);
+
+	}
+	
+
+	public List<F_ContactBean> findOrdersByFOrder_No(String FOrder_No) {
+		return f_ContactDAO.findOrdersByMemberId(FOrder_No);
+
+	}
+	
+	
+	
 	public F_ContactBean insert(F_ContactBean bean) {
 		F_ContactBean result = null;
 		if(bean!=null) {

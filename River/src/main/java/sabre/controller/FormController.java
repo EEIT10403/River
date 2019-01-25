@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.zip.GZIPInputStream;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +31,7 @@ import sabre.model.BFMSearchService;
 import sabre.model.FormBean;
 import sabre.model.JsonBean;
 import sabre.model.JsonBean.oTA_AirLowFareSearchRS.pricedItineraries.pricedItinerary;
+import sabre.model.JsonBean.oTA_AirLowFareSearchRS.pricedItineraries.pricedItinerary.airItinerary.originDestinationOptions.originDestinationOption.flightSegment;
 import sabre.model.Token;
 
 @Controller
@@ -173,6 +176,26 @@ public class FormController {
 		//印出航班編號
 		List<pricedItinerary> PricedItinerary= jsonBean.getOTA_AirLowFareSearchRS().getPricedItineraries().getPricedItinerary();
 		session.setAttribute("PricedItinerary", PricedItinerary);
+		
+		
+//篩選功能，List去除重複公司
+		Set<String> airl = new HashSet<String>();
+		
+		 for(int j = 1; j < PricedItinerary.size(); j++) { 
+			 List<flightSegment> flightSegment= PricedItinerary.get(j).getAirItinerary().getOriginDestinationOptions().
+						getOriginDestinationOption().get(0).getFlightSegment();
+			 String OperatingAirline = flightSegment.get(0).getOperatingAirline().getCode();
+			 
+			 airl.add(OperatingAirline);
+			 
+			 
+		 }
+		
+		System.out.println(airl);
+
+		
+		
+		session.setAttribute("airl",airl);
 		
 		
 		

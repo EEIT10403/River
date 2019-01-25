@@ -383,11 +383,7 @@
 								<div class="card-body">
 									<p class="card-text ">
 										使用日期 <input type="date" name="TravelDate" value="" min="2019-02-01">
-<script>
-var date =new Date().toDateInputValue();
-alert(date)
 
-</script>
 
 
 									</p>
