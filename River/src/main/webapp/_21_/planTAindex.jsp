@@ -606,7 +606,7 @@ font-size:25px;
 				var addr = $("#address").val()
 
 				
-				$.post("searchta",{"touristarea":ts,"address":addr},function(taList){
+				$.post("/_21_/searchta",{"touristarea":ts,"address":addr},function(taList){
 
 					var txt1 ="<div class='row isotope-grid' id='isotope-grid'></div>"
 					$('#isotope-grid').empty();
@@ -733,7 +733,26 @@ function showform(){
 	
 	
 	
+$("#goplanti").one("click",function(){	
+	
 
+// 	$.ajax({
+// 	    url: 'newtourist',
+// 	    type: 'POST',
+// 	    cache: false,
+// 	    data: new FormData($('.newTIform')[0]),
+// 	    processData: false,
+// 	    contentType: false
+// 	}).done(function(res) {
+		
+// 			alert("123")
+	
+	
+// 	})
+	
+	
+	
+	})
 	
 	
 	
