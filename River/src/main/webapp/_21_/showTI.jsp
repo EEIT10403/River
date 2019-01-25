@@ -351,13 +351,13 @@ font-weight: 1000;
 							<div class="wrap-slick3 flex-sb flex-w">
 
 						<div class=" p-t-5 p-lr-0-lg" style="width:100%" >
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14 from" style="font-size:40px;text-align:center">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14 from" style="font-size:25px;text-align:center">
 								Lightweight Jacket
 							</h4>
 							<div style="font-size:40px;text-align:center">
 							<span class="lnr lnr-arrow-down" ></span>
 							</div>
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14 to" style="font-size:40px;text-align:center">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14 to" style="font-size:25px;text-align:center">
 								Lightweight Jacket
 							</h4>
 
@@ -545,7 +545,7 @@ font-weight: 1000;
     			       //塞經緯度進path 建立navbar上的標籤
     			       var onepath = {lat: x[j].lat, lng: x[j].lng}
     			       path.push(onepath)		       
-    			       var onetitle = "<div><h3>" + x[j].address +"</h3></div>"
+    			       var onetitle = "<div><h4>" + x[j].address +"</h4></div>"
     			       title.push(onetitle)
     			       //加入車車icons
     			       var txt='<div data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="col icon-maker marker'+(j+1)+'">'
@@ -577,15 +577,7 @@ font-weight: 1000;
         
         
         
-    	  var image = {
-    	          url: '../images/icons/placeholder/showplaceholder.png',
-    	          // This marker is 20 pixels wide by 32 pixels high.
-    	          size: new google.maps.Size(48, 56),
-    	          // The origin for this image is (0, 0).
-    	          origin: new google.maps.Point(0, -8),
-    	          // The anchor for this image is the base of the flagpole at (0, 32).
-    	          anchor: new google.maps.Point(24,56)
-    	        };
+    	
         
         
         
@@ -616,6 +608,17 @@ font-weight: 1000;
          
         });
         $.each(path,function(index,value){
+        	  var image = {
+        	          url: '../images/icons/placeholder/sholder'+(index+1)+'.png',
+        	          // This marker is 20 pixels wide by 32 pixels high.
+        	          size: new google.maps.Size(48, 56),
+        	          // The origin for this image is (0, 0).
+        	          origin: new google.maps.Point(0, -8),
+        	          // The anchor for this image is the base of the flagpole at (0, 32).
+        	          anchor: new google.maps.Point(24,56)
+        	        };
+        	
+        	
         	var markerid =".marker"+(index+1)
         var marker = new google.maps.Marker({
         	
@@ -625,18 +628,18 @@ font-weight: 1000;
             position: value,
             map: map,
 //          animation.google.maps.Animation.BOUNCE,
-             label: {
-					   text: labels[labelIndex++ % labels.length],
-					   color: 'black',
-					   fontSize: "24px"
-					 }
+//              label: {
+// 					   text: labels[labelIndex++ % labels.length],
+// 					   color: 'black',
+// 					   fontSize: "24px"
+// 					 }
           }); 
         
         var infowindow = new google.maps.InfoWindow({
             content: title[index]
           });
         
-        $(".row").on("click",markerid,function(){
+        $(".row").on("mouseover",markerid,function(){
         	
         	infowindow.open(map, marker);
         	addanimate(marker)
@@ -676,11 +679,11 @@ font-weight: 1000;
                 var travelmode= "DRIVING"
                 $("select[name='travelmode']").on("change",function(){
                 	travelmode=$(this).val()
-                	console.log(travelmode)
                 	calculateAndDisplayRoute(directionsService, directionsDisplay)
 
 	
                 })
+                	console.log(travelmode)
                 
 
                 
@@ -751,7 +754,7 @@ font-weight: 1000;
 	        var directionsDisplay = new google.maps.DirectionsRenderer;
 	        var map1 = new google.maps.Map(document.getElementById('map1'), {
 	          zoom: 6,
-	          center: {lat: 41.85, lng: -87.65}
+// 	          center: {lat: 41.85, lng: -87.65}
 	        });
 	        directionsDisplay.setMap(map1);
 	        

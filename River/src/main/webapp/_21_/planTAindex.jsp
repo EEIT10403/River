@@ -733,26 +733,7 @@ function showform(){
 	
 	
 	
-$("#goplanti").one("click",function(){	
-	
 
-// 	$.ajax({
-// 	    url: 'newtourist',
-// 	    type: 'POST',
-// 	    cache: false,
-// 	    data: new FormData($('.newTIform')[0]),
-// 	    processData: false,
-// 	    contentType: false
-// 	}).done(function(res) {
-		
-// 			alert("123")
-	
-	
-// 	})
-	
-	
-	
-	})
 	
 	
 	
@@ -914,8 +895,7 @@ var DateDiff = function (sDate1, sDate2) { // sDate1 和 sDate2 是 2016-06-18 �
 		var id=$(this).parent().parent().find(".id").html()
 		$(".centerform").find("input[name=id]").val(id)
 		$(".centerform").submit()
-		alert(id)
-		alert("AAA")
+		
 		
 	})
 	

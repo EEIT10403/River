@@ -459,19 +459,7 @@ text-align:center;
   <c:out escapeXml="false" value=' <div class="row oneTA nodrag"> <div class="col-sm-2" ><div class="icon-maker-default"></div></div><div class="col-sm-9" style="background-color:white;border:gray 1px solid"><h3 style="text-align:center;line-height:50px"> <img alt="" src="../images/icons/placeholder/add.png"></h3></div></div></div>'></c:out>
   </c:forEach>
   
-  
- 
- 
 
-
-  
-  
-  
-  
-  
-  
-  
-  
    
     
   </div>
@@ -1386,12 +1374,9 @@ $("#pdiv").on("click",".isotope-item",function(){
 		    		
 		    		
 		    	
-		    	$("#goshowtibtn").on("click",function(){
+		    	$("#goshowtibtn").on("click",function(){	
 		    		updateti();
-		    		
 		    		$(".tiid").submit();
-		    		
-		    		
 		    	})
 		    	
 		    	

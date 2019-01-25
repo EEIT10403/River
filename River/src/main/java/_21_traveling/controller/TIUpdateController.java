@@ -40,8 +40,11 @@ public class TIUpdateController {
 	@RequestMapping("/_21_/updateTI")
 	@ResponseBody
 	public void updateTI(TravelItineraryBean bean) {
-		bean =tiService.update(bean);
-		System.out.println(bean);
+		
+		if(bean.getId()!=null) {
+			bean =tiService.update(bean);
+			System.out.println(bean);			
+		}
 
 	}
 	
