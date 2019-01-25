@@ -17,3 +17,7 @@ sort（event，ui）類型：sort
 
 透過Ajax 跳轉頁面
 https://blog.csdn.net/qq_39654446/article/details/78559251
+
+
+
+https://maps.googleapis.com/maps/api/directions/json?origin=%E6%9E%97%E5%8F%A3&destination=%E6%96%B0%E8%8E%8A&avoid=highways&mode=driving&key=AIzaSyA1O4vNHfOVtr86ZtznzI4ZeqOBQIM7q5Y

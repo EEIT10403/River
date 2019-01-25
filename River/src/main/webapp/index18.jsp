@@ -95,9 +95,9 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
+									<li><a id="modal-193880" href="#partnerLogin"
+										role="button" class="btn" data-toggle="modal">管理員專區</a></li>
+
 								</c:if>
 								<c:if test="${not empty staff_id}">
 									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
@@ -117,7 +117,7 @@
 										<div class="modal-body">
 											<form action="<c:url value="/partner/login" />"
 												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
+												<table style="margin-left: 20%">
 													<tr>
 														<td>登入帳號 :</td>
 														<td><input type="text" name="staff_Id"
@@ -125,8 +125,8 @@
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
+													<tr">
+														<td>登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
 															style="border: solid 1px; margin: 5px"></td>
@@ -164,7 +164,7 @@
 										<a class="dropdown-item"
 											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 										<a class="dropdown-item"
-											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+											href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 										<a class="dropdown-item"
 											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 										<a class="dropdown-item"
@@ -209,7 +209,7 @@
 								<a class="dropdown-item"
 									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
 								<a class="dropdown-item"
-									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">我的機票</a>
+									href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
 								<a class="dropdown-item"
 									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
 								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
@@ -257,58 +257,58 @@
 
 					</c:if>
 					<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
-							</ul>
+						<li><a id="modal-193880" href="#partnerLogin" role="button"
+							class="btn" data-toggle="modal">管理員專區</a></li>
 
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
+					</c:if>
+				</ul>
 
-										</div>
-									</div>
-
-								</div>
+				<div class="modal fade" id="partnerLogin" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="<c:url value="/partner/login" />"
+									style="padding-top: 20px" method="get">
+									<table style="margin-left: 20%">
+										<tr>
+											<td>登入帳號 :</td>
+											<td><input type="text" name="staff_Id"
+												value="${param.staff_Id}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx1}</span></td>
+										</tr>
+										<tr">
+											<td>登入密碼 :</td>
+											<td><input type="password" name="password"
+												value="${param['password']}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx2}</span></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td align="right" style="padding: 20px"><button
+													type="submit" id='confirmBtn' type="button"
+													class="btn btn-block btn-info">登入</button></td>
+										</tr>
+									</table>
+								</form>
 
 							</div>
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 
 			<!-- Modal Search -->
@@ -423,7 +423,7 @@
 
 
 		<!-- Product -->
-		
+
 		<section class="bg0 p-t-23 p-b-140">
 			<div class="container">
 
@@ -556,7 +556,7 @@
 
 						<ul>
 							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 羅　平 </a></li>
+								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
 
 							<li class="p-b-10"><a href="#"
 								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>

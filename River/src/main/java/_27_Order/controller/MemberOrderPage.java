@@ -291,7 +291,7 @@ public class MemberOrderPage {
 			List<OrderItemBean> oBeans = orderItemService.findItemsByOrder_No(Order_No);
 			
 			
-		if(RtnCode==1) {  //改item狀態
+		if(RtnCode==1) {  //RtnCode有進來, 改item狀態
 			for(OrderItemBean bean:oBeans) {
 				bean.setUnpaid_Amount(0);
 				bean.setPaid_Amount(bean.getTotal_Amount());

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +18,7 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
 	href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <!--===============================================================================================-->
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
@@ -60,7 +62,7 @@
 
 
 <style type="text/css">
-input, textarea {
+input, textarea ,.titiledate{
 	background-color: #E6CFE6;
 	border-radius: 10px;
 	padding-left: 20px;
@@ -101,6 +103,17 @@ background-color:#E8CCFF;
 
 .icon-maker{
 background-image:url('../images/icons/placeholder/placeholder1.png');
+background-repeat:no-repeat;
+background-size:contain;
+height:50px;
+width:50px;
+text-align:center;
+padding-top: 5px;
+font-size: 20px;
+margin: 5px 0px;
+}
+.icon-maker-default{
+background-image:url('../images/icons/placeholder/placeholder-default.png');
 background-repeat:no-repeat;
 background-size:contain;
 height:50px;
@@ -163,6 +176,19 @@ margin: 25px 0;
 }
 .ttitile{
 line-height: 50px;
+}
+.xxx{
+	position : absolute;
+	top : 0px;
+	right : 0px;
+	width : 20px;
+	height : 20px;
+/* 	background-color:white; */
+}
+.dropdown-item{
+text-align:center;
+
+
 }
 
 </style>
@@ -366,16 +392,34 @@ line-height: 50px;
 
 		<!-- Product -->
 	</div>
-			<div class="d-flex justify-content-center">
-				<h1>${param.tiname}</h1>
+			<div class="d-flex justify-content-center " id="tititle">
+
+	
+				<button class="ltext-101 cl0 size-101 bg1 bor2 hov-btn1 m-lr-50 m-t-15 trans-02" id="goshowtibtn"  style="float:right;padding:0"><i class="zmdi zmdi-check"></i>規劃完成</button>
+
+				<span class="ltext-201 cl2  p-b-43">${tibean.t_name}</span>
+				
+			
+				<button class="ltext-101 cl0 size-101 bg1 bor2 hov-btn1 m-lr-50 m-t-15 trans-02"   style="float:right"><i class="zmdi zmdi-edit"></i>修改內容</button>
+				<form action="showTI" method="post" class="tiid" hidden='true'>
+				<input type="text" name="id" value="${tibean.id}">
+				
+				</form>
 			 </div>
 		<div class="d-flex justify-content-center ttitile">
+		
+		
+	
+
+<fmt:formatDate var="firstday" value="${tibean.firstday}" pattern="yyyy-MM-dd " ></fmt:formatDate>
+<fmt:formatDate var="lastday" value="${tibean.lastday}" pattern="yyyy-MM-dd " ></fmt:formatDate>
+		
 			<label for="from">起始日</label>
-			<input type="date" id="from" name="from" value="${param.from}">
+			<span class="titiledate" style="width:155px" id="from" >${firstday}</span>
 			<label for="to">結束日</label>
-			<input type="date" id="to" name="to" value="${param.to}">
+			<span class="titiledate" style="width:155px" id="to" >${lastday}</span>
 			<label for="to">共計</label>
-			<input type="text" id="tday" style="width:100px" name="tday" value="${param.tday}">
+			<input type="text" id="tday" style="width:100px" name="tday" value="${tibean.touristday}" readonly="readonly">
 			<label for="to">日</label>
  		</div>
 
@@ -406,13 +450,29 @@ line-height: 50px;
     <div class="tab-content" id="TAtext">
         <div id="allTA" class="tab-pane fade in active">
             <h3>行程總覽</h3>
-            <span  class="badge badge-pill badge-secondary" id="day1">第1天</span>
   
-    <div id="draggable" style="height:350px">
+  <!-- 依天數產生標籤 -->
   
-	     
-<!--        <span class="badge badge-pill badge-secondary" id="day3">第3天</span> -->
-    </div>
+  <c:forEach var='day' begin='1' end='${tibean.touristday}'>
+  <c:out escapeXml="false" value="<span  class='badge badge-pill badge-secondary' >"></c:out>
+  <c:out escapeXml="false" value="第${day}天</span><div class='draggableti' id='day${day}'>"></c:out>
+  <c:out escapeXml="false" value=' <div class="row oneTA nodrag"> <div class="col-sm-2" ><div class="icon-maker-default"></div></div><div class="col-sm-9" style="background-color:white;border:gray 1px solid"><h3 style="text-align:center;line-height:50px"> <img alt="" src="../images/icons/placeholder/add.png"></h3></div></div></div>'></c:out>
+  </c:forEach>
+  
+  
+ 
+ 
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+   
     
   </div>
     
@@ -513,9 +573,15 @@ line-height: 50px;
 											
 										</div>
 
-
-
-										<button id="addnewTA" type="button" class="btn btn-primary">新增景點</button>
+                                           <div class="d-flex justify-content-center" style="line-height:50px">
+                                           	新增到:<select class="fortaday" style="margin:0 20px ">
+                                             
+                                           <c:forEach var="i" begin='1' end='${tibean.touristday}' >
+                                            <c:out value="<option value='${i}' >第${i}天</option>" escapeXml='false'></c:out>
+                                           </c:forEach>
+                                           </select>
+										<button id="addnewTA" type="button" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1  trans-04" style="width:100px;margin-right:50px">新增景點</button>
+                                           </div>
 									</form>
 								</div>
 							</div>
@@ -525,7 +591,7 @@ line-height: 50px;
 					<div class="col-md-6">
 						<div id='map'></div>
 						<img id='preview_progressbarTW_img' src='../images/preview.jpg' alt='預覽圖片'
-							width='100%' height='40%' style="border: double 5px #009FCC" />
+							width='100%' height='300px' style="border: double 5px #009FCC" />
 					</div>
 				</div>
    		</div>
@@ -558,150 +624,7 @@ line-height: 50px;
 
 				<div  id='pdiv' >
 
-					<!-- 商品位置 -->
-					<div class="row isotope-grid" >
-
-
-						<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item women">
-							<!--Block2 -->
-							<div id="TA2" class="block2">
-								<div class="block2-pic hov-img0">
-									<img name="TAimage" src="../images/TAimages/TA2.jpg" alt="IMG-PRODUCT">
-									 <a  
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										Quick View </a>
-								</div>
-
-								<div class="block2-txt flex-w flex-t p-t-14">
-									<div class="block2-txt-child1 flex-col-l ">
-										<a href="../product-detail.html"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											元乃隅稻成神社 </a> <span class="stext-105 cl3">
-											日本 山口 </span>
-											<div  class="TAlng" hidden='true'>131.0625685</div>
-											<div  class="TAlat" hidden='true'>34.4196287</div>
-											<div  class="summary" hidden='true'>「元乃隅稻成神社」（もとのすみいなりじんじゃ）在1955年建立，傳說有一位船主人夢見了一隻白狐，白狐表示船主人能夠滿載而歸都是托他之福，請他們在此處祭祀祂，當地人從島根県津和野町太鼓谷稲成神社分靈，在此建立了神社。在日本約有4萬座稻荷神社，但「稻成」神社只有兩間，兩字也意味的願望實現的意思，因此吸引了許多香客朝拜。</div>
-									</div>
-
-									<div class="block2-txt-child2 flex-r p-t-3">
-										<a href="#"
-											class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-											<img class="icon-heart1 dis-block trans-04"
-											src="../images/icons/icon-heart-01.png" alt="ICON"> <img
-											class="icon-heart2 dis-block trans-04 ab-t-l"
-											src="../images/icons/icon-heart-02.png" alt="ICON">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item men">
-						<!--Block2 -->
-							<div id="TA3" class="block2">
-								<div class="block2-pic hov-img0">
-									<img name="TAimage" src="../images/TAimages/TA3.jpg" alt="IMG-PRODUCT"> <a
-										href="#"
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										Quick View </a>
-								</div>
-
-								<div class="block2-txt flex-w flex-t p-t-14">
-									<div class="block2-txt-child1 flex-col-l ">
-										<a href="../product-detail.html"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											高山稻荷神社 </a> <span class="stext-105 cl3">
-											日本 青森 </span>
-											<div  class="TAlng" hidden='true'>135.7726717</div>
-											<div  class="TAlat" hidden='true'>34.9671402</div>
-											<div  class="summary" hidden='true'>高山稻荷神社是設立於屏風山正中央的神社，在這裡可以一望岩木山、日本海和十三湖方向的美景。這裡同時也是祈求五穀豐收、海上安全與生意興隆相當靈驗的神社。高山稻荷神社所祭祀的神祇和全國稻荷神社的本社・伏見稻荷大社一樣，供奉著宇迦之御魂命、佐田彥命和大宮賣命三大神明。走進神社境內，登上百餘段的石階來到拜殿後，就能看見沿著曲線林立的紅色千本鳥居景觀。</div>
-										</div>
-
-									<div class="block2-txt-child2 flex-r p-t-3">
-										<a href="#"
-											class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-											<img class="icon-heart1 dis-block trans-04"
-											src="../images/icons/icon-heart-01.png" alt="ICON"> <img
-											class="icon-heart2 dis-block trans-04 ab-t-l"
-											src="../images/icons/icon-heart-02.png" alt="ICON">
-										</a>
-										</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item watches">
-							<!--Block2 -->
-							<div id="TA4" class="block2">
-								<div class="block2-pic hov-img0">
-									<img name="TAimage" src="../images/TAimages/TA4.jpg" alt="IMG-PRODUCT"> <a
-										href="#"
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										Quick View </a>
-								</div>
-
-								<div class="block2-txt flex-w flex-t p-t-14">
-									<div class="block2-txt-child1 flex-col-l ">
-										<a href="../product-detail.html"
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											太鼓谷稻成神社 </a> <span class="stext-105 cl3">
-											日本 島根 </span>
-											<div  class="TAlng" hidden='true'>131.7689333</div>
-											<div  class="TAlat" hidden='true'>34.4653022</div>
-									        <div  class="summary" hidden='true'>太鼓谷稻成神社位在島根縣的津和他是山陰地區最大的稻荷神社不同於出雲大社是結緣神社(祈求戀愛)太鼓谷稻成神社主要是祈求財運~生意興隆等所以太鼓谷稻成神社的神被人們當作“達成願望”之神而崇敬</div>
-									     </div>
-
-									<div class="block2-txt-child2 flex-r p-t-3">
-										<a href="#"
-											class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-											<img class="icon-heart1 dis-block trans-04"
-											src="../images/icons/icon-heart-01.png" alt="ICON"> <img
-											class="icon-heart2 dis-block trans-04 ab-t-l"
-											src="../images/icons/icon-heart-02.png" alt="ICON">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item shoes">
-							<!--Block2 -->
-							<div id="TA1" class="block2">
-								<div class="block2-pic hov-img0">
-									<img name="TAimage" src="../images/TAimages/TA1.jpg" alt="IMG-PRODUCT"> <a
-										href="#test"   
-										class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-										Quick View </a>
-								</div>
-
-								<div class="block2-txt flex-w flex-t p-t-14">
-									<div class="block2-txt-child1 flex-col-l ">
-										<a href="../product-detail.html" 
-											class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											伏見稻荷大社 </a> <span class="stext-105 cl3">
-											日本 京都 </span>
-											<div  class="TAlng" hidden='true'>135.7726717</div>
-											<div  class="TAlat" hidden='true'>34.9671402</div>
-									        <div  class="summary" hidden='true'>「稻荷神社」堪稱是最貼近日本人生活的神社。據說全國共有3萬座稻荷神社，在日本各地受到所有男女老幼的喜愛。其總本宮便是京都的伏見稻荷大社。自西元711年神明鎮座以來，長達1300年的期間匯集了人們的信仰，被尊崇為保佑五穀豐登、商業興盛、家庭安全、諸願望皆得實現之神。近年來除了日本人之外，也有許多外國參拜客、觀光客造訪，稻荷神社已成為代表京都與日本的名勝，聞名於世。</div>
-											
-									</div>
-
-									<div class="block2-txt-child2 flex-r p-t-3">
-										<a href="#"
-											class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-											<img class="icon-heart1 dis-block trans-04"
-											src="../images/icons/icon-heart-01.png" alt="ICON"> <img
-											class="icon-heart2 dis-block trans-04 ab-t-l"
-											src="../images/icons/icon-heart-02.png" alt="ICON">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				
+					
 				</div>
 
 			
@@ -1001,7 +924,7 @@ line-height: 50px;
 					
 					var txt =""
 					json.forEach(function(TA){		
-						txt += '<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item name="fromsearch" "><div class="block2"><div class="block2-pic hov-img0">'						
+						txt += '<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item" name="fromsearch" "><div class="block2"><div class="block2-pic hov-img0">'						
 			            txt += '<img name="TAimage" src="${pageContext.servletContext.contextPath}/getTAImage?id='+TA.id+'" alt="IMG-PRODUCT">'		
 						txt += '<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">Quick View </a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="../product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'
 						txt +=TA.address
@@ -1078,32 +1001,58 @@ $("#pdiv").on("click", ".js-addwish-b2", function() {
 	    contentType: false
 	}).done(function(res) {
 		var TAresult = $.parseJSON(res)
-		var TAnum = Number($("#allTA").find(".oneTA:last").find(".icon-maker").html())+1;
+		var day="#day"+$(".fortaday").val()
+		
 	
 		var txt=""
-		 txt+='<div><div class="row oneTA"><div class="col-sm-2"><div class="icon-maker">'+TAnum+'</div></div><div class="col-sm-9"><h3>'
+		 txt+='<div class="row oneTA countta"><div class="col-sm-2"><div class="icon-maker"></div></div><div class="col-sm-9"><h3>'
 		 txt+= TAresult.address
-		 txt+= '</h3><div class="TLarea">'
+		 txt+= '</h3><i class="fas fa-times-circle xxx" hidden="true"></i><div class="TLarea">'
 		 txt+= TAresult.touristarea
 		 txt+='</div><div class="TAid" hidden="true">'+TAresult.id+'</div>'				
 		 txt+='<div  class="TAlng" hidden="true">'+TAresult.lng+'</div>'
 		 txt+='<div  class="TAlat" hidden="true">'+TAresult.lat+'</div>'
-		 txt+='<div  class="summary" hidden="true">'+TAresult.summary+'</div></div></div></div>'		
-		$("#draggable").append(txt);
+		 txt+='<div  class="summary" hidden="true">'+TAresult.summary+'</div></div></div>'		
 		
-		$('#insertTAform')[0].reset();
-		$("#preview_progressbarTW_img").attr("src","../images/preview.jpg")
+		 $(day).append(txt);
+        
+		 
+		 
+		 
+		//刪除原有展示標籤
+  		if($(day).find(".nodrag")){
+  			$(day).find(".nodrag").remove()
+  		}
+		 
+  		//重新計算行程順序 
+  		var num = 1;			
+  		$(".countta").each(function(){
+  			$(this).find(".icon-maker").html(num++)
+
+  		})
+		
 		
 		
 
-		changeTI();
+		
+		 //初始化form和圖片
+		$('#insertTAform')[0].reset();
+		$("#preview_progressbarTW_img").attr("src","../images/preview.jpg")
+		
+
+		//更新TIBean
+		updateti()
 	}).fail(function(res) {});
 
 })
      
        function changeTI(){
     	   
-    	  
+	
+	 
+         
+  		
+	
     	   
     	   
     	   
@@ -1367,12 +1316,16 @@ $("#pdiv").on("click",".isotope-item",function(){
 		    
 		    
 		    
-		    
+		</script>  
+		
+		<!-- ONReady --> 
+		<script>   
 		    
 		    
 		    
 		   //第一次查詢讀取
 		    $(document).ready(function(){
+
 		    	var txt1="<div class='row isotope-grid' id='isotope-grid'></div>"
 		    	$("#pdiv").empty();
 		    	$("#pdiv").append(txt1)
@@ -1383,6 +1336,7 @@ $("#pdiv").on("click",".isotope-item",function(){
 		    	  	var taresult =$.parseJSON(result)
 // 		    		txt +="<div class='row isotope-grid' id='isotope-grid'>"
 		    	  	taresult.forEach(function(TA){
+		    	  		console.log(TA)
 								txt += '<div class="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item " name="fromsearch"><div class="block2"><div class="block2-pic hov-img0">'						
 					            txt += '<img name="TAimage" src="${pageContext.servletContext.contextPath}/getTAImage?id='+TA.id+'" alt="IMG-PRODUCT">'		
 								txt += '<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">Quick View </a></div><div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="../product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'
@@ -1401,29 +1355,324 @@ $("#pdiv").on("click",".isotope-item",function(){
 		    	  
 		  		  draggableTA(); 
 		    	
-   	
+   	    	      //mouseover，出現XX
+		    	$("#allTA").on("mouseover",".oneTA",function(){
+
+		    		$(this).find(".xxx").removeAttr("hidden")
+
+		    	})
+		    	//mouseout，xx消失
+		    	$("#allTA").on("mouseout",".oneTA",function(){
+
+		    		$(this).find(".xxx").prop("hidden",true)
+
+		    	})
+		    	$("#allTA").on("click",".xxx",function(){
+                      var oneta=$(this).parent().parent()
+                      var onedraggable=$(this).parent().parent().parent()
+		    		oneta.remove()
+		    		updateti()
+		    		
+		    	    //沒有任何景點時,增加空白行程
+		    	    console.log(oneta.attr("class"))
+		    	    console.log(onedraggable.attr("class"))
+			  		if(onedraggable.find(".oneTA").length===0){
+			  			onedraggable.append('<div class="row oneTA nodrag"> <div class="col-sm-2" ><div class="icon-maker-default"></div></div><div class="col-sm-9" style="background-color:white;border:gray 1px solid"><h3 style="text-align:center;line-height:50px"> <img alt="" src="../images/icons/placeholder/add.png"></h3></div></div></div>')
+			  		}
+
+		    	})
+		    		
+		    		
+		    		
+		    		
+		    	
+		    	$("#goshowtibtn").on("click",function(){
+		    		updateti();
+		    		
+		    		$(".tiid").submit();
+		    		
+		    		
+		    	})
+		    	
+		    	
+		    	$(".draggableti").on("click",".dropdown-item",function(){
+		    		var iclass =$(this).find("i").attr("class")+"fa-3x"
+		    		var ihtml=$(this).find("i").html()
+// 		    		alert(ihtml)
+		    		$(this).parent().parent().find(".btn i").attr("class",iclass)
+		    	    $(this).parent().parent().find(".btn").attr("name",ihtml)
+		    	    
+		    	  
+		    	    var dayti=[]
+		    	    $(this).parents(".draggableti").find(".countta").each(function(){
+					 
+						//取得景點名稱
+						var taname= $(this).find("h3").html()
+						dayti.push(taname)
+						})
+						console.log(dayti)
+	
+						//取得旅遊模式
+						var mode=[]
+						$(this).parents(".draggableti").find(".dropdown").each(function(){
+							
+							var modename=$(this).find("button").attr('name')
+							mode.push(modename)
+						})
+							console.log(mode)
+						
+			       var thisfake=$(this).parents(".draggableti").find(".dropdown")
+							
+				$.ajax({
+			        url: "getdad",                   
+			        type: 'POST',                   
+			        traditional: true,             
+			        data: {"ti":dayti,"mode":mode}, 
+			        cache: false, 
+			        async: true,
+			        success: function (res) { 
+// 			        	console.log("66666")
+// 			        	console.log(thisfake)
+			        	var answer = $.parseJSON(res)
+			        	
+			        	
+// 			        		console.log(thisfake)
+			        		var x=0;
+			        	thisfake.each(function(res){
+			        	
+			        		var ansparse =$.parseJSON(answer[x])
+			        		x++;
+// 			        		console.log(ansparse.duration/60)
+			        		var time='';
+			        		if(ansparse.duration/(60*60)>1){
+			        			var hr = Math.floor(ansparse.duration/(60*60))
+			        			var min =Math.round((ansparse.duration/60)%60);
+			        			
+// 			        			console.log("hr="+hr);
+// 			        			console.log("min="+min);
+			        			time= hr+"時"+min+"分鐘"
+			        			
+			        		}else{
+			        			
+			        			var min =Math.round(ansparse.duration/60);
+// 			        			console.log("min="+min);
+			        			time= min+"分鐘";
+			        		}
+			        		    		
+			        		$(this).find(".duration").html(time)
+
+			        		
+			        		var path=""
+			        		if((ansparse.distance/1000)>1){
+			        			
+			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+			        		}else{
+			        			
+			        			path = (ansparse.distance%1000)+"公尺"
+			        		}
+			        		
+			        		
+			        		$(this).find(".distance").html(path)
+			        		
+			        		
+			        	   })     	
+			           }
+	
+		    	})
+
+		    	
+		    })
+		    	
+		    	
+		    	
+		    	
 		    	
 		    	
 		    	
 		    	
 		    })
 		  		    
+		       //更新 function()
+		   function updateti(){
+		    	
+			   
+			   //計算每天行程的數量
+				  var taamount =[]
+				  $(".draggableti").each(function(){
+					var dlen = $(this).find(".countta").length  
+					taamount.push(dlen)	
+			   //紀錄每日超過一個以上行程的景點名字	
+			    var ta=[]   
+				
+			    var txt2 ='<div class="dropdown"><button  style="pagging:5px 0;margin:0 10px;width:100%"  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="driving"><span class="distance"></span><i class="fa fa-car fa-3x "></i><span class="duration"></span></button><div class="dropdown-menu " aria-labelledby="dropdownMenuButton"><div class="dropdown-item Walking"  ><i class="fa fa-walking " aria-hidden="true">walking</i></div><div class="dropdown-item Driving"  ><i class="fa fa-car " >driving</i></div><div class="dropdown-item Transit"  ><i class="fa fa-bus " aria-hidden="true">transit</i></div></div></div>'
+					if(dlen>1){
+						//旅遊模式全部刪除再排列一次
+						$(this).find(".dropdown").each(function(){
+
+							$(this).remove();
+						})
+						 var dayti =[]
+						$(this).find(".countta").each(function(){
+					    //塞入旅遊模式的標籤
+							$(this).after(txt2)
+						//取得景點名稱
+						var taname= $(this).find("h3").html()
+						dayti.push(taname)
+						})
+						console.log(dayti)
+						
+						
+						//刪除最後一個旅遊MODE
+						$(this).find(".dropdown:last-child").remove()
+						//取得旅遊模式
+						var mode=[]
+						$(this).find(".dropdown").each(function(){
+							
+							var modename=$(this).find("button").attr('name')
+							mode.push(modename)
+						})
+							console.log(mode)
+						
+			       var thisfake=$(this).find(".dropdown")
+							
+				$.ajax({
+			        url: "getdad",                   
+			        type: 'POST',                   
+			        traditional: true,             
+			        data: {"ti":dayti,"mode":mode}, 
+			        cache: false, 
+			        async: true,
+			        success: function (res) { 
+			        	console.log("66666")
+			        	console.log(thisfake)
+			        	var answer = $.parseJSON(res)
+			        	
+			        	
+// 			        		console.log(thisfake)
+			        		var x=0;
+			        	thisfake.each(function(res){
+			        	
+			        		var ansparse =$.parseJSON(answer[x])
+			        		x++;
+// 			        		console.log(ansparse.duration/60)
+			        		var time='';
+			        		if(ansparse.duration/(60*60)>1){
+			        			var hr = Math.floor(ansparse.duration/(60*60))
+			        			var min =Math.round((ansparse.duration/60)%60);
+			        			
+// 			        			console.log("hr="+hr);
+// 			        			console.log("min="+min);
+			        			time= hr+"時"+min+"分鐘"
+			        			
+			        		}else{
+			        			
+			        			var min =Math.round(ansparse.duration/60);
+// 			        			console.log("min="+min);
+			        			time= min+"分鐘";
+			        		}
+			        		    		
+			        		$(this).find(".duration").html(time)
+
+			        		
+			        		var path=""
+			        		if((ansparse.distance/1000)>1){
+			        			
+			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+			        		}else{
+			        			
+			        			path = (ansparse.distance%1000)+"公尺"
+			        		}
+			        		
+			        		
+			        		$(this).find(".distance").html(path)
+			        		
+			        		
+			        	   })
+     	
+			           }
+			      });
+							
+						
+						
+
+					}else{
+						$(this).find(".dropdown").each(function(){
+							$(this).remove()})
+						
+					}
+						
+						
+						
+					
+					
+					
+					
+					
+				  })
+			  
+				  //算出起始日到結束日共幾天
+				  
+			  		var from = $("#from").html()
+			  		var to  =$("#to").html()
+			  		var tday=$("#tday").val()
+			  		
+			  		
+			  	 //重新計算行程順序 並將形成順序的ID裝成陣列
+			  		var num = 1;	
+		  			var idary = []
+			  		$(".countta").each(function(){
+			  			$(this).find(".icon-maker").html(num++)
+			  		    var eachid = $(this).find(".TAid").html();
+			  		    idary.push(eachid)
+			  			
+			  		})
+			  		
+    
+				  //取得TI的id跟name
+				    var tname = $("#tititle").children("span").html()	
+	                var tiid=$(".tiid").find("input[name='id']").val();
+				 
+	                   
+				  	var data={"id":tiid,"memberid":1,"t_name":tname,"touristday":tday,"firstday":from
+				  		,"lastday":to,"dailyitinerary":taamount,"sequence":idary}
+				  	
+				  	
+				  		$.ajax({
+				  		  type: 'POST',
+				  		  url: "updateTI",
+				  		  data: data,
+				  		  traditional:true
+				  		 
+				  		});
+				  	
+	   
+			   
+		   }
+		   
+		    
+		    
+		    
 		  		    
 		  		    
 		  		//拖拉
 		  		
 		  		function  draggableTA(){
 			   
-    		$( "#draggable" ).sortable({
-// 		    	connectWith: "#isotope-grid",
-	  		    cancel:"span,h3",
+    		$( ".draggableti" ).sortable({
+		    	connectWith: ".draggableti",
+	  		    cancel:"span,h3,.nodrag,.dropdown",
 	  		    scroll:false,
 	  		    cursor:"grab",
 	  		    revert: true,
 	  		    receive: function( event, ui ) {   
+	  		    	
 	  		    	var uiclass=  ui.item.attr("class")
+	  		    	console.log(uiclass)
+	  		    	if(uiclass==="col-sm-6 col-md-4 col-lg-6 p-b-35 isotope-item ui-sortable-handle"){
+	  		    		
+	  		    	
 	  		    	ui.item.removeClass(uiclass)
-	  		    	ui.item.addClass("row oneTA")
+	  		    	ui.item.addClass("row oneTA countta")
 			  		    	
 			  	  var titile= ui.item.find(".stext-104").html();
 		       	  var touristarea= ui.item.find(".stext-105").html();
@@ -1435,86 +1684,45 @@ $("#pdiv").on("click",".isotope-item",function(){
 		       	  var n =Number(imgsrc.indexOf("id="));
 		          var TAid = imgsrc.substring(n+3);
 		          var TAnum = Number($("#allTA").find(".oneTA:last").find(".icon-maker").html())+1;		
-		
+		          
+		          
 		   	var txt=""
 		   		 txt+='<div class="col-sm-2"><div class="icon-maker">'+TAnum+'</div></div><div class="col-sm-9"><h3>'
 		   		 txt+= titile
-		   		 txt+= '</h3><div class="TLarea">'
+		   		 txt+= '</h3><i class="fas fa-times-circle xxx" hidden="true"></i><div class="TLarea">'
 		   		 txt+= touristarea
 		   		 txt+='</div><div class="TAid" hidden="true">'+TAid+'</div>'				
 		   		 txt+='<div  class="TAlng" hidden="true">'+TAlng+'</div>'
 		   		 txt+='<div  class="TAlat" hidden="true">'+TAlat+'</div>'
 		   		 txt+='<div  class="summary" hidden="true">'+summary+'</div></div>'	  		    	
-			  		    	ui.item.empty()
+			  		    	ui.item.empty();
 			  		    	ui.item.append(txt)
+			  		    	
+	  		    	}	    	
+			  		    	
+			  		    	
+			  		    	
 	    	
 // 			  		    	$( '#isotope-grid' ).sortable( "refresh" );
 			  		    	
-		  			       $( "#isotope-grid" ).sortable( "refreshPositions" );
+// 		  			       $( "#isotope-grid" ).sortable( "refreshPositions" );
 			  		    	
 			  	},
 			  	
 			  	
 			  	update: function( event, ui ) {
+  				
+			  		//刪除原有展示標籤
+			  		if($(this).find(".nodrag")){
+			  			$(this).find(".nodrag").remove()
+			  		}
+		  	        //沒有任何景點時,增加空白行程
+			  		if($(this).find(".oneTA").length===0){
+			  			$(this).append('<div class="row oneTA nodrag"> <div class="col-sm-2" ><div class="icon-maker-default"></div></div><div class="col-sm-9" style="background-color:white;border:gray 1px solid"><h3 style="text-align:center;line-height:50px"> <img alt="" src="../images/icons/placeholder/add.png"></h3></div></div></div>')
+			  		}
+                     
 			  		
-			  		var num = 0;
-			  		console.log(ui.item)
-			  			var idary = []
-			  		$(".oneTA").each(function(){
-			  			$(this).find(".icon-maker").html(++num)
-			  			var eachid = $(this).find(".TAid").html();
-			  			idary.push(eachid)
-			  			
-			  		})
-			  			alert(idary)
-
-			  		
-			  		
-			  		var from = $("#from").val()
-			  		var to  =$("#to").val()
-			  		var dateamt =DateDiff(from,to)+1;
-			  		alert(from)
-			  		alert(to)
-			  		alert(dateamt)
-			  		// 分割行程
-			  	var taarray=[1]
-			  	var taday = $("#draggable").find(".badge + div")
-			  	console.log(taday)
-			  	console.log(taday.length)
-			  	
-			  	$("#draggable").find(".badge").each(function(){
-// 			  		var n =Number(imgsrc.indexOf("id="));
-// 			        var TAid = imgsrc.substring(n+3);
-			        
-			        
-			  		var firstta=$(this).find(".oneTA");
-			  		console.log($(this))
-// 			  		if(firstta!=null){
-// 			  			var icon =Number(firstta.find(".icon-maker").html())
-// 			  			alert(icon)
-// 			  	        taarray.put(icon)
-// 			  		}else{
-// 			  			taarray.put(0)
-// 			  		}
-			  	})
-			  		console.log(taarray)
-                     var array=[0,1,5,6,8]
-			  	var data={"id":1,"memberid":1,"touristday":dateamt,"firstday":from
-			  		,"lastday":to,"dailyitinerary":array,"sequence":idary}
-			  	
-			  	
-// 			  	$.post("updateTI",{"memberid":1,"touristday":dateamt,"firstday":from
-// 			  		,"lastday":to,"dailyitinerary":idary},function(result){
-			 
-// 			  		})
-			  	
-			  		$.ajax({
-			  		  type: 'POST',
-			  		  url: "updateTI",
-			  		  data: data,
-			  		  traditional:true
-			  		 
-			  		});
+					updateti();
 			  	
 			  	
 			  	
@@ -1535,7 +1743,7 @@ $("#pdiv").on("click",".isotope-item",function(){
 		  		function  draggable_searchTA(){
 			  
 			  		    $( "#isotope-grid" ).sortable({
-			  		      connectWith: "#draggable",
+			  		      connectWith: ".draggableti",
 			  		      delay: 100,
 			  		      helper:  "original",
 			  		      revert :"invalid",
@@ -1561,14 +1769,15 @@ $("#pdiv").on("click",".isotope-item",function(){
 		  		  aDate = sDate2.split("-")
 		  		  oDate2 = new Date(aDate[1] + '/' + aDate[2] + '/' + aDate[0])
 		  		  // 把相差的毫秒數轉換為天數
-		  		  iDays = parseInt(Math.abs(oDate1 - oDate2)/ 1000 / 60 / 60 / 24) 
+		  		  iDays = parseInt(Math.abs(oDate1 - oDate2)/ 1000 / 60 / 60 / 24);
 		  		  return iDays;
 		  		};
 
 		  		    
 		    
-		    
-		    
+		  
+		 
+		  		
 		    
 		    
 		  
