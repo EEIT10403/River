@@ -724,7 +724,7 @@
 
 	<script type="text/javascript">
 		//應用程式編號，進入 https://developers.facebook.com/apps/ 即可看到
-		let FB_appID = "228035798120942";
+		let FB_appID = "552250048607336";
 
 		//FB Login 官方文件：https://developers.facebook.com/docs/facebook-login/web
 
@@ -783,7 +783,7 @@
 		onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 	<script type="text/javascript">
 		//進入 https://console.developers.google.com/，找「憑證」頁籤(記得先選對專案)，即可找到用戶端ID
-		let Google_appId = "632974983145-ehaueuvi84jfn65uqq2bsvd8cocg7kdk.apps.googleusercontent.com";
+		let Google_appId = "524820611328-7qn67ttlsl4101ovdn09tfptc6tsta9e.apps.googleusercontent.com";
 
 		//參考文章：http://usefulangle.com/post/55/google-login-javascript-api 
 
