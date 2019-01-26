@@ -62,7 +62,7 @@ String USER_AGENT = "Mozilla/5.0";
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
 //        String urlParameters = "grant_type=authorization_code&code="+code+"&redirect_uri=http://localhost:8080/River/_11_secure/LineLogin&client_id=1640084803&client_secret=087223ff0a1223a55c6cff2a6dd67f9a";
-        String urlParameters = "grant_type=authorization_code&code="+code+"&redirect_uri=http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/LineLogin&client_id=1640084803&client_secret=087223ff0a1223a55c6cff2a6dd67f9a";
+        String urlParameters = "grant_type=authorization_code&code="+code+"&redirect_uri=http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/_11_secure/LineLogin&client_id=1641826576&client_secret=681025127ee008b230191423ce8ce0f1" ;
 
         //发送Post请求
         con.setDoOutput(true);
@@ -98,7 +98,7 @@ String USER_AGENT = "Mozilla/5.0";
         
         //再去要個資
         
-        String url2 = "https://api.line.me/v2/profile?grant_type=authorization_code&code="+code+"&redirect_uri=http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/_11_secure/LineLogin&client_id=1640084803&client_secret=087223ff0a1223a55c6cff2a6dd67f9a";
+        String url2 = "https://api.line.me/v2/profile?grant_type=authorization_code&code="+code+"&redirect_uri=http://eeitdemoriver18.southeastasia.cloudapp.azure.com:8080/River/_11_secure/LineLogin&client_id=1641826576&client_secret=681025127ee008b230191423ce8ce0f1";
 
         URL obj2 = new URL(url2);
         HttpURLConnection con2 = (HttpURLConnection) obj2.openConnection();
