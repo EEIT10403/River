@@ -570,9 +570,9 @@ text-align:center;
 <fmt:formatDate var="lastday" value="${tibean.lastday}" pattern="yyyy-MM-dd " ></fmt:formatDate>
 		
 			<label for="from">起始日</label>
-			<span class="titiledate" style="width:155px" id="from" >${firstday}</span>
+			<span class="titiledate" style="width:180px" id="from" >${firstday}</span>
 			<label for="to">結束日</label>
-			<span class="titiledate" style="width:155px" id="to" >${lastday}</span>
+			<span class="titiledate" style="width:180px" id="to" >${lastday}</span>
 			<label for="to">共計</label>
 			<input type="text" id="tday" style="width:100px" name="tday" value="${tibean.touristday}" readonly="readonly">
 			<label for="to">日</label>
