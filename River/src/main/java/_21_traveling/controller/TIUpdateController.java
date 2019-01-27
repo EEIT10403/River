@@ -2,10 +2,12 @@ package _21_traveling.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +42,19 @@ public class TIUpdateController {
 	@RequestMapping("/_21_/updateTI")
 	@ResponseBody
 	public void updateTI(TravelItineraryBean bean) {
-		
-		if(bean.getId()!=null) {
-			bean =tiService.update(bean);
-			System.out.println(bean);			
-		}
+		bean =tiService.update(bean);
+		System.out.println(bean);
 
 	}
 	
 	@RequestMapping("/_21_/getdad")
 	@ResponseBody
-	public void getDurationAndDistance(String[] ti,String[] mode,HttpServletResponse response) {
+	public void getDurationAndDistance(String[] ti,String[] mode,HttpServletResponse response,HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out=null;
 		try {
@@ -72,7 +76,8 @@ public class TIUpdateController {
 				to += ("%20"  +toarray[y]);
 			}
 			
-			
+			System.out.println("from="+from);
+			System.out.println("to="+to);
 			String url="https://maps.googleapis.com/maps/api/directions/json?origin="
 					+ from+ "&destination="
 					+ to+ "&mode="
@@ -83,11 +88,12 @@ public class TIUpdateController {
 			list.add(result);
 		}
 		
-		 Gson gson = new Gson();  
-		   String jsonlist = gson.toJson(list);
-		   System.out.println("list="+jsonlist);
+//		 Gson gson = new Gson();  
+//		   String jsonlist = gson.toJson(list);
+//		   System.out.println("jsonlist="+jsonlist);
 		
-		out.print(jsonlist);
+		System.out.println("list="+list);
+		out.print(list.toString());
 		
 		
 		

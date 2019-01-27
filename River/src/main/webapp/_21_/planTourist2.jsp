@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html>
 
@@ -208,118 +209,46 @@ text-align:center;
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a class="logo" href="<c:url value="/index18.jsp" />"> <img
-							src="../images/icons/logo-11.png" alt="IMG-LOGO">
+						<a class="logo"> <img src="../images/icons/logo-11.png"
+							alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
 								<li class="active-menu"><a
-									href="<c:url value="/index18.jsp" />">首頁</a></li>
-								<c:if test="${not empty member_Id}">
+									href="<c:url value='/index18.jsp'/>">Home</a></li>
 
-									<li class="label1"><a
-										href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+								<li><a href="product.html">Shop</a></li>
 
-									<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+								<li class="label1"><a
+									href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
 
-								</c:if>
+								<li><a href="blog.html">Blog</a></li>
 
-								<c:if test="${empty member_Id}">
+								<li><a href="about.html">About</a></li>
 
-									<li class="label1"><a
-										href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
-
-									<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
-
-								</c:if>
-								<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
+								<li><a href="contact.html"></a></li>
 							</ul>
-
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
-
-										</div>
-									</div>
-
-								</div>
-
-							</div>
 						</div>
 
 						<!-- Icon header -->
 						<div class="wrap-icon-header flex-w flex-r-m">
-
-							<div class="dropdown">
-
-								<button class="btn btn-default dropdown-toggle" type="button"
-									id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
-
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<c:if test="${not empty member_Id}">
-										<a class="dropdown-item"
-											href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
-										<a class="dropdown-item"
-											href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
-										<a class="dropdown-item"
-											href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
-										<a class="dropdown-item"
-											href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
-										<a class="dropdown-item"
-											href="<c:url value="/Member/Logout" />">登出</a>
-									</c:if>
-									<c:if test="${empty member_Id}">
-										<a class="dropdown-item"
-											href="<c:url value="/_11_secure/login.jsp" />">登入</a>
-									</c:if>
-								</div>
-							</div>
 							<!-- 							<div -->
 							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"> -->
 							<!-- 								<i class="zmdi zmdi-search"></i> -->
 							<!-- 							</div> -->
+
+							<!-- 							<div -->
+							<!-- 								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" -->
+							<!-- 								data-notify="2"> -->
+							<!-- 								<i class="zmdi zmdi-shopping-cart"></i> -->
+							<!-- 							</div> -->
+
+							<!-- 							<a href="#" -->
+							<!-- 								class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" -->
+							<!-- 								data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+							<!-- 							</a> -->
 
 						</div>
 					</nav>
@@ -335,33 +264,23 @@ text-align:center;
 				</div>
 
 				<!-- Icon header -->
-				<div>
+				<!-- 				<div class="wrap-icon-header flex-w flex-r-m m-r-15"> -->
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"> -->
+				<!-- 						<i class="zmdi zmdi-search"></i> -->
+				<!-- 					</div> -->
 
-					<div class="dropdown">
+				<!-- 					<div -->
+				<!-- 						class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" -->
+				<!-- 						data-notify="2"> -->
+				<!-- 						<i class="zmdi zmdi-shopping-cart"></i> -->
+				<!-- 					</div> -->
 
-						<button class="btn btn-default dropdown-toggle" type="button"
-							id="dropdownMenuButton" data-toggle="dropdown">會員專區</button>
-
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<c:if test="${not empty member_Id}">
-								<a class="dropdown-item"
-									href="<c:url value="/Order/IntoMemberOrderPage?member_Id=${member_Id}" />">訂單查詢及付款</a>
-								<a class="dropdown-item"
-									href="<c:url value="/Member/IntoMemberAcount?member_Id=${member_Id}" />">管理帳戶</a>
-								<a class="dropdown-item"
-									href="<c:url value="/histroy.cntroller?member_Id=${member_Id}" />">機票查詢及付款</a>
-								<a class="dropdown-item"
-									href="<c:url value="/Comment/IntoComment?member_Id=${member_Id}" />">產品評鑑</a>
-								<a class="dropdown-item" href="<c:url value="/Member/Logout" />">登出</a>
-							</c:if>
-							<c:if test="${empty member_Id}">
-								<a class="dropdown-item"
-									href="<c:url value="/_11_secure/login.jsp" />">登入</a>
-							</c:if>
-						</div>
-					</div>
-
-				</div>
+				<!-- 					<a href="#" -->
+				<!-- 						class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" -->
+				<!-- 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i> -->
+				<!-- 					</a> -->
+				<!-- 				</div> -->
 
 				<!-- Button show menu -->
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -375,99 +294,26 @@ text-align:center;
 			<div class="menu-mobile">
 
 
-				<ul class="main-menu">
-					<li class="active-menu"><a
-						href="<c:url value="/index18.jsp" />">首頁</a></li>
-					<c:if test="${not empty member_Id}">
+				<ul class="main-menu-m">
+					<li><a href="<c:url value="/index18.jsp" />">Home</a> <span
+						class="arrow-main-menu-m"> <i class="fa fa-angle-right"
+							aria-hidden="true"></i>
+					</span></li>
 
-						<li class="label1"><a
-							href="<c:url value="/WebIndex18/flight18.jsp" />">航班查詢</a></li>
+					<li><a href="product.html">Shop</a></li>
 
-						<li><a href="<c:url value="/_21_/planTAindex.jsp" />">行程規劃</a></li>
+					<li><a href="<c:url value="/WebIndex18/flight18.jsp" />"
+						class="label1 rs1">航班查詢</a></li>
+					<li><a href="blog.html">Blog</a></li>
 
-					</c:if>
+					<li><a href="about.html">About</a></li>
 
-					<c:if test="${empty member_Id}">
-
-						<li class="label1"><a
-							href="<c:url value="/_11_secure/login.jsp" />">航班查詢</a></li>
-
-						<li><a href="<c:url value="/_11_secure/login.jsp" />">行程規劃</a></li>
-
-					</c:if>
-					<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
-							</ul>
-
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
-
-										</div>
-									</div>
-
-								</div>
-
-							</div>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
 			</div>
 
 			<!-- Modal Search -->
-			<!-- 			<div -->
-			<!-- 				class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> -->
-			<!-- 				<div class="container-search-header"> -->
-			<!-- 					<button -->
-			<!-- 						class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"> -->
-			<!-- 						<img src="images/icons/icon-close2.png" alt="CLOSE"> -->
-			<!-- 					</button> -->
 
-			<!-- 					<form class="wrap-search-header flex-w p-l-15"> -->
-			<!-- 						<button class="flex-c-m trans-04"> -->
-			<!-- 							<i class="zmdi zmdi-search"></i> -->
-			<!-- 						</button> -->
-			<!-- 						<input class="plh3" type="text" name="search" -->
-			<!-- 							placeholder="Search..."> -->
-			<!-- 					</form> -->
-			<!-- 				</div> -->
-			<!-- 			</div> -->
 		</header>
 		<!-- Cart -->
 
@@ -570,9 +416,9 @@ text-align:center;
 <fmt:formatDate var="lastday" value="${tibean.lastday}" pattern="yyyy-MM-dd " ></fmt:formatDate>
 		
 			<label for="from">起始日</label>
-			<span class="titiledate" style="width:180px" id="from" >${firstday}</span>
+			<span class="titiledate" style="width:155px" id="from" >${firstday}</span>
 			<label for="to">結束日</label>
-			<span class="titiledate" style="width:180px" id="to" >${lastday}</span>
+			<span class="titiledate" style="width:155px" id="to" >${lastday}</span>
 			<label for="to">共計</label>
 			<input type="text" id="tday" style="width:100px" name="tday" value="${tibean.touristday}" readonly="readonly">
 			<label for="to">日</label>
@@ -614,7 +460,19 @@ text-align:center;
   <c:out escapeXml="false" value=' <div class="row oneTA nodrag"> <div class="col-sm-2" ><div class="icon-maker-default"></div></div><div class="col-sm-9" style="background-color:white;border:gray 1px solid"><h3 style="text-align:center;line-height:50px"> <img alt="" src="../images/icons/placeholder/add.png"></h3></div></div></div>'></c:out>
   </c:forEach>
   
+  
+ 
+ 
 
+
+  
+  
+  
+  
+  
+  
+  
+  
    
     
   </div>
@@ -805,92 +663,112 @@ text-align:center;
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">關於百川</h4>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">Categories</h4>
 
-						<ul>
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 羅 平 </a></li>
+					<ul>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Women </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 莊鎧宇</a></li>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Men </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 鄭祺融 </a></li>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 陳建良 </a></li>
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 張誌元 </a></li>
-						</ul>
-					</div>
-
-					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">特別感謝</h4>
-
-						<ul>
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04">資策會</a></li>
-
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04">先啟資訊 </a></li>
-
-						</ul>
-					</div>
-
-					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">訂購諮詢</h4>
-
-						<p class="stext-107 cl7 size-201">台北市大安區復興南路一段390號 2,3,15樓
-							+886 (0)2 6631 6666</p>
-
-						<div class="p-t-27">
-							<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-								class="fa fa-facebook"></i>
-							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-								class="fa fa-instagram"></i>
-							</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
-								class="fa fa-pinterest-p"></i>
-							</a>
-						</div>
-					</div>
-
-					<div class="col-sm-6 col-lg-3 p-b-50">
-						<h4 class="stext-301 cl0 p-b-30">菁英招募</h4>
-
-					</div>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Watches </a></li>
+					</ul>
 				</div>
 
-				<div class="p-t-40">
-					<div class="flex-c-m flex-w p-b-18">
-						<a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
-						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
-						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
-						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
-						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">Help</h4>
+
+					<ul>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Track Order </a></li>
+
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Returns </a></li>
+
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> Shipping </a></li>
+
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+
+					<p class="stext-107 cl7 size-201">Any questions? Let us know in
+						store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
+						on (+1) 96 716 6879</p>
+
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-facebook"></i>
+						</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-instagram"></i>
+						</a> <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-pinterest-p"></i>
 						</a>
 					</div>
+				</div>
 
-					<p class="stext-107 cl6 txt-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script>
-						All rights reserved | Made with <i class="fa fa-heart-o"
-							aria-hidden="true"></i> by <a href="https://colorlib.com"
-							target="_blank">Colorlib</a> &amp; distributed by <a
-							href="https://themewagon.com" target="_blank">ThemeWagon</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text"
+								name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+
+						<div class="p-t-18">
+							<button
+								class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+								Subscribe</button>
+						</div>
+					</form>
 				</div>
 			</div>
-		</footer>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1"> <img
+						src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+					</a>
+				</div>
+
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					All rights reserved | Made with <i class="fa fa-heart-o"
+						aria-hidden="true"></i> by <a href="https://colorlib.com"
+						target="_blank">Colorlib</a> &amp; distributed by <a
+						href="https://themewagon.com" target="_blank">ThemeWagon</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+				</p>
+			</div>
+		</div>
+	</footer>
 
 
 	<!-- Back to top -->
@@ -1327,16 +1205,59 @@ $("#pdiv").on("click", ".js-addwish-b2", function() {
 				//位置變換時取得經緯度
 
 				var pacinputv = $("#pacinput").val()
-				$.get('LoadTALatLng', {
-					"address" : pacinputv
-				}, function(taLatLng) {
-					var location = $.parseJSON(taLatLng);
-					$('#lat').val(location.lat)
-					$('#lng').val(location.lng)
+// 				$.get('LoadTALatLng', {
+// 					"address" : pacinputv
+// 				}, function(taLatLng) {
+// 					console.log(taLatLng)
+// // 					var location = $.parseJSON(taLatLng);
+// 					$('#lat').val(taLatLng.lat)
+// 					$('#lng').val(taLatLng.lng)
 
-				})
+// 				})
+
+// 		$.ajax({
+// 					  url:'LoadTALatLng',
+// 					  type:"get",
+// 					  data:{"address" : pacinputv},
+// 					  contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+// 					  dataType:'json',
+// 					  responseType:'application/json',
+// 					  success: function(taLatLng){
+// // 						  var location = $.parseJSON(taLatLng);
+// 							console.log(taLatLng)
+// 		 					$('#lat').val(taLatLng.lat);
+// 		 					$('#lng').val(taLatLng.lng);
+// 					  }
+// 					})
+
+
+
+        var geocoder = new google.maps.Geocoder();
+        var address = document.getElementById('pacinput').value;
+
+        
+        //取的經緯度
+        geocoder.geocode({ 'address': address }, function (results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                
+//                 console.log("HaHa")
+//                 console.log(latitude)
+//                 console.log(longitude)
+                $('#lat').val(latitude);
+					$('#lng').val(longitude);
+
+            }
+        });
+    
+
+
 
 				var places = searchBox.getPlaces();
+			
+// 				console.log(places[0].geometry.location)
 
 				if (places.length == 0) {
 					return;
@@ -1509,9 +1430,12 @@ $("#pdiv").on("click",".isotope-item",function(){
 		    		
 		    		
 		    	
-		    	$("#goshowtibtn").on("click",function(){	
+		    	$("#goshowtibtn").on("click",function(){
 		    		updateti();
+		    		
 		    		$(".tiid").submit();
+		    		
+		    		
 		    	})
 		    	
 		    	
@@ -1543,62 +1467,63 @@ $("#pdiv").on("click",".isotope-item",function(){
 						
 			       var thisfake=$(this).parents(".draggableti").find(".dropdown")
 							
-				$.ajax({
-			        url: "getdad",                   
-			        type: 'POST',                   
-			        traditional: true,             
-			        data: {"ti":dayti,"mode":mode}, 
-			        cache: false, 
-			        async: true,
-			        success: function (res) { 
-// 			        	console.log("66666")
-// 			        	console.log(thisfake)
-			        	var answer = $.parseJSON(res)
+// 				$.ajax({
+// 			        url: "getdad",                   
+// 			        type: 'POST',                   
+// 			        traditional: true,  
+// 			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+// 			        data: {"ti":dayti,"mode":mode}, 
+// 			        cache: false, 
+// 			        async: true,
+// 			        success: function (res) { 
+// 			        	console.log(res)
+// 			        	var answer = $.parseJSON(res)
+// 			        	console.log(answer)
 			        	
 			        	
-// 			        		console.log(thisfake)
-			        		var x=0;
-			        	thisfake.each(function(res){
+// // 			        		console.log(thisfake)
+// 			        		var x=0;
+// 			        	thisfake.each(function(res){
 			        	
-			        		var ansparse =$.parseJSON(answer[x])
-			        		x++;
-// 			        		console.log(ansparse.duration/60)
-			        		var time='';
-			        		if(ansparse.duration/(60*60)>1){
-			        			var hr = Math.floor(ansparse.duration/(60*60))
-			        			var min =Math.round((ansparse.duration/60)%60);
+// 			        		var ansparse =answer[x]
+// 			        		x++;
+// // 			        		console.log(ansparse.duration/60)
+// 			        		var time='';
+// 			        		if(ansparse.duration/(60*60)>1){
+// 			        			var hr = Math.floor(ansparse.duration/(60*60))
+// 			        			var min =Math.round((ansparse.duration/60)%60);
 			        			
-// 			        			console.log("hr="+hr);
-// 			        			console.log("min="+min);
-			        			time= hr+"時"+min+"分鐘"
+// // 			        			console.log("hr="+hr);
+// // 			        			console.log("min="+min);
+// 			        			time= hr+"時"+min+"分鐘"
 			        			
-			        		}else{
+// 			        		}else{
 			        			
-			        			var min =Math.round(ansparse.duration/60);
-// 			        			console.log("min="+min);
-			        			time= min+"分鐘";
-			        		}
+// 			        			var min =Math.round(ansparse.duration/60);
+// // 			        			console.log("min="+min);
+// 			        			time= min+"分鐘";
+// 			        		}
 			        		    		
-			        		$(this).find(".duration").html(time)
+// 			        		$(this).find(".duration").html(time)
 
 			        		
-			        		var path=""
-			        		if((ansparse.distance/1000)>1){
+// 			        		var path=""
+// 			        		if((ansparse.distance/1000)>1){
 			        			
-			        			path =  Math.floor(ansparse.distance/1000) +"公里"
-			        		}else{
+// 			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+// 			        		}else{
 			        			
-			        			path = (ansparse.distance%1000)+"公尺"
-			        		}
+// 			        			path = (ansparse.distance%1000)+"公尺"
+// 			        		}
 			        		
 			        		
-			        		$(this).find(".distance").html(path)
+// 			        		$(this).find(".distance").html(path)
 			        		
 			        		
-			        	   })     	
-			           }
+// 			        	   })     	
+// 			           }
 	
-		    	})
+// 		    	})
 
 		    	
 		    })
@@ -1636,8 +1561,10 @@ $("#pdiv").on("click",".isotope-item",function(){
 					    //塞入旅遊模式的標籤
 							$(this).after(txt2)
 						//取得景點名稱
-						var taname= $(this).find("h3").html()
-						dayti.push(taname)
+						var lat= $(this).find(".TAlat").html()
+						var lng= $(this).find(".TAlng").html()
+						var location=lat+","+lng
+						dayti.push(location)
 						})
 						console.log(dayti)
 						
@@ -1655,62 +1582,66 @@ $("#pdiv").on("click",".isotope-item",function(){
 						
 			       var thisfake=$(this).find(".dropdown")
 							
-				$.ajax({
-			        url: "getdad",                   
-			        type: 'POST',                   
-			        traditional: true,             
-			        data: {"ti":dayti,"mode":mode}, 
-			        cache: false, 
-			        async: true,
-			        success: function (res) { 
-			        	console.log("66666")
-			        	console.log(thisfake)
-			        	var answer = $.parseJSON(res)
+// 				$.ajax({
+// 			        url: "getdad",                   
+// 			        type: 'POST',                   
+// 			        traditional: true, 
+// 			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+// 			        data: {"ti":dayti,"mode":mode}, 
+// 			        responseType:'application/json',
+// 			        cache: false, 
+// 			        async: true,
+// 			        success: function (res) { 
+			      
+// 			        		console.log("res="+res)
+			        	
+// 			        	var answer = $.parseJSON(res)
+// 			        	console.log(answer)
 			        	
 			        	
-// 			        		console.log(thisfake)
-			        		var x=0;
-			        	thisfake.each(function(res){
+// // 			        		console.log(thisfake)
+// 			        		var x=0;
+// 			        	thisfake.each(function(res){
 			        	
-			        		var ansparse =$.parseJSON(answer[x])
-			        		x++;
-// 			        		console.log(ansparse.duration/60)
-			        		var time='';
-			        		if(ansparse.duration/(60*60)>1){
-			        			var hr = Math.floor(ansparse.duration/(60*60))
-			        			var min =Math.round((ansparse.duration/60)%60);
+// 			        		var ansparse =answer[x]
+// 			        		x++;
+// // 			        		console.log(ansparse.duration/60)
+// 			        		var time='';
+// 			        		if(ansparse.duration/(60*60)>1){
+// 			        			var hr = Math.floor(ansparse.duration/(60*60))
+// 			        			var min =Math.round((ansparse.duration/60)%60);
 			        			
-// 			        			console.log("hr="+hr);
-// 			        			console.log("min="+min);
-			        			time= hr+"時"+min+"分鐘"
+// // 			        			console.log("hr="+hr);
+// // 			        			console.log("min="+min);
+// 			        			time= hr+"時"+min+"分鐘"
 			        			
-			        		}else{
+// 			        		}else{
 			        			
-			        			var min =Math.round(ansparse.duration/60);
-// 			        			console.log("min="+min);
-			        			time= min+"分鐘";
-			        		}
+// 			        			var min =Math.round(ansparse.duration/60);
+// // 			        			console.log("min="+min);
+// 			        			time= min+"分鐘";
+// 			        		}
 			        		    		
-			        		$(this).find(".duration").html(time)
+// 			        		$(this).find(".duration").html(time)
 
 			        		
-			        		var path=""
-			        		if((ansparse.distance/1000)>1){
+// 			        		var path=""
+// 			        		if((ansparse.distance/1000)>1){
 			        			
-			        			path =  Math.floor(ansparse.distance/1000) +"公里"
-			        		}else{
+// 			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+// 			        		}else{
 			        			
-			        			path = (ansparse.distance%1000)+"公尺"
-			        		}
+// 			        			path = (ansparse.distance%1000)+"公尺"
+// 			        		}
 			        		
 			        		
-			        		$(this).find(".distance").html(path)
+// 			        		$(this).find(".distance").html(path)
 			        		
 			        		
-			        	   })
+// 			        	   })
      	
-			           }
-			      });
+// 			           }
+// 			      });
 							
 						
 						

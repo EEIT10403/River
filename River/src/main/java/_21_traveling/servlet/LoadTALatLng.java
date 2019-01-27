@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import _21_traveling.model.getta.GetLatLngFromJSON;
 
-@WebServlet("/_21_/LoadTALatLng")
+//@WebServlet("/_21_/LoadTALatLng")
 public class LoadTALatLng extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	PrintWriter out = response.getWriter();

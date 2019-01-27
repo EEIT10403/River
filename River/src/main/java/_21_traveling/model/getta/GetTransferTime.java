@@ -86,7 +86,7 @@ public class GetTransferTime {
 		                        strBuffer.append("\r\n");   
 		                    }   
 		                    //印出結果
-//		                    System.out.println(strBuffer);  	             
+		                    System.out.println(strBuffer);  	             
 		               }   
 		           
 		            JSONObject json0 = new JSONObject(strBuffer.toString());
