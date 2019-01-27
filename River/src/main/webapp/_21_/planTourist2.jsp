@@ -1581,7 +1581,7 @@ $("#pdiv").on("click",".isotope-item",function(){
 							console.log(mode)
 						
 			       var thisfake=$(this).find(".dropdown")
-							
+					 		
 // 				$.ajax({
 // 			        url: "getdad",                   
 // 			        type: 'POST',                   
