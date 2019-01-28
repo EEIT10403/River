@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -23,7 +24,7 @@ public class PartnerLoginController {
 //	@Autowired
 //	private ApplicationContext context;
 	
-	@RequestMapping(path= {"/partner/login"})
+	@RequestMapping(path= {"/partner/login"} )
 	public String method(@RequestParam("staff_Id")String staff_id, @RequestParam("password")String password,Model model,String myLocale,HttpSession session) {
 //		HttpSession session
 //		Locale locale = LocaleContextHolder.getLocale();
