@@ -510,11 +510,11 @@ table.blueTable tfoot .links a {
 																				</thead>
 																				<tbody>
 																					<tr>
-																						<td>${aContact.chnameCTT}</td>
+																						<td><script>var tmp = '${aContact.chnameCTT}';document.write(tmp.replace(/(.{1}).*(.{1})/,"$1Ｏ$2"));</script></td>
 																						<td>${aContact.genderCTT}</td>
 																						<td>${aContact.enfirstnameCTT}</td>
-																						<td>${aContact.enlastnameCTT}</td>
-																						<td>${aContact.phoneCTT}</td>
+																						<td><script>var tmp = '${aContact.enlastnameCTT}';document.write(tmp.replace(/(.{0}).*(.{5})/,"$1ＯＯＯＯ$2"));</script></td>
+																						<td><script>var tmp = '${aContact.phoneCTT}';document.write(tmp.replace(/(.{4}).*(.{3})/,"$1***$2"));</script></td>
 																						<td>${aContact.mailCTT}</td>
 																					</tr>
 																				</tbody>
@@ -616,7 +616,7 @@ table.blueTable tfoot .links a {
 															 <div class="am-modal-footer">
 														      												      
 														      <button type="button" class="close am-modal-btn" data-dismiss="modal">
-																		<span aria-hidden="true">取    消</span>
+																		<span aria-hidden="true">確&nbsp;&nbsp;認</span>
 															  </button>
 														      
 														      
