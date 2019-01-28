@@ -67,14 +67,14 @@ public class TIUpdateController {
 		for(int x =0;x<mode.length;x++) {
 			String from="";
 			String to="";
-			String[] fromarray=ti[x].split("\\s+");
-			String[] toarray =ti[x+1].split("\\s+");
-			for(int y=0;y<fromarray.length;y++) {
-				from += ("%20"  +fromarray[y]);
-			}
-			for(int y=0;y<toarray.length;y++) {
-				to += ("%20"  +toarray[y]);
-			}
+//			String[] fromarray=ti[x].split("\\s+");
+//			String[] toarray =ti[x+1].split("\\s+");
+//			for(int y=0;y<fromarray.length;y++) {
+				from = ti[x];
+//			}
+//			for(int y=0;y<toarray.length;y++) {
+				to = ti[x+1];
+//			}
 			
 			System.out.println("from="+from);
 			System.out.println("to="+to);
