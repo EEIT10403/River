@@ -5,11 +5,19 @@
     <welcome-file>/index18.jsp</welcome-file>
   </welcome-file-list>
   
+<!--    <error-code>500</error-code> -->
    <error-page>
-    <error-code>500</error-code>
+    <exception-type>java.io.FileNotFoundException</exception-type>
     <location>/WebIndex18/500.jsp</location>
     </error-page>
-    
+     <error-page>
+    <exception-type>java.io.IOException</exception-type>
+    <location>/WebIndex18/500.jsp</location>
+    </error-page>
+     <error-page>
+     <exception-type>org.springframework.web.util.NestedServletException</exception-type>
+    <location>/_027_Order/ErrorPayment.jsp</location>
+    </error-page>
      <error-page>
     <error-code>404</error-code>
     <location>/_027_Order/404.jsp</location>

@@ -19,47 +19,50 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="../images/icons/favicon.png" />
+<link rel="icon" type="image/png" href="<c:url value="/images/icons/favicon.png" />" />
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/bootstrap/css/bootstrap.min.css">
+	href="<c:url value="/vendor/bootstrap/css/bootstrap.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	href="<c:url value="/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../fonts/iconic/css/material-design-iconic-font.min.css">
+	href="<c:url value="/fonts/iconic/css/material-design-iconic-font.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../fonts/linearicons-v1.0.0/icon-font.min.css">
+	href="<c:url value="/fonts/linearicons-v1.0.0/icon-font.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/animate/animate.css">
+	href="<c:url value="/vendor/animate/animate.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/css-hamburgers/hamburgers.min.css">
+	href="<c:url value="/vendor/css-hamburgers/hamburgers.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/animsition/css/animsition.min.css">
+	href="<c:url value="/vendor/animsition/css/animsition.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/select2/select2.min.css">
+	href="<c:url value="/vendor/select2/select2.min.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/daterangepicker/daterangepicker.css">
+	href="<c:url value="/vendor/daterangepicker/daterangepicker.css" />">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../vendor/slick/slick.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="../vendor/MagnificPopup/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="<c:url value="/vendor/slick/slick.css" />">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css"
-	href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
+	href="<c:url value="/vendor/MagnificPopup/magnific-popup.css" />">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../css/util.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/vendor/perfect-scrollbar/perfect-scrollbar.css" />">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/util.css" />">
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/main.css" />">
 <!--===============================================================================================-->
 
 
@@ -78,7 +81,7 @@
 
 						<!-- Logo desktop -->
 						<a class="logo" href="<c:url value="/index18.jsp" />"> <img
-							src="../images/icons/logo-11.png" alt="IMG-LOGO">
+							src="<c:url value="/images/icons/logo-11.png" />" alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
@@ -200,7 +203,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="../images/icons/logo-11.png" alt="IMG-LOGO"></a>
+						src="<c:url value="/images/icons/logo-11.png" />" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -387,7 +390,7 @@
 								<div class="col-md-12">
 									<hr>
 									<div style="padding: 20px">
-										<h3>歐付寶伺服器沒有回應</h3>
+										<h3>哎呀! 歐付寶伺服器端沒有成功回應, 請重新嘗試或稍待一段時間</h3>
 									</div>
 								</div>
 							</div>
@@ -469,15 +472,15 @@
 				<div class="p-t-40">
 					<div class="flex-c-m flex-w p-b-18">
 						<a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-01.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-02.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-03.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-04.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-05.png" />" alt="ICON-PAY">
 						</a>
 					</div>
 
@@ -509,14 +512,14 @@
 	</div>
 
 	<!--===============================================================================================-->
-	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<c:url value="/vendor/jquery/jquery-3.2.1.min.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/animsition/js/animsition.min.js"></script>
+	<script src="<c:url value="/vendor/animsition/js/animsition.min.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/bootstrap/js/popper.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<c:url value="/vendor/bootstrap/js/popper.js" />"></script>
+	<script src="<c:url value="/vendor/bootstrap/js/bootstrap.min.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/select2/select2.min.js"></script>
+	<script src="<c:url value="/vendor/select2/select2.min.js" />"></script>
 
 
 	<script>
@@ -589,18 +592,18 @@ $('#buynow').click(function(){
 		})
 	</script>
 	<!--===============================================================================================-->
-	<script src="../vendor/daterangepicker/moment.min.js"></script>
-	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="<c:url value="/vendor/daterangepicker/moment.min.js" />"></script>
+	<script src="<c:url value="/vendor/daterangepicker/daterangepicker.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/slick/slick.min.js"></script>
-	<script src="../js/slick-custom.js"></script>
+	<script src="<c:url value="/vendor/slick/slick.min.js" />"></script>
+	<script src="<c:url value="/js/slick-custom.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/parallax100/parallax100.js"></script>
+	<script src="<c:url value="/vendor/parallax100/parallax100.js" />"></script>
 	<script>
         $('.parallax100').parallax100();
 	</script>
 	<!--===============================================================================================-->
-	<script src="../vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="<c:url value="/vendor/MagnificPopup/jquery.magnific-popup.min.js" />"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -614,9 +617,9 @@ $('#buynow').click(function(){
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="../vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="<c:url value="/vendor/isotope/isotope.pkgd.min.js" />"></script>
 	<!--===============================================================================================-->
-	<script src="../vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="<c:url value="/vendor/sweetalert/sweetalert.min.js" />"></script>
 	<script>
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
@@ -654,7 +657,7 @@ $('#buynow').click(function(){
 	
 	</script>
 	<!--===============================================================================================-->
-	<script src="../vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="<c:url value="/vendor/perfect-scrollbar/perfect-scrollbar.min.js" />"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -671,7 +674,7 @@ $('#buynow').click(function(){
 		});
 	</script>
 	<!--===============================================================================================-->
-	<script src="../js/main.js"></script>
+	<script src="<c:url value="/js/main.js" />"></script>
 
 </body>
 </html>
