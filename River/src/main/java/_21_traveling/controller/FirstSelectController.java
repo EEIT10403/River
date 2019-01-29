@@ -35,10 +35,10 @@ public class FirstSelectController {
 			 out = response.getWriter();
 		
 		
-		TouristAttractionBean bean1=taService.findByPrimaryKey(7);
-		TouristAttractionBean bean2=taService.findByPrimaryKey(8);
-		TouristAttractionBean bean3=taService.findByPrimaryKey(9);
-		TouristAttractionBean bean4=taService.findByPrimaryKey(10);
+		TouristAttractionBean bean1=taService.findByPrimaryKey(81);
+		TouristAttractionBean bean2=taService.findByPrimaryKey(65);
+		TouristAttractionBean bean3=taService.findByPrimaryKey(82);
+		TouristAttractionBean bean4=taService.findByPrimaryKey(83);
 		List<TouristAttractionBean> list = new ArrayList();
 		list.add(bean1);
 		list.add(bean2);

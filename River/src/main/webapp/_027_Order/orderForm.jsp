@@ -62,7 +62,7 @@
 <body class="animsition">
 	<div class="container-fluid">
 		<!-- Header -->
-				<header>
+		<header>
 			<!-- Header desktop -->
 			<div class="container-menu-desktop">
 				<!-- Topbar -->
@@ -99,9 +99,9 @@
 
 								</c:if>
 								<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
+									<li><a id="modal-193880" href="#partnerLogin"
+										role="button" class="btn" data-toggle="modal">管理員專區</a></li>
+
 								</c:if>
 								<c:if test="${not empty staff_id}">
 									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
@@ -121,7 +121,7 @@
 										<div class="modal-body">
 											<form action="<c:url value="/partner/login" />"
 												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
+												<table style="margin-left: 20%">
 													<tr>
 														<td>登入帳號 :</td>
 														<td><input type="text" name="staff_Id"
@@ -129,8 +129,8 @@
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
+													<tr">
+														<td>登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
 															style="border: solid 1px; margin: 5px"></td>
@@ -260,58 +260,58 @@
 
 					</c:if>
 					<c:if test="${empty staff_id}">
-									<li><a id="modal-193880" href="#partnerLogin" role="button"
-										class="btn" data-toggle="modal">管理員專區</a></li>
-									
-								</c:if>
-								<c:if test="${not empty staff_id}">
-									<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
-								</c:if>
-							</ul>
+						<li><a id="modal-193880" href="#partnerLogin" role="button"
+							class="btn" data-toggle="modal">管理員專區</a></li>
 
-							<div class="modal fade" id="partnerLogin" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
-											<button type="button" class="close" data-dismiss="modal">
-												<span aria-hidden="true">×</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form action="<c:url value="/partner/login" />"
-												style="padding-top: 20px" method="get">
-												<table style="margin-left:20%">
-													<tr>
-														<td>登入帳號 :</td>
-														<td><input type="text" name="staff_Id"
-															value="${param.staff_Id}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx1}</span></td>
-													</tr>
-													<tr ">
-														<td >登入密碼 :</td>
-														<td><input type="password" name="password"
-															value="${param['password']}"
-															style="border: solid 1px; margin: 5px"></td>
-														<td><span class="error">${errors.xxx2}</span></td>
-													</tr>
-													<tr>
-														<td></td>
-														<td align="right" style="padding: 20px"><button
-																type="submit" id='confirmBtn' type="button"
-																class="btn btn-block btn-info">登入</button></td>
-													</tr>
-												</table>
-											</form>
+					</c:if>
+					<c:if test="${not empty staff_id}">
+						<li><a href="<c:url value="/Order/GetSalesSum" />">管理員專區</a></li>
+					</c:if>
+				</ul>
 
-										</div>
-									</div>
-
-								</div>
+				<div class="modal fade" id="partnerLogin" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">夥伴登入</h5>
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="<c:url value="/partner/login" />"
+									style="padding-top: 20px" method="get">
+									<table style="margin-left: 20%">
+										<tr>
+											<td>登入帳號 :</td>
+											<td><input type="text" name="staff_Id"
+												value="${param.staff_Id}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx1}</span></td>
+										</tr>
+										<tr">
+											<td>登入密碼 :</td>
+											<td><input type="password" name="password"
+												value="${param['password']}"
+												style="border: solid 1px; margin: 5px"></td>
+											<td><span class="error">${errors.xxx2}</span></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td align="right" style="padding: 20px"><button
+													type="submit" id='confirmBtn' type="button"
+													class="btn btn-block btn-info">登入</button></td>
+										</tr>
+									</table>
+								</form>
 
 							</div>
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 
 			<!-- Modal Search -->
@@ -352,7 +352,7 @@
 				<div class="row">
 					<div class="col-md-12" style="padding: 4% 2%">
 						<h3>訂單明細表</h3>
-
+						<button class="" onclick="oneClick()">一鍵帶入</button>
 					</div>
 				</div>
 
@@ -501,6 +501,7 @@
 									<h6>
 										<span style="color: orange"> ＊為必填 </span>
 									</h6>
+
 								</div>
 							</div>
 							<div class="row">
@@ -544,10 +545,11 @@
 									</table>
 								</div>
 							</div>
-<!-- 							<button type="submit" style="margin: 10px 5px 0px 0px" -->
-<!-- 								id='confirmBtn' class="btn btn-block btn-info">確認送出</button> -->
-							<a id="modal-786743" href="#doubleConfirm" role="button"  style="margin: 10px 5px 0px 0px"
-								class="btn btn-block btn-info" data-toggle="modal">確認送出</a>
+							<!-- 							<button type="submit" style="margin: 10px 5px 0px 0px" -->
+							<!-- 								id='confirmBtn' class="btn btn-block btn-info">確認送出</button> -->
+							<a id="modal-786743" href="#doubleConfirm" role="button"
+								style="margin: 10px 5px 0px 0px" class="btn btn-block btn-info"
+								data-toggle="modal">確認送出</a>
 						</div>
 						<!-- 填表區塊2 end -->
 
@@ -602,7 +604,7 @@
 					<div class="modal fade" id="doubleConfirm" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
-							<div class="modal-content" style="margin-top:100px">
+							<div class="modal-content" style="margin-top: 100px">
 								<div class="modal-header">
 									<h5 class="modal-title" id="myModalLabel">即將完成</h5>
 									<button type="button" class="close" data-dismiss="modal">
@@ -611,7 +613,8 @@
 								</div>
 								<div class="modal-body">還差最後一步，付款後交易即完成，準備出發!</div>
 								<div class="modal-footer">
-									<button type="submit" id='confirmBtn' type="button" class="btn btn-primary">我了解，送出</button>
+									<button type="submit" id='confirmBtn' type="button"
+										class="btn btn-primary">我了解，送出</button>
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">再修改一下資料</button>
 								</div>
@@ -635,7 +638,7 @@
 
 
 		<!-- Footer -->
-			<footer class="bg3 p-t-75 p-b-32">
+		<footer class="bg3 p-t-75 p-b-32">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 col-lg-3 p-b-50">
@@ -746,6 +749,27 @@
 	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="../vendor/select2/select2.min.js"></script>
+
+	<script>
+    
+    function oneClick(){
+    	
+    	$("input[name='Traveler_Name1_1']").val('陳見梁');
+		$("input[name='birthday1_1']").val('1990-01-05');
+    	$("input[name='Traveler_Name1_2']").val('黃小美');
+		$("input[name='birthday1_2']").val('1993-01-09');
+    	$("input[name='Traveler_Name2_1']").val('陳小棣');
+		$("input[name='birthday2_1']").val('2011-05-05');
+		$("input[name='Contact_Name']").val('陳見梁');
+		$("input[name='Contact_Email']").val('pinglotw@gmail.com');
+		$("input[name='Contact_Phone']").val('0988888888');
+		$("input[name='Contact_Address']").val('台北市內湖區');
+		$("input[name='InvoiceTitle']").val('快樂快樂公司');
+    	
+    }
+    
+    </script>
+
 
 
 	<script>

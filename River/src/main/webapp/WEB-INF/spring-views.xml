@@ -3,6 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	
+	<bean id="PaymentError" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/_027_Order/ErrorPayment.jsp"></property>
+	</bean>
+	
 	<bean id="intoComment.page" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/_comment/CommentPage.jsp"></property>
 	</bean>

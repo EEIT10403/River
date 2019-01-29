@@ -14,36 +14,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 
-	<link rel="stylesheet" type="text/css" href="css/style.css?sv=1"/>
+	<link rel="stylesheet" type="text/css" href="<c:url value="css/style.css?sv=1" />"/>
 
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="<c:url value="images/icons/favicon.png" />"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="fonts/iconic/css/material-design-iconic-font.min.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="fonts/linearicons-v1.0.0/icon-font.min.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/animate/animate.css" />">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/css-hamburgers/hamburgers.min.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/animsition/css/animsition.min.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/select2/select2.min.css" />">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/daterangepicker/daterangepicker.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/slick/slick.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/MagnificPopup/magnific-popup.css" />">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="vendor/perfect-scrollbar/perfect-scrollbar.css" />">
 <!--======CSS資料夾==============================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link type="text/css" rel="stylesheet" href="css/Tstyle.css" />
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<c:url value="css/util.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="css/main.css" />">
+	<link type="text/css" rel="stylesheet" href="<c:url value="css/Tstyle.css" />" />
+	<link type="text/css" rel="stylesheet" href="<c:url value="css/bootstrap.min.css" />" />
 <!--===============================================================================================-->	
 		
 	<!-- Google font -->
@@ -70,7 +70,7 @@
 
 						<!-- Logo desktop -->
 						<a class="logo" href="<c:url value="/index18.jsp" />"> <img
-							src="images/icons/logo-11.png" alt="IMG-LOGO">
+							src="<c:url value="images/icons/logo-11.png" />" alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
@@ -147,7 +147,7 @@
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
 					<a href="<c:url value="/index18.jsp" />"><img
-						src="images/icons/logo-11.png" alt="IMG-LOGO"></a>
+						src="<c:url value="images/icons/logo-11.png" />" alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -823,15 +823,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 				<div class="p-t-40">
 					<div class="flex-c-m flex-w p-b-18">
 						<a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-01.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-01.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-02.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-02.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-03.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-03.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-04.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-04.png" />" alt="ICON-PAY">
 						</a> <a href="#" class="m-all-1"> <img
-							src="../images/icons/icon-pay-05.png" alt="ICON-PAY">
+							src="<c:url value="/images/icons/icon-pay-05.png" />" alt="ICON-PAY">
 						</a>
 					</div>
 
@@ -1015,14 +1015,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 </div>
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<c:url value="vendor/jquery/jquery-3.2.1.min.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="<c:url value="vendor/animsition/js/animsition.min.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<c:url value="vendor/bootstrap/js/popper.js" />"></script>
+	<script src="<c:url value="vendor/bootstrap/js/bootstrap.min.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="<c:url value="vendor/select2/select2.min.js" />"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -1032,18 +1032,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="<c:url value="vendor/daterangepicker/moment.min.js" />"></script>
+	<script src="<c:url value="vendor/daterangepicker/daterangepicker.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
+	<script src="<c:url value="vendor/slick/slick.min.js" />"></script>
+	<script src="<c:url value="js/slick-custom.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/parallax100/parallax100.js"></script>
+	<script src="<c:url value="vendor/parallax100/parallax100.js" />"></script>
 	<script>
         $('.parallax100').parallax100();
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="<c:url value="vendor/MagnificPopup/jquery.magnific-popup.min.js" />"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -1057,9 +1057,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="<c:url value="vendor/isotope/isotope.pkgd.min.js" />"></script>
 <!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="<c:url value="vendor/sweetalert/sweetalert.min.js" />"></script>
 	<script>
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
@@ -1097,7 +1097,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
 	
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="<c:url value="vendor/perfect-scrollbar/perfect-scrollbar.min.js" />"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -1210,7 +1210,7 @@ $(".closepop").on("click",function(){$("#pop_protick").modal("hide")});$(".pop_r
 
 <!-- 資料排序 -->
 
-<script src="js/jquery.filterizr.min.js"></script>
+<script src="<c:url value="js/jquery.filterizr.min.js" />"></script>
 <script>
 $(".jq22").filterizr();
 </script>
@@ -1219,9 +1219,9 @@ $(".jq22").filterizr();
 	
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js?sv=1" ></script> 
-	<script type="text/javascript" src="js/bootstrap-tooltip.js?sv=1"></script> 
-	<script type="text/javascript" src="js/bootstrap-popover.js?sv=1"></script> 
+	<script type="text/javascript" src="<c:url value="js/bootstrap.min.js?sv=1" />" ></script> 
+	<script type="text/javascript" src="<c:url value="js/bootstrap-tooltip.js?sv=1" />"></script> 
+	<script type="text/javascript" src="<c:url value="js/bootstrap-popover.js?sv=1" />"></script> 
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
 </body>

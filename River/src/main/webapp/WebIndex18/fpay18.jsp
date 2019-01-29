@@ -397,8 +397,8 @@
 			  	 <!-- 這裡開始是成人旅客姓名-->
 			    <tr>
 			      <td>
-			        <div class="rwdItem-pc">${fpassengerListBean.fchname[adultP]}</div>
-			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[adultP]}&nbsp;${fpassengerListBean.fenlastname[adultP]}</div>
+			        <div class="rwdItem-pc"><script>var tmp = '${fpassengerListBean.fchname[adultP]}';document.write(tmp.replace(/(.{1}).*(.{1})/,"$1Ｏ$2"));</script></div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[adultP]}&nbsp;<script>var tmp = '${fpassengerListBean.fenlastname[adultP]}';document.write(tmp.replace(/(.{0}).*(.{5})/,"$1＊＊＊＊＊$2"));</script></div>
 			      </td>
 				  
 			      <td>
@@ -426,8 +426,8 @@
 			  	 <!-- 這裡開始是成人旅客姓名-->
 			    <tr>
 			      <td>
-			        <div class="rwdItem-pc">${fpassengerListBean.fchname[childP]}</div>
-			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[childP]}&nbsp;${fpassengerListBean.fenlastname[childP]}</div>
+			        <div class="rwdItem-pc"><script>var tmp = '${fpassengerListBean.fchname[childP]}';document.write(tmp.replace(/(.{1}).*(.{1})/,"$1Ｏ$2"));</script></div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[childP]}&nbsp;<script>var tmp = '${fpassengerListBean.fenlastname[childP]}';document.write(tmp.replace(/(.{0}).*(.{5})/,"$1＊＊＊＊＊$2"));</script></div>
 			      </td>
 				  
 			      <td>
@@ -455,8 +455,8 @@
 			  	 <!-- 這裡開始是成人旅客姓名-->
 			    <tr>
 			      <td>
-			        <div class="rwdItem-pc">${fpassengerListBean.fchname[babyP]}</div>
-			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[babyP]}&nbsp;${fpassengerListBean.fenlastname[babyP]}</div>
+			        <div class="rwdItem-pc"><script>var tmp = '${fpassengerListBean.fchname[babyP]}';document.write(tmp.replace(/(.{1}).*(.{1})/,"$1Ｏ$2"));</script></div>
+			        <div style="font-size: 15px">${fpassengerListBean.fenfirstname[babyP]}&nbsp;<script>var tmp = '${fpassengerListBean.fenlastname[babyP]}';document.write(tmp.replace(/(.{0}).*(.{5})/,"$1＊＊＊＊＊$2"));</script></div>
 			      </td>
 				  
 			      <td>

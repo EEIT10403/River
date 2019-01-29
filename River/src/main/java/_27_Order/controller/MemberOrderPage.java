@@ -280,11 +280,16 @@ public class MemberOrderPage {
 			HttpSession session) throws IOException, ServletException, SQLException {
 		
 		
+		if(RtnCode!=1) {  //RtnCode有進來, 改item狀態
+			return "PaymentError";
+			}
+		
 		String member_Id = (String) session.getAttribute("member_Id");
         String Order_No = (String) session.getAttribute("Order_No");
 		System.out.println("有進/Order/PayResult" + Order_No); // 測試有沒有進來
 		System.out.println("有進/Order/PayResult" + member_Id); // 測試有沒有進來
-		System.out.println("交易成功代碼-"+RtnCode);
+		System.out.println("交易成功代碼="+RtnCode);
+		
 		
 		
 			

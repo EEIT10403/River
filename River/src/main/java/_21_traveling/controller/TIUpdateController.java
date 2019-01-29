@@ -66,10 +66,12 @@ public class TIUpdateController {
 		List<String> list =new ArrayList<>();
 		
 		for(int x =0;x<mode.length;x++) {
+
 			
 			String from=ti[x];
 			String to =ti[x+1];
 			
+
 			
 			System.out.println("from="+from);
 			System.out.println("to="+to);

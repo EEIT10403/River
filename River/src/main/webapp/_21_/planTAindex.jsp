@@ -178,7 +178,7 @@ font-size:25px;
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
+													<tr >
 														<td >登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
@@ -339,7 +339,7 @@ font-size:25px;
 															style="border: solid 1px; margin: 5px"></td>
 														<td><span class="error">${errors.xxx1}</span></td>
 													</tr>
-													<tr ">
+													<tr >
 														<td >登入密碼 :</td>
 														<td><input type="password" name="password"
 															value="${param['password']}"
