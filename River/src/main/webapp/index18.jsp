@@ -678,14 +678,14 @@ function loadProduct(region){
 		var txt ='<div class="row isotope-grid">';
 		$.each(getdata,function(index,product){
 
-txt +='<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0"><img src="<%=request.getContextPath()%>/images/_027_Pimage/'+product.product_Id+'.jpg?dummy='+new Date().getTime()+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
+txt +='<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"><div class="block2"><div class="block2-pic hov-img0" style="max-height:180px;min-block-size:180px"><img src="<%=request.getContextPath()%>/images/_027_Pimage/'+product.product_Id+'.jpg?dummy='+new Date().getTime()+'"><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">購買</a></div>	<div class="block2-txt flex-w flex-t p-t-14"><div class="block2-txt-child1 flex-col-l "><a href="<c:url value="/DaytourProduct/Display?Product_Id='+product.product_Id+'" />" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">'+product.prod_Name+'</a><span class="stext-105 cl3">NTD'+product.unitPrice_1+'元 起</span></div>	<div class="block2-txt-child2 flex-r p-t-3"><a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"><img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON"><img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON"></a></div></div></div></div>';
 		  
    	 		
 		});
 		txt+='</div>';
 		docFrag.append(txt);
 //		$('#ProductFrame').html(docFrag); <!--塞進去 在528行附近-->
-		$('#frame').html(docFrag); <!--塞進去 在528行附近-->
+		$('#frame').html(docFrag);
 	}});
 };<!--讀出產品的功能 end -->
 
