@@ -1467,63 +1467,63 @@ $("#pdiv").on("click",".isotope-item",function(){
 						
 			       var thisfake=$(this).parents(".draggableti").find(".dropdown")
 							
-// 				$.ajax({
-// 			        url: "getdad",                   
-// 			        type: 'POST',                   
-// 			        traditional: true,  
-// 			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-// 			        data: {"ti":dayti,"mode":mode}, 
-// 			        cache: false, 
-// 			        async: true,
-// 			        success: function (res) { 
-// 			        	console.log(res)
-// 			        	var answer = $.parseJSON(res)
-// 			        	console.log(answer)
+				$.ajax({
+			        url: "getdad",                   
+			        type: 'POST',                   
+			        traditional: true,  
+			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+			        data: {"ti":dayti,"mode":mode}, 
+			        cache: false, 
+			        async: true,
+			        success: function (res) { 
+			        	console.log(res)
+			        	var answer = $.parseJSON(res)
+			        	console.log(answer)
 			        	
 			        	
-// // 			        		console.log(thisfake)
-// 			        		var x=0;
-// 			        	thisfake.each(function(res){
+// 			        		console.log(thisfake)
+			        		var x=0;
+			        	thisfake.each(function(res){
 			        	
-// 			        		var ansparse =answer[x]
-// 			        		x++;
-// // 			        		console.log(ansparse.duration/60)
-// 			        		var time='';
-// 			        		if(ansparse.duration/(60*60)>1){
-// 			        			var hr = Math.floor(ansparse.duration/(60*60))
-// 			        			var min =Math.round((ansparse.duration/60)%60);
+			        		var ansparse =answer[x]
+			        		x++;
+// 			        		console.log(ansparse.duration/60)
+			        		var time='';
+			        		if(ansparse.duration/(60*60)>1){
+			        			var hr = Math.floor(ansparse.duration/(60*60))
+			        			var min =Math.round((ansparse.duration/60)%60);
 			        			
-// // 			        			console.log("hr="+hr);
-// // 			        			console.log("min="+min);
-// 			        			time= hr+"時"+min+"分鐘"
+// 			        			console.log("hr="+hr);
+// 			        			console.log("min="+min);
+			        			time= hr+"時"+min+"分鐘"
 			        			
-// 			        		}else{
+			        		}else{
 			        			
-// 			        			var min =Math.round(ansparse.duration/60);
-// // 			        			console.log("min="+min);
-// 			        			time= min+"分鐘";
-// 			        		}
+			        			var min =Math.round(ansparse.duration/60);
+// 			        			console.log("min="+min);
+			        			time= min+"分鐘";
+			        		}
 			        		    		
-// 			        		$(this).find(".duration").html(time)
+			        		$(this).find(".duration").html(time)
 
 			        		
-// 			        		var path=""
-// 			        		if((ansparse.distance/1000)>1){
+			        		var path=""
+			        		if((ansparse.distance/1000)>1){
 			        			
-// 			        			path =  Math.floor(ansparse.distance/1000) +"公里"
-// 			        		}else{
+			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+			        		}else{
 			        			
-// 			        			path = (ansparse.distance%1000)+"公尺"
-// 			        		}
+			        			path = (ansparse.distance%1000)+"公尺"
+			        		}
 			        		
 			        		
-// 			        		$(this).find(".distance").html(path)
+			        		$(this).find(".distance").html(path)
 			        		
 			        		
-// 			        	   })     	
-// 			           }
+			        	   })     	
+			           }
 	
-// 		    	})
+		    	})
 
 		    	
 		    })
@@ -1582,66 +1582,66 @@ $("#pdiv").on("click",".isotope-item",function(){
 						
 			       var thisfake=$(this).find(".dropdown")
 					 		
-// 				$.ajax({
-// 			        url: "getdad",                   
-// 			        type: 'POST',                   
-// 			        traditional: true, 
-// 			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-// 			        data: {"ti":dayti,"mode":mode}, 
-// 			        responseType:'application/json',
-// 			        cache: false, 
-// 			        async: true,
-// 			        success: function (res) { 
+				$.ajax({
+			        url: "getdad",                   
+			        type: 'POST',                   
+			        traditional: true, 
+			        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+			        data: {"ti":dayti,"mode":mode}, 
+			        responseType:'application/json',
+			        cache: false, 
+			        async: true,
+			        success: function (res) { 
 			      
-// 			        		console.log("res="+res)
+			        		console.log("res="+res)
 			        	
-// 			        	var answer = $.parseJSON(res)
-// 			        	console.log(answer)
+			        	var answer = $.parseJSON(res)
+			        	console.log(answer)
 			        	
 			        	
-// // 			        		console.log(thisfake)
-// 			        		var x=0;
-// 			        	thisfake.each(function(res){
+// 			        		console.log(thisfake)
+			        		var x=0;
+			        	thisfake.each(function(res){
 			        	
-// 			        		var ansparse =answer[x]
-// 			        		x++;
-// // 			        		console.log(ansparse.duration/60)
-// 			        		var time='';
-// 			        		if(ansparse.duration/(60*60)>1){
-// 			        			var hr = Math.floor(ansparse.duration/(60*60))
-// 			        			var min =Math.round((ansparse.duration/60)%60);
+			        		var ansparse =answer[x]
+			        		x++;
+// 			        		console.log(ansparse.duration/60)
+			        		var time='';
+			        		if(ansparse.duration/(60*60)>1){
+			        			var hr = Math.floor(ansparse.duration/(60*60))
+			        			var min =Math.round((ansparse.duration/60)%60);
 			        			
-// // 			        			console.log("hr="+hr);
-// // 			        			console.log("min="+min);
-// 			        			time= hr+"時"+min+"分鐘"
+// 			        			console.log("hr="+hr);
+// 			        			console.log("min="+min);
+			        			time= hr+"時"+min+"分鐘"
 			        			
-// 			        		}else{
+			        		}else{
 			        			
-// 			        			var min =Math.round(ansparse.duration/60);
-// // 			        			console.log("min="+min);
-// 			        			time= min+"分鐘";
-// 			        		}
+			        			var min =Math.round(ansparse.duration/60);
+// 			        			console.log("min="+min);
+			        			time= min+"分鐘";
+			        		}
 			        		    		
-// 			        		$(this).find(".duration").html(time)
+			        		$(this).find(".duration").html(time)
 
 			        		
-// 			        		var path=""
-// 			        		if((ansparse.distance/1000)>1){
+			        		var path=""
+			        		if((ansparse.distance/1000)>1){
 			        			
-// 			        			path =  Math.floor(ansparse.distance/1000) +"公里"
-// 			        		}else{
+			        			path =  Math.floor(ansparse.distance/1000) +"公里"
+			        		}else{
 			        			
-// 			        			path = (ansparse.distance%1000)+"公尺"
-// 			        		}
+			        			path = (ansparse.distance%1000)+"公尺"
+			        		}
 			        		
 			        		
-// 			        		$(this).find(".distance").html(path)
+			        		$(this).find(".distance").html(path)
 			        		
 			        		
-// 			        	   })
+			        	   })
      	
-// 			           }
-// 			      });
+			           }
+			      });
 							
 						
 						

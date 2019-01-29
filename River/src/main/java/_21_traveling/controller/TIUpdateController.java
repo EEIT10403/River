@@ -3,6 +3,7 @@ package _21_traveling.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,16 +66,10 @@ public class TIUpdateController {
 		List<String> list =new ArrayList<>();
 		
 		for(int x =0;x<mode.length;x++) {
-			String from="";
-			String to="";
-			String[] fromarray=ti[x].split("\\s+");
-			String[] toarray =ti[x+1].split("\\s+");
-			for(int y=0;y<fromarray.length;y++) {
-				from += ("%20"  +fromarray[y]);
-			}
-			for(int y=0;y<toarray.length;y++) {
-				to += ("%20"  +toarray[y]);
-			}
+			
+			String from=ti[x];
+			String to =ti[x+1];
+			
 			
 			System.out.println("from="+from);
 			System.out.println("to="+to);
@@ -83,6 +78,7 @@ public class TIUpdateController {
 					+ to+ "&mode="
 					+ mode[x]+ "&key=AIzaSyA1O4vNHfOVtr86ZtznzI4ZeqOBQIM7q5Y";
 			System.out.println("url="+url);
+//			String encodedUrl = URLEncoder.encode(url, "UTF-8");
 			String result = GetTransferTime.readhttp_info(url);
 			
 			list.add(result);
