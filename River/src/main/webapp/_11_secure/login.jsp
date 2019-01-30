@@ -784,6 +784,7 @@
 	<script type="text/javascript">
 		//進入 https://console.developers.google.com/，找「憑證」頁籤(記得先選對專案)，即可找到用戶端ID
 		let Google_appId = "524820611328-7qn67ttlsl4101ovdn09tfptc6tsta9e.apps.googleusercontent.com";
+// 		let Google_appId = "355541093421-51agus84qg4ted1d6p6t3nthdfarb9oj.apps.googleusercontent.com"; //第2組憑證
 
 		//參考文章：http://usefulangle.com/post/55/google-login-javascript-api 
 
